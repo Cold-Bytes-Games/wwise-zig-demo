@@ -2,6 +2,8 @@
 
 This a port of the Integration Demo from the samples in Zig using [wwise-zig](https://github.com/Cold-Bytes-Games/wwise-zig) and using [zig-gamedev](https://github.com/michal-z/zig-gamedev) `zglfw`, `zgpu` and `zgui` for the UI rendering.
 
+Each major version of Wwise is contained within a branch. Select the correct branch corresponding to the version you are using.
+
 This is a 3rd party implementation and it is not affiliated with Audiokinetic.
 
 # LICENSE

@@ -55,7 +55,7 @@ const AllMenus = [_]MenuData{
     .{
         .demo = .{
             .name = "Subtitles/Markers Demo",
-            .instance_type = NullDemo,
+            .instance_type = @import("demos/SubtitleDemo.zig"),
         },
     },
     .{

@@ -6,7 +6,7 @@ allocator: std.mem.Allocator = undefined,
 is_visible: bool = false,
 bank_id: u32 = 0, // TODO: Use AK.AkBankID
 is_playing: bool = false,
-rpm_value: i32 = 0,
+rpm_value: i32 = MinRPMValue,
 
 const Self = @This();
 
@@ -14,9 +14,8 @@ const MinRPMValue = 1000;
 const MaxRPMValue = 10000;
 
 pub fn init(self: *Self, allocator: std.mem.Allocator) !void {
+    self.* = .{};
     self.allocator = allocator;
-
-    self.rpm_value = MinRPMValue;
 
     // self.bankID = try Wwise.loadBankByString("Car.bnk");
     // try Wwise.registerGameObj(DemoGameObjectID, "Car");

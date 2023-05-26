@@ -49,7 +49,7 @@ const AllMenus = [_]MenuData{
     .{
         .demo = .{
             .name = "Footsteps Demo",
-            .instance_type = NullDemo,
+            .instance_type = @import("demos/FootstepsDemo.zig"),
         },
     },
     .{

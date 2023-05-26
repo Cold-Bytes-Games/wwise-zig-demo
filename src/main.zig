@@ -2,10 +2,110 @@ const std = @import("std");
 const zglfw = @import("zglfw");
 const zgui = @import("zgui");
 const zgpu = @import("zgpu");
+const DemoInterface = @import("DemoInterface.zig");
+const NullDemo = @import("demos/NullDemo.zig");
 
 const DemoState = struct {
     graphics_context: *zgpu.GraphicsContext,
     is_selected: bool = false,
+    current_demo: DemoInterface = undefined,
+};
+
+const DemoEntry = struct {
+    name: [:0]const u8,
+    instance_type: type,
+};
+
+const MenuEntry = struct {
+    name: [:0]const u8,
+    entries: []const MenuData,
+};
+
+const MenuData = union(enum) {
+    demo: DemoEntry,
+    menu: MenuEntry,
+};
+
+const AllMenus = [_]MenuData{
+    .{
+        .menu = .{
+            .name = "Dialogue Demos",
+            .entries = &.{
+                .{
+                    .demo = .{
+                        .name = "Localization Demo",
+                        .instance_type = @import("demos/LocalizationDemo.zig"),
+                    },
+                },
+            },
+        },
+    },
+    .{
+        .demo = .{
+            .name = "RTPC Demo (Car Engine)",
+            .instance_type = @import("demos/RtpcCarEngineDemo.zig"),
+        },
+    },
+    .{
+        .demo = .{
+            .name = "Footsteps Demo",
+            .instance_type = NullDemo,
+        },
+    },
+    .{
+        .demo = .{
+            .name = "Subtitles/Markers Demo",
+            .instance_type = NullDemo,
+        },
+    },
+    .{
+        .menu = .{
+            .name = "Music Callbacks Demo",
+            .entries = &.{},
+        },
+    },
+    .{
+        .demo = .{
+            .name = "Interactive Music Demo",
+            .instance_type = NullDemo,
+        },
+    },
+    .{
+        .demo = .{
+            .name = "MIDI API Demo (Metronome)",
+            .instance_type = NullDemo,
+        },
+    },
+    .{
+        .demo = .{
+            .name = "Microphone Demo",
+            .instance_type = NullDemo,
+        },
+    },
+    .{
+        .menu = .{
+            .name = "Positioning Demo",
+            .entries = &.{},
+        },
+    },
+    .{
+        .menu = .{
+            .name = "Bank & Event Loading Demo",
+            .entries = &.{},
+        },
+    },
+    .{
+        .demo = .{
+            .name = "Background Music/DVR Demo",
+            .instance_type = NullDemo,
+        },
+    },
+    .{
+        .demo = .{
+            .name = "Options",
+            .instance_type = NullDemo,
+        },
+    },
 };
 
 fn setup(allocator: std.mem.Allocator, window: *zglfw.Window) !*DemoState {
@@ -31,9 +131,13 @@ fn setup(allocator: std.mem.Allocator, window: *zglfw.Window) !*DemoState {
     const style = zgui.getStyle();
     style.scaleAllSizes(scale_factor);
 
+    var null_demo_instance = try allocator.create(NullDemo);
+    try null_demo_instance.init(allocator);
+
     const demo = try allocator.create(DemoState);
     demo.* = .{
         .graphics_context = graphics_context,
+        .current_demo = null_demo_instance.demoInterface(),
     };
     return demo;
 }
@@ -42,41 +146,52 @@ fn destroy(allocator: std.mem.Allocator, demo: *DemoState) void {
     zgui.backend.deinit();
     zgui.deinit();
     demo.graphics_context.destroy(allocator);
+    demo.current_demo.deinit();
     allocator.destroy(demo);
 }
 
 const Languages = &[_][:0]const u8{ "English(US)", "French(Canada)" };
 
-fn update(demo: *DemoState) void {
+fn createMenu(comptime menu_data: MenuData, allocator: std.mem.Allocator, demo: *DemoState) !void {
+    switch (menu_data) {
+        .demo => |demo_entry| {
+            if (zgui.menuItem(demo_entry.name, .{})) {
+                demo.current_demo.deinit();
+
+                var new_demo_instance = try allocator.create(demo_entry.instance_type);
+                demo.current_demo = new_demo_instance.demoInterface();
+                try demo.current_demo.init(allocator);
+                demo.current_demo.show();
+            }
+        },
+        .menu => |menu| {
+            if (zgui.beginMenu(menu.name, true)) {
+                inline for (menu.entries) |menu_entry| {
+                    try createMenu(menu_entry, allocator, demo);
+                }
+
+                zgui.endMenu();
+            }
+        },
+    }
+}
+
+fn update(allocator: std.mem.Allocator, demo: *DemoState) !void {
     zgui.backend.newFrame(
         demo.graphics_context.swapchain_descriptor.width,
         demo.graphics_context.swapchain_descriptor.height,
     );
 
     if (zgui.beginMainMenuBar()) {
-        if (zgui.beginMenu("Dialogue demos", true)) {
-            _ = zgui.menuItemPtr("Localization Demo", .{ .selected = &demo.is_selected });
-            zgui.endMenu();
+        inline for (AllMenus) |menu_data| {
+            try createMenu(menu_data, allocator, demo);
         }
 
         zgui.endMainMenuBar();
     }
 
-    if (demo.is_selected) {
-        if (zgui.begin("Localization Demo", .{ .flags = .{ .always_auto_resize = true } })) {
-            if (zgui.button("Say \"Hello\"", .{})) {}
-
-            if (zgui.beginCombo("Language", .{ .preview_value = Languages[0] })) {
-                for (Languages, 0..) |lang, i| {
-                    const is_selected = i == 0;
-                    if (zgui.selectable(lang, .{ .selected = is_selected })) {}
-                }
-
-                zgui.endCombo();
-            }
-
-            zgui.end();
-        }
+    if (demo.current_demo.isVisible()) {
+        try demo.current_demo.onUI();
     }
 }
 
@@ -127,7 +242,7 @@ pub fn main() !void {
 
     while (!window.shouldClose() and window.getKey(.escape) != .press) {
         zglfw.pollEvents();
-        update(demo);
+        try update(allocator, demo);
         draw(demo);
     }
 }

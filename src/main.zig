@@ -150,8 +150,6 @@ fn destroy(allocator: std.mem.Allocator, demo: *DemoState) void {
     allocator.destroy(demo);
 }
 
-const Languages = &[_][:0]const u8{ "English(US)", "French(Canada)" };
-
 fn createMenu(comptime menu_data: MenuData, allocator: std.mem.Allocator, demo: *DemoState) !void {
     switch (menu_data) {
         .demo => |demo_entry| {

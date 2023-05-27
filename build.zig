@@ -17,6 +17,15 @@ pub fn build(b: *std.Build) void {
     });
     b.installArtifact(exe);
 
+    // Use local dependency for now until wwise-zig is tagged
+    // const wwise_zig_dependency = b.anonymousDependency("vendor/wwise-zig", @import("vendor/wwise-zig/build.zig"), .{
+    //     .use_communication = true,
+    //     .include_file_package_io_blocking = true,
+    //     .include_file_package_io_deferred = true,
+    //     .target = target,
+    //     .optimize = optimize,
+    // });
+
     const zglfw_pkg = zglfw.package(b, target, optimize, .{});
     const zgui_pkg = zgui.package(b, target, optimize, .{
         .options = .{
@@ -29,10 +38,12 @@ pub fn build(b: *std.Build) void {
         .deps = .{ .zpool = zpool_pkg.zpool, .zglfw = zglfw_pkg.zglfw },
     });
 
+    //exe.addModule("wwise-zig", wwise_zig_dependency.module("wwise-zig"));
     exe.addModule("zglfw", zglfw_pkg.zglfw);
     exe.addModule("zgpu", zgpu_pkg.zgpu);
     exe.addModule("zgui", zgui_pkg.zgui);
     exe.addModule("zpool", zpool_pkg.zpool);
+    // exe.linkLibrary(wwise_zig_dependency.artifact("wwise-c"));
 
     zglfw_pkg.link(exe);
     zgpu_pkg.link(exe);

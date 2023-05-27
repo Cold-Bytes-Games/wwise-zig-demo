@@ -3,3 +3,8 @@ zig-out
 imgui.ini
 
 /vendor/wwise-zig/
+/WwiseProject/.cache
+/WwiseProject/GeneratedSoundBanks
+*.validationcache
+*.wsettings
+*.akd

@@ -1,4 +1,0 @@
-[submodule "vendor/zig-gamedev"]
-	path = vendor/zig-gamedev
-	url = https://github.com/michal-z/zig-gamedev.git
-	branch = main

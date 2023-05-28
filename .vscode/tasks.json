@@ -6,7 +6,7 @@
         {
             "label": "Build (Debug)",
             "type": "shell",
-            "command": "zig build",
+            "command": "zig build -Dtarget=native-native-msvc",
             "problemMatcher": [
                 "$gcc"
             ],
@@ -18,7 +18,7 @@
         {
             "label": "Build (Release)",
             "type": "shell",
-            "command": "zig build -Doptimize=ReleaseFast",
+            "command": "zig build -Dtarget=native-native-msvc -Doptimize=ReleaseFast",
             "problemMatcher": [
                 "$gcc"
             ]

@@ -5,6 +5,7 @@ const dxgi = zigwin32.graphics.dxgi;
 const win32 = zigwin32.everything;
 const zgui = @import("zgui");
 const zigwin32 = @import("zigwin32");
+const AK = @import("wwise-zig");
 
 const L = std.unicode.utf8ToUtf16LeStringLiteral;
 
@@ -87,8 +88,14 @@ const DxContext = struct {
     }
 };
 
+const WwiseContext = struct {
+    io_hook: ?*AK.IOHooks.CAkFilePackageLowLevelIOBlocking = null,
+    init_bank_id: AK.AkBankID = 0,
+};
+
 const DemoState = struct {
     graphics_context: DxContext = .{},
+    wwise_context: WwiseContext = .{},
     is_selected: bool = false,
     current_demo: DemoInterface = undefined,
 };
@@ -190,7 +197,9 @@ const AllMenus = [_]MenuData{
     },
 };
 
-fn setup(allocator: std.mem.Allocator, demo: *DemoState) !void {
+const ListenerGameObjectID: AK.AkGameObjectID = 1;
+
+fn setupZGUI(allocator: std.mem.Allocator, demo: *DemoState) !void {
     zgui.init(allocator);
 
     if (!demo.graphics_context.createDeviceD3D()) {
@@ -202,6 +211,83 @@ fn setup(allocator: std.mem.Allocator, demo: *DemoState) !void {
         demo.graphics_context.device,
         demo.graphics_context.device_context,
     );
+}
+
+fn setupWwise(allocator: std.mem.Allocator, demo: *DemoState) !void {
+    // Create memory manager
+    var memory_settings: AK.AkMemSettings = .{};
+    AK.MemoryMgr.getDefaultSettings(&memory_settings);
+    try AK.MemoryMgr.init(&memory_settings);
+
+    // Create streaming manager
+    var stream_settings: AK.StreamMgr.AkStreamMgrSettings = .{};
+    AK.StreamMgr.getDefaultSettings(&stream_settings);
+    _ = AK.StreamMgr.create(&stream_settings);
+
+    var device_settings: AK.StreamMgr.AkDeviceSettings = .{};
+    AK.StreamMgr.getDefaultDeviceSettings(&device_settings);
+
+    // Create the I/O hook using default FilePackage blocking I/O Hook
+    var io_hook = try AK.IOHooks.CAkFilePackageLowLevelIOBlocking.create(allocator);
+    try io_hook.init(&device_settings, false);
+    demo.wwise_context.io_hook = io_hook;
+
+    // Gather init settings and init the sound engine
+    var init_settings: AK.AkInitSettings = .{};
+    AK.SoundEngine.getDefaultInitSettings(&init_settings);
+
+    var platform_init_settings: AK.AkPlatformInitSettings = .{};
+    AK.SoundEngine.getDefaultPlatformInitSettings(&platform_init_settings);
+
+    try AK.SoundEngine.init(allocator, &init_settings, &platform_init_settings);
+
+    // Setup communication for debugging with the Wwise Authoring
+    if (AK.Comm != void) {
+        var comm_settings: AK.Comm.AkCommSettings = .{};
+        try AK.Comm.getDefaultInitSettings(&comm_settings);
+
+        comm_settings.setAppNetworkName("wwise-zig Integration Demo");
+
+        try AK.Comm.init(&comm_settings);
+        defer AK.Comm.term();
+    }
+
+    // Setup I/O Hook base path
+    const current_dir = try std.fs.cwd().realpathAlloc(allocator, ".");
+    defer allocator.free(current_dir);
+
+    // TODO: Add path depending on platform
+    const sound_banks_path = try std.fs.path.join(allocator, &[_][]const u8{ current_dir, "WwiseProject\\GeneratedSoundBanks\\Windows" });
+    defer allocator.free(sound_banks_path);
+
+    try io_hook.setBasePath(allocator, sound_banks_path);
+
+    // Load Init Bank
+    demo.wwise_context.init_bank_id = try AK.SoundEngine.loadBankString(allocator, "Init.bnk", .{});
+
+    // Init microphone
+    try AK.SoundEngine.registerGameObjWithName(allocator, ListenerGameObjectID, "Listener");
+    try AK.SoundEngine.setDefaultListeners(&.{ListenerGameObjectID});
+}
+
+fn destroyWwise(allocator: std.mem.Allocator, demo: *DemoState) !void {
+    try AK.SoundEngine.unregisterGameObj(ListenerGameObjectID);
+
+    try AK.SoundEngine.unloadBankID(demo.wwise_context.init_bank_id, null, .{});
+
+    if (AK.Comm != void) {
+        AK.Comm.term();
+    }
+
+    AK.SoundEngine.term();
+
+    if (demo.wwise_context.io_hook) |io_hook| {
+        io_hook.term();
+
+        io_hook.destroy(allocator);
+    }
+
+    AK.MemoryMgr.term();
 }
 
 fn destroy(allocator: std.mem.Allocator, demo: *DemoState) void {
@@ -343,8 +429,13 @@ pub fn main() !void {
     _ = win32.ShowWindow(hwnd, win32.SW_SHOWDEFAULT);
     _ = win32.UpdateWindow(hwnd);
 
-    try setup(allocator, demo);
+    try setupZGUI(allocator, demo);
     defer destroy(allocator, demo);
+
+    try setupWwise(allocator, demo);
+    defer {
+        destroyWwise(allocator, demo) catch unreachable;
+    }
 
     var msg: win32.MSG = std.mem.zeroes(win32.MSG);
     while (msg.message != win32.WM_QUIT) {
@@ -356,6 +447,8 @@ pub fn main() !void {
 
         try update(allocator, demo);
         draw(demo);
+
+        try AK.SoundEngine.renderAudio(false);
     }
 }
 

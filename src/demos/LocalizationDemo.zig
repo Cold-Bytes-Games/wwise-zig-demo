@@ -1,14 +1,15 @@
 const std = @import("std");
 const DemoInterface = @import("../DemoInterface.zig");
 const zgui = @import("zgui");
+const AK = @import("wwise-zig");
 
 allocator: std.mem.Allocator = undefined,
 is_visible: bool = false,
-bank_id: u32 = 0, // TODO: Use AK.AkBankID
+bank_id: AK.AkBankID = 0,
 current_selected_language: usize = 0,
 
 const Self = @This();
-const DemoGameObjectID = 3;
+const DemoGameObjectID: AK.AkGameObjectID = 3;
 
 const Languages = &[_][:0]const u8{ "English(US)", "French(Canada)" };
 
@@ -16,16 +17,15 @@ pub fn init(self: *Self, allocator: std.mem.Allocator) !void {
     self.* = .{};
     self.allocator = allocator;
 
-    // try Wwise.setCurrentLanguage(Languages[0]);
+    try AK.StreamMgr.setCurrentLanguage(allocator, Languages[0]);
 
-    // self.bankID = try Wwise.loadBankByString("Human.bnk");
-    // try Wwise.registerGameObj(DemoGameObjectID, "LocalizationDemo");
+    self.bank_id = try AK.SoundEngine.loadBankString(allocator, "Human.bnk", .{});
+    try AK.SoundEngine.registerGameObjWithName(allocator, DemoGameObjectID, "LocalizationDemo");
 }
 
 pub fn deinit(self: *Self) void {
-    // _ = Wwise.unloadBankByID(self.bankID);
-
-    // Wwise.unregisterGameObj(DemoGameObjectID);
+    AK.SoundEngine.unloadBankID(self.bank_id, null, .{}) catch unreachable;
+    AK.SoundEngine.unregisterGameObj(DemoGameObjectID) catch unreachable;
 
     self.allocator.destroy(self);
 }
@@ -33,7 +33,7 @@ pub fn deinit(self: *Self) void {
 pub fn onUI(self: *Self) !void {
     if (zgui.begin("Localization Demo", .{ .popen = &self.is_visible, .flags = .{ .always_auto_resize = true } })) {
         if (zgui.button("Say \"Hello\"", .{})) {
-            //_ = try AK.SoundEngine.postEventString("Play_Hello", DemoGameObjectID, .{});
+            _ = try AK.SoundEngine.postEventString(self.allocator, "Play_Hello", DemoGameObjectID, .{});
         }
 
         const first_language = Languages[self.current_selected_language];
@@ -45,10 +45,11 @@ pub fn onUI(self: *Self) !void {
                 if (zgui.selectable(language, .{ .selected = is_selected })) {
                     self.current_selected_language = i;
 
-                    // try Wwise.setCurrentLanguage(Languages[self.current_selected_language]);
+                    try AK.StreamMgr.setCurrentLanguage(self.allocator, Languages[self.current_selected_language]);
 
-                    // _ = Wwise.unloadBankByID(self.bankID);
-                    // self.bankID = try Wwise.loadBankByString("Human.bnk");
+                    try AK.SoundEngine.unloadBankID(self.bank_id, null, .{});
+
+                    self.bank_id = try AK.SoundEngine.loadBankString(self.allocator, "Human.bnk", .{});
                 }
 
                 if (is_selected) {
@@ -63,7 +64,7 @@ pub fn onUI(self: *Self) !void {
     }
 
     if (!self.is_visible) {
-        //Wwise.stopAllOnGameObject(DemoGameObjectID);
+        AK.SoundEngine.stopAll(.{ .game_object_id = DemoGameObjectID });
     }
 }
 

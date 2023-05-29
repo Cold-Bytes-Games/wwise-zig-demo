@@ -273,7 +273,7 @@ fn setupWwise(allocator: std.mem.Allocator, demo: *DemoState) !void {
 fn destroyWwise(allocator: std.mem.Allocator, demo: *DemoState) !void {
     try AK.SoundEngine.unregisterGameObj(ListenerGameObjectID);
 
-    try AK.SoundEngine.unloadBankID(demo.wwise_context.init_bank_id, null, .{});
+    // try AK.SoundEngine.unloadBankID(demo.wwise_context.init_bank_id, null, .{});
 
     if (AK.Comm != void) {
         AK.Comm.term();
@@ -290,12 +290,11 @@ fn destroyWwise(allocator: std.mem.Allocator, demo: *DemoState) !void {
     AK.MemoryMgr.term();
 }
 
-fn destroy(allocator: std.mem.Allocator, demo: *DemoState) void {
+fn destroy(demo: *DemoState) void {
     zgui.backend.deinit();
     zgui.deinit();
     demo.graphics_context.deinit();
     demo.current_demo.deinit();
-    allocator.destroy(demo);
 }
 
 fn createMenu(comptime menu_data: MenuData, allocator: std.mem.Allocator, demo: *DemoState) !void {
@@ -385,6 +384,7 @@ pub fn main() !void {
     demo.* = .{
         .current_demo = null_demo_instance.demoInterface(),
     };
+    defer allocator.destroy(demo);
 
     const win_class: win32.WNDCLASSEXW = .{
         .cbSize = @sizeOf(win32.WNDCLASSEXW),
@@ -429,13 +429,13 @@ pub fn main() !void {
     _ = win32.ShowWindow(hwnd, win32.SW_SHOWDEFAULT);
     _ = win32.UpdateWindow(hwnd);
 
-    try setupZGUI(allocator, demo);
-    defer destroy(allocator, demo);
-
     try setupWwise(allocator, demo);
     defer {
         destroyWwise(allocator, demo) catch unreachable;
     }
+
+    try setupZGUI(allocator, demo);
+    defer destroy(demo);
 
     var msg: win32.MSG = std.mem.zeroes(win32.MSG);
     while (msg.message != win32.WM_QUIT) {

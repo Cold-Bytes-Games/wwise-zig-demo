@@ -22,8 +22,20 @@ pub fn build(b: *std.Build) !void {
 
     const wwise_package = try wwise_zig.package(b, target, optimize, .{
         .use_communication = true,
+        .use_static_crt = true,
         .include_file_package_io_blocking = true,
         .configuration = .profile,
+        .static_plugins = &.{
+            "AkToneSource",
+            "AkParametricEQFX",
+            "AkDelayFX",
+            "AkPeakLimiterFX",
+            "AkRoomVerbFX",
+            "AkStereoDelayFX",
+            "AkSynthOneSource",
+            "AkAudioInputSource",
+            "AkVorbisDecoder",
+        },
     });
 
     const zgui_pkg = zgui.package(b, target, optimize, .{

@@ -16,10 +16,10 @@ const Self = @This();
 const DemoGameObjectID = 2;
 
 pub fn init(self: *Self, allocator: std.mem.Allocator) !void {
-    self.* = .{};
-
-    self.allocator = allocator;
-    self.subtitle_text = try self.allocator.dupeZ(u8, "");
+    self.* = .{
+        .allocator = allocator,
+        .subtitle_text = try allocator.dupeZ(u8, ""),
+    };
 
     // self.bank_id = try Wwise.loadBankByString("MarkerTest.bnk");
     // try Wwise.registerGameObj(DemoGameObjectID, "SubtitleDemo");

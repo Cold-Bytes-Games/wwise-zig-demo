@@ -14,8 +14,9 @@ const DemoGameObjectID: AK.AkGameObjectID = 3;
 const Languages = &[_][:0]const u8{ "English(US)", "French(Canada)" };
 
 pub fn init(self: *Self, allocator: std.mem.Allocator) !void {
-    self.* = .{};
-    self.allocator = allocator;
+    self.* = .{
+        .allocator = allocator,
+    };
 
     try AK.StreamMgr.setCurrentLanguage(allocator, Languages[0]);
 

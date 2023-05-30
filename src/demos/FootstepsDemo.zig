@@ -43,8 +43,9 @@ const SurfaceInfo = struct {
 var Surfaces: [4]SurfaceInfo = undefined;
 
 pub fn init(self: *Self, allocator: std.mem.Allocator) !void {
-    self.* = .{};
-    self.allocator = allocator;
+    self.* = .{
+        .allocator = allocator,
+    };
 
     // try Wwise.registerGameObj(DemoGameObjectID, "Human");
 

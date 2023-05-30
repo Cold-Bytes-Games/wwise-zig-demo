@@ -1,10 +1,11 @@
 const std = @import("std");
 const DemoInterface = @import("../DemoInterface.zig");
 const zgui = @import("zgui");
+const AK = @import("wwise-zig");
 
 allocator: std.mem.Allocator = undefined,
 is_visible: bool = false,
-bank_id: u32 = 0, // TODO: Use AK.AkBankID
+bank_id: AK.AkBankID = 0,
 is_playing: bool = false,
 rpm_value: i32 = MinRPMValue,
 
@@ -12,21 +13,22 @@ const Self = @This();
 
 const MinRPMValue = 1000;
 const MaxRPMValue = 10000;
+const DemoGameObjectID: AK.AkGameObjectID = 4;
 
 pub fn init(self: *Self, allocator: std.mem.Allocator) !void {
-    self.* = .{};
-    self.allocator = allocator;
+    self.* = .{
+        .allocator = allocator,
+    };
 
-    // self.bankID = try Wwise.loadBankByString("Car.bnk");
-    // try Wwise.registerGameObj(DemoGameObjectID, "Car");
+    self.bank_id = try AK.SoundEngine.loadBankString(allocator, "Car.bnk", .{});
+    try AK.SoundEngine.registerGameObjWithName(allocator, DemoGameObjectID, "Car");
 
-    // try Wwise.setRTPCValueByString("RPM", @intToFloat(f32, self.rpmValue), DemoGameObjectID);
+    try AK.SoundEngine.setRTPCValueString(allocator, "RPM", @intToFloat(f32, self.rpm_value), .{ .game_object_id = DemoGameObjectID });
 }
 
 pub fn deinit(self: *Self) void {
-    //    _ = Wwise.unloadBankByID(self.bankID);
-
-    //     Wwise.unregisterGameObj(DemoGameObjectID);
+    AK.SoundEngine.unloadBankID(self.bank_id, null, .{}) catch unreachable;
+    AK.SoundEngine.unregisterGameObj(DemoGameObjectID) catch unreachable;
 
     self.allocator.destroy(self);
 }
@@ -37,23 +39,23 @@ pub fn onUI(self: *Self) !void {
 
         if (zgui.button(button_text, .{})) {
             if (self.is_playing) {
-                // _ = try Wwise.postEvent("Stop_Engine", DemoGameObjectID);
+                _ = try AK.SoundEngine.postEventString(self.allocator, "Stop_Engine", DemoGameObjectID, .{});
                 self.is_playing = false;
             } else {
-                // _ = try Wwise.postEvent("Play_Engine", DemoGameObjectID);
+                _ = try AK.SoundEngine.postEventString(self.allocator, "Play_Engine", DemoGameObjectID, .{});
                 self.is_playing = true;
             }
         }
 
         if (zgui.sliderInt("RPM", .{ .v = &self.rpm_value, .min = MinRPMValue, .max = MaxRPMValue })) {
-            //try Wwise.setRTPCValueByString("RPM", @intToFloat(f32, self.rpmValue), DemoGameObjectID);
+             try AK.SoundEngine.setRTPCValueString(self.allocator, "RPM", @intToFloat(f32, self.rpm_value), .{ .game_object_id = DemoGameObjectID });
         }
 
         zgui.end();
     }
 
     if (!self.is_visible) {
-        //Wwise.stopAllOnGameObject(DemoGameObjectID);
+        AK.SoundEngine.stopAll(.{ .game_object_id = DemoGameObjectID });
     }
 }
 

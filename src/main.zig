@@ -249,7 +249,6 @@ fn setupWwise(allocator: std.mem.Allocator, demo: *DemoState) !void {
         comm_settings.setAppNetworkName("wwise-zig Integration Demo");
 
         try AK.Comm.init(&comm_settings);
-        defer AK.Comm.term();
     }
 
     // Setup I/O Hook base path

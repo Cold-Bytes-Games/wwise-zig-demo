@@ -1,10 +1,10 @@
 const std = @import("std");
 const DemoInterface = @import("../DemoInterface.zig");
 const zgui = @import("zgui");
+const AK = @import("wwise-zig");
 
 allocator: std.mem.Allocator = undefined,
 is_visible: bool = false,
-bank_id: u32 = 0, // TODO: Use AK.AkBankID
 pos_x: f32 = 300,
 pos_y: f32 = 240,
 last_x: f32 = 300,
@@ -17,7 +17,9 @@ last_tick_count: isize = 0,
 
 const Self = @This();
 
-const DemoGameObjectID = 5;
+const DemoGameObjectID: AK.AkGameObjectID = 5;
+const HangarTransitionZone: f32 = 25.0;
+const HangarSize: i32 = 70;
 const CursorSpeed = 5.0;
 const BufferZone: f32 = 20.0;
 const DistanceToSpeed = 10 / CursorSpeed;
@@ -29,13 +31,13 @@ const SurfaceInfo = struct {
     bank_name: []const u8,
     switch_id: u32,
 
-    pub fn init(bank_name: []const u8) !SurfaceInfo {
-        //const dotPosition = std.mem.lastIndexOfScalar(u8, bank_name, '.');
-        //const bank_name_without_ext = if (dotPosition) |pos| bank_name[0..pos] else bank_name;
+    pub fn init(allocator: std.mem.Allocator, bank_name: []const u8) !SurfaceInfo {
+        const dot_position = std.mem.lastIndexOfScalar(u8, bank_name, '.');
+        const bank_name_without_ext = if (dot_position) |pos| bank_name[0..pos] else bank_name;
 
         return SurfaceInfo{
             .bank_name = bank_name,
-            .switch_id = 0, //try Wwise.getIDFromString(bank_name_without_ext),
+            .switch_id = try AK.SoundEngine.getIDFromString(allocator, bank_name_without_ext),
         };
     }
 };
@@ -47,26 +49,28 @@ pub fn init(self: *Self, allocator: std.mem.Allocator) !void {
         .allocator = allocator,
     };
 
-    // try Wwise.registerGameObj(DemoGameObjectID, "Human");
+    try AK.SoundEngine.registerGameObjWithName(allocator, DemoGameObjectID, "Human");
 
     Surfaces = [_]SurfaceInfo{
-        try SurfaceInfo.init("Dirt.bnk"),
-        try SurfaceInfo.init("Wood.bnk"),
-        try SurfaceInfo.init("Metal.bnk"),
-        try SurfaceInfo.init("Gravel.bnk"),
+        try SurfaceInfo.init(allocator, "Dirt.bnk"),
+        try SurfaceInfo.init(allocator, "Wood.bnk"),
+        try SurfaceInfo.init(allocator, "Metal.bnk"),
+        try SurfaceInfo.init(allocator, "Gravel.bnk"),
     };
 
-    // SurfaceGroup = try Wwise.getIDFromString("Surface");
+    SurfaceGroup = try AK.SoundEngine.getIDFromString(allocator, "Surface");
 }
 
 pub fn deinit(self: *Self) void {
-    // _ = Wwise.unloadBankByID(self.bankID);
+    AK.SoundEngine.unregisterGameObj(DemoGameObjectID) catch {};
 
-    //     Wwise.unregisterGameObj(DemoGameObjectID);
+    for (0..Surfaces.len) |index| {
+        const bit = @as(u32, 1) << @intCast(u5, index);
 
-    //     for (Surfaces) |surface| {
-    //         Wwise.unloadBankByString(surface.bank_name) catch {};
-    //     }
+        if ((self.current_banks & bit) == bit) {
+            AK.SoundEngine.unloadBankString(self.allocator, Surfaces[index].bank_name, null, .{}) catch {};
+        }
+    }
 
     self.allocator.destroy(self);
 }
@@ -83,7 +87,9 @@ pub fn onUI(self: *Self) !void {
     if (zgui.begin("Footsteps Demo", .{ .popen = &self.is_visible, .flags = .{} })) {
         var draw_list = zgui.getWindowDrawList();
 
-        _ = zgui.sliderFloat("Weight", .{ .v = &self.weight, .min = 0.0, .max = 100.0 });
+        if (zgui.sliderFloat("Weight", .{ .v = &self.weight, .min = 0.0, .max = 100.0 })) {
+            try AK.SoundEngine.setRTPCValueString(self.allocator, "Footstep_Weight", self.weight, .{ .game_object_id = DemoGameObjectID });
+        }
 
         const white_color = zgui.colorConvertFloat4ToU32([4]f32{ 1.0, 1.0, 1.0, 1.0 });
         const red_color = zgui.colorConvertFloat4ToU32([4]f32{ 1.0, 0.0, 0.0, 1.0 });
@@ -143,12 +149,13 @@ pub fn onUI(self: *Self) !void {
 
         zgui.end();
 
-        self.manageSurfaces(window_size);
+        try self.manageSurfaces(window_size);
+        try self.manageEnvironment(window_size);
         try self.playFootstep();
     }
 
     if (!self.is_visible) {
-        //Wwise.stopAllOnGameObject(DemoGameObjectID);
+        AK.SoundEngine.stopAll(.{ .game_object_id = DemoGameObjectID });
     }
 }
 
@@ -171,23 +178,22 @@ pub fn demoInterface(self: *Self) DemoInterface {
     };
 }
 
-fn manageSurfaces(self: *Self, window_size: [2]f32) void {
+fn manageSurfaces(self: *Self, window_size: [2]f32) !void {
     var bank_masks: u32 = self.computeUsedBankMask(window_size);
 
-    var i: usize = 0;
-    while (i < Surfaces.len) : (i += 1) {
-        const bit = @as(u32, 1) << @intCast(u5, i);
+    for (0..Surfaces.len) |index| {
+        const bit = @as(u32, 1) << @intCast(u5, index);
 
         if ((bank_masks & bit) == bit and (self.current_banks & bit) != bit) {
-            // _ = Wwise.loadBankByString(Surfaces[i].bank_name) catch {
-            //     bank_masks &= ~bit;
-            // };
+            _ = AK.SoundEngine.loadBankString(self.allocator, Surfaces[index].bank_name, .{}) catch {
+                bank_masks &= ~bit;
+            };
         }
 
         if ((bank_masks & bit) != bit and ((self.current_banks & bit) == bit)) {
-            // Wwise.unloadBankByString(Surfaces[i].bank_name) catch {
-            //     bank_masks |= bit;
-            // };
+            AK.SoundEngine.unloadBankString(self.allocator, Surfaces[index].bank_name, null, .{}) catch {
+                bank_masks |= bit;
+            };
         }
     }
 
@@ -197,9 +203,31 @@ fn manageSurfaces(self: *Self, window_size: [2]f32) void {
     const half_height = @floatToInt(usize, window_size[1] / 2.0);
     const index_surface = @boolToInt(@floatToInt(usize, self.pos_x) > half_width) | (@as(usize, @boolToInt(@floatToInt(usize, self.pos_y) > half_height)) << @as(u6, 1));
     if (self.surface != index_surface) {
-        //Wwise.setSwitchByID(SurfaceGroup, Surfaces[index_surface].switch_id, DemoGameObjectID);
+        try AK.SoundEngine.setSwitchID(SurfaceGroup, Surfaces[index_surface].switch_id, DemoGameObjectID);
         self.surface = index_surface;
     }
+}
+
+fn manageEnvironment(self: *Self, window_size: [2]f32) !void {
+    const ListenerID = @import("root").ListenerGameObjectID;
+
+    var hangar_env = AK.AkAuxSendValue{
+        .aux_bus_id = try AK.SoundEngine.getIDFromString(self.allocator, "Hangar_Env"),
+    };
+
+    const half_width = @floatToInt(i32, window_size[0] / 2.0);
+    const half_height = @floatToInt(i32, window_size[1] / 2.0);
+    const diff_x: i32 = try std.math.absInt(@floatToInt(i32, self.pos_x) - half_width);
+    const diff_y: i32 = try std.math.absInt(@floatToInt(i32, self.pos_y) - half_height);
+
+    const percent_outside_x = std.math.max(@intToFloat(f32, diff_x - HangarSize) / HangarTransitionZone, 0.0);
+    const percent_outside_y = std.math.max(@intToFloat(f32, diff_y - HangarSize) / HangarTransitionZone, 0.0);
+
+    hangar_env.control_value = std.math.max(0.0, 1.0 - std.math.max(percent_outside_x, percent_outside_y));
+    hangar_env.listener_id = ListenerID;
+
+    try AK.SoundEngine.setGameObjectOutputBusVolume(DemoGameObjectID, ListenerID, 1.0 - hangar_env.control_value / 2.0);
+    try AK.SoundEngine.setGameObjectAuxSendValues(DemoGameObjectID, &.{hangar_env});
 }
 
 fn computeUsedBankMask(self: Self, window_size: [2]f32) u32 {
@@ -221,17 +249,19 @@ fn playFootstep(self: *Self) !void {
     const distance = std.math.sqrt(dx * dx + dy * dy);
 
     const speed = distance * DistanceToSpeed;
-    //try Wwise.setRTPCValueByString("Footstep_Speed", speed, DemoGameObjectID);
+
+    try AK.SoundEngine.setRTPCValueString(self.allocator, "Footstep_Speed", speed, .{ .game_object_id = DemoGameObjectID });
 
     const period = @floatToInt(isize, WalkPeriod - speed);
+
     if (distance < 0.1 and self.last_tick_count != -1) {
-        // try Wwise.setRTPCValueByString("Footstep_Weight", self.weight / 2.0, DemoGameObjectID);
-        // _ = try Wwise.postEvent("Play_Footsteps", DemoGameObjectID);
+        try AK.SoundEngine.setRTPCValueString(self.allocator, "Footstep_Weight", self.weight / 2.0, .{ .game_object_id = DemoGameObjectID });
+        _ = try AK.SoundEngine.postEventString(self.allocator, "Play_Footsteps", DemoGameObjectID, .{});
 
         self.last_tick_count = -1;
     } else if (distance > 0.1 and (self.tick_count - self.last_tick_count) > period) {
-        // try Wwise.setRTPCValueByString("Footstep_Weight", self.weight, DemoGameObjectID);
-        // _ = try Wwise.postEvent("Play_Footsteps", DemoGameObjectID);
+        try AK.SoundEngine.setRTPCValueString(self.allocator, "Footstep_Weight", self.weight, .{ .game_object_id = DemoGameObjectID });
+        _ = try AK.SoundEngine.postEventString(self.allocator, "Play_Footsteps", DemoGameObjectID, .{});
 
         self.last_tick_count = self.tick_count;
     }

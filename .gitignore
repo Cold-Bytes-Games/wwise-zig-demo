@@ -8,3 +8,4 @@ imgui.ini
 *.validationcache
 *.wsettings
 *.akd
+*ProfilingSession*.prof

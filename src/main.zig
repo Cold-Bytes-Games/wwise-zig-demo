@@ -197,7 +197,7 @@ const AllMenus = [_]MenuData{
     },
 };
 
-const ListenerGameObjectID: AK.AkGameObjectID = 1;
+pub const ListenerGameObjectID: AK.AkGameObjectID = 1;
 
 fn setupZGUI(allocator: std.mem.Allocator, demo: *DemoState) !void {
     zgui.init(allocator);

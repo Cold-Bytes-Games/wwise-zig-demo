@@ -163,6 +163,12 @@ const AllMenus = [_]MenuData{
                         .instance_type = @import("demos/MusicSyncCallbackDemo.zig"),
                     },
                 },
+                .{
+                    .demo = .{
+                        .name = "Music Playlist Callback Demo",
+                        .instance_type = @import("demos/MusicPlaylistCallbackDemo.zig"),
+                    },
+                },
             },
         },
     },

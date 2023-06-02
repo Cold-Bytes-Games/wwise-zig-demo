@@ -62,6 +62,8 @@ pub fn onUI(self: *Self) !void {
     if (zgui.begin("Music Playlist Callback Demo", .{ .popen = &self.is_visible, .flags = .{ .always_auto_resize = true } })) {
         if (self.is_playing) {
             zgui.text("Random playlist forced to sequential\nNext Index: {}", .{self.playlist_item});
+        } else {
+            zgui.text("Test Finished", .{});
         }
 
         zgui.end();

@@ -156,7 +156,14 @@ const AllMenus = [_]MenuData{
     .{
         .menu = .{
             .name = "Music Callbacks Demo",
-            .entries = &.{},
+            .entries = &.{
+                .{
+                    .demo = .{
+                        .name = "Music Sync Callback Demo",
+                        .instance_type = @import("demos/MusicSyncCallbackDemo.zig"),
+                    },
+                },
+            },
         },
     },
     .{
@@ -246,6 +253,10 @@ fn setupWwise(allocator: std.mem.Allocator, demo: *DemoState) !void {
     AK.SoundEngine.getDefaultPlatformInitSettings(&platform_init_settings);
 
     try AK.SoundEngine.init(allocator, &init_settings, &platform_init_settings);
+
+    var music_init_settings: AK.MusicEngine.AkMusicSettings = .{};
+    AK.MusicEngine.getDefaultInitSettings(&music_init_settings);
+    try AK.MusicEngine.init(&music_init_settings);
 
     // Setup communication for debugging with the Wwise Authoring
     if (AK.Comm != void) {

@@ -10,7 +10,7 @@ subtitle_position: u32 = 0,
 playing_id: AK.AkPlayingID = 0,
 is_playing: bool = false,
 is_visible: bool = false,
-bank_id: AK.AkBankID = 0,
+bank_id: AK.AkBankID = AK.AK_INVALID_BANK_ID,
 
 const Self = @This();
 
@@ -27,9 +27,9 @@ pub fn init(self: *Self, allocator: std.mem.Allocator) !void {
 }
 
 pub fn deinit(self: *Self) void {
-    AK.SoundEngine.unloadBankID(self.bank_id, null, .{}) catch unreachable;
+    AK.SoundEngine.unloadBankID(self.bank_id, null, .{}) catch {};
 
-    AK.SoundEngine.unregisterGameObj(DemoGameObjectID) catch unreachable;
+    AK.SoundEngine.unregisterGameObj(DemoGameObjectID) catch {};
 
     self.allocator.free(self.subtitle_text);
 

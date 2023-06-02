@@ -5,7 +5,7 @@ const AK = @import("wwise-zig");
 
 allocator: std.mem.Allocator = undefined,
 is_visible: bool = false,
-bank_id: AK.AkBankID = 0,
+bank_id: AK.AkBankID = AK.AK_INVALID_BANK_ID,
 current_selected_language: usize = 0,
 
 const Self = @This();
@@ -25,8 +25,10 @@ pub fn init(self: *Self, allocator: std.mem.Allocator) !void {
 }
 
 pub fn deinit(self: *Self) void {
-    AK.SoundEngine.unloadBankID(self.bank_id, null, .{}) catch unreachable;
-    AK.SoundEngine.unregisterGameObj(DemoGameObjectID) catch unreachable;
+    AK.StreamMgr.setCurrentLanguage(self.allocator, Languages[0]) catch {};
+
+    AK.SoundEngine.unloadBankID(self.bank_id, null, .{}) catch {};
+    AK.SoundEngine.unregisterGameObj(DemoGameObjectID) catch {};
 
     self.allocator.destroy(self);
 }

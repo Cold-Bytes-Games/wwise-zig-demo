@@ -48,7 +48,7 @@ pub fn onUI(self: *Self) !void {
                         .end_of_event = true,
                         .enable_get_source_play_position = true,
                     },
-                    .callback_func = WwiseSubtitleCallback,
+                    .callback = WwiseSubtitleCallback,
                     .cookie = self,
                 });
                 self.is_playing = true;

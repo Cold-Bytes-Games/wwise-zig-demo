@@ -48,7 +48,7 @@ pub fn onUI(self: *Self) !void {
         }
 
         if (zgui.sliderInt("RPM", .{ .v = &self.rpm_value, .min = MinRPMValue, .max = MaxRPMValue })) {
-             try AK.SoundEngine.setRTPCValueString(self.allocator, "RPM", @intToFloat(f32, self.rpm_value), .{ .game_object_id = DemoGameObjectID });
+            try AK.SoundEngine.setRTPCValueString(self.allocator, "RPM", @intToFloat(f32, self.rpm_value), .{ .game_object_id = DemoGameObjectID });
         }
 
         zgui.end();

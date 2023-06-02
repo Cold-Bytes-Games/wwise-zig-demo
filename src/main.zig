@@ -169,6 +169,12 @@ const AllMenus = [_]MenuData{
                         .instance_type = @import("demos/MusicPlaylistCallbackDemo.zig"),
                     },
                 },
+                .{
+                    .demo = .{
+                        .name = "MIDI Callback Demo",
+                        .instance_type = @import("demos/MIDICallbackDemo.zig"),
+                    },
+                },
             },
         },
     },

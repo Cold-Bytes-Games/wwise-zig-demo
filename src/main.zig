@@ -126,6 +126,12 @@ const AllMenus = [_]MenuData{
                         .instance_type = @import("demos/LocalizationDemo.zig"),
                     },
                 },
+                .{
+                    .demo = .{
+                        .name = "Dynamic Dialogue Demo",
+                        .instance_type = @import("demos/DynamicDialogueDemo.zig"),
+                    },
+                },
             },
         },
     },
@@ -260,6 +266,8 @@ fn setupWwise(allocator: std.mem.Allocator, demo: *DemoState) !void {
     defer allocator.free(sound_banks_path);
 
     try io_hook.setBasePath(allocator, sound_banks_path);
+
+    try AK.StreamMgr.setCurrentLanguage(allocator, "English(US)");
 
     // Load Init Bank
     demo.wwise_context.init_bank_id = try AK.SoundEngine.loadBankString(allocator, "Init.bnk", .{});

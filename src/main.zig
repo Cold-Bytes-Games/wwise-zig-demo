@@ -187,7 +187,7 @@ const AllMenus = [_]MenuData{
     .{
         .demo = .{
             .name = "MIDI API Demo (Metronome)",
-            .instance_type = NullDemo,
+            .instance_type = @import("demos/MIDIMetronomeDemo.zig"),
         },
     },
     .{

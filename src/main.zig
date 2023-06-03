@@ -181,7 +181,7 @@ const AllMenus = [_]MenuData{
     .{
         .demo = .{
             .name = "Interactive Music Demo",
-            .instance_type = NullDemo,
+            .instance_type = @import("demos/InteractiveMusicDemo.zig"),
         },
     },
     .{

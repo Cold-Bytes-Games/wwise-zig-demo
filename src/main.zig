@@ -200,6 +200,10 @@ const AllMenus = [_]MenuData{
         .menu = .{
             .name = "Bank & Event Loading Demo",
             .entries = &.{
+                .{ .demo = .{
+                    .name = "Prepare Event & Bank Demo",
+                    .instance_type = @import("demos/PrepareDemo.zig"),
+                } },
                 .{
                     .demo = .{
                         .name = "External Sources Demo",

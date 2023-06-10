@@ -1,6 +1,7 @@
 const std = @import("std");
 const DemoInterface = @import("../DemoInterface.zig");
 const zgui = @import("zgui");
+const root = @import("root");
 const AK = @import("wwise-zig");
 const ID = @import("../ID.zig");
 
@@ -22,7 +23,8 @@ const Self = @This();
 
 const DemoGameObjectID: AK.AkGameObjectID = 100;
 
-pub fn init(self: *Self, allocator: std.mem.Allocator) !void {
+pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoState) !void {
+    _ = demo_state;
     self.* = .{
         .allocator = allocator,
     };
@@ -33,7 +35,8 @@ pub fn init(self: *Self, allocator: std.mem.Allocator) !void {
     try self.prepareCallback();
 }
 
-pub fn deinit(self: *Self) void {
+pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
+    _ = demo_state;
     self.playing_metronome = false;
 
     releaseCallback() catch {};
@@ -47,7 +50,8 @@ pub fn deinit(self: *Self) void {
     self.allocator.destroy(self);
 }
 
-pub fn onUI(self: *Self) !void {
+pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
+    _ = demo_state;
     zgui.setNextWindowSize(.{
         .w = 210,
         .h = 310,

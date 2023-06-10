@@ -12,7 +12,7 @@ const L = std.unicode.utf8ToUtf16LeStringLiteral;
 const DemoInterface = @import("DemoInterface.zig");
 const NullDemo = @import("demos/NullDemo.zig");
 
-const DxContext = struct {
+pub const DxContext = struct {
     device: ?*d3d11.ID3D11Device = null,
     device_context: ?*d3d11.ID3D11DeviceContext = null,
     swap_chain: ?*dxgi.IDXGISwapChain = null,
@@ -88,12 +88,12 @@ const DxContext = struct {
     }
 };
 
-const WwiseContext = struct {
+pub const WwiseContext = struct {
     io_hook: ?*AK.IOHooks.CAkFilePackageLowLevelIOBlocking = null,
     init_bank_id: AK.AkBankID = 0,
 };
 
-const DemoState = struct {
+pub const DemoState = struct {
     graphics_context: DxContext = .{},
     wwise_context: WwiseContext = .{},
     is_selected: bool = false,
@@ -191,12 +191,6 @@ const AllMenus = [_]MenuData{
         },
     },
     .{
-        .demo = .{
-            .name = "Microphone Demo",
-            .instance_type = NullDemo,
-        },
-    },
-    .{
         .menu = .{
             .name = "Positioning Demo",
             .entries = &.{},
@@ -205,7 +199,14 @@ const AllMenus = [_]MenuData{
     .{
         .menu = .{
             .name = "Bank & Event Loading Demo",
-            .entries = &.{},
+            .entries = &.{
+                .{
+                    .demo = .{
+                        .name = "External Sources Demo",
+                        .instance_type = @import("demos/ExternalSourcesDemo.zig"),
+                    },
+                },
+            },
         },
     },
     .{
@@ -324,18 +325,18 @@ fn destroy(demo: *DemoState) void {
     zgui.backend.deinit();
     zgui.deinit();
     demo.graphics_context.deinit();
-    demo.current_demo.deinit();
+    demo.current_demo.deinit(demo);
 }
 
 fn createMenu(comptime menu_data: MenuData, allocator: std.mem.Allocator, demo: *DemoState) !void {
     switch (menu_data) {
         .demo => |demo_entry| {
             if (zgui.menuItem(demo_entry.name, .{})) {
-                demo.current_demo.deinit();
+                demo.current_demo.deinit(demo);
 
                 var new_demo_instance = try allocator.create(demo_entry.instance_type);
                 demo.current_demo = new_demo_instance.demoInterface();
-                try demo.current_demo.init(allocator);
+                try demo.current_demo.init(allocator, demo);
                 demo.current_demo.show();
             }
         },
@@ -375,7 +376,7 @@ fn update(allocator: std.mem.Allocator, demo: *DemoState) !void {
     }
 
     if (demo.current_demo.isVisible()) {
-        try demo.current_demo.onUI();
+        try demo.current_demo.onUI(demo);
     }
 }
 
@@ -407,14 +408,14 @@ pub fn main() !void {
 
     const allocator = gpa.allocator();
 
-    var null_demo_instance = try allocator.create(NullDemo);
-    try null_demo_instance.init(allocator);
-
     const demo = try allocator.create(DemoState);
-    demo.* = .{
-        .current_demo = null_demo_instance.demoInterface(),
-    };
+    demo.* = .{};
     defer allocator.destroy(demo);
+
+    var null_demo_instance = try allocator.create(NullDemo);
+    try null_demo_instance.init(allocator, demo);
+
+    demo.current_demo = null_demo_instance.demoInterface();
 
     const win_class: win32.WNDCLASSEXW = .{
         .cbSize = @sizeOf(win32.WNDCLASSEXW),

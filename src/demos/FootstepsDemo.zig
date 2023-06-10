@@ -1,6 +1,7 @@
 const std = @import("std");
 const DemoInterface = @import("../DemoInterface.zig");
 const zgui = @import("zgui");
+const root = @import("root");
 const AK = @import("wwise-zig");
 
 allocator: std.mem.Allocator = undefined,
@@ -44,7 +45,8 @@ const SurfaceInfo = struct {
 
 var Surfaces: [4]SurfaceInfo = undefined;
 
-pub fn init(self: *Self, allocator: std.mem.Allocator) !void {
+pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoState) !void {
+    _ = demo_state;
     self.* = .{
         .allocator = allocator,
     };
@@ -61,7 +63,8 @@ pub fn init(self: *Self, allocator: std.mem.Allocator) !void {
     SurfaceGroup = try AK.SoundEngine.getIDFromString(allocator, "Surface");
 }
 
-pub fn deinit(self: *Self) void {
+pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
+    _ = demo_state;
     AK.SoundEngine.unregisterGameObj(DemoGameObjectID) catch {};
 
     for (0..Surfaces.len) |index| {
@@ -75,7 +78,8 @@ pub fn deinit(self: *Self) void {
     self.allocator.destroy(self);
 }
 
-pub fn onUI(self: *Self) !void {
+pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
+    _ = demo_state;
     self.tick_count += 1;
 
     zgui.setNextWindowSize(.{

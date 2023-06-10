@@ -1,6 +1,7 @@
 const std = @import("std");
 const DemoInterface = @import("../DemoInterface.zig");
 const zgui = @import("zgui");
+const root = @import("root");
 const AK = @import("wwise-zig");
 const ID = @import("../ID.zig");
 
@@ -49,7 +50,8 @@ const Captions = [_][:0]const u8{
     "Test 18 - Using events with Dynamic Dialogue.",
 };
 
-pub fn init(self: *Self, allocator: std.mem.Allocator) !void {
+pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoState) !void {
+    _ = demo_state;
     self.* = .{
         .allocator = allocator,
     };
@@ -59,7 +61,8 @@ pub fn init(self: *Self, allocator: std.mem.Allocator) !void {
     try AK.SoundEngine.registerGameObjWithName(allocator, DemoGameObjectID, "Radio");
 }
 
-pub fn deinit(self: *Self) void {
+pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
+    _ = demo_state;
     self.stopAndReleaseTests() catch {};
 
     AK.SoundEngine.unregisterGameObj(DemoGameObjectID) catch {};
@@ -69,7 +72,8 @@ pub fn deinit(self: *Self) void {
     self.allocator.destroy(self);
 }
 
-pub fn onUI(self: *Self) !void {
+pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
+    _ = demo_state;
     try self.update();
 
     zgui.setNextWindowSize(.{

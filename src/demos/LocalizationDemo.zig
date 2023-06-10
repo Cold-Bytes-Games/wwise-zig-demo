@@ -1,6 +1,7 @@
 const std = @import("std");
 const DemoInterface = @import("../DemoInterface.zig");
 const zgui = @import("zgui");
+const root = @import("root");
 const AK = @import("wwise-zig");
 
 allocator: std.mem.Allocator = undefined,
@@ -13,7 +14,8 @@ const DemoGameObjectID: AK.AkGameObjectID = 3;
 
 const Languages = &[_][:0]const u8{ "English(US)", "French(Canada)" };
 
-pub fn init(self: *Self, allocator: std.mem.Allocator) !void {
+pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoState) !void {
+    _ = demo_state;
     self.* = .{
         .allocator = allocator,
     };
@@ -24,7 +26,8 @@ pub fn init(self: *Self, allocator: std.mem.Allocator) !void {
     try AK.SoundEngine.registerGameObjWithName(allocator, DemoGameObjectID, "LocalizationDemo");
 }
 
-pub fn deinit(self: *Self) void {
+pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
+    _ = demo_state;
     AK.StreamMgr.setCurrentLanguage(self.allocator, Languages[0]) catch {};
 
     AK.SoundEngine.unloadBankID(self.bank_id, null, .{}) catch {};
@@ -33,7 +36,8 @@ pub fn deinit(self: *Self) void {
     self.allocator.destroy(self);
 }
 
-pub fn onUI(self: *Self) !void {
+pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
+    _ = demo_state;
     if (zgui.begin("Localization Demo", .{ .popen = &self.is_visible, .flags = .{ .always_auto_resize = true } })) {
         if (zgui.button("Say \"Hello\"", .{})) {
             _ = try AK.SoundEngine.postEventString(self.allocator, "Play_Hello", DemoGameObjectID, .{});

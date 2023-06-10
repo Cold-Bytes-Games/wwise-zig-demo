@@ -1,19 +1,23 @@
 const std = @import("std");
+const root = @import("root");
 const DemoInterface = @import("../DemoInterface.zig");
 
 allocator: std.mem.Allocator,
 
 const Self = @This();
 
-pub fn init(self: *Self, allocator: std.mem.Allocator) anyerror!void {
+pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoState) anyerror!void {
+    _ = demo_state;
     self.allocator = allocator;
 }
 
-pub fn deinit(self: *Self) void {
+pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
+    _ = demo_state;
     self.allocator.destroy(self);
 }
 
-pub fn onUI(self: *Self) !void {
+pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
+    _ = demo_state;
     _ = self;
 }
 

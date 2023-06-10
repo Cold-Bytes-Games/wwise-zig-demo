@@ -1,4 +1,5 @@
 const std = @import("std");
+const root = @import("root");
 
 instance: InstanceType,
 initFn: InitFn,
@@ -8,24 +9,24 @@ isVisibleFn: IsVisibleFn,
 showFn: ShowFn,
 
 pub const InstanceType = *anyopaque;
-pub const InitFn = *const fn (instance: InstanceType, allocator: std.mem.Allocator) anyerror!void;
-pub const DeinitFn = *const fn (instance: InstanceType) void;
-pub const OnUIFn = *const fn (instance: InstanceType) anyerror!void;
+pub const InitFn = *const fn (instance: InstanceType, allocator: std.mem.Allocator, demo_state: *root.DemoState) anyerror!void;
+pub const DeinitFn = *const fn (instance: InstanceType, demo_state: *root.DemoState) void;
+pub const OnUIFn = *const fn (instance: InstanceType, demo_state: *root.DemoState) anyerror!void;
 pub const IsVisibleFn = *const fn (instance: InstanceType) bool;
 pub const ShowFn = *const fn (instance: InstanceType) void;
 
 const Self = @This();
 
-pub fn init(self: *Self, allocator: std.mem.Allocator) anyerror!void {
-    return self.initFn(self.instance, allocator);
+pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoState) anyerror!void {
+    return self.initFn(self.instance, allocator, demo_state);
 }
 
-pub fn deinit(self: *Self) void {
-    self.deinitFn(self.instance);
+pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
+    self.deinitFn(self.instance, demo_state);
 }
 
-pub fn onUI(self: *Self) anyerror!void {
-    return self.onUIFn(self.instance);
+pub fn onUI(self: *Self, demo_state: *root.DemoState) anyerror!void {
+    return self.onUIFn(self.instance, demo_state);
 }
 
 pub fn isVisible(self: *Self) bool {

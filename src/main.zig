@@ -195,7 +195,14 @@ const AllMenus = [_]MenuData{
     .{
         .menu = .{
             .name = "Positioning Demo",
-            .entries = &.{},
+            .entries = &.{
+                .{
+                    .demo = .{
+                        .name = "Position Demo",
+                        .instance_type = @import("demos/PositioningDemo.zig"),
+                    },
+                },
+            },
         },
     },
     .{

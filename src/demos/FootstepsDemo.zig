@@ -3,13 +3,13 @@ const DemoInterface = @import("../DemoInterface.zig");
 const zgui = @import("zgui");
 const root = @import("root");
 const AK = @import("wwise-zig");
+const Cursor = @import("Cursor.zig");
 
 allocator: std.mem.Allocator = undefined,
 is_visible: bool = false,
-pos_x: f32 = 300,
-pos_y: f32 = 240,
-last_x: f32 = 300,
-last_y: f32 = 240,
+cursor: Cursor = .{},
+last_x: f32 = 0,
+last_y: f32 = 0,
 weight: f32 = 25.0,
 surface: usize = std.math.maxInt(usize),
 current_banks: u32 = 0,
@@ -49,6 +49,10 @@ pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoSta
     _ = demo_state;
     self.* = .{
         .allocator = allocator,
+        .cursor = .{
+            .max_speed = CursorSpeed,
+            .color = [4]f32{ 1.0, 0.0, 0.0, 1.0 },
+        },
     };
 
     try AK.SoundEngine.registerGameObjWithName(allocator, DemoGameObjectID, "Human");
@@ -89,6 +93,8 @@ pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
     });
 
     if (zgui.begin("Footsteps Demo", .{ .popen = &self.is_visible, .flags = .{} })) {
+        self.cursor.update();
+
         var draw_list = zgui.getWindowDrawList();
 
         if (zgui.sliderFloat("Weight", .{ .v = &self.weight, .min = 0.0, .max = 100.0 })) {
@@ -96,32 +102,9 @@ pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
         }
 
         const white_color = zgui.colorConvertFloat4ToU32([4]f32{ 1.0, 1.0, 1.0, 1.0 });
-        const red_color = zgui.colorConvertFloat4ToU32([4]f32{ 1.0, 0.0, 0.0, 1.0 });
-
-        if (zgui.isKeyDown(.up_arrow)) {
-            self.pos_y -= CursorSpeed;
-        } else if (zgui.isKeyDown(.down_arrow)) {
-            self.pos_y += CursorSpeed;
-        } else if (zgui.isKeyDown(.left_arrow)) {
-            self.pos_x -= CursorSpeed;
-        } else if (zgui.isKeyDown(.right_arrow)) {
-            self.pos_x += CursorSpeed;
-        }
 
         const window_pos = zgui.getCursorScreenPos();
         const window_size = zgui.getContentRegionAvail();
-
-        if (self.pos_x < 7) {
-            self.pos_x = 7;
-        } else if (self.pos_x >= window_size[0] - 7) {
-            self.pos_x = window_size[0] - 7;
-        }
-
-        if (self.pos_y < 7) {
-            self.pos_y = 7;
-        } else if (self.pos_y >= window_size[1] - 7) {
-            self.pos_y = window_size[1] - 7;
-        }
 
         draw_list.addRect(.{
             .pmin = window_pos,
@@ -143,13 +126,7 @@ pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
 
         draw_list.addText([2]f32{ window_pos[0] + (half_width + BufferZone), window_pos[1] + (half_height + BufferZone) }, white_color, "Gravel", .{});
 
-        draw_list.addCircle(.{
-            .p = [2]f32{ window_pos[0] + self.pos_x, window_pos[1] + self.pos_y },
-            .r = 7.0,
-            .col = red_color,
-            .num_segments = 8,
-            .thickness = 2.0,
-        });
+        self.cursor.draw(draw_list);
 
         zgui.end();
 
@@ -205,7 +182,7 @@ fn manageSurfaces(self: *Self, window_size: [2]f32) !void {
 
     const half_width = @floatToInt(usize, window_size[0] / 2.0);
     const half_height = @floatToInt(usize, window_size[1] / 2.0);
-    const index_surface = @boolToInt(@floatToInt(usize, self.pos_x) > half_width) | (@as(usize, @boolToInt(@floatToInt(usize, self.pos_y) > half_height)) << @as(u6, 1));
+    const index_surface = @boolToInt(@floatToInt(usize, self.cursor.x) > half_width) | (@as(usize, @boolToInt(@floatToInt(usize, self.cursor.y) > half_height)) << @as(u6, 1));
     if (self.surface != index_surface) {
         try AK.SoundEngine.setSwitchID(SurfaceGroup, Surfaces[index_surface].switch_id, DemoGameObjectID);
         self.surface = index_surface;
@@ -221,8 +198,8 @@ fn manageEnvironment(self: *Self, window_size: [2]f32) !void {
 
     const half_width = @floatToInt(i32, window_size[0] / 2.0);
     const half_height = @floatToInt(i32, window_size[1] / 2.0);
-    const diff_x: i32 = try std.math.absInt(@floatToInt(i32, self.pos_x) - half_width);
-    const diff_y: i32 = try std.math.absInt(@floatToInt(i32, self.pos_y) - half_height);
+    const diff_x: i32 = try std.math.absInt(@floatToInt(i32, self.cursor.x) - half_width);
+    const diff_y: i32 = try std.math.absInt(@floatToInt(i32, self.cursor.y) - half_height);
 
     const percent_outside_x = @max(@intToFloat(f32, diff_x - HangarSize) / HangarTransitionZone, 0.0);
     const percent_outside_y = @max(@intToFloat(f32, diff_y - HangarSize) / HangarTransitionZone, 0.0);
@@ -239,17 +216,17 @@ fn computeUsedBankMask(self: Self, window_size: [2]f32) u32 {
     const half_height = @floatToInt(i32, window_size[1] / 2);
     const buffer_zone = @floatToInt(i32, BufferZone * 2);
 
-    const left_div = @as(i32, @boolToInt(@floatToInt(i32, self.pos_x) > (half_width - buffer_zone)));
-    const right_div = @as(i32, @boolToInt(@floatToInt(i32, self.pos_x) < (half_width + buffer_zone)));
-    const top_div = @as(i32, @boolToInt(@floatToInt(i32, self.pos_y) > (half_height - buffer_zone)));
-    const bottom_div = @as(i32, @boolToInt(@floatToInt(i32, self.pos_y) < (half_height + buffer_zone)));
+    const left_div = @as(i32, @boolToInt(@floatToInt(i32, self.cursor.x) > (half_width - buffer_zone)));
+    const right_div = @as(i32, @boolToInt(@floatToInt(i32, self.cursor.x) < (half_width + buffer_zone)));
+    const top_div = @as(i32, @boolToInt(@floatToInt(i32, self.cursor.y) > (half_height - buffer_zone)));
+    const bottom_div = @as(i32, @boolToInt(@floatToInt(i32, self.cursor.y) < (half_height + buffer_zone)));
 
     return @bitCast(u32, ((right_div & bottom_div) << 0) | ((left_div & bottom_div) << 1) | ((right_div & top_div) << 2) | ((left_div & top_div) << 3)) & 0x0F;
 }
 
 fn playFootstep(self: *Self) !void {
-    const dx = self.pos_x - self.last_x;
-    const dy = self.pos_y - self.last_y;
+    const dx = self.cursor.x - self.last_x;
+    const dy = self.cursor.y - self.last_y;
     const distance = std.math.sqrt(dx * dx + dy * dy);
 
     const speed = distance * DistanceToSpeed;
@@ -270,6 +247,6 @@ fn playFootstep(self: *Self) !void {
         self.last_tick_count = self.tick_count;
     }
 
-    self.last_x = self.pos_x;
-    self.last_y = self.pos_y;
+    self.last_x = self.cursor.x;
+    self.last_y = self.cursor.y;
 }

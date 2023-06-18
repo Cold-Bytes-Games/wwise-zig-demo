@@ -96,9 +96,11 @@ pub const WwiseContext = struct {
 pub const DemoState = struct {
     graphics_context: DxContext = .{},
     wwise_context: WwiseContext = .{},
-    is_selected: bool = false,
     current_demo: DemoInterface = undefined,
+    show_resource_monitor: bool = false,
 };
+
+var current_resource_monitor_data: AK.AkResourceMonitorDataSummary = .{};
 
 const DemoEntry = struct {
     name: [:0]const u8,
@@ -311,9 +313,14 @@ fn setupWwise(allocator: std.mem.Allocator, demo: *DemoState) !void {
     // Init microphone
     try AK.SoundEngine.registerGameObjWithName(allocator, ListenerGameObjectID, "Listener");
     try AK.SoundEngine.setDefaultListeners(&.{ListenerGameObjectID});
+
+    // Register monitor callback
+    try AK.SoundEngine.registerResourceMonitorCallback(resourceMonitorCallback);
 }
 
 fn destroyWwise(allocator: std.mem.Allocator, demo: *DemoState) !void {
+    try AK.SoundEngine.unregisterResourceMonitorCallback(resourceMonitorCallback);
+
     try AK.SoundEngine.unregisterGameObj(ListenerGameObjectID);
 
     // try AK.SoundEngine.unloadBankID(demo.wwise_context.init_bank_id, null, .{});
@@ -331,6 +338,12 @@ fn destroyWwise(allocator: std.mem.Allocator, demo: *DemoState) !void {
     }
 
     AK.MemoryMgr.term();
+}
+
+fn resourceMonitorCallback(in_data_summary: ?*const AK.AkResourceMonitorDataSummary) callconv(.C) void {
+    if (in_data_summary) |data_summary| {
+        current_resource_monitor_data = data_summary.*;
+    }
 }
 
 fn destroy(demo: *DemoState) void {
@@ -384,7 +397,23 @@ fn update(allocator: std.mem.Allocator, demo: *DemoState) !void {
             try createMenu(menu_data, allocator, demo);
         }
 
+        if (zgui.menuItem("Resource Monitor", .{ .selected = demo.show_resource_monitor })) {
+            demo.show_resource_monitor = !demo.show_resource_monitor;
+        }
+
         zgui.endMainMenuBar();
+    }
+
+    if (demo.show_resource_monitor) {
+        if (zgui.begin("Resource Monitor", .{ .flags = .{ .always_auto_resize = true } })) {
+            zgui.text("Total CPU: {d:3.6}", .{current_resource_monitor_data.total_cpu});
+            zgui.text("Plugin CPU: {d:3.6}", .{current_resource_monitor_data.plugin_cpu});
+            zgui.text("Virtual Voices: {}", .{current_resource_monitor_data.physical_voices});
+            zgui.text("Physical Voices: {}", .{current_resource_monitor_data.virtual_voices});
+            zgui.text("Total Voices: {}", .{current_resource_monitor_data.total_voices});
+            zgui.text("Active events: {}", .{current_resource_monitor_data.nb_active_events});
+            zgui.end();
+        }
     }
 
     if (demo.current_demo.isVisible()) {

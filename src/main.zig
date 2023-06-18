@@ -202,6 +202,12 @@ const AllMenus = [_]MenuData{
                         .instance_type = @import("demos/PositioningDemo.zig"),
                     },
                 },
+                .{
+                    .demo = .{
+                        .name = "Multi-Position Demo",
+                        .instance_type = @import("demos/MultiPositioningDemo.zig"),
+                    },
+                },
             },
         },
     },

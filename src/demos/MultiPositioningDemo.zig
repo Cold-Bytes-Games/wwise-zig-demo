@@ -10,6 +10,7 @@ allocator: std.mem.Allocator = undefined,
 is_visible: bool = false,
 bank_id: AK.AkBankID = AK.AK_INVALID_BANK_ID,
 cursor: Cursor = .{},
+clone_cursor: Cursor = .{},
 game_object_x: f32 = 0.0,
 game_object_z: f32 = 0.0,
 width: f32 = 0.0,
@@ -20,6 +21,8 @@ const Self = @This();
 
 const DemoGameObjectID: AK.AkGameObjectID = 100;
 const PositionRange: f32 = 200.0;
+
+const HelicopterCloneXOffset: f32 = 50.0;
 
 const PositionOffset = AK.AkVector64{
     .x = 20000000.0,
@@ -33,6 +36,9 @@ pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoSta
         .allocator = allocator,
         .cursor = .{
             .color = [4]f32{ 1.0, 0.0, 0.0, 1.0 },
+        },
+        .clone_cursor = .{
+            .color = [4]f32{ 0.0, 0.0, 1.0, 1.0 },
         },
     };
 
@@ -84,7 +90,7 @@ pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
         .cond = .first_use_ever,
     });
 
-    if (zgui.begin("Positioning Demo", .{ .popen = &self.is_visible, .flags = .{} })) {
+    if (zgui.begin("Multi-Positioning Demo", .{ .popen = &self.is_visible, .flags = .{} })) {
         const window_size = zgui.getContentRegionAvail();
 
         if (self.is_first_update) {
@@ -112,6 +118,7 @@ pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
         });
 
         self.cursor.draw(draw_list);
+        self.clone_cursor.draw(draw_list);
 
         zgui.end();
     }
@@ -155,7 +162,7 @@ fn updateGameObjectPos(self: *Self) !void {
     self.game_object_x = self.pixelsToAkPosX(x);
     self.game_object_z = self.pixelsToAkPosY(y);
 
-    var sound_position = AK.AkSoundPosition{
+    var first_sound_position = AK.AkSoundPosition{
         .position = .{
             .x = self.game_object_x,
             .z = self.game_object_z,
@@ -168,11 +175,24 @@ fn updateGameObjectPos(self: *Self) !void {
         },
     };
 
-    sound_position.position = .{
-        .x = sound_position.position.x + PositionOffset.x,
-        .y = sound_position.position.y + PositionOffset.y,
-        .z = sound_position.position.z + PositionOffset.z,
+    first_sound_position.position = .{
+        .x = first_sound_position.position.x + PositionOffset.x,
+        .y = first_sound_position.position.y + PositionOffset.y,
+        .z = first_sound_position.position.z + PositionOffset.z,
     };
 
-    try AK.SoundEngine.setPosition(DemoGameObjectID, sound_position, .{});
+    const second_sound_position = AK.AkSoundPosition{
+        .position = .{
+            .x = first_sound_position.position.x + HelicopterCloneXOffset,
+            .y = first_sound_position.position.y,
+            .z = first_sound_position.position.z,
+        },
+        .orientation_front = first_sound_position.orientation_front,
+        .orientation_top = first_sound_position.orientation_top,
+    };
+
+    self.clone_cursor.x = x + (HelicopterCloneXOffset * self.width / PositionRange);
+    self.clone_cursor.y = y;
+
+    try AK.SoundEngine.setMultiplePositionsSoundPosition(DemoGameObjectID, &.{ first_sound_position, second_sound_position }, .{});
 }

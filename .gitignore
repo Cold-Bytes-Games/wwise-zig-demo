@@ -9,3 +9,4 @@ imgui.ini
 *.wsettings
 *.akd
 *ProfilingSession*.prof
+/.vs

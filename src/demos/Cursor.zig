@@ -6,6 +6,7 @@ y: f32 = 0.0,
 max_speed: f32 = DefaultMaxSpeed,
 color: [4]f32 = [4]f32{ 1.0, 1.0, 1.0, 1.0 },
 is_first_update: bool = true,
+label: []const u8 = "O",
 
 const Self = @This();
 
@@ -52,11 +53,9 @@ pub fn draw(self: *Self, draw_list: zgui.DrawList) void {
     const window_pos = zgui.getCursorScreenPos();
     const zgui_color = zgui.colorConvertFloat4ToU32(self.color);
 
-    draw_list.addCircle(.{
-        .p = [2]f32{ window_pos[0] + self.x, window_pos[1] + self.y },
-        .r = 7.0,
-        .col = zgui_color,
-        .num_segments = 8,
-        .thickness = 2.0,
-    });
+    draw_list.addTextUnformatted(
+        [2]f32{ window_pos[0] + self.x, window_pos[1] + self.y },
+        zgui_color,
+        self.label,
+    );
 }

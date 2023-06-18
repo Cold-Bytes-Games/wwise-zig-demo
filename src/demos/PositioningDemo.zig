@@ -31,9 +31,7 @@ pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoSta
     _ = demo_state;
     self.* = .{
         .allocator = allocator,
-        .cursor = .{
-            .color = [4]f32{ 1.0, 0.0, 0.0, 1.0 },
-        },
+        .cursor = .{},
     };
 
     try AK.SoundEngine.registerGameObjWithName(allocator, DemoGameObjectID, "Helicopter");

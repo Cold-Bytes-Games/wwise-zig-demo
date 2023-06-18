@@ -35,10 +35,10 @@ pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoSta
     self.* = .{
         .allocator = allocator,
         .cursor = .{
-            .color = [4]f32{ 1.0, 0.0, 0.0, 1.0 },
+            .label = "0",
         },
         .clone_cursor = .{
-            .color = [4]f32{ 0.0, 0.0, 1.0, 1.0 },
+            .label = "1",
         },
     };
 

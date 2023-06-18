@@ -85,9 +85,9 @@ pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
                 self.next_post_time_ms = maybe_next_ms;
             }
 
-            const post_length_ms = std.math.min(self.ms_per_callback, self.inter_post_time_ms);
+            const post_length_ms = @min(self.ms_per_callback, self.inter_post_time_ms);
             self.post_len_samples = @floatToInt(u32, (post_length_ms / self.ms_per_callback) * @intToFloat(f64, self.samples_per_callback));
-            self.post_len_samples = std.math.min(self.post_len_samples, self.samples_per_callback);
+            self.post_len_samples = @min(self.post_len_samples, self.samples_per_callback);
         }
 
         zgui.end();
@@ -124,7 +124,7 @@ fn prepareCallback(self: *Self) !void {
     try AK.SoundEngine.getAudioSettings(&audio_settigns);
 
     self.samples_per_callback = audio_settigns.num_samples_per_frame;
-    self.post_len_samples = std.math.max(self.post_len_samples, self.samples_per_callback);
+    self.post_len_samples = @max(self.post_len_samples, self.samples_per_callback);
     self.callback_counter = 0;
     self.ms_per_callback = @intToFloat(f64, audio_settigns.num_samples_per_frame) / @intToFloat(f64, audio_settigns.num_samples_per_second) * 1000.0;
     self.next_post_time_ms = 0.0;

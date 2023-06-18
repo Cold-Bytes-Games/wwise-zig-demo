@@ -224,10 +224,10 @@ fn manageEnvironment(self: *Self, window_size: [2]f32) !void {
     const diff_x: i32 = try std.math.absInt(@floatToInt(i32, self.pos_x) - half_width);
     const diff_y: i32 = try std.math.absInt(@floatToInt(i32, self.pos_y) - half_height);
 
-    const percent_outside_x = std.math.max(@intToFloat(f32, diff_x - HangarSize) / HangarTransitionZone, 0.0);
-    const percent_outside_y = std.math.max(@intToFloat(f32, diff_y - HangarSize) / HangarTransitionZone, 0.0);
+    const percent_outside_x = @max(@intToFloat(f32, diff_x - HangarSize) / HangarTransitionZone, 0.0);
+    const percent_outside_y = @max(@intToFloat(f32, diff_y - HangarSize) / HangarTransitionZone, 0.0);
 
-    hangar_env.control_value = std.math.max(0.0, 1.0 - std.math.max(percent_outside_x, percent_outside_y));
+    hangar_env.control_value = @max(0.0, 1.0 - @max(percent_outside_x, percent_outside_y));
     hangar_env.listener_id = ListenerID;
 
     try AK.SoundEngine.setGameObjectOutputBusVolume(DemoGameObjectID, ListenerID, 1.0 - hangar_env.control_value / 2.0);

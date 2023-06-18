@@ -224,7 +224,7 @@ const AllMenus = [_]MenuData{
     .{
         .demo = .{
             .name = "Background Music/DVR Demo",
-            .instance_type = NullDemo,
+            .instance_type = @import("demos/BGMDemo.zig"),
         },
     },
     .{

@@ -97,11 +97,11 @@ pub fn show(self: *Self) void {
 pub fn demoInterface(self: *Self) DemoInterface {
     return DemoInterface{
         .instance = self,
-        .initFn = @ptrCast(DemoInterface.InitFn, &init),
-        .deinitFn = @ptrCast(DemoInterface.DeinitFn, &deinit),
-        .onUIFn = @ptrCast(DemoInterface.OnUIFn, &onUI),
-        .isVisibleFn = @ptrCast(DemoInterface.IsVisibleFn, &isVisible),
-        .showFn = @ptrCast(DemoInterface.ShowFn, &show),
+        .initFn = @as(DemoInterface.InitFn, @ptrCast(&init)),
+        .deinitFn = @as(DemoInterface.DeinitFn, @ptrCast(&deinit)),
+        .onUIFn = @as(DemoInterface.OnUIFn, @ptrCast(&onUI)),
+        .isVisibleFn = @as(DemoInterface.IsVisibleFn, @ptrCast(&isVisible)),
+        .showFn = @as(DemoInterface.ShowFn, @ptrCast(&show)),
     };
 }
 
@@ -136,16 +136,16 @@ fn toggleSetMedia(self: *Self) !void {
 
                 const alloc_size = (@as(usize, info.size) + @as(usize, stream.getBlockSize()) - 1) / @as(usize, stream.getBlockSize()) * @as(usize, stream.getBlockSize());
 
-                self.media_buffer = AK.MemoryMgr.malign(@enumToInt(AK.MemoryMgr.AkMemID.media), alloc_size, AK.AK_BANK_PLATFORM_DATA_ALIGNMENT);
+                self.media_buffer = AK.MemoryMgr.malign(@intFromEnum(AK.MemoryMgr.AkMemID.media), alloc_size, AK.AK_BANK_PLATFORM_DATA_ALIGNMENT);
 
                 if (self.media_buffer) |media_buffer| {
                     errdefer {
-                        AK.MemoryMgr.free(@enumToInt(AK.MemoryMgr.AkMemID.media), self.media_buffer);
+                        AK.MemoryMgr.free(@intFromEnum(AK.MemoryMgr.AkMemID.media), self.media_buffer);
                         self.media_buffer = null;
                         self.media_size = 0;
                     }
 
-                    try stream.read(media_buffer, @truncate(u32, alloc_size), true, AK.AK_DEFAULT_BANK_IO_PRIORITY, @intToFloat(f32, info.size) / AK.AK_DEFAULT_BANK_THROUGHPUT, &self.media_size);
+                    try stream.read(media_buffer, @as(u32, @truncate(alloc_size)), true, AK.AK_DEFAULT_BANK_IO_PRIORITY, @as(f32, @floatFromInt(info.size)) / AK.AK_DEFAULT_BANK_THROUGHPUT, &self.media_size);
 
                     if (stream.getStatus() == .completed) {
                         std.debug.assert(self.media_size == info.size);
@@ -178,7 +178,7 @@ fn toggleSetMedia(self: *Self) !void {
             }
         };
 
-        AK.MemoryMgr.free(@enumToInt(AK.MemoryMgr.AkMemID.media), self.media_buffer);
+        AK.MemoryMgr.free(@intFromEnum(AK.MemoryMgr.AkMemID.media), self.media_buffer);
         self.media_buffer = null;
         self.media_size = 0;
         self.is_media_set = false;

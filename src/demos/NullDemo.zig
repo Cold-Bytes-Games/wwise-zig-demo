@@ -33,10 +33,10 @@ pub fn show(self: *Self) void {
 pub fn demoInterface(self: *Self) DemoInterface {
     return DemoInterface{
         .instance = self,
-        .initFn = @ptrCast(DemoInterface.InitFn, &init),
-        .deinitFn = @ptrCast(DemoInterface.DeinitFn, &deinit),
-        .onUIFn = @ptrCast(DemoInterface.OnUIFn, &onUI),
-        .isVisibleFn = @ptrCast(DemoInterface.IsVisibleFn, &isVisible),
-        .showFn = @ptrCast(DemoInterface.ShowFn, &show),
+        .initFn = @as(DemoInterface.InitFn, @ptrCast(&init)),
+        .deinitFn = @as(DemoInterface.DeinitFn, @ptrCast(&deinit)),
+        .onUIFn = @as(DemoInterface.OnUIFn, @ptrCast(&onUI)),
+        .isVisibleFn = @as(DemoInterface.IsVisibleFn, @ptrCast(&isVisible)),
+        .showFn = @as(DemoInterface.ShowFn, @ptrCast(&show)),
     };
 }

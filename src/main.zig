@@ -27,12 +27,12 @@ pub const DxContext = struct {
         sd.BufferDesc.Format = .R8G8B8A8_UNORM;
         sd.BufferDesc.RefreshRate.Numerator = 60;
         sd.BufferDesc.RefreshRate.Denominator = 1;
-        sd.Flags = @enumToInt(dxgi.DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH);
+        sd.Flags = @intFromEnum(dxgi.DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH);
         sd.BufferUsage = dxgi.DXGI_USAGE_RENDER_TARGET_OUTPUT;
         sd.OutputWindow = self.hwnd;
         sd.SampleDesc.Count = 1;
         sd.SampleDesc.Quality = 0;
-        sd.Windowed = @boolToInt(true);
+        sd.Windowed = @intFromBool(true);
         sd.SwapEffect = .DISCARD;
 
         var feature_level: d3d.D3D_FEATURE_LEVEL = undefined;
@@ -52,10 +52,10 @@ pub const DxContext = struct {
     pub fn createRenderTarget(self: *DxContext) void {
         var back_buffer_opt: ?*d3d11.ID3D11Texture2D = null;
         if (self.swap_chain) |swap_chain| {
-            _ = swap_chain.IDXGISwapChain_GetBuffer(0, d3d11.IID_ID3D11Texture2D, @ptrCast(?*?*anyopaque, &back_buffer_opt));
+            _ = swap_chain.IDXGISwapChain_GetBuffer(0, d3d11.IID_ID3D11Texture2D, @as(?*?*anyopaque, @ptrCast(&back_buffer_opt)));
         }
         if (self.device) |device| {
-            _ = device.ID3D11Device_CreateRenderTargetView(@ptrCast(?*d3d11.ID3D11Resource, back_buffer_opt), null, @ptrCast(?*?*d3d11.ID3D11RenderTargetView, &self.main_render_target_view));
+            _ = device.ID3D11Device_CreateRenderTargetView(@as(?*d3d11.ID3D11Resource, @ptrCast(back_buffer_opt)), null, @as(?*?*d3d11.ID3D11RenderTargetView, @ptrCast(&self.main_render_target_view)));
         }
         if (back_buffer_opt) |back_buffer| {
             _ = back_buffer.IUnknown_Release();
@@ -445,8 +445,8 @@ fn draw(demo: *DemoState) void {
     };
 
     if (graphics_context.device_context) |device_context| {
-        _ = device_context.ID3D11DeviceContext_OMSetRenderTargets(1, @ptrCast(?[*]?*d3d11.ID3D11RenderTargetView, @constCast(&graphics_context.main_render_target_view)), null);
-        _ = device_context.ID3D11DeviceContext_ClearRenderTargetView(graphics_context.main_render_target_view, @ptrCast(*const f32, &clear_color));
+        _ = device_context.ID3D11DeviceContext_OMSetRenderTargets(1, @as(?[*]?*d3d11.ID3D11RenderTargetView, @ptrCast(@constCast(&graphics_context.main_render_target_view))), null);
+        _ = device_context.ID3D11DeviceContext_ClearRenderTargetView(graphics_context.main_render_target_view, @as(*const f32, @ptrCast(&clear_color)));
     }
 
     zgui.backend.draw();
@@ -505,7 +505,7 @@ pub fn main() !void {
     );
 
     if (hwnd == null) {
-        std.log.warn("Error creating Win32 Window = 0x{x}\n", .{@enumToInt(win32.GetLastError())});
+        std.log.warn("Error creating Win32 Window = 0x{x}\n", .{@intFromEnum(win32.GetLastError())});
         return error.InvalidWin32Window;
     }
 
@@ -544,17 +544,17 @@ pub fn WndProc(hWnd: win32.HWND, msg: u32, wParam: win32.WPARAM, lParam: win32.L
 
     var demo_opt: ?*DemoState = null;
     if (msg == win32.WM_NCCREATE) {
-        const create_struct = @intToPtr(*win32.CREATESTRUCTW, @intCast(usize, lParam));
+        const create_struct = @as(*win32.CREATESTRUCTW, @ptrFromInt(@as(usize, @intCast(lParam))));
 
-        demo_opt = @ptrCast(?*DemoState, @alignCast(@alignOf(*DemoState), create_struct.lpCreateParams));
+        demo_opt = @as(?*DemoState, @ptrCast(@alignCast(create_struct.lpCreateParams)));
 
         win32.SetLastError(win32.ERROR_SUCCESS);
-        if (win32.SetWindowLongPtrW(hWnd, win32.GWL_USERDATA, @intCast(isize, @ptrToInt(demo_opt))) == 0) {
+        if (win32.SetWindowLongPtrW(hWnd, win32.GWL_USERDATA, @as(isize, @intCast(@intFromPtr(demo_opt)))) == 0) {
             if (win32.GetLastError() != win32.ERROR_SUCCESS)
                 return 1;
         }
     } else {
-        demo_opt = @intToPtr(?*DemoState, @intCast(usize, win32.GetWindowLongPtrW(hWnd, win32.GWL_USERDATA)));
+        demo_opt = @as(?*DemoState, @ptrFromInt(@as(usize, @intCast(win32.GetWindowLongPtrW(hWnd, win32.GWL_USERDATA)))));
     }
 
     switch (msg) {
@@ -563,7 +563,7 @@ pub fn WndProc(hWnd: win32.HWND, msg: u32, wParam: win32.WPARAM, lParam: win32.L
                 if (demo_opt) |demo| {
                     if (demo.graphics_context.swap_chain) |swap_chain| {
                         demo.graphics_context.cleanupRenderTarget();
-                        _ = swap_chain.IDXGISwapChain_ResizeBuffers(0, @intCast(u32, lParam) & 0xFFFF, (@intCast(u32, lParam) >> 16) & 0xFFFF, .UNKNOWN, 0);
+                        _ = swap_chain.IDXGISwapChain_ResizeBuffers(0, @as(u32, @intCast(lParam)) & 0xFFFF, (@as(u32, @intCast(lParam)) >> 16) & 0xFFFF, .UNKNOWN, 0);
                         demo.graphics_context.createRenderTarget();
                     }
                 }

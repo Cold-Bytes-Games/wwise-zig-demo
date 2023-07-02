@@ -89,20 +89,20 @@ pub fn show(self: *Self) void {
 pub fn demoInterface(self: *Self) DemoInterface {
     return DemoInterface{
         .instance = self,
-        .initFn = @ptrCast(DemoInterface.InitFn, &init),
-        .deinitFn = @ptrCast(DemoInterface.DeinitFn, &deinit),
-        .onUIFn = @ptrCast(DemoInterface.OnUIFn, &onUI),
-        .isVisibleFn = @ptrCast(DemoInterface.IsVisibleFn, &isVisible),
-        .showFn = @ptrCast(DemoInterface.ShowFn, &show),
+        .initFn = @as(DemoInterface.InitFn, @ptrCast(&init)),
+        .deinitFn = @as(DemoInterface.DeinitFn, @ptrCast(&deinit)),
+        .onUIFn = @as(DemoInterface.OnUIFn, @ptrCast(&onUI)),
+        .isVisibleFn = @as(DemoInterface.IsVisibleFn, @ptrCast(&isVisible)),
+        .showFn = @as(DemoInterface.ShowFn, @ptrCast(&show)),
     };
 }
 
 fn MusicCallback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackInfo) callconv(.C) void {
-    var self = @ptrCast(*Self, @alignCast(@alignOf(*Self), in_callback_info.cookie));
+    var self = @as(*Self, @ptrCast(@alignCast(@alignOf(*Self), in_callback_info.cookie)));
 
     if (in_type.music_playlist_select) {
-        const playlist_info = @ptrCast(*AK.AkMusicPlaylistCallbackInfo, in_callback_info);
-        playlist_info.playlist_item_done = @boolToInt(self.stop_playlist);
+        const playlist_info = @as(*AK.AkMusicPlaylistCallbackInfo, @ptrCast(in_callback_info));
+        playlist_info.playlist_item_done = @intFromBool(self.stop_playlist);
         playlist_info.playlist_selection = self.playlist_item;
         self.playlist_item += 1;
 

@@ -72,7 +72,7 @@ pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
     AK.SoundEngine.unregisterGameObj(DemoGameObjectID) catch {};
 
     for (0..Surfaces.len) |index| {
-        const bit = @as(u32, 1) << @intCast(u5, index);
+        const bit = @as(u32, 1) << @as(u5, @intCast(index));
 
         if ((self.current_banks & bit) == bit) {
             AK.SoundEngine.unloadBankString(self.allocator, Surfaces[index].bank_name, null, .{}) catch {};
@@ -151,11 +151,11 @@ pub fn show(self: *Self) void {
 pub fn demoInterface(self: *Self) DemoInterface {
     return DemoInterface{
         .instance = self,
-        .initFn = @ptrCast(DemoInterface.InitFn, &init),
-        .deinitFn = @ptrCast(DemoInterface.DeinitFn, &deinit),
-        .onUIFn = @ptrCast(DemoInterface.OnUIFn, &onUI),
-        .isVisibleFn = @ptrCast(DemoInterface.IsVisibleFn, &isVisible),
-        .showFn = @ptrCast(DemoInterface.ShowFn, &show),
+        .initFn = @as(DemoInterface.InitFn, @ptrCast(&init)),
+        .deinitFn = @as(DemoInterface.DeinitFn, @ptrCast(&deinit)),
+        .onUIFn = @as(DemoInterface.OnUIFn, @ptrCast(&onUI)),
+        .isVisibleFn = @as(DemoInterface.IsVisibleFn, @ptrCast(&isVisible)),
+        .showFn = @as(DemoInterface.ShowFn, @ptrCast(&show)),
     };
 }
 
@@ -163,7 +163,7 @@ fn manageSurfaces(self: *Self, window_size: [2]f32) !void {
     var bank_masks: u32 = self.computeUsedBankMask(window_size);
 
     for (0..Surfaces.len) |index| {
-        const bit = @as(u32, 1) << @intCast(u5, index);
+        const bit = @as(u32, 1) << @as(u5, @intCast(index));
 
         if ((bank_masks & bit) == bit and (self.current_banks & bit) != bit) {
             _ = AK.SoundEngine.loadBankString(self.allocator, Surfaces[index].bank_name, .{}) catch {
@@ -180,9 +180,9 @@ fn manageSurfaces(self: *Self, window_size: [2]f32) !void {
 
     self.current_banks = bank_masks;
 
-    const half_width = @floatToInt(usize, window_size[0] / 2.0);
-    const half_height = @floatToInt(usize, window_size[1] / 2.0);
-    const index_surface = @boolToInt(@floatToInt(usize, self.cursor.x) > half_width) | (@as(usize, @boolToInt(@floatToInt(usize, self.cursor.y) > half_height)) << @as(u6, 1));
+    const half_width = @as(usize, @intFromFloat(window_size[0] / 2.0));
+    const half_height = @as(usize, @intFromFloat(window_size[1] / 2.0));
+    const index_surface = @intFromBool(@as(usize, @intFromFloat(self.cursor.x)) > half_width) | (@as(usize, @intFromBool(@as(usize, @intFromFloat(self.cursor.y)) > half_height)) << @as(u6, 1));
     if (self.surface != index_surface) {
         try AK.SoundEngine.setSwitchID(SurfaceGroup, Surfaces[index_surface].switch_id, DemoGameObjectID);
         self.surface = index_surface;
@@ -196,13 +196,13 @@ fn manageEnvironment(self: *Self, window_size: [2]f32) !void {
         .aux_bus_id = try AK.SoundEngine.getIDFromString(self.allocator, "Hangar_Env"),
     };
 
-    const half_width = @floatToInt(i32, window_size[0] / 2.0);
-    const half_height = @floatToInt(i32, window_size[1] / 2.0);
-    const diff_x: i32 = try std.math.absInt(@floatToInt(i32, self.cursor.x) - half_width);
-    const diff_y: i32 = try std.math.absInt(@floatToInt(i32, self.cursor.y) - half_height);
+    const half_width = @as(i32, @intFromFloat(window_size[0] / 2.0));
+    const half_height = @as(i32, @intFromFloat(window_size[1] / 2.0));
+    const diff_x: i32 = try std.math.absInt(@as(i32, @intFromFloat(self.cursor.x)) - half_width);
+    const diff_y: i32 = try std.math.absInt(@as(i32, @intFromFloat(self.cursor.y)) - half_height);
 
-    const percent_outside_x = @max(@intToFloat(f32, diff_x - HangarSize) / HangarTransitionZone, 0.0);
-    const percent_outside_y = @max(@intToFloat(f32, diff_y - HangarSize) / HangarTransitionZone, 0.0);
+    const percent_outside_x = @max(@as(f32, @floatFromInt(diff_x - HangarSize)) / HangarTransitionZone, 0.0);
+    const percent_outside_y = @max(@as(f32, @floatFromInt(diff_y - HangarSize)) / HangarTransitionZone, 0.0);
 
     hangar_env.control_value = @max(0.0, 1.0 - @max(percent_outside_x, percent_outside_y));
     hangar_env.listener_id = ListenerID;
@@ -212,16 +212,16 @@ fn manageEnvironment(self: *Self, window_size: [2]f32) !void {
 }
 
 fn computeUsedBankMask(self: Self, window_size: [2]f32) u32 {
-    const half_width = @floatToInt(i32, window_size[0] / 2);
-    const half_height = @floatToInt(i32, window_size[1] / 2);
-    const buffer_zone = @floatToInt(i32, BufferZone * 2);
+    const half_width = @as(i32, @intFromFloat(window_size[0] / 2));
+    const half_height = @as(i32, @intFromFloat(window_size[1] / 2));
+    const buffer_zone = @as(i32, @intFromFloat(BufferZone * 2));
 
-    const left_div = @as(i32, @boolToInt(@floatToInt(i32, self.cursor.x) > (half_width - buffer_zone)));
-    const right_div = @as(i32, @boolToInt(@floatToInt(i32, self.cursor.x) < (half_width + buffer_zone)));
-    const top_div = @as(i32, @boolToInt(@floatToInt(i32, self.cursor.y) > (half_height - buffer_zone)));
-    const bottom_div = @as(i32, @boolToInt(@floatToInt(i32, self.cursor.y) < (half_height + buffer_zone)));
+    const left_div = @as(i32, @intFromBool(@as(i32, @intFromFloat(self.cursor.x)) > (half_width - buffer_zone)));
+    const right_div = @as(i32, @intFromBool(@as(i32, @intFromFloat(self.cursor.x)) < (half_width + buffer_zone)));
+    const top_div = @as(i32, @intFromBool(@as(i32, @intFromFloat(self.cursor.y)) > (half_height - buffer_zone)));
+    const bottom_div = @as(i32, @intFromBool(@as(i32, @intFromFloat(self.cursor.y)) < (half_height + buffer_zone)));
 
-    return @bitCast(u32, ((right_div & bottom_div) << 0) | ((left_div & bottom_div) << 1) | ((right_div & top_div) << 2) | ((left_div & top_div) << 3)) & 0x0F;
+    return @as(u32, @bitCast(((right_div & bottom_div) << 0) | ((left_div & bottom_div) << 1) | ((right_div & top_div) << 2) | ((left_div & top_div) << 3))) & 0x0F;
 }
 
 fn playFootstep(self: *Self) !void {
@@ -233,7 +233,7 @@ fn playFootstep(self: *Self) !void {
 
     try AK.SoundEngine.setRTPCValueString(self.allocator, "Footstep_Speed", speed, .{ .game_object_id = DemoGameObjectID });
 
-    const period = @floatToInt(isize, WalkPeriod - speed);
+    const period = @as(isize, @intFromFloat(WalkPeriod - speed));
 
     if (distance < 0.1 and self.last_tick_count != -1) {
         try AK.SoundEngine.setRTPCValueString(self.allocator, "Footstep_Weight", self.weight / 2.0, .{ .game_object_id = DemoGameObjectID });

@@ -16,7 +16,7 @@ pub fn newFrame(fb_width: u32, fb_height: u32) void {
     ImGui_ImplDX11_NewFrame();
     ImGui_ImplWin32_NewFrame();
 
-    gui.io.setDisplaySize(@intToFloat(f32, fb_width), @intToFloat(f32, fb_height));
+    gui.io.setDisplaySize(@as(f32, @floatFromInt(fb_width)), @as(f32, @floatFromInt(fb_height)));
     gui.io.setDisplayFramebufferScale(1.0, 1.0);
 
     gui.newFrame();

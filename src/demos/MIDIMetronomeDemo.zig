@@ -77,16 +77,16 @@ pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
             self.mutex.lock();
             defer self.mutex.unlock();
 
-            self.inter_post_time_ms = 60000.0 / @floatCast(f64, self.bpm);
+            self.inter_post_time_ms = 60000.0 / @as(f64, @floatCast(self.bpm));
 
-            const this_time_ms = @intToFloat(f64, self.callback_counter) * self.ms_per_callback;
+            const this_time_ms = @as(f64, @floatFromInt(self.callback_counter)) * self.ms_per_callback;
             const maybe_next_ms = this_time_ms + self.inter_post_time_ms;
             if (maybe_next_ms < self.next_post_time_ms) {
                 self.next_post_time_ms = maybe_next_ms;
             }
 
             const post_length_ms = @min(self.ms_per_callback, self.inter_post_time_ms);
-            self.post_len_samples = @floatToInt(u32, (post_length_ms / self.ms_per_callback) * @intToFloat(f64, self.samples_per_callback));
+            self.post_len_samples = @as(u32, @intFromFloat((post_length_ms / self.ms_per_callback) * @as(f64, @floatFromInt(self.samples_per_callback))));
             self.post_len_samples = @min(self.post_len_samples, self.samples_per_callback);
         }
 
@@ -111,11 +111,11 @@ pub fn show(self: *Self) void {
 pub fn demoInterface(self: *Self) DemoInterface {
     return DemoInterface{
         .instance = self,
-        .initFn = @ptrCast(DemoInterface.InitFn, &init),
-        .deinitFn = @ptrCast(DemoInterface.DeinitFn, &deinit),
-        .onUIFn = @ptrCast(DemoInterface.OnUIFn, &onUI),
-        .isVisibleFn = @ptrCast(DemoInterface.IsVisibleFn, &isVisible),
-        .showFn = @ptrCast(DemoInterface.ShowFn, &show),
+        .initFn = @as(DemoInterface.InitFn, @ptrCast(&init)),
+        .deinitFn = @as(DemoInterface.DeinitFn, @ptrCast(&deinit)),
+        .onUIFn = @as(DemoInterface.OnUIFn, @ptrCast(&onUI)),
+        .isVisibleFn = @as(DemoInterface.IsVisibleFn, @ptrCast(&isVisible)),
+        .showFn = @as(DemoInterface.ShowFn, @ptrCast(&show)),
     };
 }
 
@@ -126,7 +126,7 @@ fn prepareCallback(self: *Self) !void {
     self.samples_per_callback = audio_settigns.num_samples_per_frame;
     self.post_len_samples = @max(self.post_len_samples, self.samples_per_callback);
     self.callback_counter = 0;
-    self.ms_per_callback = @intToFloat(f64, audio_settigns.num_samples_per_frame) / @intToFloat(f64, audio_settigns.num_samples_per_second) * 1000.0;
+    self.ms_per_callback = @as(f64, @floatFromInt(audio_settigns.num_samples_per_frame)) / @as(f64, @floatFromInt(audio_settigns.num_samples_per_second)) * 1000.0;
     self.next_post_time_ms = 0.0;
 
     try AK.SoundEngine.registerGlobalCallback(staticCallback, .{
@@ -144,7 +144,7 @@ fn objectCallback(self: *Self) !void {
         return;
     }
 
-    const this_time_ms = @intToFloat(f64, self.callback_counter) * self.ms_per_callback;
+    const this_time_ms = @as(f64, @floatFromInt(self.callback_counter)) * self.ms_per_callback;
     const next_time_ms = this_time_ms + self.ms_per_callback;
 
     if (this_time_ms > self.next_post_time_ms) {
@@ -153,7 +153,7 @@ fn objectCallback(self: *Self) !void {
 
     if (self.next_post_time_ms >= this_time_ms and self.next_post_time_ms <= next_time_ms) {
         const percent_offset = (self.next_post_time_ms - this_time_ms) / self.ms_per_callback;
-        const sample_offset = @floatToInt(u32, percent_offset * @intToFloat(f64, self.samples_per_callback));
+        const sample_offset = @as(u32, @intFromFloat(percent_offset * @as(f64, @floatFromInt(self.samples_per_callback))));
 
         try self.postMIDIEvents(sample_offset);
 
@@ -167,7 +167,7 @@ fn staticCallback(in_context: ?*AK.IAkGlobalPluginContext, in_location: AK.AkGlo
     _ = in_location;
     _ = in_context;
 
-    var self = @ptrCast(*Self, @alignCast(@alignOf(*Self), in_cookie));
+    var self = @as(*Self, @ptrCast(@alignCast(@alignOf(*Self), in_cookie)));
 
     self.mutex.lock();
     defer self.mutex.unlock();

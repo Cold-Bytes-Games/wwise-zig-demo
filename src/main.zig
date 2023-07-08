@@ -7,6 +7,9 @@ const zgui = @import("zgui");
 const zigwin32 = @import("zigwin32");
 const AK = @import("wwise-zig");
 
+// Use wide API for zigwin32
+pub const UNICODE = true;
+
 const L = std.unicode.utf8ToUtf16LeStringLiteral;
 
 const DemoInterface = @import("DemoInterface.zig");
@@ -52,10 +55,10 @@ pub const DxContext = struct {
     pub fn createRenderTarget(self: *DxContext) void {
         var back_buffer_opt: ?*d3d11.ID3D11Texture2D = null;
         if (self.swap_chain) |swap_chain| {
-            _ = swap_chain.IDXGISwapChain_GetBuffer(0, d3d11.IID_ID3D11Texture2D, @as(?*?*anyopaque, @ptrCast(&back_buffer_opt)));
+            _ = swap_chain.IDXGISwapChain_GetBuffer(0, d3d11.IID_ID3D11Texture2D, @ptrCast(&back_buffer_opt));
         }
         if (self.device) |device| {
-            _ = device.ID3D11Device_CreateRenderTargetView(@as(?*d3d11.ID3D11Resource, @ptrCast(back_buffer_opt)), null, @as(?*?*d3d11.ID3D11RenderTargetView, @ptrCast(&self.main_render_target_view)));
+            _ = device.ID3D11Device_CreateRenderTargetView(@ptrCast(back_buffer_opt), null, @ptrCast(&self.main_render_target_view));
         }
         if (back_buffer_opt) |back_buffer| {
             _ = back_buffer.IUnknown_Release();
@@ -445,8 +448,8 @@ fn draw(demo: *DemoState) void {
     };
 
     if (graphics_context.device_context) |device_context| {
-        _ = device_context.ID3D11DeviceContext_OMSetRenderTargets(1, @as(?[*]?*d3d11.ID3D11RenderTargetView, @ptrCast(@constCast(&graphics_context.main_render_target_view))), null);
-        _ = device_context.ID3D11DeviceContext_ClearRenderTargetView(graphics_context.main_render_target_view, @as(*const f32, @ptrCast(&clear_color)));
+        _ = device_context.ID3D11DeviceContext_OMSetRenderTargets(1, @ptrCast(@constCast(&graphics_context.main_render_target_view)), null);
+        _ = device_context.ID3D11DeviceContext_ClearRenderTargetView(graphics_context.main_render_target_view, @ptrCast(&clear_color));
     }
 
     zgui.backend.draw();
@@ -544,9 +547,9 @@ pub fn WndProc(hWnd: win32.HWND, msg: u32, wParam: win32.WPARAM, lParam: win32.L
 
     var demo_opt: ?*DemoState = null;
     if (msg == win32.WM_NCCREATE) {
-        const create_struct = @as(*win32.CREATESTRUCTW, @ptrFromInt(@as(usize, @intCast(lParam))));
+        const create_struct: *win32.CREATESTRUCTW = @ptrFromInt(@as(usize, @intCast(lParam)));
 
-        demo_opt = @as(?*DemoState, @ptrCast(@alignCast(create_struct.lpCreateParams)));
+        demo_opt = @ptrCast(@alignCast(create_struct.lpCreateParams));
 
         win32.SetLastError(win32.ERROR_SUCCESS);
         if (win32.SetWindowLongPtrW(hWnd, win32.GWL_USERDATA, @as(isize, @intCast(@intFromPtr(demo_opt)))) == 0) {
@@ -554,7 +557,7 @@ pub fn WndProc(hWnd: win32.HWND, msg: u32, wParam: win32.WPARAM, lParam: win32.L
                 return 1;
         }
     } else {
-        demo_opt = @as(?*DemoState, @ptrFromInt(@as(usize, @intCast(win32.GetWindowLongPtrW(hWnd, win32.GWL_USERDATA)))));
+        demo_opt = @ptrFromInt(@as(usize, @intCast(win32.GetWindowLongPtrW(hWnd, win32.GWL_USERDATA))));
     }
 
     switch (msg) {

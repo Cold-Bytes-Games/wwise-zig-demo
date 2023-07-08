@@ -25,7 +25,7 @@ pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoSta
     self.bank_id = try AK.SoundEngine.loadBankString(allocator, "Car.bnk", .{});
     try AK.SoundEngine.registerGameObjWithName(allocator, DemoGameObjectID, "Car");
 
-    try AK.SoundEngine.setRTPCValueString(allocator, "RPM", @as(f32, @floatFromInt(self.rpm_value)), .{ .game_object_id = DemoGameObjectID });
+    try AK.SoundEngine.setRTPCValueString(allocator, "RPM", @floatFromInt(self.rpm_value), .{ .game_object_id = DemoGameObjectID });
 }
 
 pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
@@ -52,7 +52,7 @@ pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
         }
 
         if (zgui.sliderInt("RPM", .{ .v = &self.rpm_value, .min = MinRPMValue, .max = MaxRPMValue })) {
-            try AK.SoundEngine.setRTPCValueString(self.allocator, "RPM", @as(f32, @floatFromInt(self.rpm_value)), .{ .game_object_id = DemoGameObjectID });
+            try AK.SoundEngine.setRTPCValueString(self.allocator, "RPM", @floatFromInt(self.rpm_value), .{ .game_object_id = DemoGameObjectID });
         }
 
         zgui.end();
@@ -74,10 +74,10 @@ pub fn show(self: *Self) void {
 pub fn demoInterface(self: *Self) DemoInterface {
     return DemoInterface{
         .instance = self,
-        .initFn = @as(DemoInterface.InitFn, @ptrCast(&init)),
-        .deinitFn = @as(DemoInterface.DeinitFn, @ptrCast(&deinit)),
-        .onUIFn = @as(DemoInterface.OnUIFn, @ptrCast(&onUI)),
-        .isVisibleFn = @as(DemoInterface.IsVisibleFn, @ptrCast(&isVisible)),
-        .showFn = @as(DemoInterface.ShowFn, @ptrCast(&show)),
+        .initFn = @ptrCast(&init),
+        .deinitFn = @ptrCast(&deinit),
+        .onUIFn = @ptrCast(&onUI),
+        .isVisibleFn = @ptrCast(&isVisible),
+        .showFn = @ptrCast(&show),
     };
 }

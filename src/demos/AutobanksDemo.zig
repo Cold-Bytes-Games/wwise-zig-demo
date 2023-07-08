@@ -97,11 +97,11 @@ pub fn show(self: *Self) void {
 pub fn demoInterface(self: *Self) DemoInterface {
     return DemoInterface{
         .instance = self,
-        .initFn = @as(DemoInterface.InitFn, @ptrCast(&init)),
-        .deinitFn = @as(DemoInterface.DeinitFn, @ptrCast(&deinit)),
-        .onUIFn = @as(DemoInterface.OnUIFn, @ptrCast(&onUI)),
-        .isVisibleFn = @as(DemoInterface.IsVisibleFn, @ptrCast(&isVisible)),
-        .showFn = @as(DemoInterface.ShowFn, @ptrCast(&show)),
+        .initFn = @ptrCast(&init),
+        .deinitFn = @ptrCast(&deinit),
+        .onUIFn = @ptrCast(&onUI),
+        .isVisibleFn = @ptrCast(&isVisible),
+        .showFn = @ptrCast(&show),
     };
 }
 
@@ -134,7 +134,7 @@ fn toggleSetMedia(self: *Self) !void {
                 const info = try stream.getInfo(self.allocator);
                 defer info.deinit(self.allocator);
 
-                const alloc_size = (@as(usize, info.size) + @as(usize, stream.getBlockSize()) - 1) / @as(usize, stream.getBlockSize()) * @as(usize, stream.getBlockSize());
+                const alloc_size: usize = (@as(usize, info.size) + @as(usize, stream.getBlockSize()) - 1) / @as(usize, stream.getBlockSize()) * @as(usize, stream.getBlockSize());
 
                 self.media_buffer = AK.MemoryMgr.malign(@intFromEnum(AK.MemoryMgr.AkMemID.media), alloc_size, AK.AK_BANK_PLATFORM_DATA_ALIGNMENT);
 

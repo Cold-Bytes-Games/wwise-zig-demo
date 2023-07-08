@@ -99,19 +99,19 @@ pub fn show(self: *Self) void {
 pub fn demoInterface(self: *Self) DemoInterface {
     return DemoInterface{
         .instance = self,
-        .initFn = @as(DemoInterface.InitFn, @ptrCast(&init)),
-        .deinitFn = @as(DemoInterface.DeinitFn, @ptrCast(&deinit)),
-        .onUIFn = @as(DemoInterface.OnUIFn, @ptrCast(&onUI)),
-        .isVisibleFn = @as(DemoInterface.IsVisibleFn, @ptrCast(&isVisible)),
-        .showFn = @as(DemoInterface.ShowFn, @ptrCast(&show)),
+        .initFn = @ptrCast(&init),
+        .deinitFn = @ptrCast(&deinit),
+        .onUIFn = @ptrCast(&onUI),
+        .isVisibleFn = @ptrCast(&isVisible),
+        .showFn = @ptrCast(&show),
     };
 }
 
 fn MusicCallback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackInfo) callconv(.C) void {
-    var self = @as(*Self, @ptrCast(@alignCast(@alignOf(*Self), in_callback_info.cookie)));
+    var self: *Self = @ptrCast(@alignCast(in_callback_info.cookie));
 
     if (in_type.midi_event) {
-        const midi_info = @as(*AK.AkMIDIEventCallbackInfo, @ptrCast(in_callback_info));
+        const midi_info: *AK.AkMIDIEventCallbackInfo = @ptrCast(in_callback_info);
 
         if (midi_info.midi_event.by_type == AK.AK_MIDI_EVENT_TYPE_CONTROLLER) {
             self.by_cc = midi_info.midi_event.message.cc.by_cc;
@@ -127,7 +127,7 @@ fn MusicCallback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackInf
 
 fn midiNoteToString(in_note_num: i32, buffer: []u8) ![]u8 {
     var octave = @divTrunc(in_note_num, @as(i32, NotesPerOctave));
-    const my_note = NoteArray[@as(usize, @intCast(@rem(in_note_num, @as(i32, NotesPerOctave))))];
+    const my_note = NoteArray[@intCast(@rem(in_note_num, @as(i32, NotesPerOctave)))];
 
     octave -= 1;
     return try std.fmt.bufPrint(buffer, "{s}{}", .{ my_note, octave });

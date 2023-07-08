@@ -92,7 +92,7 @@ fn zguiMemFree(maybe_ptr: ?*anyopaque, _: ?*anyopaque) callconv(.C) void {
 
         if (mem_allocations != null) {
             const size = mem_allocations.?.fetchRemove(@intFromPtr(ptr)).?.value;
-            const mem = @as([*]align(mem_alignment) u8, @ptrCast(@alignCast(mem_alignment, ptr)))[0..size];
+            const mem = @as([*]align(mem_alignment) u8, @ptrCast(@alignCast(ptr)))[0..size];
             mem_allocator.?.free(mem);
         }
     }

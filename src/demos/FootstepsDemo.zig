@@ -72,7 +72,7 @@ pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
     AK.SoundEngine.unregisterGameObj(DemoGameObjectID) catch {};
 
     for (0..Surfaces.len) |index| {
-        const bit = @as(u32, 1) << @as(u5, @intCast(index));
+        const bit = @as(u32, 1) << @intCast(index);
 
         if ((self.current_banks & bit) == bit) {
             AK.SoundEngine.unloadBankString(self.allocator, Surfaces[index].bank_name, null, .{}) catch {};
@@ -151,11 +151,11 @@ pub fn show(self: *Self) void {
 pub fn demoInterface(self: *Self) DemoInterface {
     return DemoInterface{
         .instance = self,
-        .initFn = @as(DemoInterface.InitFn, @ptrCast(&init)),
-        .deinitFn = @as(DemoInterface.DeinitFn, @ptrCast(&deinit)),
-        .onUIFn = @as(DemoInterface.OnUIFn, @ptrCast(&onUI)),
-        .isVisibleFn = @as(DemoInterface.IsVisibleFn, @ptrCast(&isVisible)),
-        .showFn = @as(DemoInterface.ShowFn, @ptrCast(&show)),
+        .initFn = @ptrCast(&init),
+        .deinitFn = @ptrCast(&deinit),
+        .onUIFn = @ptrCast(&onUI),
+        .isVisibleFn = @ptrCast(&isVisible),
+        .showFn = @ptrCast(&show),
     };
 }
 
@@ -163,7 +163,7 @@ fn manageSurfaces(self: *Self, window_size: [2]f32) !void {
     var bank_masks: u32 = self.computeUsedBankMask(window_size);
 
     for (0..Surfaces.len) |index| {
-        const bit = @as(u32, 1) << @as(u5, @intCast(index));
+        const bit = @as(u32, 1) <<  @intCast(index);
 
         if ((bank_masks & bit) == bit and (self.current_banks & bit) != bit) {
             _ = AK.SoundEngine.loadBankString(self.allocator, Surfaces[index].bank_name, .{}) catch {

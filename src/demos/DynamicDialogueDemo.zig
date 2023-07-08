@@ -15,12 +15,12 @@ playing_id: AK.AkPlayingID = AK.AK_INVALID_PLAYING_ID,
 ticks_to_wait: u32 = 0,
 next_function: NextFunctionFn = null,
 set14_param_index: i32 = 0,
-set14_custom_params: [3]?*anyopaque = [_]?*anyopaque{ @as(?*anyopaque, @ptrFromInt(123)), @as(?*anyopaque, @ptrFromInt(456)), @as(?*anyopaque, @ptrFromInt(789)) },
+set14_custom_params: [3]?*anyopaque = [_]?*anyopaque{ @ptrFromInt(123), @ptrFromInt(456), @ptrFromInt(789) },
 set15_items_played: i32 = 0,
 set16_seq1_playing_id: AK.AkPlayingID = AK.AK_INVALID_PLAYING_ID,
 set16_seq2_playing_id: AK.AkPlayingID = AK.AK_INVALID_PLAYING_ID,
 set17_done_playing: bool = false,
-set17_custom_params: [6]?*anyopaque = [_]?*anyopaque{ @as(?*anyopaque, @ptrFromInt(123)), @as(?*anyopaque, @ptrFromInt(456)), @as(?*anyopaque, @ptrFromInt(789)), @as(?*anyopaque, @ptrFromInt(321)), @as(?*anyopaque, @ptrFromInt(654)), @as(?*anyopaque, @ptrFromInt(987)) },
+set17_custom_params: [6]?*anyopaque = [_]?*anyopaque{ @ptrFromInt(123), @ptrFromInt(456), @ptrFromInt(789), @ptrFromInt(321), @ptrFromInt(654), @ptrFromInt(987) },
 
 const Self = @This();
 
@@ -128,11 +128,11 @@ pub fn show(self: *Self) void {
 pub fn demoInterface(self: *Self) DemoInterface {
     return DemoInterface{
         .instance = self,
-        .initFn = @as(DemoInterface.InitFn, @ptrCast(&init)),
-        .deinitFn = @as(DemoInterface.DeinitFn, @ptrCast(&deinit)),
-        .onUIFn = @as(DemoInterface.OnUIFn, @ptrCast(&onUI)),
-        .isVisibleFn = @as(DemoInterface.IsVisibleFn, @ptrCast(&isVisible)),
-        .showFn = @as(DemoInterface.ShowFn, @ptrCast(&show)),
+        .initFn = @ptrCast(&init),
+        .deinitFn = @ptrCast(&deinit),
+        .onUIFn = @ptrCast(&onUI),
+        .isVisibleFn = @ptrCast(&isVisible),
+        .showFn = @ptrCast(&show),
     };
 }
 
@@ -1041,7 +1041,7 @@ fn set14_1_StartPlaybackWithCallback(self: *Self) !void {
 }
 
 fn set14_Callback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackInfo) callconv(.C) void {
-    var self = @as(*Self, @ptrCast(@alignCast(@alignOf(*Self), in_callback_info.cookie)));
+    var self: *Self = @ptrCast(@alignCast(in_callback_info.cookie));
 
     if (in_type.end_of_dynamic_sequence_item) {
         self.set14_param_index += 1;
@@ -1110,7 +1110,7 @@ fn set15_1_StartPlaybackWithCallback(self: *Self) !void {
 }
 
 fn set15_Callback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackInfo) callconv(.C) void {
-    var self = @as(*Self, @ptrCast(@alignCast(@alignOf(*Self), in_callback_info.cookie)));
+    var self: *Self = @ptrCast(@alignCast(in_callback_info.cookie));
 
     if (in_type.end_of_dynamic_sequence_item) {
         self.set15_items_played += 1;
@@ -1198,8 +1198,8 @@ fn set16_1_StartPlaybackWithCallback(self: *Self) !void {
 }
 
 fn set16_Callback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackInfo) callconv(.C) void {
-    var self = @as(*Self, @ptrCast(@alignCast(@alignOf(*Self), in_callback_info.cookie)));
-    const event_info = @as(*AK.AkEventCallbackInfo, @ptrCast(in_callback_info));
+    var self: *Self = @ptrCast(@alignCast(in_callback_info.cookie));
+    const event_info: *AK.AkEventCallbackInfo = @ptrCast(in_callback_info);
 
     if (in_type.end_of_event and event_info.playing_id == self.set16_seq1_playing_id) {
         AK.SoundEngine.DynamicSequence.play(self.set16_seq2_playing_id, .{}) catch unreachable;
@@ -1268,7 +1268,7 @@ fn set17_1_StartPlaybackWithCallback(self: *Self) !void {
 }
 
 fn set17_Callback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackInfo) callconv(.C) void {
-    var self = @as(*Self, @ptrCast(@alignCast(@alignOf(*Self), in_callback_info.cookie)));
+    var self: *Self = @ptrCast(@alignCast(in_callback_info.cookie));
 
     if (in_type.end_of_dynamic_sequence_item and !self.set17_done_playing) {
         var playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
@@ -1286,7 +1286,7 @@ fn set17_Callback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackIn
                 var custom_param_index = 6 - playlist_length;
 
                 for (0..playlist_length) |i| {
-                    if (self.set17_custom_params[custom_param_index] != playlist.at(@as(u32, @truncate(i))).custom_info) {
+                    if (self.set17_custom_params[custom_param_index] != playlist.at(@truncate(i)).custom_info) {
                         std.log.err("Error: Params didn't match up!", .{});
                     }
                     custom_param_index += 1;

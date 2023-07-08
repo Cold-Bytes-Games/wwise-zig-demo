@@ -93,14 +93,7 @@ pub fn show(self: *Self) void {
 }
 
 pub fn demoInterface(self: *Self) DemoInterface {
-    return DemoInterface{
-        .instance = self,
-        .initFn =  @ptrCast(&init),
-        .deinitFn = @ptrCast(&deinit),
-        .onUIFn = @ptrCast(&onUI),
-        .isVisibleFn = @ptrCast(&isVisible),
-        .showFn =  @ptrCast(&show),
-    };
+    return DemoInterface.toDemoInteface(self);
 }
 
 fn MusicCallback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackInfo) callconv(.C) void {

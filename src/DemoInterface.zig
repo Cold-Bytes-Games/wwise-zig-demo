@@ -17,6 +17,18 @@ pub const ShowFn = *const fn (instance: InstanceType) void;
 
 const Self = @This();
 
+pub fn toDemoInteface(instance: anytype) Self {
+    const T = std.meta.Child(@TypeOf(instance));
+    return Self{
+        .instance = @ptrCast(instance),
+        .initFn = @ptrCast(&@field(T, "init")),
+        .deinitFn = @ptrCast(&@field(T, "deinit")),
+        .onUIFn = @ptrCast(&@field(T, "onUI")),
+        .isVisibleFn = @ptrCast(&@field(T, "isVisible")),
+        .showFn = @ptrCast(&@field(T, "show")),
+    };
+}
+
 pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoState) anyerror!void {
     return self.initFn(self.instance, allocator, demo_state);
 }

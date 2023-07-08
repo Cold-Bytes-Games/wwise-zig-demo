@@ -84,14 +84,7 @@ pub fn show(self: *Self) void {
 }
 
 pub fn demoInterface(self: *Self) DemoInterface {
-    return DemoInterface{
-        .instance = self,
-        .initFn = @ptrCast(&init),
-        .deinitFn = @ptrCast(&deinit),
-        .onUIFn = @ptrCast(&onUI),
-        .isVisibleFn = @ptrCast(&isVisible),
-        .showFn = @ptrCast(&show),
-    };
+    return DemoInterface.toDemoInteface(self);
 }
 
 pub fn setSubtitleText(self: *Self, text: [*:0]const u8) void {

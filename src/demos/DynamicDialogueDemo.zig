@@ -126,14 +126,7 @@ pub fn show(self: *Self) void {
 }
 
 pub fn demoInterface(self: *Self) DemoInterface {
-    return DemoInterface{
-        .instance = self,
-        .initFn = @ptrCast(&init),
-        .deinitFn = @ptrCast(&deinit),
-        .onUIFn = @ptrCast(&onUI),
-        .isVisibleFn = @ptrCast(&isVisible),
-        .showFn = @ptrCast(&show),
-    };
+    return DemoInterface.toDemoInteface(self);
 }
 
 fn update(self: *Self) !void {

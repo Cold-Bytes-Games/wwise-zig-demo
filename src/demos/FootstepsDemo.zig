@@ -149,21 +149,14 @@ pub fn show(self: *Self) void {
 }
 
 pub fn demoInterface(self: *Self) DemoInterface {
-    return DemoInterface{
-        .instance = self,
-        .initFn = @ptrCast(&init),
-        .deinitFn = @ptrCast(&deinit),
-        .onUIFn = @ptrCast(&onUI),
-        .isVisibleFn = @ptrCast(&isVisible),
-        .showFn = @ptrCast(&show),
-    };
+    return DemoInterface.toDemoInteface(self);
 }
 
 fn manageSurfaces(self: *Self, window_size: [2]f32) !void {
     var bank_masks: u32 = self.computeUsedBankMask(window_size);
 
     for (0..Surfaces.len) |index| {
-        const bit = @as(u32, 1) <<  @intCast(index);
+        const bit = @as(u32, 1) << @intCast(index);
 
         if ((bank_masks & bit) == bit and (self.current_banks & bit) != bit) {
             _ = AK.SoundEngine.loadBankString(self.allocator, Surfaces[index].bank_name, .{}) catch {

@@ -229,6 +229,12 @@ const AllMenus = [_]MenuData{
                         .instance_type = @import("demos/3dBusCoupledRoomsWithFeedback.zig"),
                     },
                 },
+                .{
+                    .demo = .{
+                        .name = "3D Audio Objects and Spatialized Bed",
+                        .instance_type = @import("demos/3dAudioDemo.zig"),
+                    },
+                },
             },
         },
     },

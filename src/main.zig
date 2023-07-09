@@ -272,7 +272,7 @@ const AllMenus = [_]MenuData{
     .{
         .demo = .{
             .name = "Options",
-            .instance_type = NullDemo,
+            .instance_type = @import("demos/OptionsDemo.zig"),
         },
     },
 };

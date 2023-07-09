@@ -223,6 +223,12 @@ const AllMenus = [_]MenuData{
                         .instance_type = @import("demos/3dBusCoupledRoomsSimpleDemo.zig"),
                     },
                 },
+                .{
+                    .demo = .{
+                        .name = "3d Bus - 2X 3D Portals",
+                        .instance_type = @import("demos/3dBusCoupledRoomsWithFeedback.zig"),
+                    },
+                },
             },
         },
     },

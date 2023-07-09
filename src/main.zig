@@ -211,6 +211,12 @@ const AllMenus = [_]MenuData{
                         .instance_type = @import("demos/MultiPositioningDemo.zig"),
                     },
                 },
+                .{
+                    .demo = .{
+                        .name = "3d Bus - Clustering/3D Submix",
+                        .instance_type = @import("demos/3dBusSubmixDemo.zig"),
+                    },
+                },
             },
         },
     },

@@ -185,10 +185,6 @@ fn manageSurfaces(self: *Self, window_size: [2]f32) !void {
 fn manageEnvironment(self: *Self, window_size: [2]f32) !void {
     const ListenerID = @import("root").ListenerGameObjectID;
 
-    var hangar_env = AK.AkAuxSendValue{
-        .aux_bus_id = try AK.SoundEngine.getIDFromString(self.allocator, "Hangar_Env"),
-    };
-
     const half_width = @as(i32, @intFromFloat(window_size[0] / 2.0));
     const half_height = @as(i32, @intFromFloat(window_size[1] / 2.0));
     const diff_x: i32 = try std.math.absInt(@as(i32, @intFromFloat(self.cursor.x)) - half_width);
@@ -197,11 +193,14 @@ fn manageEnvironment(self: *Self, window_size: [2]f32) !void {
     const percent_outside_x = @max(@as(f32, @floatFromInt(diff_x - HangarSize)) / HangarTransitionZone, 0.0);
     const percent_outside_y = @max(@as(f32, @floatFromInt(diff_y - HangarSize)) / HangarTransitionZone, 0.0);
 
-    hangar_env.control_value = @max(0.0, 1.0 - @max(percent_outside_x, percent_outside_y));
-    hangar_env.listener_id = ListenerID;
+    const hangar_env = AK.AkAuxSendValue{
+        .aux_bus_id = try AK.SoundEngine.getIDFromString(self.allocator, "Hangar_Env"),
+        .control_value = @max(0.0, 1.0 - @max(percent_outside_x, percent_outside_y)),
+        .listener_id = ListenerID,
+    };
 
     try AK.SoundEngine.setGameObjectOutputBusVolume(DemoGameObjectID, ListenerID, 1.0 - hangar_env.control_value / 2.0);
-    try AK.SoundEngine.setGameObjectAuxSendValues(DemoGameObjectID, &.{hangar_env});
+    try AK.SoundEngine.setGameObjectAuxSendValues(self.allocator, DemoGameObjectID, &.{hangar_env});
 }
 
 fn computeUsedBankMask(self: Self, window_size: [2]f32) u32 {

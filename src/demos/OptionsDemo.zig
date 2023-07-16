@@ -13,6 +13,11 @@ active_device_index: usize = 0,
 active_channel_index: usize = 0,
 device_ids: std.ArrayListUnmanaged(DeviceId) = .{},
 device_names: std.ArrayListUnmanaged([:0]const u8) = .{},
+default_audio_device_shareset_id: ?u32 = null,
+spatial_audio_shareset_id: ?u32 = null,
+spatial_audio_available: bool = false,
+spatial_audio_requested: bool = false,
+
 const Self = @This();
 
 const DeviceId = struct {
@@ -124,8 +129,17 @@ fn populateOutputDeviceOptions(self: *Self) !void {
     try self.device_names.append(self.allocator, try self.allocator.dupeZ(u8, "Use Default"));
 
     if (AK.SoundEngine.isInitialized()) {
+        const init_settings = blk: {
+            if (AK.SoundEngine.getGlobalPluginContext()) |plugin_context| {
+                if (plugin_context.getInitSettings()) |init_settings| {
+                    break :blk init_settings;
+                }
+            }
+
+            return error.NoValidInitSettings;
+        };
+
         const id_current = AK.SoundEngine.getOutputID(0, 0);
-        _ = id_current;
 
         for (SupportedAudioDeviceShareset) |shareset_name| {
             const shareset_id = try AK.SoundEngine.getIDFromString(self.allocator, shareset_name);
@@ -152,20 +166,20 @@ fn populateOutputDeviceOptions(self: *Self) !void {
                         const name = try std.fmt.allocPrintZ(self.allocator, "{s} - {s}", .{ shareset_name, device.device_name });
                         try self.device_ids.append(self.allocator, DeviceId{ .shareset_id = shareset_id, .device_id = device.id_device });
                         try self.device_names.append(self.allocator, name);
+
+                        if (device.is_default_device and shareset_id == init_settings.settings_main_output.audio_device_shareset) {
+                            // Two possibilities to check: either the soundengine is using this output because we specifically asked it
+                            // OR, it is the default.
+                            if (init_settings.settings_main_output.id_device == 0) {
+                                self.active_device_index = 0;
+                            } else if (AK.SoundEngine.getOutputID(shareset_id, device.id_device) == id_current) {
+                                //Specified explicitely
+                                self.active_device_index = real_count + 1;
+                            }
+                        }
+
+                        real_count += 1;
                     }
-
-                    // TODO: mlarouche: Port
-                    // if (devices[i].isDefaultDevice && sharesetId == initSettings->settingsMainOutput.audioDeviceShareset)
-                    // 					{
-                    // 						//Two possibilities to check: either the soundengine is using this output because we specifically asked it
-                    // 						// OR, it is the default.
-                    // 						if (initSettings->settingsMainOutput.idDevice == 0)//Picked as default
-                    // 							m_activeDeviceIdx = 0;
-                    // 						else if (AK::SoundEngine::GetOutputID(sharesetId, devices[i].idDevice) == idCurrent)	//Specified explicitely
-                    // 							m_activeDeviceIdx = uRealCount+1; //+1 because it is offset by the "default" option.
-                    // 					}
-
-                    real_count += 1;
                 }
             }
         }
@@ -173,17 +187,66 @@ fn populateOutputDeviceOptions(self: *Self) !void {
 }
 
 fn updateSpeakerConfigForShareset(self: *Self) !void {
-    _ = self;
+    if (self.device_ids.items[self.active_device_index].shareset_id == try self.getDefaultAudioSharesetId() or self.device_ids.items[self.active_channel_index].shareset_id == 0) {
+        self.active_channel_config = DefaultSpeakerConfig[self.active_channel_index];
+    } else {
+        self.active_channel_config = AK.AkChannelConfig{};
+        self.active_channel_index = 0;
+    }
 }
 
 fn updateOutputDevice(self: *Self) !void {
-    _ = self;
+    if (!AK.SoundEngine.isInitialized()) {
+        self.initSettingsChanged();
+    }
+
+    var new_settings: AK.AkOutputSettings = .{};
+    try self.fillOutputSetting(&new_settings);
+
+    try AK.SoundEngine.replaceOutput(&new_settings, 0, null);
 }
 
-pub fn toPrettyCString(self: *Self, value: []const u8) ![:0]const u8 {
+fn fillOutputSetting(self: *Self, new_settings: *AK.AkOutputSettings) !void {
+    const new_device_id = if (self.active_device_index < self.device_ids.items.len) self.device_ids.items[self.active_device_index] else DeviceId{ .shareset_id = try self.getDefaultAudioSharesetId() };
+
+    const new_channel_config = self.active_channel_config;
+
+    self.spatial_audio_available = blk: {
+        AK.SoundEngine.getDeviceSpatialAudioSupport(new_device_id.device_id) catch {
+            break :blk false;
+        };
+
+        break :blk true;
+    };
+
+    new_settings.audio_device_shareset = if (self.spatial_audio_requested and self.spatial_audio_available) try self.getSpatialAudioSharesetId() else new_device_id.shareset_id;
+    new_settings.id_device = new_device_id.device_id;
+    new_settings.panning_rule = self.active_panning_rule;
+
+    if (new_channel_config.isValid()) {
+        new_settings.channel_config = new_channel_config;
+    } else {
+        new_settings.channel_config.clear();
+    }
+}
+
+fn toPrettyCString(self: *Self, value: []const u8) ![:0]const u8 {
     const pretty_ctring = try self.allocator.dupeZ(u8, value);
     pretty_ctring[0] = std.ascii.toUpper(pretty_ctring[0]);
     return pretty_ctring;
+}
+
+fn getDefaultAudioSharesetId(self: *Self) !u32 {
+    if (self.default_audio_device_shareset_id) |default_audio_device_shareset_id| {
+        return default_audio_device_shareset_id;
+    }
+
+    self.default_audio_device_shareset_id = try AK.SoundEngine.getIDFromString(self.allocator, SupportedAudioDeviceShareset[0]);
+    return self.default_audio_device_shareset_id.?;
+}
+
+fn initSettingsChanged(self: *Self) void {
+    _ = self;
 }
 
 fn indexOfChannelConfig(slice: []const AK.AkChannelConfig, value: AK.AkChannelConfig) ?usize {
@@ -194,6 +257,19 @@ fn indexOfChannelConfig(slice: []const AK.AkChannelConfig, value: AK.AkChannelCo
         }
     }
     return null;
+}
+
+fn getSpatialAudioSharesetId(self: *Self) !u32 {
+    if (self.spatial_audio_shareset_id) |spatial_audio_shareset_id| {
+        return spatial_audio_shareset_id;
+    }
+
+    self.spatial_audio_shareset_id = switch (AK.platform) {
+        .windows, .xboxone, .xboxseries => try AK.SoundEngine.getIDFromString(self.allocator, "Microsoft_Spatial_Sound_Platform_Output"),
+        .ps4, .ps5 => try AK.SoundEngine.getIDFromString(self.allocator, "SCE_Audio3d_Bed_Output"),
+        else => 0,
+    };
+    return self.spatial_audio_shareset_id.?;
 }
 
 const SupportedAudioDeviceShareset: []const [:0]const u8 = switch (AK.platform) {

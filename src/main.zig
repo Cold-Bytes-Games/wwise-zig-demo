@@ -96,11 +96,12 @@ pub const WwiseContext = struct {
     init_bank_id: AK.AkBankID = 0,
     memory_settings: AK.AkMemSettings = .{},
     stream_mgr_settings: AK.StreamMgr.AkStreamMgrSettings = .{},
-    device_settings: AK.AkDeviceSettings = .{},
+    device_settings: AK.StreamMgr.AkDeviceSettings = .{},
     init_settings: AK.AkInitSettings = .{},
     platform_init_settings: AK.AkPlatformInitSettings = .{},
     music_settings: AK.MusicEngine.AkMusicSettings = .{},
     comm_settings: if (AK.Comm != void) AK.Comm.AkCommSettings else void = .{},
+    job_worker_settings: if (AK.JobWorkerMgr != void) AK.JobWorkerMgr.InitSettings else void = .{},
 };
 
 pub const DemoState = struct {
@@ -303,7 +304,7 @@ fn setupZGUI(allocator: std.mem.Allocator, demo: *DemoState) !void {
 fn getDefaultWwiseSettings(allocator: std.mem.Allocator, demo: *DemoState) !void {
     var wwise_context = &demo.wwise_context;
 
-    AK.MemoryMgr.getDefaultSettings(&wwise_context.mem_settings);
+    AK.MemoryMgr.getDefaultSettings(&wwise_context.memory_settings);
 
     AK.StreamMgr.getDefaultSettings(&wwise_context.stream_mgr_settings);
 
@@ -318,6 +319,25 @@ fn getDefaultWwiseSettings(allocator: std.mem.Allocator, demo: *DemoState) !void
     // Setup communication for debugging with the Wwise Authoring
     if (AK.Comm != void) {
         try AK.Comm.getDefaultInitSettings(&wwise_context.comm_settings);
+    }
+
+    if (AK.JobWorkerMgr != void) {
+        AK.JobWorkerMgr.getDefaultInitSettings(&wwise_context.job_worker_settings);
+
+        const max_workers = blk: {
+            var runtime_cpu_count = std.Thread.getCpuCount() catch {
+                break :blk @as(usize, 8);
+            };
+
+            break :blk @min(runtime_cpu_count, 8);
+        };
+        wwise_context.job_worker_settings.num_worker_threads = @intCast(max_workers);
+
+        wwise_context.init_settings.settings_job_manager = wwise_context.job_worker_settings.getJobMgrSettings();
+
+        for (0..AK.AK_NUM_JOB_TYPES) |index| {
+            wwise_context.init_settings.settings_job_manager.max_active_workers[index] = 2;
+        }
     }
 }
 
@@ -336,13 +356,17 @@ pub fn setupWwise(allocator: std.mem.Allocator, demo: *DemoState) !void {
     // Gather init settings and init the sound engine
     try AK.SoundEngine.init(allocator, &demo.wwise_context.init_settings, &demo.wwise_context.platform_init_settings);
 
-    try AK.MusicEngine.init(&demo.wwise_context.music_init_settings);
+    try AK.MusicEngine.init(&demo.wwise_context.music_settings);
 
     // Setup communication for debugging with the Wwise Authoring
     if (AK.Comm != void) {
         demo.wwise_context.comm_settings.setAppNetworkName("wwise-zig Integration Demo");
 
         try AK.Comm.init(&demo.wwise_context.comm_settings);
+    }
+
+    if (AK.JobWorkerMgr != void and demo.wwise_context.job_worker_settings.num_worker_threads > 0) {
+        try AK.JobWorkerMgr.initWorkers(&demo.wwise_context.job_worker_settings);
     }
 
     // Setup I/O Hook base path
@@ -367,7 +391,6 @@ pub fn setupWwise(allocator: std.mem.Allocator, demo: *DemoState) !void {
     // Register monitor callback
     try AK.SoundEngine.registerResourceMonitorCallback(resourceMonitorCallback);
 
-    // TODO: Setup job worker
     // TODO: Setup monitor local output
 }
 
@@ -384,6 +407,10 @@ pub fn destroyWwise(allocator: std.mem.Allocator, demo: *DemoState) !void {
 
     if (AK.SoundEngine.isInitialized()) {
         AK.SoundEngine.term();
+    }
+
+    if (AK.JobWorkerMgr != void and demo.wwise_context.job_worker_settings.num_worker_threads > 0) {
+        AK.JobWorkerMgr.termWorkers();
     }
 
     if (demo.wwise_context.io_hook) |io_hook| {

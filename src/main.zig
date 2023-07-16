@@ -94,6 +94,13 @@ pub const DxContext = struct {
 pub const WwiseContext = struct {
     io_hook: ?*AK.IOHooks.CAkFilePackageLowLevelIOBlocking = null,
     init_bank_id: AK.AkBankID = 0,
+    memory_settings: AK.AkMemSettings = .{},
+    stream_mgr_settings: AK.StreamMgr.AkStreamMgrSettings = .{},
+    device_settings: AK.AkDeviceSettings = .{},
+    init_settings: AK.AkInitSettings = .{},
+    platform_init_settings: AK.AkPlatformInitSettings = .{},
+    music_settings: AK.MusicEngine.AkMusicSettings = .{},
+    comm_settings: if (AK.Comm != void) AK.Comm.AkCommSettings else void = .{},
 };
 
 pub const DemoState = struct {
@@ -293,46 +300,49 @@ fn setupZGUI(allocator: std.mem.Allocator, demo: *DemoState) !void {
     );
 }
 
-fn setupWwise(allocator: std.mem.Allocator, demo: *DemoState) !void {
-    // Create memory manager
-    var memory_settings: AK.AkMemSettings = .{};
-    AK.MemoryMgr.getDefaultSettings(&memory_settings);
-    try AK.MemoryMgr.init(&memory_settings);
+fn getDefaultWwiseSettings(allocator: std.mem.Allocator, demo: *DemoState) !void {
+    var wwise_context = &demo.wwise_context;
 
-    // Create streaming manager
-    var stream_settings: AK.StreamMgr.AkStreamMgrSettings = .{};
-    AK.StreamMgr.getDefaultSettings(&stream_settings);
-    _ = AK.StreamMgr.create(&stream_settings);
+    AK.MemoryMgr.getDefaultSettings(&wwise_context.mem_settings);
 
-    var device_settings: AK.StreamMgr.AkDeviceSettings = .{};
-    AK.StreamMgr.getDefaultDeviceSettings(&device_settings);
+    AK.StreamMgr.getDefaultSettings(&wwise_context.stream_mgr_settings);
 
-    // Create the I/O hook using default FilePackage blocking I/O Hook
-    var io_hook = try AK.IOHooks.CAkFilePackageLowLevelIOBlocking.create(allocator);
-    try io_hook.init(&device_settings, false);
-    demo.wwise_context.io_hook = io_hook;
+    AK.StreamMgr.getDefaultDeviceSettings(&wwise_context.device_settings);
 
-    // Gather init settings and init the sound engine
-    var init_settings: AK.AkInitSettings = .{};
-    AK.SoundEngine.getDefaultInitSettings(&init_settings);
+    try AK.SoundEngine.getDefaultInitSettings(allocator, &wwise_context.init_settings);
 
-    var platform_init_settings: AK.AkPlatformInitSettings = .{};
-    AK.SoundEngine.getDefaultPlatformInitSettings(&platform_init_settings);
+    AK.SoundEngine.getDefaultPlatformInitSettings(&wwise_context.platform_init_settings);
 
-    try AK.SoundEngine.init(allocator, &init_settings, &platform_init_settings);
-
-    var music_init_settings: AK.MusicEngine.AkMusicSettings = .{};
-    AK.MusicEngine.getDefaultInitSettings(&music_init_settings);
-    try AK.MusicEngine.init(&music_init_settings);
+    AK.MusicEngine.getDefaultInitSettings(&wwise_context.music_settings);
 
     // Setup communication for debugging with the Wwise Authoring
     if (AK.Comm != void) {
-        var comm_settings: AK.Comm.AkCommSettings = .{};
-        try AK.Comm.getDefaultInitSettings(&comm_settings);
+        try AK.Comm.getDefaultInitSettings(&wwise_context.comm_settings);
+    }
+}
 
-        comm_settings.setAppNetworkName("wwise-zig Integration Demo");
+pub fn setupWwise(allocator: std.mem.Allocator, demo: *DemoState) !void {
+    // Create memory manager
+    try AK.MemoryMgr.init(&demo.wwise_context.memory_settings);
 
-        try AK.Comm.init(&comm_settings);
+    // Create streaming manager
+    _ = AK.StreamMgr.create(&demo.wwise_context.stream_mgr_settings);
+
+    // Create the I/O hook using default FilePackage blocking I/O Hook
+    var io_hook = try AK.IOHooks.CAkFilePackageLowLevelIOBlocking.create(allocator);
+    try io_hook.init(&demo.wwise_context.device_settings, false);
+    demo.wwise_context.io_hook = io_hook;
+
+    // Gather init settings and init the sound engine
+    try AK.SoundEngine.init(allocator, &demo.wwise_context.init_settings, &demo.wwise_context.platform_init_settings);
+
+    try AK.MusicEngine.init(&demo.wwise_context.music_init_settings);
+
+    // Setup communication for debugging with the Wwise Authoring
+    if (AK.Comm != void) {
+        demo.wwise_context.comm_settings.setAppNetworkName("wwise-zig Integration Demo");
+
+        try AK.Comm.init(&demo.wwise_context.comm_settings);
     }
 
     // Setup I/O Hook base path
@@ -356,9 +366,12 @@ fn setupWwise(allocator: std.mem.Allocator, demo: *DemoState) !void {
 
     // Register monitor callback
     try AK.SoundEngine.registerResourceMonitorCallback(resourceMonitorCallback);
+
+    // TODO: Setup job worker
+    // TODO: Setup monitor local output
 }
 
-fn destroyWwise(allocator: std.mem.Allocator, demo: *DemoState) !void {
+pub fn destroyWwise(allocator: std.mem.Allocator, demo: *DemoState) !void {
     try AK.SoundEngine.unregisterResourceMonitorCallback(resourceMonitorCallback);
 
     try AK.SoundEngine.unregisterGameObj(ListenerGameObjectID);
@@ -369,7 +382,9 @@ fn destroyWwise(allocator: std.mem.Allocator, demo: *DemoState) !void {
         AK.Comm.term();
     }
 
-    AK.SoundEngine.term();
+    if (AK.SoundEngine.isInitialized()) {
+        AK.SoundEngine.term();
+    }
 
     if (demo.wwise_context.io_hook) |io_hook| {
         io_hook.term();
@@ -377,7 +392,13 @@ fn destroyWwise(allocator: std.mem.Allocator, demo: *DemoState) !void {
         io_hook.destroy(allocator);
     }
 
-    AK.MemoryMgr.term();
+    if (AK.IAkStreamMgr.get()) |stream_mgr| {
+        stream_mgr.destroy();
+    }
+
+    if (AK.MemoryMgr.isInitialized()) {
+        AK.MemoryMgr.term();
+    }
 }
 
 fn resourceMonitorCallback(in_data_summary: ?*const AK.AkResourceMonitorDataSummary) callconv(.C) void {
@@ -541,6 +562,7 @@ pub fn main() !void {
     _ = win32.ShowWindow(hwnd, win32.SW_SHOWDEFAULT);
     _ = win32.UpdateWindow(hwnd);
 
+    try getDefaultWwiseSettings(allocator, demo);
     try setupWwise(allocator, demo);
     defer {
         destroyWwise(allocator, demo) catch unreachable;

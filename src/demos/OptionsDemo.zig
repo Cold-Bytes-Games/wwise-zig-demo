@@ -6,17 +6,24 @@ const AK = @import("wwise-zig");
 const builtin = @import("builtin");
 
 allocator: std.mem.Allocator = undefined,
+string_area: std.heap.ArenaAllocator = undefined,
+string_area_allocator: std.mem.Allocator = undefined,
 is_visible: bool = false,
 active_panning_rule: AK.AkPanningRule = .speakers,
 active_channel_config: AK.AkChannelConfig = .{},
 active_device_index: usize = 0,
 active_channel_index: usize = 0,
+active_frame_size_index: usize = 0,
+active_refill_in_voice_index: usize = 0,
+active_range_check_limit_index: usize = 0,
+use_range_check: bool = false,
 device_ids: std.ArrayListUnmanaged(DeviceId) = .{},
 device_names: std.ArrayListUnmanaged([:0]const u8) = .{},
 default_audio_device_shareset_id: ?u32 = null,
 spatial_audio_shareset_id: ?u32 = null,
 spatial_audio_available: bool = false,
 spatial_audio_requested: bool = false,
+demo_state: *root.DemoState = undefined,
 
 const Self = @This();
 
@@ -26,26 +33,29 @@ const DeviceId = struct {
 };
 
 pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoState) !void {
-    _ = demo_state;
     self.* = .{
         .allocator = allocator,
+        .string_area = std.heap.ArenaAllocator.init(allocator),
+        .demo_state = demo_state,
     };
+
+    self.string_area_allocator = self.string_area.allocator();
 
     try self.populateOutputDeviceOptions();
 
     self.active_panning_rule = try AK.SoundEngine.getPanningRule(0);
     self.active_channel_config = AK.SoundEngine.getSpeakerConfiguration(0);
     self.active_channel_index = indexOfChannelConfig(DefaultSpeakerConfig, self.active_channel_config) orelse 0;
+
+    try self.initAudioSettings();
 }
 
 pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
     _ = demo_state;
 
-    self.device_ids.deinit(self.allocator);
+    self.string_area.deinit();
 
-    for (self.device_names.items) |entry| {
-        self.allocator.free(entry);
-    }
+    self.device_ids.deinit(self.allocator);
     self.device_names.deinit(self.allocator);
 
     self.allocator.destroy(self);
@@ -108,6 +118,61 @@ pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
             zgui.endCombo();
         }
 
+        if (zgui.beginCombo("Frame Size", .{ .preview_value = FrameSizeNames[self.active_frame_size_index] })) {
+            for (0..FrameSizeNames.len) |index| {
+                const is_selected = self.active_frame_size_index == index;
+
+                if (zgui.selectable(FrameSizeNames[index], .{ .selected = is_selected })) {
+                    self.active_frame_size_index = index;
+                    try self.initSettingsChanged();
+                }
+
+                if (is_selected) {
+                    zgui.setItemDefaultFocus();
+                }
+            }
+
+            zgui.endCombo();
+        }
+
+        if (zgui.beginCombo("Refill Buffers:", .{ .preview_value = RefillInVoiceNames[self.active_refill_in_voice_index] })) {
+            for (0..RefillInVoiceNames.len) |index| {
+                const is_selected = self.active_range_check_limit_index == index;
+
+                if (zgui.selectable(RefillInVoiceNames[index], .{ .selected = is_selected })) {
+                    self.active_refill_in_voice_index = index;
+                    try self.initSettingsChanged();
+                }
+
+                if (is_selected) {
+                    zgui.setItemDefaultFocus();
+                }
+            }
+
+            zgui.endCombo();
+        }
+
+        if (zgui.beginCombo("Range Check Limit:", .{ .preview_value = RangeCheckNames[self.active_range_check_limit_index] })) {
+            for (0..RangeCheckNames.len) |index| {
+                const is_selected = self.active_range_check_limit_index == index;
+
+                if (zgui.selectable(RangeCheckNames[index], .{ .selected = is_selected })) {
+                    self.active_range_check_limit_index = index;
+                    try self.initSettingsChanged();
+                }
+
+                if (is_selected) {
+                    zgui.setItemDefaultFocus();
+                }
+            }
+
+            zgui.endCombo();
+        }
+
+        if (zgui.checkbox("Range Check", .{ .v = &self.use_range_check })) {
+            try self.initSettingsChanged();
+        }
+
         zgui.end();
     }
 }
@@ -126,18 +191,19 @@ pub fn demoInterface(self: *Self) DemoInterface {
 
 fn populateOutputDeviceOptions(self: *Self) !void {
     try self.device_ids.append(self.allocator, DeviceId{});
-    try self.device_names.append(self.allocator, try self.allocator.dupeZ(u8, "Use Default"));
+    try self.device_names.append(self.allocator, try self.string_area_allocator.dupeZ(u8, "Use Default"));
 
     if (AK.SoundEngine.isInitialized()) {
         const init_settings = blk: {
             if (AK.SoundEngine.getGlobalPluginContext()) |plugin_context| {
-                if (plugin_context.getInitSettings()) |init_settings| {
+                if (try plugin_context.getInitSettings(self.allocator)) |init_settings| {
                     break :blk init_settings;
                 }
             }
 
             return error.NoValidInitSettings;
         };
+        defer init_settings.deinit(self.allocator);
 
         const id_current = AK.SoundEngine.getOutputID(0, 0);
 
@@ -147,7 +213,7 @@ fn populateOutputDeviceOptions(self: *Self) !void {
             var device_count: u32 = 0;
             AK.SoundEngine.getDeviceListShareSet(self.allocator, shareset_id, &device_count, null) catch {};
             if (device_count == 0) {
-                const name = try std.fmt.allocPrintZ(self.allocator, "{s} - Primary  Output", .{shareset_name});
+                const name = try std.fmt.allocPrintZ(self.string_area_allocator, "{s} - Primary  Output", .{shareset_name});
                 try self.device_ids.append(self.allocator, DeviceId{ .shareset_id = shareset_id });
                 try self.device_names.append(self.allocator, name);
             } else {
@@ -163,7 +229,7 @@ fn populateOutputDeviceOptions(self: *Self) !void {
                 var real_count: u32 = 0;
                 for (devices) |device| {
                     if (device.device_state_mask.active) {
-                        const name = try std.fmt.allocPrintZ(self.allocator, "{s} - {s}", .{ shareset_name, device.device_name });
+                        const name = try std.fmt.allocPrintZ(self.string_area_allocator, "{s} - {s}", .{ shareset_name, device.device_name });
                         try self.device_ids.append(self.allocator, DeviceId{ .shareset_id = shareset_id, .device_id = device.id_device });
                         try self.device_names.append(self.allocator, name);
 
@@ -197,7 +263,7 @@ fn updateSpeakerConfigForShareset(self: *Self) !void {
 
 fn updateOutputDevice(self: *Self) !void {
     if (!AK.SoundEngine.isInitialized()) {
-        self.initSettingsChanged();
+        try self.initSettingsChanged();
     }
 
     var new_settings: AK.AkOutputSettings = .{};
@@ -245,7 +311,21 @@ fn getDefaultAudioSharesetId(self: *Self) !u32 {
     return self.default_audio_device_shareset_id.?;
 }
 
-fn initSettingsChanged(self: *Self) void {
+fn initAudioSettings(self: *Self) !void {
+    const global_context = AK.SoundEngine.getGlobalPluginContext() orelse return error.NoGlobalPluginContext;
+
+    const settings = try global_context.getInitSettings(self.allocator) orelse return error.NoInitSettings;
+    defer settings.deinit(self.allocator);
+
+    const platform_settings = global_context.getPlatformInitSettings() orelse return error.NoPlatformInitSettings;
+
+    self.active_frame_size_index = std.mem.indexOfScalar(u32, FrameSizeValues, settings.num_samples_per_frame) orelse 0;
+    self.active_refill_in_voice_index = std.mem.indexOfScalar(u16, RefillInVoiceValues, platform_settings.num_refills_in_voice) orelse 0;
+    self.active_range_check_limit_index = std.mem.indexOfScalar(f32, RangeCheckValues, settings.debug_out_of_range_limit) orelse 0;
+    self.use_range_check = settings.debug_out_of_range_check_enabled;
+}
+
+fn initSettingsChanged(self: *Self) !void {
     _ = self;
 }
 
@@ -308,4 +388,64 @@ const DefaultSpeakerConfig: []const AK.AkChannelConfig = switch (AK.platform) {
 
 comptime {
     std.debug.assert(DefaultSpeakerConfigsName.len == DefaultSpeakerConfig.len);
+}
+
+const FrameSizeNames: []const [:0]const u8 = &.{
+    "128",
+    "256",
+    "512",
+    "1024",
+    "2048",
+};
+
+const FrameSizeValues: []const u32 = &.{
+    128,
+    256,
+    512,
+    1024,
+    2048,
+};
+
+comptime {
+    std.debug.assert(FrameSizeNames.len == FrameSizeValues.len);
+}
+
+const RefillInVoiceNames: []const [:0]const u8 = &.{
+    "2",
+    "3",
+    "4",
+    "8",
+    "16",
+    "32",
+};
+
+const RefillInVoiceValues: []const u16 = &.{
+    2,
+    3,
+    4,
+    8,
+    16,
+    32,
+};
+
+comptime {
+    std.debug.assert(RefillInVoiceNames.len == RefillInVoiceValues.len);
+}
+
+const RangeCheckNames: []const [:0]const u8 = &.{
+    "+6dB",
+    "+12dB",
+    "+24dB",
+    "+48dB",
+};
+
+const RangeCheckValues: []const f32 = &.{
+    2.0,
+    4.0,
+    16.0,
+    256.0,
+};
+
+comptime {
+    std.debug.assert(RangeCheckNames.len == RangeCheckValues.len);
 }

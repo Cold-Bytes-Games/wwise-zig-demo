@@ -23,6 +23,7 @@ default_audio_device_shareset_id: ?u32 = null,
 spatial_audio_shareset_id: ?u32 = null,
 spatial_audio_available: bool = false,
 spatial_audio_requested: bool = false,
+num_job_workers: u32 = 0,
 demo_state: *root.DemoState = undefined,
 
 const Self = @This();
@@ -48,6 +49,10 @@ pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoSta
     self.active_channel_index = indexOfChannelConfig(DefaultSpeakerConfig, self.active_channel_config) orelse 0;
 
     try self.initAudioSettings();
+
+    if (AK.JobWorkerMgr != void) {
+        self.num_job_workers = @intCast(demo_state.wwise_context.init_settings.settings_job_manager.max_active_workers[AK.AkJobType_AudioProcessing]);
+    }
 }
 
 pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
@@ -62,7 +67,6 @@ pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
 }
 
 pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
-    _ = demo_state;
     if (zgui.begin("Options", .{ .popen = &self.is_visible, .flags = .{ .always_auto_resize = true } })) {
         if (zgui.beginCombo("Device", .{ .preview_value = self.device_names.items[self.active_device_index] })) {
             for (self.device_names.items, 0..) |device_name, index| {
@@ -171,6 +175,19 @@ pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
 
         if (zgui.checkbox("Range Check", .{ .v = &self.use_range_check })) {
             try self.initSettingsChanged();
+        }
+
+        if (AK.JobWorkerMgr != void) {
+            if (zgui.sliderScalar("Job Workers", u32, .{ .v = &self.num_job_workers, .min = 0, .max = 8 })) {
+                if (demo_state.wwise_context.job_worker_settings.num_worker_threads > 0 and self.num_job_workers > 0) {
+                    for (0..AK.AK_NUM_JOB_TYPES) |index| {
+                        demo_state.wwise_context.init_settings.settings_job_manager.max_active_workers[index] = self.num_job_workers;
+                        try AK.SoundEngine.setJobMgrMaxActiveWorkers(@truncate(index), self.num_job_workers);
+                    }
+                } else {
+                    try self.initSettingsChanged();
+                }
+            }
         }
 
         zgui.end();

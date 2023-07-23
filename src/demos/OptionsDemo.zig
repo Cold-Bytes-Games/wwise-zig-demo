@@ -13,12 +13,8 @@ active_panning_rule: AK.AkPanningRule = .speakers,
 active_channel_config: AK.AkChannelConfig = .{},
 active_device_index: usize = 0,
 active_channel_index: usize = 0,
-active_frame_size_index: usize = 0,
-active_refill_in_voice_index: usize = 0,
-active_range_check_limit_index: usize = 0,
 active_memory_limit_index: usize = 0,
 active_memory_debug_level_index: usize = 0,
-use_range_check: bool = false,
 device_ids: std.ArrayListUnmanaged(DeviceId) = .{},
 device_names: std.ArrayListUnmanaged([:0]const u8) = .{},
 default_audio_device_shareset_id: ?u32 = null,
@@ -26,6 +22,7 @@ spatial_audio_shareset_id: ?u32 = null,
 spatial_audio_available: bool = false,
 spatial_audio_requested: bool = false,
 num_job_workers: u32 = 0,
+init_settings: InitSettings = .{},
 platform_settings: PlatformSettings = .{},
 
 const Self = @This();
@@ -49,7 +46,7 @@ pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoSta
     self.active_channel_config = AK.SoundEngine.getSpeakerConfiguration(0);
     self.active_channel_index = indexOfChannelConfig(DefaultSpeakerConfig, self.active_channel_config) orelse 0;
 
-    try self.initAudioSettings();
+    try self.init_settings.init(&demo_state.wwise_context.init_settings);
     try self.initMemorySettings(demo_state);
 
     if (AK.JobWorkerMgr != void) {
@@ -126,60 +123,7 @@ pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
             zgui.endCombo();
         }
 
-        if (zgui.beginCombo("Frame Size", .{ .preview_value = FrameSizes[self.active_frame_size_index].name })) {
-            for (0..FrameSizes.len) |index| {
-                const is_selected = self.active_frame_size_index == index;
-
-                if (zgui.selectable(FrameSizes[index].name, .{ .selected = is_selected })) {
-                    self.active_frame_size_index = index;
-                    try self.initSettingsChanged(demo_state);
-                }
-
-                if (is_selected) {
-                    zgui.setItemDefaultFocus();
-                }
-            }
-
-            zgui.endCombo();
-        }
-
-        if (zgui.beginCombo("Refill Buffers:", .{ .preview_value = RefillInVoices[self.active_refill_in_voice_index].name })) {
-            for (0..RefillInVoices.len) |index| {
-                const is_selected = self.active_range_check_limit_index == index;
-
-                if (zgui.selectable(RefillInVoices[index].name, .{ .selected = is_selected })) {
-                    self.active_refill_in_voice_index = index;
-                    try self.initSettingsChanged(demo_state);
-                }
-
-                if (is_selected) {
-                    zgui.setItemDefaultFocus();
-                }
-            }
-
-            zgui.endCombo();
-        }
-
-        if (zgui.beginCombo("Range Check Limit:", .{ .preview_value = RangeChecks[self.active_range_check_limit_index].name })) {
-            for (0..RangeChecks.len) |index| {
-                const is_selected = self.active_range_check_limit_index == index;
-
-                if (zgui.selectable(RangeChecks[index].name, .{ .selected = is_selected })) {
-                    self.active_range_check_limit_index = index;
-                    try self.initSettingsChanged(demo_state);
-                }
-
-                if (is_selected) {
-                    zgui.setItemDefaultFocus();
-                }
-            }
-
-            zgui.endCombo();
-        }
-
-        if (zgui.checkbox("Range Check", .{ .v = &self.use_range_check })) {
-            try self.initSettingsChanged(demo_state);
-        }
+        try self.init_settings.onUI(self, demo_state, initSettingsChanged);
 
         if (AK.JobWorkerMgr != void) {
             if (zgui.sliderScalar("Job Workers", u32, .{ .v = &self.num_job_workers, .min = 0, .max = 8 })) {
@@ -366,20 +310,6 @@ fn getDefaultAudioSharesetId(self: *Self) !u32 {
     return self.default_audio_device_shareset_id.?;
 }
 
-fn initAudioSettings(self: *Self) !void {
-    const global_context = AK.SoundEngine.getGlobalPluginContext() orelse return error.NoGlobalPluginContext;
-
-    const settings = try global_context.getInitSettings(self.allocator) orelse return error.NoInitSettings;
-    defer settings.deinit(self.allocator);
-
-    const platform_settings = global_context.getPlatformInitSettings() orelse return error.NoPlatformInitSettings;
-
-    self.active_frame_size_index = indexOfNamedValue(settings.num_samples_per_frame, FrameSizes) orelse 0;
-    self.active_refill_in_voice_index = indexOfNamedValue(platform_settings.num_refills_in_voice, RefillInVoices) orelse 0;
-    self.active_range_check_limit_index = indexOfNamedValue(settings.debug_out_of_range_limit, RangeChecks) orelse 0;
-    self.use_range_check = settings.debug_out_of_range_check_enabled;
-}
-
 fn initMemorySettings(self: *Self, demo_state: *root.DemoState) !void {
     const memory_settings = demo_state.wwise_context.memory_settings;
     self.active_memory_limit_index = indexOfNamedValue(memory_settings.mem_allocation_size_limit, MemoryLimits) orelse 0;
@@ -395,12 +325,7 @@ fn initSettingsChanged(self: *Self, demo_state: *root.DemoState) !void {
 
     try self.fillOutputSetting(&init_settings.settings_main_output);
 
-    init_settings.num_samples_per_frame = FrameSizes[self.active_frame_size_index].value;
-    init_settings.debug_out_of_range_check_enabled = self.use_range_check;
-    init_settings.debug_out_of_range_limit = RangeChecks[self.active_range_check_limit_index].value;
-
-    platform_init_settings.num_refills_in_voice = RefillInVoices[self.active_refill_in_voice_index].value;
-
+    try self.init_settings.fillSettings(init_settings);
     try self.platform_settings.fillSettings(platform_init_settings);
 
     if (AK.JobWorkerMgr != void) {
@@ -499,30 +424,6 @@ fn indexOfNamedValue(value: anytype, list: []const NamedValue(@TypeOf(value))) ?
     return null;
 }
 
-const FrameSizes: []const NamedValue(u32) = &.{
-    .{ .name = "128", .value = 128 },
-    .{ .name = "256", .value = 256 },
-    .{ .name = "512", .value = 512 },
-    .{ .name = "1024", .value = 1024 },
-    .{ .name = "2048", .value = 2048 },
-};
-
-const RefillInVoices: []const NamedValue(u16) = &.{
-    .{ .name = "2", .value = 2 },
-    .{ .name = "3", .value = 3 },
-    .{ .name = "4", .value = 4 },
-    .{ .name = "8", .value = 8 },
-    .{ .name = "16", .value = 16 },
-    .{ .name = "32", .value = 32 },
-};
-
-const RangeChecks: []const NamedValue(f32) = &.{
-    .{ .name = "+6dB", .value = 2.0 },
-    .{ .name = "+12dB", .value = 4.0 },
-    .{ .name = "+24dB", .value = 16.0 },
-    .{ .name = "+48dB", .value = 256.0 },
-};
-
 const MemoryLimits: []const NamedValue(u64) = &.{
     .{ .name = "Disabled", .value = 0 },
     .{ .name = "32 MB", .value = 32 * 1024 * 1024 },
@@ -545,9 +446,9 @@ fn NamedValueInstance(comptime value_list: anytype) type {
     };
 }
 
-fn PlatformSettingsInterface(comptime WrapperType: type) type {
+fn SettingsInterface(comptime WrapperType: type, comptime SettingsType: type) type {
     return struct {
-        pub fn init(self: *WrapperType, settings: *AK.AkPlatformInitSettings) !void {
+        pub fn init(self: *WrapperType, settings: *SettingsType) !void {
             inline for (std.meta.fields(WrapperType)) |field| {
                 switch (@typeInfo(field.type)) {
                     .Bool,
@@ -608,7 +509,7 @@ fn PlatformSettingsInterface(comptime WrapperType: type) type {
             }
         }
 
-        pub fn fillSettings(self: *WrapperType, settings: *AK.AkPlatformInitSettings) !void {
+        pub fn fillSettings(self: *WrapperType, settings: *SettingsType) !void {
             inline for (std.meta.fields(WrapperType)) |field| {
                 switch (@typeInfo(field.type)) {
                     .Bool,
@@ -629,12 +530,52 @@ fn PlatformSettingsInterface(comptime WrapperType: type) type {
     };
 }
 
+const InitSettings = struct {
+    num_samples_per_frame: NamedValueInstance(FrameSizes) = .{},
+    debug_out_of_range_limit: NamedValueInstance(RangeChecks) = .{},
+    debug_out_of_range_check_enabled: bool = false,
+
+    pub const DisplayNames = .{
+        .num_samples_per_frame = "Frame Size",
+        .debug_out_of_range_limit = "Range Check Limit",
+        .debug_out_of_range_check_enabled = "Range Check",
+    };
+
+    pub const FrameSizes: []const NamedValue(u32) = &.{
+        .{ .name = "128", .value = 128 },
+        .{ .name = "256", .value = 256 },
+        .{ .name = "512", .value = 512 },
+        .{ .name = "1024", .value = 1024 },
+        .{ .name = "2048", .value = 2048 },
+    };
+
+    pub const RangeChecks: []const NamedValue(f32) = &.{
+        .{ .name = "+6dB", .value = 2.0 },
+        .{ .name = "+12dB", .value = 4.0 },
+        .{ .name = "+24dB", .value = 16.0 },
+        .{ .name = "+48dB", .value = 256.0 },
+    };
+
+    pub usingnamespace SettingsInterface(InitSettings, AK.AkInitSettings);
+};
+
+const RefillBuffers: []const NamedValue(u16) = &.{
+    .{ .name = "2", .value = 2 },
+    .{ .name = "3", .value = 3 },
+    .{ .name = "4", .value = 4 },
+    .{ .name = "8", .value = 8 },
+    .{ .name = "16", .value = 16 },
+    .{ .name = "32", .value = 32 },
+};
+const RefillBuffersDisplayName = "RefillBuffers";
+
 pub const SampleRates: []const NamedValue(u32) = &.{
     .{ .name = "24000", .value = 24000 },
     .{ .name = "32000", .value = 32000 },
     .{ .name = "44100", .value = 44100 },
     .{ .name = "48000", .value = 48000 },
 };
+const SampleRateDisplayName = "Sample Rate";
 
 const PlatformSettings = switch (AK.platform) {
     .windows => WindowsPlatformSettings,
@@ -646,12 +587,14 @@ const PlatformSettings = switch (AK.platform) {
 };
 
 const WindowsPlatformSettings = struct {
+    num_refills_in_voice: NamedValueInstance(RefillBuffers) = .{},
     sample_rate: NamedValueInstance(SampleRates) = .{},
     enable_avx_support: bool = false,
     max_system_audio_objects: NamedValueInstance(MaxSystemAudioObjects) = .{},
 
     pub const DisplayNames = .{
-        .sample_rate = "Sample Rate",
+        .num_refills_in_voice = RefillBuffersDisplayName,
+        .sample_rate = SampleRateDisplayName,
         .enable_avx_support = "Use AVX",
         .max_system_audio_objects = "Max System Audio Objects",
     };
@@ -662,16 +605,18 @@ const WindowsPlatformSettings = struct {
         .{ .name = "30", .value = 0 },
     };
 
-    pub usingnamespace PlatformSettingsInterface(WindowsPlatformSettings);
+    pub usingnamespace SettingsInterface(WindowsPlatformSettings, AK.AkPlatformInitSettings);
 };
 
 const LinuxPlatformSettings = struct {
+    num_refills_in_voice: NamedValueInstance(RefillBuffers) = .{},
     sample_rate: NamedValueInstance(SampleRates) = .{},
     sample_type: NamedValueInstance(SampleFormats) = .{},
     audio_api: NamedValueInstance(AudioAPIs),
 
     pub const DisplayNames = .{
-        .sample_rate = "Sample Rate",
+        .num_refills_in_voice = RefillBuffersDisplayName,
+        .sample_rate = SampleRateDisplayName,
         .sample_type = "Sample Format",
         .audio_api = "Audio API",
     };
@@ -687,32 +632,37 @@ const LinuxPlatformSettings = struct {
         .{ .name = "ALSA", .value = AK.AkAudioAPILinux{ .alsa = true } },
     };
 
-    pub usingnamespace PlatformSettingsInterface(LinuxPlatformSettings);
+    pub usingnamespace SettingsInterface(LinuxPlatformSettings, AK.AkPlatformInitSettings);
 };
 
 const MacPlatformSettings = struct {
+    num_refills_in_voice: NamedValueInstance(RefillBuffers) = .{},
     sample_rate: NamedValueInstance(SampleRates) = .{},
 
     pub const DisplayNames = .{
-        .sample_rate = "Sample Rate",
+        .num_refills_in_voice = RefillBuffersDisplayName,
+        .sample_rate = SampleRateDisplayName,
     };
 
-    pub usingnamespace PlatformSettingsInterface(MacPlatformSettings);
+    pub usingnamespace SettingsInterface(MacPlatformSettings, AK.AkPlatformInitSettings);
 };
 
 const iOSPlatformSettings = struct {
+    num_refills_in_voice: NamedValueInstance(RefillBuffers) = .{},
     sample_rate: NamedValueInstance(SampleRates) = .{},
     verbose_system_output: bool = false,
 
     pub const DisplayNames = .{
-        .sample_rate = "Sample Rate",
+        .num_refills_in_voice = RefillBuffersDisplayName,
+        .sample_rate = SampleRateDisplayName,
         .verbose_system_output = "Verbose Debug Output",
     };
 
-    pub usingnamespace PlatformSettingsInterface(iOSPlatformSettings);
+    pub usingnamespace SettingsInterface(iOSPlatformSettings, AK.AkPlatformInitSettings);
 };
 
 const AndroidPlatformSettings = struct {
+    num_refills_in_voice: NamedValueInstance(RefillBuffers) = .{},
     sample_rate: NamedValueInstance(SampleRates) = .{},
     audio_api: NamedValueInstance(AudioAPIs) = .{},
     round_frame_size_to_hw_size: bool = false,
@@ -720,7 +670,8 @@ const AndroidPlatformSettings = struct {
     enable_low_latency: bool = false,
 
     pub const DisplayNames = .{
-        .sample_rate = "Sample Rate",
+        .num_refills_in_voice = RefillBuffersDisplayName,
+        .sample_rate = SampleRateDisplayName,
         .audio_api = "Audio API",
         .round_frame_size_to_hw_size = "Round Frame To HW Size",
         .verbose_sink = "Verbose Debug Logcat",
@@ -733,5 +684,5 @@ const AndroidPlatformSettings = struct {
         .{ .name = "OpenSL ES", .value = AK.AkAudioAPIAndroid{ .opensl_es = true } },
     };
 
-    pub usingnamespace PlatformSettingsInterface(AndroidPlatformSettings);
+    pub usingnamespace SettingsInterface(AndroidPlatformSettings, AK.AkPlatformInitSettings);
 };

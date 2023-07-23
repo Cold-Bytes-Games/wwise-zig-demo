@@ -26,7 +26,7 @@ spatial_audio_shareset_id: ?u32 = null,
 spatial_audio_available: bool = false,
 spatial_audio_requested: bool = false,
 num_job_workers: u32 = 0,
-platform_settings: WindowsPlatformSettings = .{},
+platform_settings: PlatformSettings = .{},
 
 const Self = @This();
 
@@ -545,10 +545,10 @@ fn NamedValueInstance(comptime value_list: anytype) type {
     };
 }
 
-fn PlatformSettingsInterface(comptime T: type) type {
+fn PlatformSettingsInterface(comptime WrapperType: type) type {
     return struct {
-        pub fn init(self: *T, settings: *AK.AkPlatformInitSettings) !void {
-            inline for (std.meta.fields(T)) |field| {
+        pub fn init(self: *WrapperType, settings: *AK.AkPlatformInitSettings) !void {
+            inline for (std.meta.fields(WrapperType)) |field| {
                 switch (@typeInfo(field.type)) {
                     .Bool,
                     .Int,
@@ -566,11 +566,11 @@ fn PlatformSettingsInterface(comptime T: type) type {
             }
         }
 
-        pub fn onUI(self: *T, demo: *Self, demo_state: *root.DemoState, callback: *const fn (self: *Self, demo_state: *root.DemoState) anyerror!void) !void {
-            inline for (std.meta.fields(T)) |field| {
+        pub fn onUI(self: *WrapperType, demo: *Self, demo_state: *root.DemoState, callback: *const fn (self: *Self, demo_state: *root.DemoState) anyerror!void) !void {
+            inline for (std.meta.fields(WrapperType)) |field| {
                 switch (@typeInfo(field.type)) {
                     .Bool => {
-                        if (zgui.checkbox(@field(T.DisplayNames, field.name), .{ .v = &@field(self, field.name) })) {
+                        if (zgui.checkbox(@field(WrapperType.DisplayNames, field.name), .{ .v = &@field(self, field.name) })) {
                             try callback(demo, demo_state);
                         }
                     },
@@ -579,14 +579,14 @@ fn PlatformSettingsInterface(comptime T: type) type {
                     .ComptimeInt,
                     .Float,
                     => {
-                        if (zgui.sliderScalar(@field(T.DisplayNames, field.name), field.type, .{ .v = &@field(self, field.name) })) {
+                        if (zgui.sliderScalar(@field(WrapperType.DisplayNames, field.name), field.type, .{ .v = &@field(self, field.name) })) {
                             try callback(demo, demo_state);
                         }
                     },
                     .Struct => {
                         const NamedValues = @field(field.type, "NamedValues");
 
-                        if (zgui.beginCombo(@field(T.DisplayNames, field.name), .{ .preview_value = NamedValues[@field(self, field.name).selected_index].name })) {
+                        if (zgui.beginCombo(@field(WrapperType.DisplayNames, field.name), .{ .preview_value = NamedValues[@field(self, field.name).selected_index].name })) {
                             for (0..NamedValues.len) |index| {
                                 const is_selected = @field(self, field.name).selected_index == index;
 
@@ -608,8 +608,8 @@ fn PlatformSettingsInterface(comptime T: type) type {
             }
         }
 
-        pub fn fillSettings(self: *T, settings: *AK.AkPlatformInitSettings) !void {
-            inline for (std.meta.fields(T)) |field| {
+        pub fn fillSettings(self: *WrapperType, settings: *AK.AkPlatformInitSettings) !void {
+            inline for (std.meta.fields(WrapperType)) |field| {
                 switch (@typeInfo(field.type)) {
                     .Bool,
                     .Int,
@@ -629,6 +629,22 @@ fn PlatformSettingsInterface(comptime T: type) type {
     };
 }
 
+pub const SampleRates: []const NamedValue(u32) = &.{
+    .{ .name = "24000", .value = 24000 },
+    .{ .name = "32000", .value = 32000 },
+    .{ .name = "44100", .value = 44100 },
+    .{ .name = "48000", .value = 48000 },
+};
+
+const PlatformSettings = switch (AK.platform) {
+    .windows => WindowsPlatformSettings,
+    .linux => LinuxPlatformSettings,
+    .macos => MacPlatformSettings,
+    .android => AndroidPlatformSettings,
+    .ios, .tvos => iOSPlatformSettings,
+    else => @compileError("Add Platform Settings mapping for your platform"),
+};
+
 const WindowsPlatformSettings = struct {
     sample_rate: NamedValueInstance(SampleRates) = .{},
     enable_avx_support: bool = false,
@@ -640,13 +656,6 @@ const WindowsPlatformSettings = struct {
         .max_system_audio_objects = "Max System Audio Objects",
     };
 
-    pub const SampleRates: []const NamedValue(u32) = &.{
-        .{ .name = "24000", .value = 24000 },
-        .{ .name = "32000", .value = 32000 },
-        .{ .name = "44100", .value = 44100 },
-        .{ .name = "48000", .value = 48000 },
-    };
-
     pub const MaxSystemAudioObjects: []const NamedValue(u32) = &.{
         .{ .name = "0", .value = 0 },
         .{ .name = "5", .value = 0 },
@@ -654,4 +663,75 @@ const WindowsPlatformSettings = struct {
     };
 
     pub usingnamespace PlatformSettingsInterface(WindowsPlatformSettings);
+};
+
+const LinuxPlatformSettings = struct {
+    sample_rate: NamedValueInstance(SampleRates) = .{},
+    sample_type: NamedValueInstance(SampleFormats) = .{},
+    audio_api: NamedValueInstance(AudioAPIs),
+
+    pub const DisplayNames = .{
+        .sample_rate = "Sample Rate",
+        .sample_type = "Sample Format",
+        .audio_api = "Audio API",
+    };
+
+    pub const SampleFormats: []const NamedValue(AK.AkDataTypeID) = &.{
+        .{ .name = "16-bit signed integer", .value = AK.AK_INT },
+        .{ .name = "32-bit floating point", .value = AK.AK_FLOAT },
+    };
+
+    pub const AudioAPIs: []const NamedValue(AK.AkAudioAPILinux) = &.{
+        .{ .name = "Automatic", .value = AK.AkAudioAPILinux.Default },
+        .{ .name = "PulseAudio", .value = AK.AkAudioAPILinux{ .pulse_audio = true } },
+        .{ .name = "ALSA", .value = AK.AkAudioAPILinux{ .alsa = true } },
+    };
+
+    pub usingnamespace PlatformSettingsInterface(LinuxPlatformSettings);
+};
+
+const MacPlatformSettings = struct {
+    sample_rate: NamedValueInstance(SampleRates) = .{},
+
+    pub const DisplayNames = .{
+        .sample_rate = "Sample Rate",
+    };
+
+    pub usingnamespace PlatformSettingsInterface(MacPlatformSettings);
+};
+
+const iOSPlatformSettings = struct {
+    sample_rate: NamedValueInstance(SampleRates) = .{},
+    verbose_system_output: bool = false,
+
+    pub const DisplayNames = .{
+        .sample_rate = "Sample Rate",
+        .verbose_system_output = "Verbose Debug Output",
+    };
+
+    pub usingnamespace PlatformSettingsInterface(iOSPlatformSettings);
+};
+
+const AndroidPlatformSettings = struct {
+    sample_rate: NamedValueInstance(SampleRates) = .{},
+    audio_api: NamedValueInstance(AudioAPIs) = .{},
+    round_frame_size_to_hw_size: bool = false,
+    verbose_sink: bool = false,
+    enable_low_latency: bool = false,
+
+    pub const DisplayNames = .{
+        .sample_rate = "Sample Rate",
+        .audio_api = "Audio API",
+        .round_frame_size_to_hw_size = "Round Frame To HW Size",
+        .verbose_sink = "Verbose Debug Logcat",
+        .enable_low_latency = "Use Low Latency Mode",
+    };
+
+    pub const AudioAPIs: []const NamedValue(AK.AkAudioAPIAndroid) = &.{
+        .{ .name = "Automatic", .value = AK.AkAudioAPIAndroid.Default },
+        .{ .name = "AAudio", .value = AK.AkAudioAPIAndroid{ .aaudio = true } },
+        .{ .name = "OpenSL ES", .value = AK.AkAudioAPIAndroid{ .opensl_es = true } },
+    };
+
+    pub usingnamespace PlatformSettingsInterface(AndroidPlatformSettings);
 };

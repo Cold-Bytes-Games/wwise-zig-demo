@@ -26,7 +26,7 @@ spatial_audio_shareset_id: ?u32 = null,
 spatial_audio_available: bool = false,
 spatial_audio_requested: bool = false,
 num_job_workers: u32 = 0,
-demo_state: *root.DemoState = undefined,
+platform_settings: WindowsPlatformSettings = .{},
 
 const Self = @This();
 
@@ -39,7 +39,6 @@ pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoSta
     self.* = .{
         .allocator = allocator,
         .string_area = std.heap.ArenaAllocator.init(allocator),
-        .demo_state = demo_state,
     };
 
     self.string_area_allocator = self.string_area.allocator();
@@ -56,6 +55,8 @@ pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoSta
     if (AK.JobWorkerMgr != void) {
         self.num_job_workers = @intCast(demo_state.wwise_context.init_settings.settings_job_manager.max_active_workers[AK.AkJobType_AudioProcessing]);
     }
+
+    try self.platform_settings.init(&demo_state.wwise_context.platform_init_settings);
 }
 
 pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
@@ -224,6 +225,8 @@ pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
             }
             zgui.endCombo();
         }
+
+        try self.platform_settings.onUI(self, demo_state, initSettingsChanged);
 
         zgui.end();
     }
@@ -398,6 +401,8 @@ fn initSettingsChanged(self: *Self, demo_state: *root.DemoState) !void {
 
     platform_init_settings.num_refills_in_voice = RefillInVoices[self.active_refill_in_voice_index].value;
 
+    try self.platform_settings.fillSettings(platform_init_settings);
+
     if (AK.JobWorkerMgr != void) {
         const job_worker_mgr_settings = &demo_state.wwise_context.job_worker_settings;
         job_worker_mgr_settings.num_worker_threads = if (self.num_job_workers > 0) root.MaxThreadWorkers else 0;
@@ -530,4 +535,123 @@ const MemoryDebugLevels: []const NamedValue(u32) = &.{
     .{ .name = "Leaks", .value = 1 },
     .{ .name = "Stomp Allocator", .value = 2 },
     .{ .name = "Stomp Allocator and Leaks", .value = 3 },
+};
+
+fn NamedValueInstance(comptime value_list: anytype) type {
+    return struct {
+        selected_index: usize = 0,
+
+        pub const NamedValues = value_list;
+    };
+}
+
+fn PlatformSettingsInterface(comptime T: type) type {
+    return struct {
+        pub fn init(self: *T, settings: *AK.AkPlatformInitSettings) !void {
+            inline for (std.meta.fields(T)) |field| {
+                switch (@typeInfo(field.type)) {
+                    .Bool,
+                    .Int,
+                    .ComptimeFloat,
+                    .ComptimeInt,
+                    .Float,
+                    => {
+                        @field(self, field.name) = @field(settings, field.name);
+                    },
+                    .Struct => {
+                        @field(self, field.name).selected_index = indexOfNamedValue(@field(settings, field.name), @field(field.type, "NamedValues")) orelse 0;
+                    },
+                    else => @compileError("Not supported"),
+                }
+            }
+        }
+
+        pub fn onUI(self: *T, demo: *Self, demo_state: *root.DemoState, callback: *const fn (self: *Self, demo_state: *root.DemoState) anyerror!void) !void {
+            inline for (std.meta.fields(T)) |field| {
+                switch (@typeInfo(field.type)) {
+                    .Bool => {
+                        if (zgui.checkbox(@field(T.DisplayNames, field.name), .{ .v = &@field(self, field.name) })) {
+                            try callback(demo, demo_state);
+                        }
+                    },
+                    .Int,
+                    .ComptimeFloat,
+                    .ComptimeInt,
+                    .Float,
+                    => {
+                        if (zgui.sliderScalar(@field(T.DisplayNames, field.name), field.type, .{ .v = &@field(self, field.name) })) {
+                            try callback(demo, demo_state);
+                        }
+                    },
+                    .Struct => {
+                        const NamedValues = @field(field.type, "NamedValues");
+
+                        if (zgui.beginCombo(@field(T.DisplayNames, field.name), .{ .preview_value = NamedValues[@field(self, field.name).selected_index].name })) {
+                            for (0..NamedValues.len) |index| {
+                                const is_selected = @field(self, field.name).selected_index == index;
+
+                                if (zgui.selectable(NamedValues[index].name, .{ .selected = is_selected })) {
+                                    @field(self, field.name).selected_index = index;
+                                    try callback(demo, demo_state);
+                                }
+
+                                if (is_selected) {
+                                    zgui.setItemDefaultFocus();
+                                }
+                            }
+
+                            zgui.endCombo();
+                        }
+                    },
+                    else => @compileError("Not supported"),
+                }
+            }
+        }
+
+        pub fn fillSettings(self: *T, settings: *AK.AkPlatformInitSettings) !void {
+            inline for (std.meta.fields(T)) |field| {
+                switch (@typeInfo(field.type)) {
+                    .Bool,
+                    .Int,
+                    .ComptimeFloat,
+                    .ComptimeInt,
+                    .Float,
+                    => {
+                        @field(settings, field.name) = @field(self, field.name);
+                    },
+                    .Struct => {
+                        @field(settings, field.name) = @field(field.type, "NamedValues")[@field(self, field.name).selected_index].value;
+                    },
+                    else => @compileError("Not supported"),
+                }
+            }
+        }
+    };
+}
+
+const WindowsPlatformSettings = struct {
+    sample_rate: NamedValueInstance(SampleRates) = .{},
+    enable_avx_support: bool = false,
+    max_system_audio_objects: NamedValueInstance(MaxSystemAudioObjects) = .{},
+
+    pub const DisplayNames = .{
+        .sample_rate = "Sample Rate",
+        .enable_avx_support = "Use AVX",
+        .max_system_audio_objects = "Max System Audio Objects",
+    };
+
+    pub const SampleRates: []const NamedValue(u32) = &.{
+        .{ .name = "24000", .value = 24000 },
+        .{ .name = "32000", .value = 32000 },
+        .{ .name = "44100", .value = 44100 },
+        .{ .name = "48000", .value = 48000 },
+    };
+
+    pub const MaxSystemAudioObjects: []const NamedValue(u32) = &.{
+        .{ .name = "0", .value = 0 },
+        .{ .name = "5", .value = 0 },
+        .{ .name = "30", .value = 0 },
+    };
+
+    pub usingnamespace PlatformSettingsInterface(WindowsPlatformSettings);
 };

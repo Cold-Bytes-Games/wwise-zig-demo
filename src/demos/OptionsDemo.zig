@@ -16,6 +16,8 @@ active_channel_index: usize = 0,
 active_frame_size_index: usize = 0,
 active_refill_in_voice_index: usize = 0,
 active_range_check_limit_index: usize = 0,
+active_memory_limit_index: usize = 0,
+active_memory_debug_level_index: usize = 0,
 use_range_check: bool = false,
 device_ids: std.ArrayListUnmanaged(DeviceId) = .{},
 device_names: std.ArrayListUnmanaged([:0]const u8) = .{},
@@ -49,6 +51,7 @@ pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoSta
     self.active_channel_index = indexOfChannelConfig(DefaultSpeakerConfig, self.active_channel_config) orelse 0;
 
     try self.initAudioSettings();
+    try self.initMemorySettings(demo_state);
 
     if (AK.JobWorkerMgr != void) {
         self.num_job_workers = @intCast(demo_state.wwise_context.init_settings.settings_job_manager.max_active_workers[AK.AkJobType_AudioProcessing]);
@@ -75,7 +78,7 @@ pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
                 if (zgui.selectable(device_name, .{ .selected = is_selected })) {
                     self.active_device_index = index;
                     try self.updateSpeakerConfigForShareset();
-                    try self.updateOutputDevice();
+                    try self.updateOutputDevice(demo_state);
                 }
             }
 
@@ -93,7 +96,7 @@ pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
 
                 if (zgui.selectable(field_name_cstr, .{ .selected = is_selected })) {
                     self.active_panning_rule = @enumFromInt(panning_field.value);
-                    try self.updateOutputDevice();
+                    try self.updateOutputDevice(demo_state);
                 }
 
                 if (is_selected) {
@@ -111,7 +114,7 @@ pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
                 if (zgui.selectable(DefaultSpeakerConfigsName[index], .{ .selected = is_selected })) {
                     self.active_channel_index = index;
                     try self.updateSpeakerConfigForShareset();
-                    try self.updateOutputDevice();
+                    try self.updateOutputDevice(demo_state);
                 }
 
                 if (is_selected) {
@@ -122,13 +125,13 @@ pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
             zgui.endCombo();
         }
 
-        if (zgui.beginCombo("Frame Size", .{ .preview_value = FrameSizeNames[self.active_frame_size_index] })) {
-            for (0..FrameSizeNames.len) |index| {
+        if (zgui.beginCombo("Frame Size", .{ .preview_value = FrameSizes[self.active_frame_size_index].name })) {
+            for (0..FrameSizes.len) |index| {
                 const is_selected = self.active_frame_size_index == index;
 
-                if (zgui.selectable(FrameSizeNames[index], .{ .selected = is_selected })) {
+                if (zgui.selectable(FrameSizes[index].name, .{ .selected = is_selected })) {
                     self.active_frame_size_index = index;
-                    try self.initSettingsChanged();
+                    try self.initSettingsChanged(demo_state);
                 }
 
                 if (is_selected) {
@@ -139,13 +142,13 @@ pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
             zgui.endCombo();
         }
 
-        if (zgui.beginCombo("Refill Buffers:", .{ .preview_value = RefillInVoiceNames[self.active_refill_in_voice_index] })) {
-            for (0..RefillInVoiceNames.len) |index| {
+        if (zgui.beginCombo("Refill Buffers:", .{ .preview_value = RefillInVoices[self.active_refill_in_voice_index].name })) {
+            for (0..RefillInVoices.len) |index| {
                 const is_selected = self.active_range_check_limit_index == index;
 
-                if (zgui.selectable(RefillInVoiceNames[index], .{ .selected = is_selected })) {
+                if (zgui.selectable(RefillInVoices[index].name, .{ .selected = is_selected })) {
                     self.active_refill_in_voice_index = index;
-                    try self.initSettingsChanged();
+                    try self.initSettingsChanged(demo_state);
                 }
 
                 if (is_selected) {
@@ -156,13 +159,13 @@ pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
             zgui.endCombo();
         }
 
-        if (zgui.beginCombo("Range Check Limit:", .{ .preview_value = RangeCheckNames[self.active_range_check_limit_index] })) {
-            for (0..RangeCheckNames.len) |index| {
+        if (zgui.beginCombo("Range Check Limit:", .{ .preview_value = RangeChecks[self.active_range_check_limit_index].name })) {
+            for (0..RangeChecks.len) |index| {
                 const is_selected = self.active_range_check_limit_index == index;
 
-                if (zgui.selectable(RangeCheckNames[index], .{ .selected = is_selected })) {
+                if (zgui.selectable(RangeChecks[index].name, .{ .selected = is_selected })) {
                     self.active_range_check_limit_index = index;
-                    try self.initSettingsChanged();
+                    try self.initSettingsChanged(demo_state);
                 }
 
                 if (is_selected) {
@@ -174,7 +177,7 @@ pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
         }
 
         if (zgui.checkbox("Range Check", .{ .v = &self.use_range_check })) {
-            try self.initSettingsChanged();
+            try self.initSettingsChanged(demo_state);
         }
 
         if (AK.JobWorkerMgr != void) {
@@ -185,9 +188,41 @@ pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
                         try AK.SoundEngine.setJobMgrMaxActiveWorkers(@truncate(index), self.num_job_workers);
                     }
                 } else {
-                    try self.initSettingsChanged();
+                    try self.initSettingsChanged(demo_state);
                 }
             }
+        }
+
+        if (zgui.beginCombo("Memory Limit", .{ .preview_value = MemoryLimits[self.active_memory_limit_index].name })) {
+            for (0..MemoryLimits.len) |index| {
+                const is_selected = self.active_memory_limit_index == index;
+
+                if (zgui.selectable(MemoryLimits[index].name, .{ .selected = is_selected })) {
+                    self.active_memory_limit_index = index;
+                    try self.initSettingsChanged(demo_state);
+                }
+
+                if (is_selected) {
+                    zgui.setItemDefaultFocus();
+                }
+            }
+            zgui.endCombo();
+        }
+
+        if (zgui.beginCombo("Memory Debug Option", .{ .preview_value = MemoryDebugLevels[self.active_memory_debug_level_index].name })) {
+            for (0..MemoryDebugLevels.len) |index| {
+                const is_selected = self.active_memory_debug_level_index == index;
+
+                if (zgui.selectable(MemoryDebugLevels[index].name, .{ .selected = is_selected })) {
+                    self.active_memory_debug_level_index = index;
+                    try self.initSettingsChanged(demo_state);
+                }
+
+                if (is_selected) {
+                    zgui.setItemDefaultFocus();
+                }
+            }
+            zgui.endCombo();
         }
 
         zgui.end();
@@ -278,9 +313,9 @@ fn updateSpeakerConfigForShareset(self: *Self) !void {
     }
 }
 
-fn updateOutputDevice(self: *Self) !void {
+fn updateOutputDevice(self: *Self, demo_state: *root.DemoState) !void {
     if (!AK.SoundEngine.isInitialized()) {
-        try self.initSettingsChanged();
+        try self.initSettingsChanged(demo_state);
     }
 
     var new_settings: AK.AkOutputSettings = .{};
@@ -336,14 +371,49 @@ fn initAudioSettings(self: *Self) !void {
 
     const platform_settings = global_context.getPlatformInitSettings() orelse return error.NoPlatformInitSettings;
 
-    self.active_frame_size_index = std.mem.indexOfScalar(u32, FrameSizeValues, settings.num_samples_per_frame) orelse 0;
-    self.active_refill_in_voice_index = std.mem.indexOfScalar(u16, RefillInVoiceValues, platform_settings.num_refills_in_voice) orelse 0;
-    self.active_range_check_limit_index = std.mem.indexOfScalar(f32, RangeCheckValues, settings.debug_out_of_range_limit) orelse 0;
+    self.active_frame_size_index = indexOfNamedValue(settings.num_samples_per_frame, FrameSizes) orelse 0;
+    self.active_refill_in_voice_index = indexOfNamedValue(platform_settings.num_refills_in_voice, RefillInVoices) orelse 0;
+    self.active_range_check_limit_index = indexOfNamedValue(settings.debug_out_of_range_limit, RangeChecks) orelse 0;
     self.use_range_check = settings.debug_out_of_range_check_enabled;
 }
 
-fn initSettingsChanged(self: *Self) !void {
-    _ = self;
+fn initMemorySettings(self: *Self, demo_state: *root.DemoState) !void {
+    const memory_settings = demo_state.wwise_context.memory_settings;
+    self.active_memory_limit_index = indexOfNamedValue(memory_settings.mem_allocation_size_limit, MemoryLimits) orelse 0;
+    self.active_memory_debug_level_index = indexOfNamedValue(memory_settings.memory_debug_level, MemoryDebugLevels) orelse 0;
+}
+
+fn initSettingsChanged(self: *Self, demo_state: *root.DemoState) !void {
+    try root.destroyWwise(self.allocator, demo_state);
+
+    const memory_settings = &demo_state.wwise_context.memory_settings;
+    const init_settings = &demo_state.wwise_context.init_settings;
+    const platform_init_settings = &demo_state.wwise_context.platform_init_settings;
+
+    try self.fillOutputSetting(&init_settings.settings_main_output);
+
+    init_settings.num_samples_per_frame = FrameSizes[self.active_frame_size_index].value;
+    init_settings.debug_out_of_range_check_enabled = self.use_range_check;
+    init_settings.debug_out_of_range_limit = RangeChecks[self.active_range_check_limit_index].value;
+
+    platform_init_settings.num_refills_in_voice = RefillInVoices[self.active_refill_in_voice_index].value;
+
+    if (AK.JobWorkerMgr != void) {
+        const job_worker_mgr_settings = &demo_state.wwise_context.job_worker_settings;
+        job_worker_mgr_settings.num_worker_threads = if (self.num_job_workers > 0) root.MaxThreadWorkers else 0;
+
+        var job_mgr_settings = job_worker_mgr_settings.getJobMgrSettings();
+        for (0..AK.AK_NUM_JOB_TYPES) |index| {
+            job_mgr_settings.max_active_workers[index] = self.num_job_workers;
+        }
+
+        init_settings.settings_job_manager = job_mgr_settings;
+    }
+
+    memory_settings.mem_allocation_size_limit = MemoryLimits[self.active_memory_limit_index].value;
+    memory_settings.memory_debug_level = MemoryDebugLevels[self.active_memory_debug_level_index].value;
+
+    try root.initWwise(self.allocator, demo_state);
 }
 
 fn indexOfChannelConfig(slice: []const AK.AkChannelConfig, value: AK.AkChannelConfig) ?usize {
@@ -407,62 +477,57 @@ comptime {
     std.debug.assert(DefaultSpeakerConfigsName.len == DefaultSpeakerConfig.len);
 }
 
-const FrameSizeNames: []const [:0]const u8 = &.{
-    "128",
-    "256",
-    "512",
-    "1024",
-    "2048",
-};
-
-const FrameSizeValues: []const u32 = &.{
-    128,
-    256,
-    512,
-    1024,
-    2048,
-};
-
-comptime {
-    std.debug.assert(FrameSizeNames.len == FrameSizeValues.len);
+fn NamedValue(comptime ValueType: type) type {
+    return struct {
+        name: [:0]const u8,
+        value: ValueType,
+    };
 }
 
-const RefillInVoiceNames: []const [:0]const u8 = &.{
-    "2",
-    "3",
-    "4",
-    "8",
-    "16",
-    "32",
-};
+fn indexOfNamedValue(value: anytype, list: []const NamedValue(@TypeOf(value))) ?usize {
+    for (0..list.len) |index| {
+        if (list[index].value == value) {
+            return index;
+        }
+    }
 
-const RefillInVoiceValues: []const u16 = &.{
-    2,
-    3,
-    4,
-    8,
-    16,
-    32,
-};
-
-comptime {
-    std.debug.assert(RefillInVoiceNames.len == RefillInVoiceValues.len);
+    return null;
 }
 
-const RangeCheckNames: []const [:0]const u8 = &.{
-    "+6dB",
-    "+12dB",
-    "+24dB",
-    "+48dB",
+const FrameSizes: []const NamedValue(u32) = &.{
+    .{ .name = "128", .value = 128 },
+    .{ .name = "256", .value = 256 },
+    .{ .name = "512", .value = 512 },
+    .{ .name = "1024", .value = 1024 },
+    .{ .name = "2048", .value = 2048 },
 };
 
-const RangeCheckValues: []const f32 = &.{
-    2.0,
-    4.0,
-    16.0,
-    256.0,
+const RefillInVoices: []const NamedValue(u16) = &.{
+    .{ .name = "2", .value = 2 },
+    .{ .name = "3", .value = 3 },
+    .{ .name = "4", .value = 4 },
+    .{ .name = "8", .value = 8 },
+    .{ .name = "16", .value = 16 },
+    .{ .name = "32", .value = 32 },
 };
 
-comptime {
-    std.debug.assert(RangeCheckNames.len == RangeCheckValues.len);
-}
+const RangeChecks: []const NamedValue(f32) = &.{
+    .{ .name = "+6dB", .value = 2.0 },
+    .{ .name = "+12dB", .value = 4.0 },
+    .{ .name = "+24dB", .value = 16.0 },
+    .{ .name = "+48dB", .value = 256.0 },
+};
+
+const MemoryLimits: []const NamedValue(u64) = &.{
+    .{ .name = "Disabled", .value = 0 },
+    .{ .name = "32 MB", .value = 32 * 1024 * 1024 },
+    .{ .name = "64 MB", .value = 64 * 1024 * 1024 },
+    .{ .name = "128 MB", .value = 128 * 1024 * 1024 },
+};
+
+const MemoryDebugLevels: []const NamedValue(u32) = &.{
+    .{ .name = "Disabled", .value = 0 },
+    .{ .name = "Leaks", .value = 1 },
+    .{ .name = "Stomp Allocator", .value = 2 },
+    .{ .name = "Stomp Allocator and Leaks", .value = 3 },
+};

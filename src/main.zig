@@ -10,6 +10,8 @@ const AK = @import("wwise-zig");
 // Use wide API for zigwin32
 pub const UNICODE = true;
 
+pub const MaxThreadWorkers = 8;
+
 const L = std.unicode.utf8ToUtf16LeStringLiteral;
 
 const DemoInterface = @import("DemoInterface.zig");
@@ -326,10 +328,10 @@ fn getDefaultWwiseSettings(allocator: std.mem.Allocator, demo: *DemoState) !void
 
         const max_workers = blk: {
             var runtime_cpu_count = std.Thread.getCpuCount() catch {
-                break :blk @as(usize, 8);
+                break :blk @as(usize, MaxThreadWorkers);
             };
 
-            break :blk @min(runtime_cpu_count, 8);
+            break :blk @min(runtime_cpu_count, MaxThreadWorkers);
         };
         wwise_context.job_worker_settings.num_worker_threads = @intCast(max_workers);
 
@@ -341,7 +343,7 @@ fn getDefaultWwiseSettings(allocator: std.mem.Allocator, demo: *DemoState) !void
     }
 }
 
-pub fn setupWwise(allocator: std.mem.Allocator, demo: *DemoState) !void {
+pub fn initWwise(allocator: std.mem.Allocator, demo: *DemoState) !void {
     // Create memory manager
     try AK.MemoryMgr.init(&demo.wwise_context.memory_settings);
 
@@ -590,7 +592,7 @@ pub fn main() !void {
     _ = win32.UpdateWindow(hwnd);
 
     try getDefaultWwiseSettings(allocator, demo);
-    try setupWwise(allocator, demo);
+    try initWwise(allocator, demo);
     defer {
         destroyWwise(allocator, demo) catch unreachable;
     }

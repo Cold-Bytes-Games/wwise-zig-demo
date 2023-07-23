@@ -13,8 +13,6 @@ active_panning_rule: AK.AkPanningRule = .speakers,
 active_channel_config: AK.AkChannelConfig = .{},
 active_device_index: usize = 0,
 active_channel_index: usize = 0,
-active_memory_limit_index: usize = 0,
-active_memory_debug_level_index: usize = 0,
 device_ids: std.ArrayListUnmanaged(DeviceId) = .{},
 device_names: std.ArrayListUnmanaged([:0]const u8) = .{},
 default_audio_device_shareset_id: ?u32 = null,
@@ -22,6 +20,7 @@ spatial_audio_shareset_id: ?u32 = null,
 spatial_audio_available: bool = false,
 spatial_audio_requested: bool = false,
 num_job_workers: u32 = 0,
+memory_settings: MemorySettings = .{},
 init_settings: InitSettings = .{},
 platform_settings: PlatformSettings = .{},
 
@@ -46,14 +45,13 @@ pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoSta
     self.active_channel_config = AK.SoundEngine.getSpeakerConfiguration(0);
     self.active_channel_index = indexOfChannelConfig(DefaultSpeakerConfig, self.active_channel_config) orelse 0;
 
+    try self.memory_settings.init(&demo_state.wwise_context.memory_settings);
     try self.init_settings.init(&demo_state.wwise_context.init_settings);
-    try self.initMemorySettings(demo_state);
+    try self.platform_settings.init(&demo_state.wwise_context.platform_init_settings);
 
     if (AK.JobWorkerMgr != void) {
         self.num_job_workers = @intCast(demo_state.wwise_context.init_settings.settings_job_manager.max_active_workers[AK.AkJobType_AudioProcessing]);
     }
-
-    try self.platform_settings.init(&demo_state.wwise_context.platform_init_settings);
 }
 
 pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
@@ -138,38 +136,7 @@ pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
             }
         }
 
-        if (zgui.beginCombo("Memory Limit", .{ .preview_value = MemoryLimits[self.active_memory_limit_index].name })) {
-            for (0..MemoryLimits.len) |index| {
-                const is_selected = self.active_memory_limit_index == index;
-
-                if (zgui.selectable(MemoryLimits[index].name, .{ .selected = is_selected })) {
-                    self.active_memory_limit_index = index;
-                    try self.initSettingsChanged(demo_state);
-                }
-
-                if (is_selected) {
-                    zgui.setItemDefaultFocus();
-                }
-            }
-            zgui.endCombo();
-        }
-
-        if (zgui.beginCombo("Memory Debug Option", .{ .preview_value = MemoryDebugLevels[self.active_memory_debug_level_index].name })) {
-            for (0..MemoryDebugLevels.len) |index| {
-                const is_selected = self.active_memory_debug_level_index == index;
-
-                if (zgui.selectable(MemoryDebugLevels[index].name, .{ .selected = is_selected })) {
-                    self.active_memory_debug_level_index = index;
-                    try self.initSettingsChanged(demo_state);
-                }
-
-                if (is_selected) {
-                    zgui.setItemDefaultFocus();
-                }
-            }
-            zgui.endCombo();
-        }
-
+        try self.memory_settings.onUI(self, demo_state, initSettingsChanged);
         try self.platform_settings.onUI(self, demo_state, initSettingsChanged);
 
         zgui.end();
@@ -310,12 +277,6 @@ fn getDefaultAudioSharesetId(self: *Self) !u32 {
     return self.default_audio_device_shareset_id.?;
 }
 
-fn initMemorySettings(self: *Self, demo_state: *root.DemoState) !void {
-    const memory_settings = demo_state.wwise_context.memory_settings;
-    self.active_memory_limit_index = indexOfNamedValue(memory_settings.mem_allocation_size_limit, MemoryLimits) orelse 0;
-    self.active_memory_debug_level_index = indexOfNamedValue(memory_settings.memory_debug_level, MemoryDebugLevels) orelse 0;
-}
-
 fn initSettingsChanged(self: *Self, demo_state: *root.DemoState) !void {
     try root.destroyWwise(self.allocator, demo_state);
 
@@ -325,6 +286,7 @@ fn initSettingsChanged(self: *Self, demo_state: *root.DemoState) !void {
 
     try self.fillOutputSetting(&init_settings.settings_main_output);
 
+    try self.memory_settings.fillSettings(memory_settings);
     try self.init_settings.fillSettings(init_settings);
     try self.platform_settings.fillSettings(platform_init_settings);
 
@@ -339,9 +301,6 @@ fn initSettingsChanged(self: *Self, demo_state: *root.DemoState) !void {
 
         init_settings.settings_job_manager = job_mgr_settings;
     }
-
-    memory_settings.mem_allocation_size_limit = MemoryLimits[self.active_memory_limit_index].value;
-    memory_settings.memory_debug_level = MemoryDebugLevels[self.active_memory_debug_level_index].value;
 
     try root.initWwise(self.allocator, demo_state);
 }
@@ -423,20 +382,6 @@ fn indexOfNamedValue(value: anytype, list: []const NamedValue(@TypeOf(value))) ?
 
     return null;
 }
-
-const MemoryLimits: []const NamedValue(u64) = &.{
-    .{ .name = "Disabled", .value = 0 },
-    .{ .name = "32 MB", .value = 32 * 1024 * 1024 },
-    .{ .name = "64 MB", .value = 64 * 1024 * 1024 },
-    .{ .name = "128 MB", .value = 128 * 1024 * 1024 },
-};
-
-const MemoryDebugLevels: []const NamedValue(u32) = &.{
-    .{ .name = "Disabled", .value = 0 },
-    .{ .name = "Leaks", .value = 1 },
-    .{ .name = "Stomp Allocator", .value = 2 },
-    .{ .name = "Stomp Allocator and Leaks", .value = 3 },
-};
 
 fn NamedValueInstance(comptime value_list: anytype) type {
     return struct {
@@ -559,6 +504,32 @@ const InitSettings = struct {
     pub usingnamespace SettingsInterface(InitSettings, AK.AkInitSettings);
 };
 
+const MemorySettings = struct {
+    mem_allocation_size_limit: NamedValueInstance(MemoryLimits) = .{},
+    memory_debug_level: NamedValueInstance(MemoryDebugLevels) = .{},
+
+    pub const DisplayNames = .{
+        .mem_allocation_size_limit = "Memory Limit",
+        .memory_debug_level = "Memory Debug Option",
+    };
+
+    pub const MemoryLimits: []const NamedValue(u64) = &.{
+        .{ .name = "Disabled", .value = 0 },
+        .{ .name = "32 MB", .value = 32 * 1024 * 1024 },
+        .{ .name = "64 MB", .value = 64 * 1024 * 1024 },
+        .{ .name = "128 MB", .value = 128 * 1024 * 1024 },
+    };
+
+    pub const MemoryDebugLevels: []const NamedValue(u32) = &.{
+        .{ .name = "Disabled", .value = 0 },
+        .{ .name = "Leaks", .value = 1 },
+        .{ .name = "Stomp Allocator", .value = 2 },
+        .{ .name = "Stomp Allocator and Leaks", .value = 3 },
+    };
+
+    pub usingnamespace SettingsInterface(MemorySettings, AK.AkMemSettings);
+};
+
 const RefillBuffers: []const NamedValue(u16) = &.{
     .{ .name = "2", .value = 2 },
     .{ .name = "3", .value = 3 },
@@ -567,7 +538,7 @@ const RefillBuffers: []const NamedValue(u16) = &.{
     .{ .name = "16", .value = 16 },
     .{ .name = "32", .value = 32 },
 };
-const RefillBuffersDisplayName = "RefillBuffers";
+const RefillBuffersDisplayName = "Refill Buffers";
 
 pub const SampleRates: []const NamedValue(u32) = &.{
     .{ .name = "24000", .value = 24000 },

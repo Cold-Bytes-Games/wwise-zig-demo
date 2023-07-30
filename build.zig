@@ -7,12 +7,17 @@ pub fn build(b: *std.Build) !void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
+    const build_soundbanks_step = try wwise_zig.addGenerateSoundBanksStep(b, "WwiseProject/IntegrationDemo.wproj", .{
+        .target = target,
+    });
+
     const exe = b.addExecutable(.{
         .name = "wwise-zig-demo",
         .root_source_file = .{ .path = "src/main.zig" },
         .target = target,
         .optimize = optimize,
     });
+    exe.step.dependOn(&build_soundbanks_step.step);
 
     exe.subsystem = .Windows;
 

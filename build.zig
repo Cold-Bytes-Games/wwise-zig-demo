@@ -28,6 +28,7 @@ pub fn build(b: *std.Build) !void {
     const wwise_package = try wwise_zig.package(b, target, optimize, .{
         .use_communication = true,
         .use_default_job_worker = true,
+        .use_spatial_audio = true,
         .use_static_crt = true,
         .include_file_package_io_blocking = true,
         .configuration = .profile,

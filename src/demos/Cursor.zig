@@ -49,7 +49,7 @@ pub fn update(self: *Self) void {
     }
 }
 
-pub fn draw(self: *Self, draw_list: zgui.DrawList) void {
+pub fn draw(self: *const Self, draw_list: zgui.DrawList) void {
     const window_pos = zgui.getCursorScreenPos();
     const zgui_color = zgui.colorConvertFloat4ToU32(self.color);
 

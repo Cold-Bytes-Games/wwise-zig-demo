@@ -4,7 +4,7 @@ const zgui = @import("zgui");
 const root = @import("root");
 const AK = @import("wwise-zig");
 const Cursor = @import("Cursor.zig");
-const ID = @import("../ID.zig");
+const ID = @import("wwise-ids");
 
 allocator: std.mem.Allocator = undefined,
 is_visible: bool = false,

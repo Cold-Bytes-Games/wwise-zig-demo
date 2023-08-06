@@ -50,6 +50,11 @@ pub fn build(b: *std.Build) !void {
         },
     });
 
+    const wwise_id_module = wwise_zig.generateWwiseIDModule(b, "WwiseProject/GeneratedSoundBanks/Wwise_IDs.h", wwise_package.module, .{
+        .previous_step = &build_soundbanks_step.step,
+    });
+
+    exe.addModule("wwise-ids", wwise_id_module);
     exe.addModule("wwise-zig", wwise_package.module);
     exe.addModule("zgui", zgui_pkg.zgui);
     exe.addModule("zigwin32", zigwin32_dependency.module("zigwin32"));

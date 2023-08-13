@@ -252,6 +252,12 @@ const AllMenus = [_]MenuData{
                         .instance_type = @import("demos/SpatialAudioPortalsDemo.zig"),
                     },
                 },
+                .{
+                    .demo = .{
+                        .name = "Spatial Audio - Portals and Geometry",
+                        .instance_type = @import("demos/SpatialAudioPortalsAndGeometryDemo.zig"),
+                    },
+                },
             },
         },
     },

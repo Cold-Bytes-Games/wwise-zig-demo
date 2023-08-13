@@ -104,6 +104,7 @@ pub const WwiseContext = struct {
     music_settings: AK.MusicEngine.AkMusicSettings = .{},
     comm_settings: if (AK.Comm != void) AK.Comm.AkCommSettings else void = .{},
     job_worker_settings: if (AK.JobWorkerMgr != void) AK.JobWorkerMgr.InitSettings else void = .{},
+    spatial_audio_settings: if (AK.SpatialAudio != void) AK.SpatialAudio.AkSpatialAudioInitSettings else void = .{},
 };
 
 pub const DemoState = struct {
@@ -399,6 +400,8 @@ pub fn initWwise(allocator: std.mem.Allocator, demo: *DemoState) !void {
     // Register monitor callback
     try AK.SoundEngine.registerResourceMonitorCallback(resourceMonitorCallback);
 
+    // Register spatial audio
+    try AK.SpatialAudio.init(&demo.wwise_context.spatial_audio_settings);
     // TODO: Setup monitor local output
 }
 

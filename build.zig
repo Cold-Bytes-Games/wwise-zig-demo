@@ -1,10 +1,13 @@
 const std = @import("std");
 
 const zgui = @import("vendor/zgui/build.zig");
-const wwise_zig = @import("vendor/wwise-zig/build.zig");
+const wwise_zig = @import("wwise-zig");
 
 pub fn build(b: *std.Build) !void {
-    const target = b.standardTargetOptions(.{});
+    const target = b.standardTargetOptions(.{ .default_target = .{
+        .os_tag = .windows,
+        .abi = .msvc,
+    } });
     const optimize = b.standardOptimizeOption(.{});
 
     const build_soundbanks_step = try wwise_zig.addGenerateSoundBanksStep(b, "WwiseProject/IntegrationDemo.wproj", .{

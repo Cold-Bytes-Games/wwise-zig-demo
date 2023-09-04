@@ -1,4 +1,4 @@
-# wwise-zig-demo - Demo application of the wwise-zig bindings
+# wwise-zig-demo - Demo application of the wwise-zig bindings (2022.1.7)
 
 This a port of the Integration Demo from the samples in Zig using [wwise-zig](https://github.com/Cold-Bytes-Games/wwise-zig) and using [zig-gamedev](https://github.com/michal-z/zig-gamedev) `zglfw`, `zgpu` and `zgui` for the UI rendering.
 

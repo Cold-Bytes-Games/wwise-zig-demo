@@ -107,19 +107,20 @@ fn togglePrepared(self: *Self) !void {
         self.is_prepared = false;
     }
 }
+
 fn toggleSetMedia(self: *Self) !void {
     if (!self.is_media_set) {
         const stream_mgr_opt = AK.IAkStreamMgr.get();
         if (stream_mgr_opt) |stream_mgr| {
             var stream_opt: ?*AK.IAkStdStream = null;
 
-            const flags = AK.AkFileSystemFlags{
+            var flags = AK.AkFileSystemFlags{
                 .company_id = AK.AKCOMPANYID_AUDIOKINETIC,
                 .codec_id = AK.AKCODECID_VORBIS,
                 .is_language_specific = true,
             };
 
-            try stream_mgr.createStdString(self.allocator, MediaFilename, flags, .read, &stream_opt, true);
+            try stream_mgr.createStdString(self.allocator, MediaFilename, &flags, .read, &stream_opt, true);
 
             if (stream_opt) |stream| {
                 defer stream.destroy();

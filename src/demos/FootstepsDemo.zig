@@ -20,7 +20,7 @@ const Self = @This();
 
 const DemoGameObjectID: AK.AkGameObjectID = 5;
 const HangarTransitionZone: f32 = 25.0;
-const HangarSize: i32 = 70;
+const HangarSize: u8 = 70;
 const CursorSpeed = 5.0;
 const BufferZone: f32 = 20.0;
 const DistanceToSpeed = 10 / CursorSpeed;
@@ -187,11 +187,11 @@ fn manageEnvironment(self: *Self, window_size: [2]f32) !void {
 
     const half_width = @as(i32, @intFromFloat(window_size[0] / 2.0));
     const half_height = @as(i32, @intFromFloat(window_size[1] / 2.0));
-    const diff_x: i32 = try std.math.absInt(@as(i32, @intFromFloat(self.cursor.x)) - half_width);
-    const diff_y: i32 = try std.math.absInt(@as(i32, @intFromFloat(self.cursor.y)) - half_height);
+    const diff_x: u32 = @abs(@as(i32, @intFromFloat(self.cursor.x)) - half_width);
+    const diff_y: u32 = @abs(@as(i32, @intFromFloat(self.cursor.y)) - half_height);
 
-    const percent_outside_x = @max(@as(f32, @floatFromInt(diff_x - HangarSize)) / HangarTransitionZone, 0.0);
-    const percent_outside_y = @max(@as(f32, @floatFromInt(diff_y - HangarSize)) / HangarTransitionZone, 0.0);
+    const percent_outside_x = @max(@as(f32, @floatFromInt(diff_x -% HangarSize)) / HangarTransitionZone, 0.0);
+    const percent_outside_y = @max(@as(f32, @floatFromInt(diff_y -% HangarSize)) / HangarTransitionZone, 0.0);
 
     const hangar_env = AK.AkAuxSendValue{
         .aux_bus_id = try AK.SoundEngine.getIDFromString(self.allocator, "Hangar_Env"),

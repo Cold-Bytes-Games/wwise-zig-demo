@@ -6,6 +6,8 @@ Each major version of Wwise is contained within a branch. Select the correct bra
 
 This is a 3rd party implementation and it is not affiliated with Audiokinetic.
 
+[![Join our Discord!](https://discordapp.com/api/guilds/1161009516771549374/widget.png?style=banner2)](https://discord.gg/jMxttNCBys)
+
 # LICENSE
 
 wwise-zig-demo

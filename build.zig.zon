@@ -1,6 +1,7 @@
 .{
     .name = "wwise-zig-demo",
     .version = "2022.1.8-zig0",
+    .paths = .{"."},
     .dependencies = .{
         .@"wwise-zig" = .{
             .url = "https://github.com/Cold-Bytes-Games/wwise-zig/archive/e88297b0906917f228b62221de65011edadff330.tar.gz",

@@ -188,6 +188,7 @@ fn populateOutputDeviceOptions(self: *Self) !void {
                     for (devices) |device| {
                         device.deinit(self.allocator);
                     }
+                    self.allocator.free(devices);
                 }
 
                 try AK.SoundEngine.getDeviceListShareSet(self.allocator, shareset_id, &device_count, @ptrCast(devices));

@@ -96,7 +96,7 @@ fn WwiseSubtitleCallback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCal
     if (in_type.marker) {
         if (in_callback_info.cookie) |cookie| {
             var self: *Self = @ptrCast(@alignCast(cookie));
-            var marker_callback: *AK.AkMarkerCallbackInfo = @ptrCast(in_callback_info);
+            const marker_callback: *AK.AkMarkerCallbackInfo = @ptrCast(in_callback_info);
 
             if (marker_callback.str_label) |label| {
                 self.setSubtitleText(label);

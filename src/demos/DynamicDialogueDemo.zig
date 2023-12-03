@@ -163,7 +163,7 @@ fn stopAndReleaseTests(self: *Self) !void {
             try AK.SoundEngine.DynamicSequence.close(self.set16_seq2_playing_id);
         }
     } else if (self.playing_id != 0) {
-        var playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
+        const playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
         if (playlist_opt) |playlist| {
             try AK.SoundEngine.DynamicSequence.stop(self.playing_id, .{});
             playlist.removeAll();
@@ -186,7 +186,7 @@ fn set1_1_SimpleSequenceUsingID(self: *Self) !void {
 
     self.playing_id = AK.SoundEngine.DynamicSequence.open(DemoGameObjectID, .{});
 
-    var playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
+    const playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
     if (playlist_opt) |playlist| {
         var audio_node_id = AK.SoundEngine.DynamicDialogue.resolveDialogueEventID(ID.DIALOGUE_EVENTS.WALKIETALKIE, &.{ID.STATES.WALKIETALKIE.STATE.COMM_IN}, .{});
         try playlist.enqueue(audio_node_id, .{});
@@ -225,7 +225,7 @@ fn set2_1_simpleSequenceUsingString(self: *Self) !void {
 
     self.playing_id = AK.SoundEngine.DynamicSequence.open(DemoGameObjectID, .{});
 
-    var playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
+    const playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
     if (playlist_opt) |playlist| {
         var audio_node_id = try AK.SoundEngine.DynamicDialogue.resolveDialogueEventString(self.allocator, "WalkieTalkie", &[_][]const u8{"Comm_In"}, .{});
         try playlist.enqueue(audio_node_id, .{});
@@ -264,7 +264,7 @@ fn set3_1_startPlayback(self: *Self) !void {
 
     self.playing_id = AK.SoundEngine.DynamicSequence.open(DemoGameObjectID, .{});
 
-    var playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
+    const playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
     if (playlist_opt) |playlist| {
         var audio_node_id = AK.SoundEngine.DynamicDialogue.resolveDialogueEventID(ID.DIALOGUE_EVENTS.WALKIETALKIE, &.{ID.STATES.WALKIETALKIE.STATE.COMM_IN}, .{});
         try playlist.enqueue(audio_node_id, .{});
@@ -295,7 +295,7 @@ fn set3_1_startPlayback(self: *Self) !void {
 fn set3_2_AddItemToPlaylist(self: *Self) !void {
     self.next_function = null;
 
-    var playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
+    const playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
     if (playlist_opt) |playlist| {
         var audio_node_id = AK.SoundEngine.DynamicDialogue.resolveDialogueEventID(ID.DIALOGUE_EVENTS.WALKIETALKIE, &.{ID.STATES.WALKIETALKIE.STATE.COMM_IN}, .{});
         try playlist.enqueue(audio_node_id, .{});
@@ -332,7 +332,7 @@ fn set41_startPlayback(self: *Self) !void {
 
     self.playing_id = AK.SoundEngine.DynamicSequence.open(DemoGameObjectID, .{});
 
-    var playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
+    const playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
     if (playlist_opt) |playlist| {
         var audio_node_id = AK.SoundEngine.DynamicDialogue.resolveDialogueEventID(ID.DIALOGUE_EVENTS.WALKIETALKIE, &.{ID.STATES.WALKIETALKIE.STATE.COMM_IN}, .{});
         try playlist.enqueue(audio_node_id, .{});
@@ -374,7 +374,7 @@ fn set41_startPlayback(self: *Self) !void {
 fn set4_2_InsertItemsToPlaylist(self: *Self) !void {
     self.next_function = null;
 
-    var playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
+    const playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
     if (playlist_opt) |playlist| {
         var audio_node_id = AK.SoundEngine.DynamicDialogue.resolveDialogueEventID(ID.DIALOGUE_EVENTS.WALKIETALKIE, &.{ID.STATES.WALKIETALKIE.STATE.COMM_IN}, .{});
         try playlist.enqueue(audio_node_id, .{});
@@ -439,7 +439,7 @@ fn set5_1_StartEmptyPlaylist(self: *Self) !void {
 fn set5_2_AddItemsToPlaylist(self: *Self) !void {
     self.next_function = null;
 
-    var playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
+    const playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
     if (playlist_opt) |playlist| {
         var audio_node_id = AK.SoundEngine.DynamicDialogue.resolveDialogueEventID(ID.DIALOGUE_EVENTS.WALKIETALKIE, &.{ID.STATES.WALKIETALKIE.STATE.COMM_IN}, .{});
         try playlist.enqueue(audio_node_id, .{});
@@ -461,7 +461,7 @@ fn set5_2_AddItemsToPlaylist(self: *Self) !void {
 }
 
 fn set5_3_WaitForEmptyListThenAdd(self: *Self) !void {
-    var playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
+    const playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
     if (playlist_opt) |playlist| {
         if (playlist.isEmpty()) {
             var audio_node_id = AK.SoundEngine.DynamicDialogue.resolveDialogueEventID(ID.DIALOGUE_EVENTS.WALKIETALKIE, &.{ID.STATES.WALKIETALKIE.STATE.COMM_IN}, .{});
@@ -502,7 +502,7 @@ fn set6_1_StartPlayback(self: *Self) !void {
 
     self.playing_id = AK.SoundEngine.DynamicSequence.open(DemoGameObjectID, .{});
 
-    var playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
+    const playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
     if (playlist_opt) |playlist| {
         var audio_node_id = AK.SoundEngine.DynamicDialogue.resolveDialogueEventID(ID.DIALOGUE_EVENTS.WALKIETALKIE, &.{ID.STATES.WALKIETALKIE.STATE.COMM_IN}, .{});
         try playlist.enqueue(audio_node_id, .{});
@@ -569,7 +569,7 @@ fn set7_1_StartPlayback(self: *Self) !void {
 
     self.playing_id = AK.SoundEngine.DynamicSequence.open(DemoGameObjectID, .{});
 
-    var playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
+    const playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
     if (playlist_opt) |playlist| {
         var audio_node_id = AK.SoundEngine.DynamicDialogue.resolveDialogueEventID(ID.DIALOGUE_EVENTS.WALKIETALKIE, &.{ID.STATES.WALKIETALKIE.STATE.COMM_IN}, .{});
         try playlist.enqueue(audio_node_id, .{});
@@ -636,7 +636,7 @@ fn set8_1_StartPlayback(self: *Self) !void {
 
     self.playing_id = AK.SoundEngine.DynamicSequence.open(DemoGameObjectID, .{});
 
-    var playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
+    const playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
     if (playlist_opt) |playlist| {
         var audio_node_id = AK.SoundEngine.DynamicDialogue.resolveDialogueEventID(ID.DIALOGUE_EVENTS.WALKIETALKIE, &.{ID.STATES.WALKIETALKIE.STATE.COMM_IN}, .{});
         try playlist.enqueue(audio_node_id, .{});
@@ -703,7 +703,7 @@ fn set9_1_UsingDelay(self: *Self) !void {
 
     self.playing_id = AK.SoundEngine.DynamicSequence.open(DemoGameObjectID, .{});
 
-    var playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
+    const playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
     if (playlist_opt) |playlist| {
         var audio_node_id = AK.SoundEngine.DynamicDialogue.resolveDialogueEventID(ID.DIALOGUE_EVENTS.WALKIETALKIE, &.{ID.STATES.WALKIETALKIE.STATE.COMM_IN}, .{});
         try playlist.enqueue(audio_node_id, .{});
@@ -745,7 +745,7 @@ fn set10_1_StartPlayback(self: *Self) !void {
 
     self.playing_id = AK.SoundEngine.DynamicSequence.open(DemoGameObjectID, .{});
 
-    var playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
+    const playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
     if (playlist_opt) |playlist| {
         var audio_node_id = AK.SoundEngine.DynamicDialogue.resolveDialogueEventID(ID.DIALOGUE_EVENTS.WALKIETALKIE, &.{ID.STATES.WALKIETALKIE.STATE.COMM_IN}, .{});
         try playlist.enqueue(audio_node_id, .{});
@@ -787,7 +787,7 @@ fn set11_1_StartPlayback(self: *Self) !void {
 
     self.playing_id = AK.SoundEngine.DynamicSequence.open(DemoGameObjectID, .{});
 
-    var playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
+    const playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
     if (playlist_opt) |playlist| {
         var audio_node_id = AK.SoundEngine.DynamicDialogue.resolveDialogueEventID(ID.DIALOGUE_EVENTS.WALKIETALKIE, &.{ID.STATES.WALKIETALKIE.STATE.COMM_IN}, .{});
         try playlist.enqueue(audio_node_id, .{});
@@ -830,7 +830,7 @@ fn set11_2_StopAndClearPlaylist(self: *Self) !void {
 
     try AK.SoundEngine.DynamicSequence.stop(self.playing_id, .{});
 
-    var playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
+    const playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
     if (playlist_opt) |playlist| {
         playlist.removeAll();
         try AK.SoundEngine.DynamicSequence.unlockPlaylist(self.playing_id);
@@ -853,7 +853,7 @@ fn set12_1_StartPlayback(self: *Self) !void {
 
     self.playing_id = AK.SoundEngine.DynamicSequence.open(DemoGameObjectID, .{});
 
-    var playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
+    const playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
     if (playlist_opt) |playlist| {
         var audio_node_id = AK.SoundEngine.DynamicDialogue.resolveDialogueEventID(ID.DIALOGUE_EVENTS.WALKIETALKIE, &.{ID.STATES.WALKIETALKIE.STATE.COMM_IN}, .{});
         try playlist.enqueue(audio_node_id, .{});
@@ -896,7 +896,7 @@ fn set12_2_BreakAndClearPlaylist(self: *Self) !void {
 
     try AK.SoundEngine.DynamicSequence.@"break"(self.playing_id);
 
-    var playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
+    const playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
     if (playlist_opt) |playlist| {
         playlist.removeAll();
 
@@ -920,7 +920,7 @@ fn set13_1_StartPlayback(self: *Self) !void {
 
     self.playing_id = AK.SoundEngine.DynamicSequence.open(DemoGameObjectID, .{ .dynamic_sequence_type = .normal_transition });
 
-    var playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
+    const playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
     if (playlist_opt) |playlist| {
         var audio_node_id = AK.SoundEngine.DynamicDialogue.resolveDialogueEventID(ID.DIALOGUE_EVENTS.WALKIETALKIE, &.{ID.STATES.WALKIETALKIE.STATE.COMM_IN}, .{});
         try playlist.enqueue(audio_node_id, .{});
@@ -970,7 +970,7 @@ fn set13_2_PausePlaylist(self: *Self) !void {
 fn set13_3_ClearAndResumePlaylist(self: *Self) !void {
     self.next_function = null;
 
-    var playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
+    const playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
     if (playlist_opt) |playlist| {
         playlist.removeAll();
 
@@ -1003,7 +1003,7 @@ fn set14_1_StartPlaybackWithCallback(self: *Self) !void {
         .cookie = self,
     });
 
-    var playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
+    const playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
     if (playlist_opt) |playlist| {
         var audio_node_id = AK.SoundEngine.DynamicDialogue.resolveDialogueEventID(ID.DIALOGUE_EVENTS.WALKIETALKIE, &.{ID.STATES.WALKIETALKIE.STATE.COMM_IN}, .{});
         try playlist.enqueue(audio_node_id, .{
@@ -1060,7 +1060,7 @@ fn set15_1_StartPlaybackWithCallback(self: *Self) !void {
         .cookie = self,
     });
 
-    var playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
+    const playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
     if (playlist_opt) |playlist| {
         var audio_node_id = AK.SoundEngine.DynamicDialogue.resolveDialogueEventID(ID.DIALOGUE_EVENTS.WALKIETALKIE, &.{ID.STATES.WALKIETALKIE.STATE.COMM_IN}, .{});
         try playlist.enqueue(audio_node_id, .{});
@@ -1109,7 +1109,7 @@ fn set15_Callback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackIn
         self.set15_items_played += 1;
 
         if (self.set15_items_played == 2) {
-            var playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
+            const playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
             if (playlist_opt) |playlist| {
                 const last_audio_node = playlist.last().audio_node_id;
 
@@ -1218,7 +1218,7 @@ fn set17_1_StartPlaybackWithCallback(self: *Self) !void {
         .cookie = self,
     });
 
-    var playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
+    const playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
     if (playlist_opt) |playlist| {
         var audio_node_id = AK.SoundEngine.DynamicDialogue.resolveDialogueEventID(ID.DIALOGUE_EVENTS.WALKIETALKIE, &.{ID.STATES.WALKIETALKIE.STATE.COMM_IN}, .{});
         try playlist.enqueue(audio_node_id, .{ .custom_info = self.set17_custom_params[0] });
@@ -1264,7 +1264,7 @@ fn set17_Callback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackIn
     var self: *Self = @ptrCast(@alignCast(in_callback_info.cookie));
 
     if (in_type.end_of_dynamic_sequence_item and !self.set17_done_playing) {
-        var playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
+        const playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
         if (playlist_opt) |playlist| {
             if (playlist.isEmpty()) {
                 self.set17_done_playing = true;
@@ -1298,7 +1298,7 @@ fn set18_1_StartPlayback(self: *Self) !void {
 
     self.playing_id = AK.SoundEngine.DynamicSequence.open(DemoGameObjectID, .{ .dynamic_sequence_type = .normal_transition });
 
-    var playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
+    const playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);
     if (playlist_opt) |playlist| {
         var audio_node_id = AK.SoundEngine.DynamicDialogue.resolveDialogueEventID(ID.DIALOGUE_EVENTS.WALKIETALKIE, &.{ID.STATES.WALKIETALKIE.STATE.COMM_IN}, .{});
         try playlist.enqueue(audio_node_id, .{});

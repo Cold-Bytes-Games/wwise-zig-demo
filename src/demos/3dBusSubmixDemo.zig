@@ -169,7 +169,7 @@ fn updateGameObjectPos(self: *Self, in_cursor: Cursor, in_game_object_id: AK.AkG
     self.game_object_x = self.pixelsToAkPosX(x);
     self.game_object_z = self.pixelsToAkPosY(y);
 
-    var sound_position = AK.AkSoundPosition{
+    const sound_position = AK.AkSoundPosition{
         .position = .{
             .x = self.game_object_x,
             .z = self.game_object_z,

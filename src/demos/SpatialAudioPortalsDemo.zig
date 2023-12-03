@@ -265,7 +265,7 @@ pub fn updateMoved(self: *Self) !void {
                 });
 
                 var valid_wet: bool = true;
-                var portal_wet_diffraction: f32 = AK.SpatialAudio.queryWetDiffraction(portal_id) catch blk: {
+                const portal_wet_diffraction: f32 = AK.SpatialAudio.queryWetDiffraction(portal_id) catch blk: {
                     valid_wet = false;
                     break :blk 0.0;
                 };

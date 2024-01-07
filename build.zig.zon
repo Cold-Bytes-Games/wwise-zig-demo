@@ -4,12 +4,12 @@
     .paths = .{"."},
     .dependencies = .{
         .@"wwise-zig" = .{
-            .url = "https://github.com/Cold-Bytes-Games/wwise-zig/archive/b075fa50956573b8472f369cd8940a7519fe0eb7.tar.gz",
-            .hash = "1220933878df21d57f6569c4e592f40b042346a39a9d69778d01682b8162c6381cdf",
+            .url = "https://github.com/Cold-Bytes-Games/wwise-zig/archive/86979a5c50c0a6e0a5351fcdf1413e489e9f3e9e.tar.gz",
+            .hash = "12204ad0f505b5040eda77fd5e3e134cbffa5d9c44563cd88161ab3d97c1fc1683b6",
         },
         .zigwin32 = .{
-            .url = "https://github.com/Cold-Bytes-Games/zigwin32/archive/b3fbfae66f4dbe9cf52214533ac8864b7dc92bd5.tar.gz",
-            .hash = "1220a6d3ba00859608c43c7632f1fbe1ba905083204e8126eb86018a7bc65696c765",
+            .url = "https://github.com/Cold-Bytes-Games/zigwin32/archive/705d305d7c30af2004d804789879755a9c38953a.tar.gz",
+            .hash = "1220936e3c62c4626350d47e928291cfda01ef6de6e03ca42d911285c34432003fa7",
         },
     },
 }

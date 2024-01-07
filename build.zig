@@ -28,14 +28,16 @@ pub fn build(b: *std.Build) !void {
 
     const zigwin32_dependency = b.dependency("zigwin32", .{});
 
-    const wwise_package = try wwise_zig.package(b, target, optimize, .{
+    const wwise_dependency = b.dependency("wwise-zig", .{
+        .target = target,
+        .optimize = optimize,
         .use_communication = true,
         .use_default_job_worker = true,
         .use_spatial_audio = true,
         .use_static_crt = true,
         .include_file_package_io_blocking = true,
         .configuration = .profile,
-        .static_plugins = &.{
+        .static_plugins = @as([]const []const u8, &.{
             "AkToneSource",
             "AkParametricEQFX",
             "AkDelayFX",
@@ -45,7 +47,7 @@ pub fn build(b: *std.Build) !void {
             "AkSynthOneSource",
             "AkAudioInputSource",
             "AkVorbisDecoder",
-        },
+        }),
     });
 
     const zgui_pkg = zgui.package(b, target, optimize, .{
@@ -54,18 +56,17 @@ pub fn build(b: *std.Build) !void {
         },
     });
 
-    const wwise_id_module = wwise_zig.generateWwiseIDModule(b, "WwiseProject/GeneratedSoundBanks/Wwise_IDs.h", wwise_package.module, .{
+    const wwise_zig_module = wwise_dependency.module("wwise-zig");
+
+    const wwise_id_module = wwise_zig.generateWwiseIDModule(b, "WwiseProject/GeneratedSoundBanks/Wwise_IDs.h", wwise_zig_module, .{
         .previous_step = &build_soundbanks_step.step,
     });
 
-    exe.addModule("wwise-ids", wwise_id_module);
-    exe.addModule("wwise-zig", wwise_package.module);
-    exe.addModule("zgui", zgui_pkg.zgui);
-    exe.addModule("zigwin32", zigwin32_dependency.module("zigwin32"));
-    exe.linkLibrary(wwise_package.c_library);
+    exe.root_module.addImport("wwise-ids", wwise_id_module);
+    exe.root_module.addImport("wwise-zig", wwise_zig_module);
+    exe.root_module.addImport("zgui", zgui_pkg.zgui);
+    exe.root_module.addImport("zigwin32", zigwin32_dependency.module("zigwin32"));
     zgui_pkg.link(exe);
-
-    try wwise_zig.wwiseLink(exe, wwise_package.options);
 
     const run_cmd = b.addRunArtifact(exe);
     run_cmd.step.dependOn(b.getInstallStep());

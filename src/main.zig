@@ -45,7 +45,7 @@ pub const DxContext = struct {
             .@"11_0",
             .@"10_0",
         };
-        if (d3d11.D3D11CreateDeviceAndSwapChain(null, .HARDWARE, null, d3d11.D3D11_CREATE_DEVICE_FLAG.initFlags(.{}), feature_level_array, 2, d3d11.D3D11_SDK_VERSION, &sd, &self.swap_chain, &self.device, &feature_level, &self.device_context) != win32.S_OK) {
+        if (d3d11.D3D11CreateDeviceAndSwapChain(null, .HARDWARE, null, .{}, feature_level_array, 2, d3d11.D3D11_SDK_VERSION, &sd, &self.swap_chain, &self.device, &feature_level, &self.device_context) != win32.S_OK) {
             return false;
         }
 
@@ -588,7 +588,7 @@ pub fn main() !void {
     defer _ = win32.UnregisterClassW(win_class.lpszClassName, win_class.hInstance);
 
     const hwnd = win32.CreateWindowExW(
-        win32.WINDOW_EX_STYLE.initFlags(.{}),
+        .{},
         win_class.lpszClassName,
         L("wwise-zig Integration Demo"),
         win32.WS_OVERLAPPEDWINDOW,

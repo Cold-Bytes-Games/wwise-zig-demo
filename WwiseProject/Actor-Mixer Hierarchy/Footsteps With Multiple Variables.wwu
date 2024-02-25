@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{39255352-6310-4790-ACD5-F0B3026DF735}" SchemaVersion="110">
+<WwiseDocument Type="WorkUnit" ID="{39255352-6310-4790-ACD5-F0B3026DF735}" SchemaVersion="119">
 	<AudioObjects>
 		<WorkUnit Name="Footsteps With Multiple Variables" ID="{39255352-6310-4790-ACD5-F0B3026DF735}" PersistMode="Standalone">
 			<ChildrenList>
@@ -83,9 +83,6 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 								</Property>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Effect0" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
-									<ObjectRef Name="GravelEQ" ID="{34A4C6AF-F669-40BA-8351-0C6C1772D137}" WorkUnitID="{81786A24-8893-4DE1-81AF-602DBDFCFF71}"/>
-								</Reference>
 								<Reference Name="OutputBus">
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 								</Reference>
@@ -140,34 +137,6 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 									</PropertyList>
 									<ReferenceList>
-										<Reference Name="Effect0">
-											<Custom CreatedFrom="{C2817027-BAD4-4483-8762-64C45E56497E}">
-												<Effect Name="Hangar_Env (Define custom)" ID="{8CC52879-4B17-4F3E-B613-DCC8004E4A3E}" ShortID="685399972" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-													<PropertyList>
-														<Property Name="DecayTime" Type="Real32" Value="6.1"/>
-														<Property Name="Density" Type="Real32" Value="100"/>
-														<Property Name="Diffusion" Type="Real32" Value="0.53"/>
-														<Property Name="ERFrontBackDelay" Type="Real32" Value="100"/>
-														<Property Name="ERLevel" Type="Real32" Value="-15"/>
-														<Property Name="ERPattern" Type="int32" Value="5"/>
-														<Property Name="Filter1Freq" Type="Real32" Value="490"/>
-														<Property Name="Filter1Gain" Type="Real32" Value="-4.5"/>
-														<Property Name="Filter2Freq" Type="Real32" Value="2200"/>
-														<Property Name="Filter2InsertPos" Type="int32" Value="0"/>
-														<Property Name="Filter2Q" Type="Real32" Value="0.1"/>
-														<Property Name="Filter3Freq" Type="Real32" Value="10240"/>
-														<Property Name="Filter3Gain" Type="Real32" Value="3"/>
-														<Property Name="HFDamping" Type="Real32" Value="6.9"/>
-														<Property Name="PreDelay" Type="Real32" Value="95"/>
-														<Property Name="Quality" Type="int32" Value="6"/>
-														<Property Name="ReverbLevel" Type="Real32" Value="-17"/>
-														<Property Name="RoomShape" Type="Real32" Value="0"/>
-														<Property Name="RoomSize" Type="Real32" Value="71"/>
-														<Property Name="StereoWidth" Type="Real32" Value="139"/>
-													</PropertyList>
-												</Effect>
-											</Custom>
-										</Reference>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 										</Reference>
@@ -181,12 +150,65 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Effects">
+											<Reference>
+												<Local>
+													<EffectSlot Name="" ID="{31B9338E-FB25-4EBE-B6F5-31DDAB24C502}" ShortID="439959952">
+														<ReferenceList>
+															<Reference Name="Effect">
+																<Custom CreatedFrom="{C2817027-BAD4-4483-8762-64C45E56497E}">
+																	<Effect Name="Hangar_Env (Define custom)" ID="{8CC52879-4B17-4F3E-B613-DCC8004E4A3E}" ShortID="685399972" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																		<PropertyList>
+																			<Property Name="DecayTime" Type="Real32" Value="6.1"/>
+																			<Property Name="Density" Type="Real32" Value="100"/>
+																			<Property Name="Diffusion" Type="Real32" Value="0.53"/>
+																			<Property Name="ERFrontBackDelay" Type="Real32" Value="100"/>
+																			<Property Name="ERLevel" Type="Real32" Value="-15"/>
+																			<Property Name="ERPattern" Type="int32" Value="5"/>
+																			<Property Name="Filter1Freq" Type="Real32" Value="490"/>
+																			<Property Name="Filter1Gain" Type="Real32" Value="-4.5"/>
+																			<Property Name="Filter2Freq" Type="Real32" Value="2200"/>
+																			<Property Name="Filter2InsertPos" Type="int32" Value="0"/>
+																			<Property Name="Filter2Q" Type="Real32" Value="0.1"/>
+																			<Property Name="Filter3Freq" Type="Real32" Value="10240"/>
+																			<Property Name="Filter3Gain" Type="Real32" Value="3"/>
+																			<Property Name="HFDamping" Type="Real32" Value="6.9"/>
+																			<Property Name="PreDelay" Type="Real32" Value="95"/>
+																			<Property Name="Quality" Type="int32" Value="6"/>
+																			<Property Name="ReverbLevel" Type="Real32" Value="-17"/>
+																			<Property Name="RoomShape" Type="Real32" Value="0"/>
+																			<Property Name="RoomSize" Type="Real32" Value="71"/>
+																			<Property Name="StereoWidth" Type="Real32" Value="139"/>
+																		</PropertyList>
+																	</Effect>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</EffectSlot>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
 									<ActiveSourceList>
 										<ActiveSource Name="AK_FS_Run_Gravel_01" ID="{67B5E2E3-C582-42C8-BBC2-48667E62EF4F}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
 							<ObjectLists>
+								<ObjectList Name="Effects">
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{355C5E14-D7E2-4489-A06D-0F9C50C787BA}" ShortID="228082979">
+												<ReferenceList>
+													<Reference Name="Effect" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+														<ObjectRef Name="GravelEQ" ID="{34A4C6AF-F669-40BA-8351-0C6C1772D137}" WorkUnitID="{81786A24-8893-4DE1-81AF-602DBDFCFF71}"/>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</Local>
+									</Reference>
+								</ObjectList>
 								<ObjectList Name="RTPC">
 									<Reference>
 										<Local>
@@ -300,56 +322,10 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 						</RandomSequenceContainer>
 						<SwitchContainer Name="Wood" ID="{DF7FD4E5-D3B4-44D1-943D-D1D91B89108F}" ShortID="647863731">
 							<Comment>Running and walking on wood have very different sounds so they are split in two discrete containers, switched with the Speed RTPC-driven switch.</Comment>
-							<PropertyList>
-								<Property Name="BypassEffect0" Type="bool">
-									<ValueList>
-										<Value Platform="iOS">False</Value>
-									</ValueList>
-								</Property>
-								<Property Name="BypassEffect1" Type="bool">
-									<ValueList>
-										<Value Platform="iOS">False</Value>
-									</ValueList>
-								</Property>
-								<Property Name="BypassEffect2" Type="bool">
-									<ValueList>
-										<Value Platform="iOS">False</Value>
-									</ValueList>
-								</Property>
-								<Property Name="BypassEffect3" Type="bool">
-									<ValueList>
-										<Value Platform="iOS">False</Value>
-									</ValueList>
-								</Property>
-								<Property Name="RenderEffect0" Type="bool">
-									<ValueList>
-										<Value Platform="iOS">False</Value>
-									</ValueList>
-								</Property>
-								<Property Name="RenderEffect1" Type="bool">
-									<ValueList>
-										<Value Platform="iOS">False</Value>
-									</ValueList>
-								</Property>
-								<Property Name="RenderEffect2" Type="bool">
-									<ValueList>
-										<Value Platform="iOS">False</Value>
-									</ValueList>
-								</Property>
-								<Property Name="RenderEffect3" Type="bool">
-									<ValueList>
-										<Value Platform="iOS">False</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
 							<ReferenceList>
 								<Reference Name="DefaultSwitchOrState">
 									<ObjectRef Name="Walk" ID="{BC1ACFB8-2BAC-4A89-8AB2-9B2335C7F29A}" WorkUnitID="{B20FB0D4-883A-4F6E-8912-3864DE39DCAB}"/>
 								</Reference>
-								<Reference Name="Effect0" Platform="iOS"/>
-								<Reference Name="Effect1" Platform="iOS"/>
-								<Reference Name="Effect2" Platform="iOS"/>
-								<Reference Name="Effect3" Platform="iOS"/>
 								<Reference Name="OutputBus">
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 								</Reference>
@@ -361,49 +337,9 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 								<SwitchContainer Name="Wood_Walk" ID="{79176050-B699-4E7B-B31C-BD082583FE8D}" ShortID="158991653">
 									<Comment>Using different samples for light and heavy footsteps.  The RTPC alone on effects and parameter wasn't enough.</Comment>
 									<PropertyList>
-										<Property Name="BypassEffect0" Type="bool">
-											<ValueList>
-												<Value Platform="iOS">False</Value>
-											</ValueList>
-										</Property>
-										<Property Name="BypassEffect1" Type="bool">
-											<ValueList>
-												<Value Platform="iOS">False</Value>
-											</ValueList>
-										</Property>
-										<Property Name="BypassEffect2" Type="bool">
-											<ValueList>
-												<Value Platform="iOS">False</Value>
-											</ValueList>
-										</Property>
-										<Property Name="BypassEffect3" Type="bool">
-											<ValueList>
-												<Value Platform="iOS">False</Value>
-											</ValueList>
-										</Property>
 										<Property Name="MakeUpGain" Type="Real64">
 											<ValueList>
 												<Value>-12</Value>
-											</ValueList>
-										</Property>
-										<Property Name="RenderEffect0" Type="bool">
-											<ValueList>
-												<Value Platform="iOS">False</Value>
-											</ValueList>
-										</Property>
-										<Property Name="RenderEffect1" Type="bool">
-											<ValueList>
-												<Value Platform="iOS">False</Value>
-											</ValueList>
-										</Property>
-										<Property Name="RenderEffect2" Type="bool">
-											<ValueList>
-												<Value Platform="iOS">False</Value>
-											</ValueList>
-										</Property>
-										<Property Name="RenderEffect3" Type="bool">
-											<ValueList>
-												<Value Platform="iOS">False</Value>
 											</ValueList>
 										</Property>
 										<Property Name="Volume" Type="Real64">
@@ -422,10 +358,6 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 										<Reference Name="DefaultSwitchOrState">
 											<ObjectRef Name="Light" ID="{B0F764A0-8171-4899-A530-67C404CEF373}" WorkUnitID="{B20FB0D4-883A-4F6E-8912-3864DE39DCAB}"/>
 										</Reference>
-										<Reference Name="Effect0" Platform="iOS"/>
-										<Reference Name="Effect1" Platform="iOS"/>
-										<Reference Name="Effect2" Platform="iOS"/>
-										<Reference Name="Effect3" Platform="iOS"/>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 										</Reference>
@@ -728,6 +660,38 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 											</ObjectLists>
 										</RandomSequenceContainer>
 									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Effects" Platform="iOS">
+											<Reference>
+												<Local>
+													<EffectSlot Name="" ID="{C32BE2BB-D2DE-4D22-A11A-52F45FC08F27}" ShortID="55577718">
+														<ReferenceList/>
+													</EffectSlot>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<EffectSlot Name="" ID="{C3138CBD-ADA7-47F2-A47D-4192C286C179}" ShortID="257838902">
+														<ReferenceList/>
+													</EffectSlot>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<EffectSlot Name="" ID="{C924F80F-7C16-4760-B6B8-E4C0868F7117}" ShortID="893459350">
+														<ReferenceList/>
+													</EffectSlot>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<EffectSlot Name="" ID="{6D466A30-F5A3-43E2-B896-337837668E08}" ShortID="122901375">
+														<ReferenceList/>
+													</EffectSlot>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
 									<GroupingInfo>
 										<GroupingBehaviorList>
 											<GroupingBehavior>
@@ -1062,6 +1026,38 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 									</ObjectLists>
 								</RandomSequenceContainer>
 							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="Effects" Platform="iOS">
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{C114E35C-73AC-4C46-8197-4B63B3DEFFC2}" ShortID="210945175">
+												<ReferenceList/>
+											</EffectSlot>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{DC10634E-16DA-4F73-836A-AE8A3B186E86}" ShortID="485521967">
+												<ReferenceList/>
+											</EffectSlot>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{A29C4960-B7D7-430F-9628-898184E3FD2D}" ShortID="481041522">
+												<ReferenceList/>
+											</EffectSlot>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{2C062A93-D957-4BE0-9FE3-C3DDF6AD9671}" ShortID="895970378">
+												<ReferenceList/>
+											</EffectSlot>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
 							<GroupingInfo>
 								<GroupingBehaviorList>
 									<GroupingBehavior>
@@ -1090,26 +1086,6 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 						<RandomSequenceContainer Name="Metal_Any" ID="{4C6A39DA-DA9D-480B-A100-A506CF360548}" ShortID="655955236">
 							<Comment>Here, I split my 5 original sounds in two parts: the heel impact and the toe impact stiched together using a sample-accurate sequence.  This makes 10 sounds but, when combined, it  makes 25 different footsteps sounds for the same media memory footprint.  Add a bit of pitch and LPF randomization on each part, this will create a lot more variation.  Plus the built-in Sound Seed Impact randomization.</Comment>
 							<PropertyList>
-								<Property Name="BypassEffect0" Type="bool">
-									<ValueList>
-										<Value Platform="iOS">False</Value>
-									</ValueList>
-								</Property>
-								<Property Name="BypassEffect1" Type="bool">
-									<ValueList>
-										<Value Platform="iOS">False</Value>
-									</ValueList>
-								</Property>
-								<Property Name="BypassEffect2" Type="bool">
-									<ValueList>
-										<Value Platform="iOS">False</Value>
-									</ValueList>
-								</Property>
-								<Property Name="BypassEffect3" Type="bool">
-									<ValueList>
-										<Value Platform="iOS">False</Value>
-									</ValueList>
-								</Property>
 								<Property Name="Lowpass" Type="int16">
 									<ModifierList>
 										<ModifierInfo>
@@ -1140,26 +1116,6 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 								<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="2"/>
 								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 								<Property Name="RandomOrSequence" Type="int16" Value="0"/>
-								<Property Name="RenderEffect0" Type="bool">
-									<ValueList>
-										<Value Platform="iOS">False</Value>
-									</ValueList>
-								</Property>
-								<Property Name="RenderEffect1" Type="bool">
-									<ValueList>
-										<Value Platform="iOS">False</Value>
-									</ValueList>
-								</Property>
-								<Property Name="RenderEffect2" Type="bool">
-									<ValueList>
-										<Value Platform="iOS">False</Value>
-									</ValueList>
-								</Property>
-								<Property Name="RenderEffect3" Type="bool">
-									<ValueList>
-										<Value Platform="iOS">False</Value>
-									</ValueList>
-								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ModifierList>
 										<ModifierInfo>
@@ -1175,10 +1131,6 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 								</Property>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Effect0" Platform="iOS"/>
-								<Reference Name="Effect1" Platform="iOS"/>
-								<Reference Name="Effect2" Platform="iOS"/>
-								<Reference Name="Effect3" Platform="iOS"/>
 								<Reference Name="OutputBus">
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 								</Reference>
@@ -1452,6 +1404,44 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 								</RandomSequenceContainer>
 							</ChildrenList>
 							<ObjectLists>
+								<ObjectList Name="Effects" Platform="iOS">
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{0BA74DEE-8961-48BB-AE88-8B0280AC59CA}" ShortID="15363551">
+												<ReferenceList/>
+											</EffectSlot>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{B95B0841-2614-416A-BA0F-67408F7B6E72}" ShortID="103278882">
+												<ReferenceList/>
+											</EffectSlot>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{80016ACF-CCD4-4D98-B7A9-3894E989C53D}" ShortID="957980814">
+												<ReferenceList/>
+											</EffectSlot>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{B4132965-FB90-41D7-BD41-3667A9595E74}" ShortID="362959170">
+												<ReferenceList/>
+											</EffectSlot>
+										</Local>
+									</Reference>
+								</ObjectList>
+								<ObjectList Name="Playlist">
+									<Reference>
+										<ObjectRef Name="Heel" ID="{50DA88B2-844E-4564-BC43-DA3881881A7D}" WorkUnitID="{39255352-6310-4790-ACD5-F0B3026DF735}"/>
+									</Reference>
+									<Reference>
+										<ObjectRef Name="Toe" ID="{534FF0C8-2726-418F-A551-1A58602824F5}" WorkUnitID="{39255352-6310-4790-ACD5-F0B3026DF735}"/>
+									</Reference>
+								</ObjectList>
 								<ObjectList Name="RTPC">
 									<Reference>
 										<Local>
@@ -1525,10 +1515,6 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 									</Reference>
 								</ObjectList>
 							</ObjectLists>
-							<Playlist>
-								<ItemRef Name="Heel" ID="{50DA88B2-844E-4564-BC43-DA3881881A7D}"/>
-								<ItemRef Name="Toe" ID="{534FF0C8-2726-418F-A551-1A58602824F5}"/>
-							</Playlist>
 						</RandomSequenceContainer>
 						<RandomSequenceContainer Name="Dirt" ID="{20B04774-9391-4266-A8F9-D7753CDFA2CF}" ShortID="550567365">
 							<PropertyList>

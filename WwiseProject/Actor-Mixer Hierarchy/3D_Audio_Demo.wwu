@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{875EE732-41A2-46B4-81D3-18BD32F634A1}" SchemaVersion="110">
+<WwiseDocument Type="WorkUnit" ID="{875EE732-41A2-46B4-81D3-18BD32F634A1}" SchemaVersion="119">
 	<AudioObjects>
 		<WorkUnit Name="3D_Audio_Demo" ID="{875EE732-41A2-46B4-81D3-18BD32F634A1}" PersistMode="Standalone">
 			<ChildrenList>
@@ -334,9 +334,13 @@
 									</PositioningInfo>
 								</RandomSequenceContainer>
 							</ChildrenList>
-							<Playlist>
-								<ItemRef Name="seagulls" ID="{734BE003-E13A-4021-A0E4-FFB2BD4DCF9F}"/>
-							</Playlist>
+							<ObjectLists>
+								<ObjectList Name="Playlist">
+									<Reference>
+										<ObjectRef Name="seagulls" ID="{734BE003-E13A-4021-A0E4-FFB2BD4DCF9F}" WorkUnitID="{875EE732-41A2-46B4-81D3-18BD32F634A1}"/>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
 						</RandomSequenceContainer>
 					</ChildrenList>
 				</ActorMixer>

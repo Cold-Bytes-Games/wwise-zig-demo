@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{88012962-D6A8-4400-BC86-DF1A5980EDFA}" SchemaVersion="110">
+<WwiseDocument Type="WorkUnit" ID="{88012962-D6A8-4400-BC86-DF1A5980EDFA}" SchemaVersion="119">
 	<AudioObjects>
 		<WorkUnit Name="Default Work Unit" ID="{88012962-D6A8-4400-BC86-DF1A5980EDFA}" PersistMode="Standalone">
 			<ChildrenList>
@@ -84,57 +84,89 @@
 							<MediaIDList>
 								<MediaID ID="544694784"/>
 							</MediaIDList>
-							<PluginInnerObjectList>
-								<List Name="Markers">
-									<PluginInnerObject Name="" ID="{3A5E7FEC-5B89-4BF3-8347-C5F270D189B1}" PluginName="Marker" CompanyID="0" PluginID="993">
-										<PropertyList>
-											<Property Name="Label" Type="string" Value="In this tutorial,"/>
-											<Property Name="Time" Type="Real64" Value="0.0342291666666667"/>
-										</PropertyList>
-									</PluginInnerObject>
-									<PluginInnerObject Name="" ID="{49A86AE5-8D39-4EFD-8013-EB8B727D7EF8}" PluginName="Marker" CompanyID="0" PluginID="993">
-										<PropertyList>
-											<Property Name="Label" Type="string" Value="we will look at creating"/>
-											<Property Name="Time" Type="Real64" Value="1.13060416666667"/>
-										</PropertyList>
-									</PluginInnerObject>
-									<PluginInnerObject Name="" ID="{6BB5BECF-2BE6-45A6-84DF-22B92B94B797}" PluginName="Marker" CompanyID="0" PluginID="993">
-										<PropertyList>
-											<Property Name="Label" Type="string" Value="actor-mixers"/>
-											<Property Name="Time" Type="Real64" Value="2.13354166666667"/>
-										</PropertyList>
-									</PluginInnerObject>
-									<PluginInnerObject Name="" ID="{36E6CB1F-EBF6-467D-80C1-0CA76AD85843}" PluginName="Marker" CompanyID="0" PluginID="993">
-										<PropertyList>
-											<Property Name="Label" Type="string" Value="and control buses."/>
-											<Property Name="Time" Type="Real64" Value="2.87454166666667"/>
-										</PropertyList>
-									</PluginInnerObject>
-									<PluginInnerObject Name="" ID="{0F953175-3AA0-4857-8D54-91E5E78277F2}" PluginName="Marker" CompanyID="0" PluginID="993">
-										<PropertyList>
-											<Property Name="Label" Type="string" Value="We will also look at the"/>
-											<Property Name="Time" Type="Real64" Value="4.25391666666667"/>
-										</PropertyList>
-									</PluginInnerObject>
-									<PluginInnerObject Name="" ID="{A02365F8-B1CF-49E3-9047-B4D2ED550BFE}" PluginName="Marker" CompanyID="0" PluginID="993">
-										<PropertyList>
-											<Property Name="Label" Type="string" Value="actor-mixer and master-mixer structures"/>
-											<Property Name="Time" Type="Real64" Value="5.15022916666667"/>
-										</PropertyList>
-									</PluginInnerObject>
-									<PluginInnerObject Name="" ID="{AE631BF9-1F0B-4FA9-B432-69073DD5F785}" PluginName="Marker" CompanyID="0" PluginID="993">
-										<PropertyList>
-											<Property Name="Label" Type="string" Value="and how to manage these structures efficiently."/>
-											<Property Name="Time" Type="Real64" Value="7.64704166666667"/>
-										</PropertyList>
-									</PluginInnerObject>
-									<PluginInnerObject Name="" ID="{E779D8CA-4AFB-4A04-ACA8-B6F496CBBE19}" PluginName="Marker" CompanyID="0" PluginID="993">
-										<PropertyList>
-											<Property Name="Time" Type="Real64" Value="9.53979166666667"/>
-										</PropertyList>
-									</PluginInnerObject>
-								</List>
-							</PluginInnerObjectList>
+							<ObjectLists>
+								<ObjectList Name="Markers">
+									<Reference>
+										<Local>
+											<Marker Name="" ID="{3A5E7FEC-5B89-4BF3-8347-C5F270D189B1}">
+												<PropertyList>
+													<Property Name="Label" Type="string" Value="In this tutorial,"/>
+													<Property Name="Time" Type="Real64" Value="0.0342291666666667"/>
+												</PropertyList>
+											</Marker>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<Marker Name="" ID="{49A86AE5-8D39-4EFD-8013-EB8B727D7EF8}">
+												<PropertyList>
+													<Property Name="Label" Type="string" Value="we will look at creating"/>
+													<Property Name="Time" Type="Real64" Value="1.13060416666667"/>
+												</PropertyList>
+											</Marker>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<Marker Name="" ID="{6BB5BECF-2BE6-45A6-84DF-22B92B94B797}">
+												<PropertyList>
+													<Property Name="Label" Type="string" Value="actor-mixers"/>
+													<Property Name="Time" Type="Real64" Value="2.13354166666667"/>
+												</PropertyList>
+											</Marker>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<Marker Name="" ID="{36E6CB1F-EBF6-467D-80C1-0CA76AD85843}">
+												<PropertyList>
+													<Property Name="Label" Type="string" Value="and control buses."/>
+													<Property Name="Time" Type="Real64" Value="2.87454166666667"/>
+												</PropertyList>
+											</Marker>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<Marker Name="" ID="{0F953175-3AA0-4857-8D54-91E5E78277F2}">
+												<PropertyList>
+													<Property Name="Label" Type="string" Value="We will also look at the"/>
+													<Property Name="Time" Type="Real64" Value="4.25391666666667"/>
+												</PropertyList>
+											</Marker>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<Marker Name="" ID="{A02365F8-B1CF-49E3-9047-B4D2ED550BFE}">
+												<PropertyList>
+													<Property Name="Label" Type="string" Value="actor-mixer and master-mixer structures"/>
+													<Property Name="Time" Type="Real64" Value="5.15022916666667"/>
+												</PropertyList>
+											</Marker>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<Marker Name="" ID="{AE631BF9-1F0B-4FA9-B432-69073DD5F785}">
+												<PropertyList>
+													<Property Name="Label" Type="string" Value="and how to manage these structures efficiently."/>
+													<Property Name="Time" Type="Real64" Value="7.64704166666667"/>
+												</PropertyList>
+											</Marker>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<Marker Name="" ID="{E779D8CA-4AFB-4A04-ACA8-B6F496CBBE19}">
+												<PropertyList>
+													<Property Name="Time" Type="Real64" Value="9.53979166666667"/>
+												</PropertyList>
+											</Marker>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
 						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
@@ -576,32 +608,9 @@ used or modified for a commercial purpose nor for public demonstration.</Comment
 					</BlendTrackList>
 				</BlendContainer>
 				<Sound Name="Microphone" ID="{DE905730-2690-4B1F-A21D-5CDFF373ED98}" ShortID="105868392">
-					<PropertyList>
-						<Property Name="BypassEffect1" Type="bool">
-							<ValueList>
-								<Value>True</Value>
-							</ValueList>
-						</Property>
-					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="SFX" ID="{3A429FCB-87D8-458B-B315-DBE8023064B3}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
-						</Reference>
-						<Reference Name="Effect0">
-							<Custom>
-								<Effect Name="Default (Custom)" ID="{7F4B07D8-C838-435D-B4EC-3E3213D1BB17}" ShortID="656632019" PluginName="Wwise Peak Limiter" CompanyID="0" PluginID="110" PluginType="3">
-									<PropertyList>
-										<Property Name="OutputGain" Type="Real32" Value="11"/>
-										<Property Name="Ratio" Type="Real32" Value="50"/>
-										<Property Name="ReleaseTime" Type="Real32" Value="0.1"/>
-									</PropertyList>
-								</Effect>
-							</Custom>
-						</Reference>
-						<Reference Name="Effect1">
-							<Custom CreatedFrom="{D20F3717-EBA2-4E3A-84F8-C8BD431563FB}">
-								<Effect Name="Echoes_Linear (Define custom)" ID="{7EF8F484-2490-40AA-A10D-B4295B46A7F0}" ShortID="748014606" PluginName="Wwise Delay" CompanyID="0" PluginID="106" PluginType="3"/>
-							</Custom>
 						</Reference>
 						<Reference Name="OutputBus">
 							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
@@ -615,6 +624,49 @@ used or modified for a commercial purpose nor for public demonstration.</Comment
 							<Language>SFX</Language>
 						</SourcePlugin>
 					</ChildrenList>
+					<ObjectLists>
+						<ObjectList Name="Effects">
+							<Reference>
+								<Local>
+									<EffectSlot Name="" ID="{120C6DDA-4FB6-4964-85D6-0397AA08FE90}" ShortID="431726236">
+										<ReferenceList>
+											<Reference Name="Effect">
+												<Custom>
+													<Effect Name="Default (Custom)" ID="{7F4B07D8-C838-435D-B4EC-3E3213D1BB17}" ShortID="656632019" PluginName="Wwise Peak Limiter" CompanyID="0" PluginID="110" PluginType="3">
+														<PropertyList>
+															<Property Name="OutputGain" Type="Real32" Value="11"/>
+															<Property Name="Ratio" Type="Real32" Value="50"/>
+															<Property Name="ReleaseTime" Type="Real32" Value="0.1"/>
+														</PropertyList>
+													</Effect>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</EffectSlot>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<EffectSlot Name="" ID="{D913390F-5BBF-4ED2-9648-2EEC0BD94991}" ShortID="215325513">
+										<PropertyList>
+											<Property Name="Bypass" Type="bool">
+												<ValueList>
+													<Value>True</Value>
+												</ValueList>
+											</Property>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="Effect">
+												<Custom CreatedFrom="{D20F3717-EBA2-4E3A-84F8-C8BD431563FB}">
+													<Effect Name="Echoes_Linear (Define custom)" ID="{7EF8F484-2490-40AA-A10D-B4295B46A7F0}" ShortID="748014606" PluginName="Wwise Delay" CompanyID="0" PluginID="106" PluginType="3"/>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</EffectSlot>
+								</Local>
+							</Reference>
+						</ObjectList>
+					</ObjectLists>
 					<ActiveSourceList>
 						<ActiveSource Name="Audio Input" ID="{A8B026D3-4334-4C4B-B829-3E0F86D38E08}" Platform="Linked"/>
 					</ActiveSourceList>
@@ -950,9 +1002,6 @@ used or modified for a commercial purpose nor for public demonstration.</Comment
 								<Reference Name="Conversion">
 									<ObjectRef Name="Voice" ID="{E6582A3A-9DF1-4AF7-B55C-0E717D979AF8}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
 								</Reference>
-								<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-									<ObjectRef Name="Cathedral_Holy" ID="{CC7B8638-C670-4AD5-B3FB-331EA81037F6}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-								</Reference>
 								<Reference Name="OutputBus">
 									<ObjectRef Name="Voices" ID="{FCDDF691-8885-4A61-BF35-24E9EA98700E}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 								</Reference>
@@ -973,6 +1022,21 @@ used or modified for a commercial purpose nor for public demonstration.</Comment
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{F471B0AB-9861-4059-AE49-87E30A43064F}" ShortID="613157212">
+												<ReferenceList>
+													<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+														<ObjectRef Name="Cathedral_Holy" ID="{CC7B8638-C670-4AD5-B3FB-331EA81037F6}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
 							<ActiveSourceList>
 								<ActiveSource Name="Hello" ID="{C850C720-466C-4A17-9F2E-B60919D4FF4F}" Platform="Linked"/>
 								<ActiveSource Name="Hello" ID="{291DD482-5208-4EE2-BB9E-434781ED0181}" Platform="Linked"/>

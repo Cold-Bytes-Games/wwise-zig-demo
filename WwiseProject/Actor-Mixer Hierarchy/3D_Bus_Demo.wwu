@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{653976DD-C047-41EE-8492-E1E2DE8C9DAB}" SchemaVersion="110">
+<WwiseDocument Type="WorkUnit" ID="{653976DD-C047-41EE-8492-E1E2DE8C9DAB}" SchemaVersion="119">
 	<AudioObjects>
 		<WorkUnit Name="3D_Bus_Demo" ID="{653976DD-C047-41EE-8492-E1E2DE8C9DAB}" PersistMode="Standalone">
 			<ChildrenList>
@@ -454,9 +454,13 @@
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
-							<Playlist>
-								<ItemRef Name="Markers_Test" ID="{9808AEFC-AB39-4E59-9A89-B7FBAB3FA4F3}"/>
-							</Playlist>
+							<ObjectLists>
+								<ObjectList Name="Playlist">
+									<Reference>
+										<ObjectRef Name="Markers_Test" ID="{9808AEFC-AB39-4E59-9A89-B7FBAB3FA4F3}" WorkUnitID="{653976DD-C047-41EE-8492-E1E2DE8C9DAB}"/>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
 						</RandomSequenceContainer>
 						<Sound Name="Ambience_Quad" ID="{172A9E9E-FAF4-4E32-99E3-566AE0650CCD}" ShortID="258628149">
 							<Comment>Audiokinetic Inc. All rights reserved.

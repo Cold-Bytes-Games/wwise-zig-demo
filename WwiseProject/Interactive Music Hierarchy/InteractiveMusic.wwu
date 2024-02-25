@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}" SchemaVersion="110">
+<WwiseDocument Type="WorkUnit" ID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}" SchemaVersion="119">
 	<InteractiveMusic>
 		<WorkUnit Name="InteractiveMusic" ID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}" PersistMode="Standalone">
 			<ChildrenList>
@@ -30,6 +30,427 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 						<Reference Name="OutputBus">
 							<ObjectRef Name="Music" ID="{4810BCA9-BA17-4C9F-B065-1F1CB8AC7DEE}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 						</Reference>
+						<Reference Name="TransitionRoot">
+							<Custom>
+								<MusicTransition Name="Root" ID="{09181777-8752-4891-8D27-BFC05E7A3DBE}">
+									<PropertyList>
+										<Property Name="IsFolder" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<MusicTransition Name="Transition" ID="{1926A2E6-2725-4B1C-AD09-29788FAAD813}">
+											<PropertyList>
+												<Property Name="ExitSourceAt" Type="int16" Value="2"/>
+												<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+												<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+											</PropertyList>
+											<TransitionInfo>
+												<SourceFadeOut>
+													<MusicFade Name="Source Fade-out" ID="{16BAF7DF-16FC-4F4D-8220-3C9529AB742F}">
+														<PropertyList>
+															<Property Name="FadeTime" Type="Real64" Value="0.01"/>
+															<Property Name="FadeType" Type="int16" Value="1"/>
+														</PropertyList>
+													</MusicFade>
+												</SourceFadeOut>
+											</TransitionInfo>
+										</MusicTransition>
+										<MusicTransition Name="Transition" ID="{0557B2D4-E857-4798-963F-D2544A9CBCDB}">
+											<PropertyList>
+												<Property Name="DestinationContextType" Type="int16" Value="2"/>
+												<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+												<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+												<Property Name="ExitSourceAt" Type="int16" Value="2"/>
+												<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+												<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+												<Property Name="SourceContextType" Type="int16" Value="2"/>
+												<Property Name="UseTransitionObject" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="DestinationContextObject">
+													<ObjectRef Name="LoopWithVoice" ID="{8CE81806-C54E-49B7-A3E4-81027F493F6D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												</Reference>
+												<Reference Name="SourceContextObject">
+													<ObjectRef Name="LoopIntro" ID="{5620C901-1435-46FC-A08F-DDDD24C2150A}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												</Reference>
+											</ReferenceList>
+											<TransitionInfo>
+												<JumpToPlaylistItemRef Name="" ID="{62342A3D-D448-4449-AE97-CC0FA3A27D00}"/>
+												<TransitionObjectRef Name="Transition" ID="{206F183C-AA3A-4430-89A5-65F0F29B810D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												<SourceFadeOut>
+													<MusicFade Name="Source Fade-out" ID="{6EF65630-FD72-4E1A-AC0F-D471C0B9BDFC}">
+														<PropertyList>
+															<Property Name="FadeTime" Type="Real64" Value="0.01"/>
+															<Property Name="FadeType" Type="int16" Value="1"/>
+														</PropertyList>
+													</MusicFade>
+												</SourceFadeOut>
+											</TransitionInfo>
+										</MusicTransition>
+										<MusicTransition Name="Transition" ID="{4F4ABA00-A453-4E45-BF3A-24A42BC7EB2F}">
+											<PropertyList>
+												<Property Name="DestinationContextType" Type="int16" Value="2"/>
+												<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+												<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+												<Property Name="ExitSourceAt" Type="int16" Value="2"/>
+												<Property Name="SourceContextType" Type="int16" Value="2"/>
+												<Property Name="UseTransitionObject" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="DestinationContextObject">
+													<ObjectRef Name="FightLoopLevel1" ID="{4662C10B-4F04-4150-9EFB-8DD0AD254AFC}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												</Reference>
+												<Reference Name="SourceContextObject">
+													<ObjectRef Name="LoopWithVoice" ID="{8CE81806-C54E-49B7-A3E4-81027F493F6D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												</Reference>
+											</ReferenceList>
+											<TransitionInfo>
+												<JumpToPlaylistItemRef Name="" ID="{2CBD4FDE-839D-4710-9A87-BA963869036F}"/>
+												<TransitionObjectRef Name="Transition" ID="{206F183C-AA3A-4430-89A5-65F0F29B810D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												<SourceFadeOut>
+													<MusicFade Name="Source Fade-out" ID="{C9983028-8A6B-4CF9-A83D-EE84FD273663}">
+														<PropertyList>
+															<Property Name="FadeTime" Type="Real64" Value="0.01"/>
+															<Property Name="FadeType" Type="int16" Value="1"/>
+														</PropertyList>
+													</MusicFade>
+												</SourceFadeOut>
+											</TransitionInfo>
+										</MusicTransition>
+										<MusicTransition Name="Transition" ID="{84931D13-DC91-48C2-A37E-0660D92425E3}">
+											<PropertyList>
+												<Property Name="DestinationContextType" Type="int16" Value="2"/>
+												<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+												<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+												<Property Name="ExitSourceAt" Type="int16" Value="2"/>
+												<Property Name="SourceContextType" Type="int16" Value="2"/>
+												<Property Name="UseTransitionObject" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="DestinationContextObject">
+													<ObjectRef Name="FightLoopLevel2" ID="{1073CEF6-01FB-4778-BFB7-2FD856EE2299}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												</Reference>
+												<Reference Name="SourceContextObject">
+													<ObjectRef Name="LoopWithVoice" ID="{8CE81806-C54E-49B7-A3E4-81027F493F6D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												</Reference>
+											</ReferenceList>
+											<TransitionInfo>
+												<JumpToPlaylistItemRef Name="" ID="{35CA2D8C-847A-48E3-8D1A-9C55E00079CF}"/>
+												<TransitionObjectRef Name="Transition" ID="{206F183C-AA3A-4430-89A5-65F0F29B810D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												<SourceFadeOut>
+													<MusicFade Name="Source Fade-out" ID="{0C5CF06A-9FD7-4870-9147-FA3AF496ED2A}">
+														<PropertyList>
+															<Property Name="FadeTime" Type="Real64" Value="0.01"/>
+															<Property Name="FadeType" Type="int16" Value="1"/>
+														</PropertyList>
+													</MusicFade>
+												</SourceFadeOut>
+											</TransitionInfo>
+										</MusicTransition>
+										<MusicTransition Name="Transition" ID="{CE42D6EB-8503-45A1-9466-33BD832F4AB6}">
+											<PropertyList>
+												<Property Name="DestinationContextType" Type="int16" Value="2"/>
+												<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+												<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+												<Property Name="ExitSourceAt" Type="int16" Value="2"/>
+												<Property Name="SourceContextType" Type="int16" Value="2"/>
+												<Property Name="UseTransitionObject" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="DestinationContextObject">
+													<ObjectRef Name="FightLoopLevel3" ID="{0AD2AA4A-53B4-4E91-9B74-784BBF0037F3}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												</Reference>
+												<Reference Name="SourceContextObject">
+													<ObjectRef Name="LoopWithVoice" ID="{8CE81806-C54E-49B7-A3E4-81027F493F6D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												</Reference>
+											</ReferenceList>
+											<TransitionInfo>
+												<JumpToPlaylistItemRef Name="" ID="{24F73D95-5C59-4729-BFE7-09A5C8EAB103}"/>
+												<TransitionObjectRef Name="Transition" ID="{206F183C-AA3A-4430-89A5-65F0F29B810D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												<SourceFadeOut>
+													<MusicFade Name="Source Fade-out" ID="{A986D89D-6040-4D00-B312-E6408C982F4F}">
+														<PropertyList>
+															<Property Name="FadeTime" Type="Real64" Value="0.01"/>
+															<Property Name="FadeType" Type="int16" Value="1"/>
+														</PropertyList>
+													</MusicFade>
+												</SourceFadeOut>
+											</TransitionInfo>
+										</MusicTransition>
+										<MusicTransition Name="Transition" ID="{916E955C-1E43-4F1E-BB7B-06342C7367D3}">
+											<PropertyList>
+												<Property Name="DestinationContextType" Type="int16" Value="2"/>
+												<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+												<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+												<Property Name="ExitSourceAt" Type="int16" Value="2"/>
+												<Property Name="SourceContextType" Type="int16" Value="2"/>
+												<Property Name="UseTransitionObject" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="DestinationContextObject">
+													<ObjectRef Name="FightLoopLevel4" ID="{F74D2C3D-1C54-44A0-8B8E-D5414C0232C6}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												</Reference>
+												<Reference Name="SourceContextObject">
+													<ObjectRef Name="LoopWithVoice" ID="{8CE81806-C54E-49B7-A3E4-81027F493F6D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												</Reference>
+											</ReferenceList>
+											<TransitionInfo>
+												<JumpToPlaylistItemRef Name="" ID="{E6E4A44B-EAC7-4D0D-B0A9-1ADC67E43B5D}"/>
+												<TransitionObjectRef Name="Transition" ID="{206F183C-AA3A-4430-89A5-65F0F29B810D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												<SourceFadeOut>
+													<MusicFade Name="Source Fade-out" ID="{CC168C11-BF1A-4221-8A18-7FE577C7EE25}">
+														<PropertyList>
+															<Property Name="FadeTime" Type="Real64" Value="0.01"/>
+															<Property Name="FadeType" Type="int16" Value="1"/>
+														</PropertyList>
+													</MusicFade>
+												</SourceFadeOut>
+											</TransitionInfo>
+										</MusicTransition>
+										<MusicTransition Name="Transition" ID="{12AFFA49-8E6C-455D-94E6-8729C7F6071C}">
+											<PropertyList>
+												<Property Name="DestinationContextType" Type="int16" Value="2"/>
+												<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+												<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+												<Property Name="ExitSourceAt" Type="int16" Value="2"/>
+												<Property Name="SourceContextType" Type="int16" Value="2"/>
+												<Property Name="UseTransitionObject" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="DestinationContextObject">
+													<ObjectRef Name="FightLoopLevel1" ID="{4662C10B-4F04-4150-9EFB-8DD0AD254AFC}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												</Reference>
+												<Reference Name="SourceContextObject">
+													<ObjectRef Name="LoopIntro" ID="{5620C901-1435-46FC-A08F-DDDD24C2150A}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												</Reference>
+											</ReferenceList>
+											<TransitionInfo>
+												<JumpToPlaylistItemRef Name="" ID="{2CBD4FDE-839D-4710-9A87-BA963869036F}"/>
+												<TransitionObjectRef Name="Transition" ID="{206F183C-AA3A-4430-89A5-65F0F29B810D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												<SourceFadeOut>
+													<MusicFade Name="Source Fade-out" ID="{04B937FA-BDCF-45F6-A592-78B6EF803569}">
+														<PropertyList>
+															<Property Name="FadeTime" Type="Real64" Value="0.01"/>
+															<Property Name="FadeType" Type="int16" Value="1"/>
+														</PropertyList>
+													</MusicFade>
+												</SourceFadeOut>
+											</TransitionInfo>
+										</MusicTransition>
+										<MusicTransition Name="Transition" ID="{A81EA3B6-AEEC-479E-9B8E-BCF98606DE5F}">
+											<PropertyList>
+												<Property Name="DestinationContextType" Type="int16" Value="2"/>
+												<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+												<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+												<Property Name="ExitSourceAt" Type="int16" Value="2"/>
+												<Property Name="SourceContextType" Type="int16" Value="2"/>
+												<Property Name="UseTransitionObject" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="DestinationContextObject">
+													<ObjectRef Name="FightLoopLevel2" ID="{1073CEF6-01FB-4778-BFB7-2FD856EE2299}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												</Reference>
+												<Reference Name="SourceContextObject">
+													<ObjectRef Name="LoopIntro" ID="{5620C901-1435-46FC-A08F-DDDD24C2150A}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												</Reference>
+											</ReferenceList>
+											<TransitionInfo>
+												<JumpToPlaylistItemRef Name="" ID="{35CA2D8C-847A-48E3-8D1A-9C55E00079CF}"/>
+												<TransitionObjectRef Name="Transition" ID="{206F183C-AA3A-4430-89A5-65F0F29B810D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												<SourceFadeOut>
+													<MusicFade Name="Source Fade-out" ID="{8D7040F6-3F34-4BF5-A2DA-65F901C76CC0}">
+														<PropertyList>
+															<Property Name="FadeTime" Type="Real64" Value="0.01"/>
+															<Property Name="FadeType" Type="int16" Value="1"/>
+														</PropertyList>
+													</MusicFade>
+												</SourceFadeOut>
+											</TransitionInfo>
+										</MusicTransition>
+										<MusicTransition Name="Transition" ID="{9B188906-9447-4A9F-B34B-54D4844DB22E}">
+											<PropertyList>
+												<Property Name="DestinationContextType" Type="int16" Value="2"/>
+												<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+												<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+												<Property Name="ExitSourceAt" Type="int16" Value="2"/>
+												<Property Name="SourceContextType" Type="int16" Value="2"/>
+												<Property Name="UseTransitionObject" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="DestinationContextObject">
+													<ObjectRef Name="FightLoopLevel3" ID="{0AD2AA4A-53B4-4E91-9B74-784BBF0037F3}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												</Reference>
+												<Reference Name="SourceContextObject">
+													<ObjectRef Name="LoopIntro" ID="{5620C901-1435-46FC-A08F-DDDD24C2150A}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												</Reference>
+											</ReferenceList>
+											<TransitionInfo>
+												<JumpToPlaylistItemRef Name="" ID="{24F73D95-5C59-4729-BFE7-09A5C8EAB103}"/>
+												<TransitionObjectRef Name="Transition" ID="{206F183C-AA3A-4430-89A5-65F0F29B810D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												<SourceFadeOut>
+													<MusicFade Name="Source Fade-out" ID="{790B1EF9-DFCE-4BEB-A4AA-63A2BAF82474}">
+														<PropertyList>
+															<Property Name="FadeTime" Type="Real64" Value="0.01"/>
+															<Property Name="FadeType" Type="int16" Value="1"/>
+														</PropertyList>
+													</MusicFade>
+												</SourceFadeOut>
+											</TransitionInfo>
+										</MusicTransition>
+										<MusicTransition Name="Transition" ID="{FBCDC107-B60F-47B3-B2AC-A78D92072B57}">
+											<PropertyList>
+												<Property Name="DestinationContextType" Type="int16" Value="2"/>
+												<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+												<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+												<Property Name="ExitSourceAt" Type="int16" Value="2"/>
+												<Property Name="SourceContextType" Type="int16" Value="2"/>
+												<Property Name="UseTransitionObject" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="DestinationContextObject">
+													<ObjectRef Name="FightLoopLevel4" ID="{F74D2C3D-1C54-44A0-8B8E-D5414C0232C6}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												</Reference>
+												<Reference Name="SourceContextObject">
+													<ObjectRef Name="LoopIntro" ID="{5620C901-1435-46FC-A08F-DDDD24C2150A}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												</Reference>
+											</ReferenceList>
+											<TransitionInfo>
+												<JumpToPlaylistItemRef Name="" ID="{E6E4A44B-EAC7-4D0D-B0A9-1ADC67E43B5D}"/>
+												<TransitionObjectRef Name="Transition" ID="{206F183C-AA3A-4430-89A5-65F0F29B810D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												<SourceFadeOut>
+													<MusicFade Name="Source Fade-out" ID="{EB75ADBD-038C-4B45-BDC5-751AF3D97BB2}">
+														<PropertyList>
+															<Property Name="FadeTime" Type="Real64" Value="0.01"/>
+															<Property Name="FadeType" Type="int16" Value="1"/>
+														</PropertyList>
+													</MusicFade>
+												</SourceFadeOut>
+											</TransitionInfo>
+										</MusicTransition>
+										<MusicTransition Name="Transition" ID="{F7AC4E11-BA7D-4850-9188-A5F74F4EA82E}">
+											<PropertyList>
+												<Property Name="DestinationContextType" Type="int16" Value="2"/>
+												<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+												<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
+												<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+												<Property Name="ExitSourceAt" Type="int16" Value="2"/>
+												<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+												<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+												<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="DestinationContextObject">
+													<ObjectRef Name="WinTheFight" ID="{E7E3901E-5ADF-4A8C-951B-F4C9CE3E3263}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												</Reference>
+											</ReferenceList>
+											<TransitionInfo>
+												<JumpToPlaylistItemRef Name="" ID="{C8137C41-B198-49FE-8649-743545A37CE6}"/>
+												<SourceFadeOut>
+													<MusicFade Name="Source Fade-out" ID="{6350F5A5-7B5F-4E34-AF63-72199124CD1F}">
+														<PropertyList>
+															<Property Name="FadeCurve" Type="int16" Value="1"/>
+															<Property Name="FadeOffset" Type="Real64" Value="5.1"/>
+															<Property Name="FadeTime" Type="Real64" Value="5"/>
+															<Property Name="FadeType" Type="int16" Value="1"/>
+														</PropertyList>
+													</MusicFade>
+												</SourceFadeOut>
+												<DestinationFadeIn>
+													<MusicFade Name="Destination Fade-in" ID="{19453B6D-87F8-477B-BA29-9629964526FB}">
+														<PropertyList>
+															<Property Name="FadeCurve" Type="int16" Value="1"/>
+															<Property Name="FadeTime" Type="Real64" Value="3.8"/>
+														</PropertyList>
+													</MusicFade>
+												</DestinationFadeIn>
+											</TransitionInfo>
+										</MusicTransition>
+										<MusicTransition Name="Transition" ID="{E8E4456E-CC62-4945-9082-5097EEEA8388}">
+											<PropertyList>
+												<Property Name="DestinationContextType" Type="int16" Value="2"/>
+												<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+												<Property Name="ExitSourceAt" Type="int16" Value="2"/>
+												<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+												<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+												<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+												<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="DestinationContextObject">
+													<ObjectRef Name="GameOver" ID="{CA87BCBF-9615-4892-B961-62FD62A3889B}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												</Reference>
+											</ReferenceList>
+											<TransitionInfo>
+												<SourceFadeOut>
+													<MusicFade Name="Source Fade-out" ID="{CB9CE1F2-FC39-4D6F-8AC2-AFCB6DFDE729}">
+														<PropertyList>
+															<Property Name="FadeCurve" Type="int16" Value="1"/>
+															<Property Name="FadeOffset" Type="Real64" Value="0.9"/>
+															<Property Name="FadeTime" Type="Real64" Value="0.9"/>
+															<Property Name="FadeType" Type="int16" Value="1"/>
+														</PropertyList>
+													</MusicFade>
+												</SourceFadeOut>
+											</TransitionInfo>
+										</MusicTransition>
+										<MusicTransition Name="Transition" ID="{F160A537-2DA0-489B-843B-F0F38662600A}">
+											<PropertyList>
+												<Property Name="DestinationContextType" Type="int16" Value="1"/>
+												<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+												<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+												<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+												<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+											</PropertyList>
+											<TransitionInfo>
+												<SourceFadeOut>
+													<MusicFade Name="Source Fade-out" ID="{B704AB64-1482-46F7-82D9-B412F17F9A04}">
+														<PropertyList>
+															<Property Name="FadeCurve" Type="int16" Value="1"/>
+															<Property Name="FadeTime" Type="Real64" Value="3.5"/>
+															<Property Name="FadeType" Type="int16" Value="1"/>
+														</PropertyList>
+													</MusicFade>
+												</SourceFadeOut>
+											</TransitionInfo>
+										</MusicTransition>
+										<MusicTransition Name="Transition" ID="{2EAD75AA-4E16-4EEA-B2A6-B31D85CCA128}">
+											<PropertyList>
+												<Property Name="DestinationContextType" Type="int16" Value="1"/>
+												<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+												<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+												<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+												<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+												<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+												<Property Name="SourceContextType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="SourceContextObject">
+													<ObjectRef Name="GameOver" ID="{CA87BCBF-9615-4892-B961-62FD62A3889B}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												</Reference>
+											</ReferenceList>
+											<TransitionInfo/>
+										</MusicTransition>
+										<MusicTransition Name="Transition" ID="{E83A5DDF-2481-4AFD-AAFF-09FE8E1C9CC5}">
+											<PropertyList>
+												<Property Name="DestinationContextType" Type="int16" Value="1"/>
+												<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+												<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+												<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+												<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+												<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+												<Property Name="SourceContextType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="SourceContextObject">
+													<ObjectRef Name="WinTheFight" ID="{E7E3901E-5ADF-4A8C-951B-F4C9CE3E3263}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+												</Reference>
+											</ReferenceList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</ChildrenList>
+									<TransitionInfo/>
+								</MusicTransition>
+							</Custom>
+						</Reference>
 					</ReferenceList>
 					<ChildrenList>
 						<MusicPlaylistContainer Name="LoopIntro" ID="{5620C901-1435-46FC-A08F-DDDD24C2150A}" ShortID="818772511">
@@ -48,6 +469,98 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 							<ReferenceList>
 								<Reference Name="OutputBus">
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+								</Reference>
+								<Reference Name="PlaylistRoot">
+									<Custom>
+										<MusicPlaylistItem Name="" ID="{2999C617-1A6D-45E7-8C87-25A521B3A37D}" ShortID="603721423">
+											<ChildrenList>
+												<MusicPlaylistItem Name="" ID="{9E3E8DDF-6D27-44EB-97B0-666031E85821}" ShortID="710652026">
+													<PropertyList>
+														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Segment">
+															<ObjectRef Name="Intro1" ID="{D6014A46-2F30-42EF-AA45-0C492737D0A0}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+														</Reference>
+													</ReferenceList>
+												</MusicPlaylistItem>
+												<MusicPlaylistItem Name="" ID="{FF858BF4-EE4D-443C-B64B-D2CA90B7CF15}" ShortID="116292428">
+													<PropertyList>
+														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Segment">
+															<ObjectRef Name="Intro2" ID="{219ACB08-83EB-4840-890E-0E8117CE7A2B}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+														</Reference>
+													</ReferenceList>
+												</MusicPlaylistItem>
+												<MusicPlaylistItem Name="" ID="{92E6CBC1-C6E4-42F6-A90E-313F53A87595}" ShortID="715918034">
+													<PropertyList>
+														<Property Name="LoopCount" Type="int16" Value="0"/>
+														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Segment">
+															<ObjectRef Name="Loop" ID="{BBBFE5C3-8796-44AB-9606-2A456A4AF60D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+														</Reference>
+													</ReferenceList>
+												</MusicPlaylistItem>
+											</ChildrenList>
+										</MusicPlaylistItem>
+									</Custom>
+								</Reference>
+								<Reference Name="TransitionRoot">
+									<Custom>
+										<MusicTransition Name="Root" ID="{E328D47B-CCE3-4C61-BCAB-E2159567B109}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicTransition Name="Transition" ID="{10646E46-2643-43D8-A106-3679701C03D0}">
+													<PropertyList>
+														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+												<MusicTransition Name="Transition" ID="{6D158953-9E44-4A48-9E0F-F57E5265EB39}">
+													<PropertyList>
+														<Property Name="DestinationContextType" Type="int16" Value="2"/>
+														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+														<Property Name="SourceContextType" Type="int16" Value="2"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="DestinationContextObject">
+															<ObjectRef Name="Intro2" ID="{219ACB08-83EB-4840-890E-0E8117CE7A2B}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+														</Reference>
+														<Reference Name="SourceContextObject">
+															<ObjectRef Name="Intro1" ID="{D6014A46-2F30-42EF-AA45-0C492737D0A0}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+														</Reference>
+													</ReferenceList>
+													<TransitionInfo>
+														<SourceFadeOut>
+															<MusicFade Name="Source Fade-out" ID="{D2D5AA54-94AE-4163-BEAC-D30298EEA47F}">
+																<PropertyList>
+																	<Property Name="FadeType" Type="int16" Value="1"/>
+																</PropertyList>
+															</MusicFade>
+														</SourceFadeOut>
+														<DestinationFadeIn>
+															<MusicFade Name="Destination Fade-in" ID="{256A89DD-ECCE-4918-8F23-C5EF87859398}"/>
+														</DestinationFadeIn>
+													</TransitionInfo>
+												</MusicTransition>
+											</ChildrenList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</Custom>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
@@ -88,6 +601,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{F71A2C75-986E-4539-8889-CEA33B26D28D}">
+															<PropertyList>
+																<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+																<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+																<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Bass" ID="{F3CEB698-150D-41A3-B125-B2CA2268AFBB}">
@@ -98,19 +626,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{F71A2C75-986E-4539-8889-CEA33B26D28D}">
-													<PropertyList>
-														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
 													<Reference>
@@ -152,6 +667,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{44D506C7-320A-4436-AA35-F9F3B3651014}">
+															<PropertyList>
+																<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+																<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+																<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Drum" ID="{E8FFFEFA-8BA7-4978-8F4A-9320AD0094D7}">
@@ -162,19 +692,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{44D506C7-320A-4436-AA35-F9F3B3651014}">
-													<PropertyList>
-														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
 													<Reference>
@@ -216,6 +733,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{C2EE3B04-EFFC-4396-8523-2EB33E1BC2A1}">
+															<PropertyList>
+																<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+																<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+																<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Keys" ID="{B0C251D4-9C5D-4733-B1BD-635092EECA72}">
@@ -226,19 +758,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{C2EE3B04-EFFC-4396-8523-2EB33E1BC2A1}">
-													<PropertyList>
-														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
 													<Reference>
@@ -333,6 +852,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{5BF77406-2300-463C-82B2-5698534257F7}">
+															<PropertyList>
+																<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+																<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+																<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Bass" ID="{A9B6718E-8210-466F-82C7-5FB7C1043C66}">
@@ -343,19 +877,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{5BF77406-2300-463C-82B2-5698534257F7}">
-													<PropertyList>
-														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
 													<Reference>
@@ -397,6 +918,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{2197A399-FE63-4BA1-B39D-4FD1B030CC03}">
+															<PropertyList>
+																<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+																<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+																<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Drum" ID="{2234E4BE-966B-48A1-8143-1830B19302A3}">
@@ -407,19 +943,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{2197A399-FE63-4BA1-B39D-4FD1B030CC03}">
-													<PropertyList>
-														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
 													<Reference>
@@ -461,6 +984,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{0BF4A261-9005-4384-8AB6-7E0CCE11F1EA}">
+															<PropertyList>
+																<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+																<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+																<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Keys" ID="{4BC0F322-2889-4981-9734-011EF44ED526}">
@@ -471,19 +1009,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{0BF4A261-9005-4384-8AB6-7E0CCE11F1EA}">
-													<PropertyList>
-														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
 													<Reference>
@@ -595,6 +1120,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{707A617A-91B3-4ABC-A330-81017EE67DE6}">
+															<PropertyList>
+																<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+																<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+																<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Keys" ID="{DEEDD8CE-5A98-4170-93E6-032852556B00}">
@@ -605,19 +1145,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{707A617A-91B3-4ABC-A330-81017EE67DE6}">
-													<PropertyList>
-														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
 													<Reference>
@@ -676,82 +1203,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 									</ObjectLists>
 								</MusicSegment>
 							</ChildrenList>
-							<TransitionList>
-								<MusicTransition Name="Root" ID="{E328D47B-CCE3-4C61-BCAB-E2159567B109}">
-									<PropertyList>
-										<Property Name="IsFolder" Type="bool" Value="True"/>
-									</PropertyList>
-									<ChildrenList>
-										<MusicTransition Name="Transition" ID="{10646E46-2643-43D8-A106-3679701C03D0}">
-											<PropertyList>
-												<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-												<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-												<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-												<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-												<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-											</PropertyList>
-											<TransitionInfo/>
-										</MusicTransition>
-										<MusicTransition Name="Transition" ID="{6D158953-9E44-4A48-9E0F-F57E5265EB39}">
-											<PropertyList>
-												<Property Name="DestinationContextType" Type="int16" Value="2"/>
-												<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-												<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-												<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-												<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-												<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-												<Property Name="SourceContextType" Type="int16" Value="2"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="DestinationContextObject">
-													<ObjectRef Name="Intro2" ID="{219ACB08-83EB-4840-890E-0E8117CE7A2B}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-												</Reference>
-												<Reference Name="SourceContextObject">
-													<ObjectRef Name="Intro1" ID="{D6014A46-2F30-42EF-AA45-0C492737D0A0}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-												</Reference>
-											</ReferenceList>
-											<TransitionInfo>
-												<SourceFadeOut>
-													<MusicFade Name="Source Fade-out" ID="{D2D5AA54-94AE-4163-BEAC-D30298EEA47F}">
-														<PropertyList>
-															<Property Name="FadeType" Type="int16" Value="1"/>
-														</PropertyList>
-													</MusicFade>
-												</SourceFadeOut>
-												<DestinationFadeIn>
-													<MusicFade Name="Destination Fade-in" ID="{256A89DD-ECCE-4918-8F23-C5EF87859398}"/>
-												</DestinationFadeIn>
-											</TransitionInfo>
-										</MusicTransition>
-									</ChildrenList>
-									<TransitionInfo/>
-								</MusicTransition>
-							</TransitionList>
-							<Playlist>
-								<MusicPlaylistItem Name="" ID="{2999C617-1A6D-45E7-8C87-25A521B3A37D}" ShortID="603721423">
-									<ChildrenList>
-										<MusicPlaylistItem Name="" ID="{9E3E8DDF-6D27-44EB-97B0-666031E85821}" ShortID="710652026">
-											<PropertyList>
-												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
-											</PropertyList>
-											<SegmentRef Name="Intro1" ID="{D6014A46-2F30-42EF-AA45-0C492737D0A0}"/>
-										</MusicPlaylistItem>
-										<MusicPlaylistItem Name="" ID="{FF858BF4-EE4D-443C-B64B-D2CA90B7CF15}" ShortID="116292428">
-											<PropertyList>
-												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
-											</PropertyList>
-											<SegmentRef Name="Intro2" ID="{219ACB08-83EB-4840-890E-0E8117CE7A2B}"/>
-										</MusicPlaylistItem>
-										<MusicPlaylistItem Name="" ID="{92E6CBC1-C6E4-42F6-A90E-313F53A87595}" ShortID="715918034">
-											<PropertyList>
-												<Property Name="LoopCount" Type="int16" Value="0"/>
-												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
-											</PropertyList>
-											<SegmentRef Name="Loop" ID="{BBBFE5C3-8796-44AB-9606-2A456A4AF60D}"/>
-										</MusicPlaylistItem>
-									</ChildrenList>
-								</MusicPlaylistItem>
-							</Playlist>
 						</MusicPlaylistContainer>
 						<MusicPlaylistContainer Name="LoopWithVoice" ID="{8CE81806-C54E-49B7-A3E4-81027F493F6D}" ShortID="800667958">
 							<Comment>Audiokinetic Inc. All rights reserved.
@@ -770,6 +1221,60 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 							<ReferenceList>
 								<Reference Name="OutputBus">
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+								</Reference>
+								<Reference Name="PlaylistRoot">
+									<Custom>
+										<MusicPlaylistItem Name="" ID="{62342A3D-D448-4449-AE97-CC0FA3A27D00}" ShortID="672385111">
+											<PropertyList>
+												<Property Name="LoopCount" Type="int16" Value="0"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicPlaylistItem Name="" ID="{0488A6F5-9F97-4F12-9C74-AFC99F9889E4}" ShortID="737489390">
+													<PropertyList>
+														<Property Name="LoopCount" Type="int16" Value="2"/>
+														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Segment">
+															<ObjectRef Name="Segment" ID="{0AE7DCB6-DD5F-4F27-A48B-BA7A2F27CCE6}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+														</Reference>
+													</ReferenceList>
+												</MusicPlaylistItem>
+												<MusicPlaylistItem Name="" ID="{F75921B5-57A2-42A5-8A73-107A0263B506}" ShortID="789401877">
+													<PropertyList>
+														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Segment">
+															<ObjectRef Name="Segment_WithoutVoice" ID="{1365B489-2B48-425C-AB7E-AFC7E2360B55}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+														</Reference>
+													</ReferenceList>
+												</MusicPlaylistItem>
+											</ChildrenList>
+										</MusicPlaylistItem>
+									</Custom>
+								</Reference>
+								<Reference Name="TransitionRoot">
+									<Custom>
+										<MusicTransition Name="Root" ID="{4E676693-F276-4497-BFD5-25436F8A645A}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicTransition Name="Transition" ID="{BC22A92B-983B-4857-867B-46AC0CE22C86}">
+													<PropertyList>
+														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</ChildrenList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</Custom>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
@@ -810,6 +1315,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{DA24ADD1-6D3C-4D0E-9C38-EFF23797E134}">
+															<PropertyList>
+																<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+																<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+																<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Bass" ID="{72A9BF23-DA89-4BE9-A9BB-0EB6EB781A8B}">
@@ -820,19 +1340,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{DA24ADD1-6D3C-4D0E-9C38-EFF23797E134}">
-													<PropertyList>
-														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
 													<Reference>
@@ -874,6 +1381,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{70D5EF48-8A33-4344-A41A-D170222FC44C}">
+															<PropertyList>
+																<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+																<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+																<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Drum" ID="{864BF2D5-E4AE-4932-A5A9-C6ED9C6A5328}">
@@ -884,19 +1406,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{70D5EF48-8A33-4344-A41A-D170222FC44C}">
-													<PropertyList>
-														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
 													<Reference>
@@ -938,6 +1447,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{CC6B38AB-8C29-49DA-BAA3-4FD100FDA41D}">
+															<PropertyList>
+																<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+																<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+																<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Keys" ID="{C6418595-D5ED-4F56-9AF2-66943F088C82}">
@@ -948,19 +1472,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{CC6B38AB-8C29-49DA-BAA3-4FD100FDA41D}">
-													<PropertyList>
-														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
 													<Reference>
@@ -1014,6 +1525,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{0B1DA445-05E2-44B3-A007-3568F289583F}">
+															<PropertyList>
+																<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+																<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+																<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Voice" ID="{988BC566-DD40-4CDB-9164-09CFE53A0039}">
@@ -1024,19 +1550,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{0B1DA445-05E2-44B3-A007-3568F289583F}">
-													<PropertyList>
-														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
 													<Reference>
@@ -1127,6 +1640,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{2E85DD47-21BD-4FF4-849E-6C68BC33C337}">
+															<PropertyList>
+																<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+																<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+																<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Bass" ID="{E00C2960-90DF-465A-9D25-4A551F44FAF1}">
@@ -1137,19 +1665,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{2E85DD47-21BD-4FF4-849E-6C68BC33C337}">
-													<PropertyList>
-														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
 													<Reference>
@@ -1191,6 +1706,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{B1516D1C-EEAD-4283-B673-0C5BE4DE16A8}">
+															<PropertyList>
+																<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+																<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+																<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Drum" ID="{C3B3C5B4-D323-4D89-96E0-865CEAEBBE76}">
@@ -1201,19 +1731,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{B1516D1C-EEAD-4283-B673-0C5BE4DE16A8}">
-													<PropertyList>
-														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
 													<Reference>
@@ -1255,6 +1772,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{DE7208B1-A5BE-4C65-8882-32313323AD73}">
+															<PropertyList>
+																<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+																<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+																<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Keys" ID="{B2B29963-FEAB-4220-9A46-6A56CBDD9186}">
@@ -1265,19 +1797,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{DE7208B1-A5BE-4C65-8882-32313323AD73}">
-													<PropertyList>
-														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
 													<Reference>
@@ -1344,48 +1863,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 									</ObjectLists>
 								</MusicSegment>
 							</ChildrenList>
-							<TransitionList>
-								<MusicTransition Name="Root" ID="{4E676693-F276-4497-BFD5-25436F8A645A}">
-									<PropertyList>
-										<Property Name="IsFolder" Type="bool" Value="True"/>
-									</PropertyList>
-									<ChildrenList>
-										<MusicTransition Name="Transition" ID="{BC22A92B-983B-4857-867B-46AC0CE22C86}">
-											<PropertyList>
-												<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-												<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-												<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-												<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-												<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-											</PropertyList>
-											<TransitionInfo/>
-										</MusicTransition>
-									</ChildrenList>
-									<TransitionInfo/>
-								</MusicTransition>
-							</TransitionList>
-							<Playlist>
-								<MusicPlaylistItem Name="" ID="{62342A3D-D448-4449-AE97-CC0FA3A27D00}" ShortID="672385111">
-									<PropertyList>
-										<Property Name="LoopCount" Type="int16" Value="0"/>
-									</PropertyList>
-									<ChildrenList>
-										<MusicPlaylistItem Name="" ID="{0488A6F5-9F97-4F12-9C74-AFC99F9889E4}" ShortID="737489390">
-											<PropertyList>
-												<Property Name="LoopCount" Type="int16" Value="2"/>
-												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
-											</PropertyList>
-											<SegmentRef Name="Segment" ID="{0AE7DCB6-DD5F-4F27-A48B-BA7A2F27CCE6}"/>
-										</MusicPlaylistItem>
-										<MusicPlaylistItem Name="" ID="{F75921B5-57A2-42A5-8A73-107A0263B506}" ShortID="789401877">
-											<PropertyList>
-												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
-											</PropertyList>
-											<SegmentRef Name="Segment_WithoutVoice" ID="{1365B489-2B48-425C-AB7E-AFC7E2360B55}"/>
-										</MusicPlaylistItem>
-									</ChildrenList>
-								</MusicPlaylistItem>
-							</Playlist>
 						</MusicPlaylistContainer>
 						<MusicSegment Name="Transition" ID="{206F183C-AA3A-4430-89A5-65F0F29B810D}" ShortID="1003257229">
 							<Comment>Audiokinetic Inc. All rights reserved.
@@ -1424,6 +1901,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 										</Reference>
+										<Reference Name="TransitionRoot">
+											<Custom>
+												<MusicTransition Name="Root" ID="{52D94589-5923-4374-BCEA-E3518B2BDF33}">
+													<PropertyList>
+														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</Custom>
+										</Reference>
 									</ReferenceList>
 									<ChildrenList>
 										<AudioFileSource Name="Bass" ID="{761D93B5-26BE-4ADD-952A-DA3182BE03CF}">
@@ -1434,19 +1926,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
-									<TransitionList>
-										<MusicTransition Name="Root" ID="{52D94589-5923-4374-BCEA-E3518B2BDF33}">
-											<PropertyList>
-												<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-												<Property Name="IsFolder" Type="bool" Value="True"/>
-												<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-												<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-												<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-												<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-											</PropertyList>
-											<TransitionInfo/>
-										</MusicTransition>
-									</TransitionList>
 									<ObjectLists>
 										<ObjectList Name="Sequences">
 											<Reference>
@@ -1489,6 +1968,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 										</Reference>
+										<Reference Name="TransitionRoot">
+											<Custom>
+												<MusicTransition Name="Root" ID="{D9C337D8-D302-4050-8FE7-977A9943D91F}">
+													<PropertyList>
+														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</Custom>
+										</Reference>
 									</ReferenceList>
 									<ChildrenList>
 										<AudioFileSource Name="Keys" ID="{18C0F0AC-9E29-4CE8-9600-EC09F885909D}">
@@ -1499,19 +1993,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
-									<TransitionList>
-										<MusicTransition Name="Root" ID="{D9C337D8-D302-4050-8FE7-977A9943D91F}">
-											<PropertyList>
-												<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-												<Property Name="IsFolder" Type="bool" Value="True"/>
-												<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-												<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-												<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-												<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-											</PropertyList>
-											<TransitionInfo/>
-										</MusicTransition>
-									</TransitionList>
 									<ObjectLists>
 										<ObjectList Name="Sequences">
 											<Reference>
@@ -1557,6 +2038,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 										</Reference>
+										<Reference Name="TransitionRoot">
+											<Custom>
+												<MusicTransition Name="Root" ID="{E8F77E5E-BF97-4CF9-91D0-9A9990977509}">
+													<PropertyList>
+														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</Custom>
+										</Reference>
 									</ReferenceList>
 									<ChildrenList>
 										<AudioFileSource Name="Voice2" ID="{E190EE4C-57E8-4B03-B392-8A6976C9088E}">
@@ -1567,19 +2063,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
-									<TransitionList>
-										<MusicTransition Name="Root" ID="{E8F77E5E-BF97-4CF9-91D0-9A9990977509}">
-											<PropertyList>
-												<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-												<Property Name="IsFolder" Type="bool" Value="True"/>
-												<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-												<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-												<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-												<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-											</PropertyList>
-											<TransitionInfo/>
-										</MusicTransition>
-									</TransitionList>
 									<ObjectLists>
 										<ObjectList Name="Sequences">
 											<Reference>
@@ -1668,6 +2151,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 										</Reference>
+										<Reference Name="TransitionRoot">
+											<Custom>
+												<MusicTransition Name="Root" ID="{70A3E3FC-6A33-4962-9182-25A1C87AEF5B}">
+													<PropertyList>
+														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</Custom>
+										</Reference>
 									</ReferenceList>
 									<ChildrenList>
 										<AudioFileSource Name="AreYouListening" ID="{309EE88D-99E3-42B3-80F2-C4749E1683A3}">
@@ -1678,19 +2176,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
-									<TransitionList>
-										<MusicTransition Name="Root" ID="{70A3E3FC-6A33-4962-9182-25A1C87AEF5B}">
-											<PropertyList>
-												<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-												<Property Name="IsFolder" Type="bool" Value="True"/>
-												<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-												<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-												<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-												<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-											</PropertyList>
-											<TransitionInfo/>
-										</MusicTransition>
-									</TransitionList>
 									<ObjectLists>
 										<ObjectList Name="Sequences">
 											<Reference>
@@ -1756,6 +2241,53 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 								<Reference Name="OutputBus">
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 								</Reference>
+								<Reference Name="PlaylistRoot">
+									<Custom>
+										<MusicPlaylistItem Name="" ID="{2CBD4FDE-839D-4710-9A87-BA963869036F}" ShortID="248230788">
+											<PropertyList>
+												<Property Name="PlayMode" Type="int16" Value="2"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicPlaylistItem Name="" ID="{EC0E6433-3318-4076-AF73-7B1E9CE3A584}" ShortID="625903628">
+													<PropertyList>
+														<Property Name="LoopCount" Type="int16" Value="0"/>
+														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+														<Property Name="Weight" Type="Real64">
+															<ValueList>
+																<Value>0.001</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Segment">
+															<ObjectRef Name="Level1" ID="{ECC21AD4-E936-4178-969E-C8D02D17713A}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+														</Reference>
+													</ReferenceList>
+												</MusicPlaylistItem>
+											</ChildrenList>
+										</MusicPlaylistItem>
+									</Custom>
+								</Reference>
+								<Reference Name="TransitionRoot">
+									<Custom>
+										<MusicTransition Name="Root" ID="{37BB41EA-A6CB-42AF-8872-924280EB68EB}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicTransition Name="Transition" ID="{297528D4-D47D-4119-9E80-6ABE914CC97E}">
+													<PropertyList>
+														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</ChildrenList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</Custom>
+								</Reference>
 							</ReferenceList>
 							<ChildrenList>
 								<MusicSegment Name="Level1" ID="{ECC21AD4-E936-4178-969E-C8D02D17713A}" ShortID="94479330">
@@ -1794,6 +2326,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{5AAB0EA9-B233-4EC5-B826-A3CEB0359225}">
+															<PropertyList>
+																<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+																<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+																<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Drum160Fight" ID="{56D89E7A-B931-4ED1-A9F1-516E9B6B7198}">
@@ -1804,19 +2351,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{5AAB0EA9-B233-4EC5-B826-A3CEB0359225}">
-													<PropertyList>
-														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
 													<Reference>
@@ -1858,6 +2392,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{600AE2B4-0412-4147-BF5D-7CD9F39EB4C0}">
+															<PropertyList>
+																<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+																<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+																<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Bass160Fight" ID="{2853E49F-7421-424A-9B34-75999A90C207}">
@@ -1868,19 +2417,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{600AE2B4-0412-4147-BF5D-7CD9F39EB4C0}">
-													<PropertyList>
-														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
 													<Reference>
@@ -1935,45 +2471,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 									</ObjectLists>
 								</MusicSegment>
 							</ChildrenList>
-							<TransitionList>
-								<MusicTransition Name="Root" ID="{37BB41EA-A6CB-42AF-8872-924280EB68EB}">
-									<PropertyList>
-										<Property Name="IsFolder" Type="bool" Value="True"/>
-									</PropertyList>
-									<ChildrenList>
-										<MusicTransition Name="Transition" ID="{297528D4-D47D-4119-9E80-6ABE914CC97E}">
-											<PropertyList>
-												<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-												<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-												<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-											</PropertyList>
-											<TransitionInfo/>
-										</MusicTransition>
-									</ChildrenList>
-									<TransitionInfo/>
-								</MusicTransition>
-							</TransitionList>
-							<Playlist>
-								<MusicPlaylistItem Name="" ID="{2CBD4FDE-839D-4710-9A87-BA963869036F}" ShortID="248230788">
-									<PropertyList>
-										<Property Name="PlayMode" Type="int16" Value="2"/>
-									</PropertyList>
-									<ChildrenList>
-										<MusicPlaylistItem Name="" ID="{EC0E6433-3318-4076-AF73-7B1E9CE3A584}" ShortID="625903628">
-											<PropertyList>
-												<Property Name="LoopCount" Type="int16" Value="0"/>
-												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
-												<Property Name="Weight" Type="Real64">
-													<ValueList>
-														<Value>0.001</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<SegmentRef Name="Level1" ID="{ECC21AD4-E936-4178-969E-C8D02D17713A}"/>
-										</MusicPlaylistItem>
-									</ChildrenList>
-								</MusicPlaylistItem>
-							</Playlist>
 						</MusicPlaylistContainer>
 						<MusicPlaylistContainer Name="FightLoopLevel2" ID="{1073CEF6-01FB-4778-BFB7-2FD856EE2299}" ShortID="83553818">
 							<Comment>Audiokinetic Inc. All rights reserved.
@@ -1993,6 +2490,45 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 							<ReferenceList>
 								<Reference Name="OutputBus">
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+								</Reference>
+								<Reference Name="PlaylistRoot">
+									<Custom>
+										<MusicPlaylistItem Name="" ID="{35CA2D8C-847A-48E3-8D1A-9C55E00079CF}" ShortID="743856979">
+											<ChildrenList>
+												<MusicPlaylistItem Name="" ID="{C4BE09BE-1355-4793-9D32-C511C916CF81}" ShortID="173962207">
+													<PropertyList>
+														<Property Name="LoopCount" Type="int16" Value="0"/>
+														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Segment">
+															<ObjectRef Name="Level2" ID="{02AC0417-3D7B-4330-B19F-D9FD3E5B4BF9}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+														</Reference>
+													</ReferenceList>
+												</MusicPlaylistItem>
+											</ChildrenList>
+										</MusicPlaylistItem>
+									</Custom>
+								</Reference>
+								<Reference Name="TransitionRoot">
+									<Custom>
+										<MusicTransition Name="Root" ID="{3C3F2645-8921-434C-AFC8-18360F3F50CE}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicTransition Name="Transition" ID="{03B58DAD-BA96-4E6D-9ACE-2F79DD1002B9}">
+													<PropertyList>
+														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</ChildrenList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</Custom>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
@@ -2032,6 +2568,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{0F09B62F-492A-4D10-869F-34E0A15FA5DB}">
+															<PropertyList>
+																<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+																<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+																<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Bass160Fight2" ID="{B01B466F-8D28-4B66-BF50-B6BB8A3C43E0}">
@@ -2042,19 +2593,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{0F09B62F-492A-4D10-869F-34E0A15FA5DB}">
-													<PropertyList>
-														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
 													<Reference>
@@ -2096,6 +2634,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{2689BDAD-F267-4FA4-B37D-F7DC5D6E108F}">
+															<PropertyList>
+																<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+																<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+																<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Drum160Fight2" ID="{15166B6B-80C2-4B92-B22A-65F2EAD63B55}">
@@ -2106,19 +2659,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{2689BDAD-F267-4FA4-B37D-F7DC5D6E108F}">
-													<PropertyList>
-														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
 													<Reference>
@@ -2173,37 +2713,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 									</ObjectLists>
 								</MusicSegment>
 							</ChildrenList>
-							<TransitionList>
-								<MusicTransition Name="Root" ID="{3C3F2645-8921-434C-AFC8-18360F3F50CE}">
-									<PropertyList>
-										<Property Name="IsFolder" Type="bool" Value="True"/>
-									</PropertyList>
-									<ChildrenList>
-										<MusicTransition Name="Transition" ID="{03B58DAD-BA96-4E6D-9ACE-2F79DD1002B9}">
-											<PropertyList>
-												<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-												<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-												<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-											</PropertyList>
-											<TransitionInfo/>
-										</MusicTransition>
-									</ChildrenList>
-									<TransitionInfo/>
-								</MusicTransition>
-							</TransitionList>
-							<Playlist>
-								<MusicPlaylistItem Name="" ID="{35CA2D8C-847A-48E3-8D1A-9C55E00079CF}" ShortID="743856979">
-									<ChildrenList>
-										<MusicPlaylistItem Name="" ID="{C4BE09BE-1355-4793-9D32-C511C916CF81}" ShortID="173962207">
-											<PropertyList>
-												<Property Name="LoopCount" Type="int16" Value="0"/>
-												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
-											</PropertyList>
-											<SegmentRef Name="Level2" ID="{02AC0417-3D7B-4330-B19F-D9FD3E5B4BF9}"/>
-										</MusicPlaylistItem>
-									</ChildrenList>
-								</MusicPlaylistItem>
-							</Playlist>
 						</MusicPlaylistContainer>
 						<MusicPlaylistContainer Name="FightLoopLevel3" ID="{0AD2AA4A-53B4-4E91-9B74-784BBF0037F3}" ShortID="81192915">
 							<Comment>Audiokinetic Inc. All rights reserved.
@@ -2223,6 +2732,45 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 							<ReferenceList>
 								<Reference Name="OutputBus">
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+								</Reference>
+								<Reference Name="PlaylistRoot">
+									<Custom>
+										<MusicPlaylistItem Name="" ID="{24F73D95-5C59-4729-BFE7-09A5C8EAB103}" ShortID="139870609">
+											<ChildrenList>
+												<MusicPlaylistItem Name="" ID="{C531BB8C-1F0A-48DB-BE08-8A5503E0DC58}" ShortID="916172525">
+													<PropertyList>
+														<Property Name="LoopCount" Type="int16" Value="0"/>
+														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Segment">
+															<ObjectRef Name="Level3" ID="{97C6D505-C51F-47E7-AA69-BBCC23D47A2C}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+														</Reference>
+													</ReferenceList>
+												</MusicPlaylistItem>
+											</ChildrenList>
+										</MusicPlaylistItem>
+									</Custom>
+								</Reference>
+								<Reference Name="TransitionRoot">
+									<Custom>
+										<MusicTransition Name="Root" ID="{41B625A8-9A29-4F87-AD2B-CC45232DF6D5}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicTransition Name="Transition" ID="{77D59771-8F11-4042-A4FB-423CF960127A}">
+													<PropertyList>
+														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</ChildrenList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</Custom>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
@@ -2262,6 +2810,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{F485CD7B-1200-489C-A1C2-D3C5995E2DB7}">
+															<PropertyList>
+																<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+																<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+																<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Bass160Fight3" ID="{251DDA3B-A496-4778-BE65-754B0BF939FC}">
@@ -2274,19 +2837,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{F485CD7B-1200-489C-A1C2-D3C5995E2DB7}">
-													<PropertyList>
-														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
 													<Reference>
@@ -2328,6 +2878,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{FC962000-CBE9-47AB-B9C5-8050E260EDCB}">
+															<PropertyList>
+																<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+																<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+																<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Drum160Fight3" ID="{97F60958-9604-4BF8-A96F-22704F5CC1AF}">
@@ -2338,19 +2903,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{FC962000-CBE9-47AB-B9C5-8050E260EDCB}">
-													<PropertyList>
-														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
 													<Reference>
@@ -2405,37 +2957,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 									</ObjectLists>
 								</MusicSegment>
 							</ChildrenList>
-							<TransitionList>
-								<MusicTransition Name="Root" ID="{41B625A8-9A29-4F87-AD2B-CC45232DF6D5}">
-									<PropertyList>
-										<Property Name="IsFolder" Type="bool" Value="True"/>
-									</PropertyList>
-									<ChildrenList>
-										<MusicTransition Name="Transition" ID="{77D59771-8F11-4042-A4FB-423CF960127A}">
-											<PropertyList>
-												<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-												<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-												<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-											</PropertyList>
-											<TransitionInfo/>
-										</MusicTransition>
-									</ChildrenList>
-									<TransitionInfo/>
-								</MusicTransition>
-							</TransitionList>
-							<Playlist>
-								<MusicPlaylistItem Name="" ID="{24F73D95-5C59-4729-BFE7-09A5C8EAB103}" ShortID="139870609">
-									<ChildrenList>
-										<MusicPlaylistItem Name="" ID="{C531BB8C-1F0A-48DB-BE08-8A5503E0DC58}" ShortID="916172525">
-											<PropertyList>
-												<Property Name="LoopCount" Type="int16" Value="0"/>
-												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
-											</PropertyList>
-											<SegmentRef Name="Level3" ID="{97C6D505-C51F-47E7-AA69-BBCC23D47A2C}"/>
-										</MusicPlaylistItem>
-									</ChildrenList>
-								</MusicPlaylistItem>
-							</Playlist>
 						</MusicPlaylistContainer>
 						<MusicPlaylistContainer Name="FightLoopLevel4" ID="{F74D2C3D-1C54-44A0-8B8E-D5414C0232C6}" ShortID="877612721">
 							<Comment>Audiokinetic Inc. All rights reserved.
@@ -2455,6 +2976,45 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 							<ReferenceList>
 								<Reference Name="OutputBus">
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+								</Reference>
+								<Reference Name="PlaylistRoot">
+									<Custom>
+										<MusicPlaylistItem Name="" ID="{E6E4A44B-EAC7-4D0D-B0A9-1ADC67E43B5D}" ShortID="640983896">
+											<ChildrenList>
+												<MusicPlaylistItem Name="" ID="{E377FC49-25F7-4339-9416-08A725A3BE77}" ShortID="800659690">
+													<PropertyList>
+														<Property Name="LoopCount" Type="int16" Value="0"/>
+														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Segment">
+															<ObjectRef Name="Bass160Fight4" ID="{D04A33DD-FEC2-488E-86D4-4155DE480A8F}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+														</Reference>
+													</ReferenceList>
+												</MusicPlaylistItem>
+											</ChildrenList>
+										</MusicPlaylistItem>
+									</Custom>
+								</Reference>
+								<Reference Name="TransitionRoot">
+									<Custom>
+										<MusicTransition Name="Root" ID="{12E440C6-F52E-4563-B5FE-08F61DDEEC7A}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicTransition Name="Transition" ID="{487B1550-2D56-44DC-95EE-4FA45AF86FD0}">
+													<PropertyList>
+														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</ChildrenList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</Custom>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
@@ -2496,6 +3056,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{0227CC99-79CD-40B3-AFDF-CE114675AC10}">
+															<PropertyList>
+																<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+																<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+																<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Bass160Fight4" ID="{792B8343-50E2-472D-AF6C-19E86C9EABF9}">
@@ -2506,19 +3081,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{0227CC99-79CD-40B3-AFDF-CE114675AC10}">
-													<PropertyList>
-														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
 													<Reference>
@@ -2560,6 +3122,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{C7692973-22DD-46DD-A22A-9187BCB3A20E}">
+															<PropertyList>
+																<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+																<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+																<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Drum160Fight4" ID="{7D697F13-0861-44C2-8709-678B5797FA9D}">
@@ -2570,19 +3147,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{C7692973-22DD-46DD-A22A-9187BCB3A20E}">
-													<PropertyList>
-														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
 													<Reference>
@@ -2630,24 +3194,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 									</ObjectLists>
 								</MusicSegment>
 							</ChildrenList>
-							<TransitionList>
-								<MusicTransition Name="Root" ID="{12E440C6-F52E-4563-B5FE-08F61DDEEC7A}">
-									<PropertyList>
-										<Property Name="IsFolder" Type="bool" Value="True"/>
-									</PropertyList>
-									<ChildrenList>
-										<MusicTransition Name="Transition" ID="{487B1550-2D56-44DC-95EE-4FA45AF86FD0}">
-											<PropertyList>
-												<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-												<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-												<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-											</PropertyList>
-											<TransitionInfo/>
-										</MusicTransition>
-									</ChildrenList>
-									<TransitionInfo/>
-								</MusicTransition>
-							</TransitionList>
 							<ObjectLists>
 								<ObjectList Name="Stingers">
 									<Reference>
@@ -2657,19 +3203,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 									</Reference>
 								</ObjectList>
 							</ObjectLists>
-							<Playlist>
-								<MusicPlaylistItem Name="" ID="{E6E4A44B-EAC7-4D0D-B0A9-1ADC67E43B5D}" ShortID="640983896">
-									<ChildrenList>
-										<MusicPlaylistItem Name="" ID="{E377FC49-25F7-4339-9416-08A725A3BE77}" ShortID="800659690">
-											<PropertyList>
-												<Property Name="LoopCount" Type="int16" Value="0"/>
-												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
-											</PropertyList>
-											<SegmentRef Name="Bass160Fight4" ID="{D04A33DD-FEC2-488E-86D4-4155DE480A8F}"/>
-										</MusicPlaylistItem>
-									</ChildrenList>
-								</MusicPlaylistItem>
-							</Playlist>
 						</MusicPlaylistContainer>
 						<MusicPlaylistContainer Name="WinTheFight" ID="{E7E3901E-5ADF-4A8C-951B-F4C9CE3E3263}" ShortID="436341931">
 							<Comment>Audiokinetic Inc. All rights reserved.
@@ -2689,6 +3222,45 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 							<ReferenceList>
 								<Reference Name="OutputBus">
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+								</Reference>
+								<Reference Name="PlaylistRoot">
+									<Custom>
+										<MusicPlaylistItem Name="" ID="{C8137C41-B198-49FE-8649-743545A37CE6}" ShortID="534574817">
+											<ChildrenList>
+												<MusicPlaylistItem Name="" ID="{DF04B8DB-8E36-479D-A417-5FBD152EA21D}" ShortID="18389232">
+													<PropertyList>
+														<Property Name="LoopCount" Type="int16" Value="0"/>
+														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Segment">
+															<ObjectRef Name="Level4" ID="{4FFAF71B-C947-4EE6-AA26-111ECE3043D2}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+														</Reference>
+													</ReferenceList>
+												</MusicPlaylistItem>
+											</ChildrenList>
+										</MusicPlaylistItem>
+									</Custom>
+								</Reference>
+								<Reference Name="TransitionRoot">
+									<Custom>
+										<MusicTransition Name="Root" ID="{8F9FA26E-5A52-4670-87B9-8FADA905077C}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicTransition Name="Transition" ID="{86A11145-3527-4CDD-A2EF-1B9BA8158D1F}">
+													<PropertyList>
+														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</ChildrenList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</Custom>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
@@ -2728,6 +3300,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{D9E18A76-4A84-4E3F-9BC5-BDBDF0F083FC}">
+															<PropertyList>
+																<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+																<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+																<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Guitar" ID="{AA8EAA09-F537-417B-A8CD-52B208DD84AC}">
@@ -2738,19 +3325,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{D9E18A76-4A84-4E3F-9BC5-BDBDF0F083FC}">
-													<PropertyList>
-														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
 													<Reference>
@@ -2792,6 +3366,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{F893DA57-4F3E-4975-A849-386A23D19BD0}">
+															<PropertyList>
+																<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+																<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+																<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Drum160Fight4" ID="{8E560994-A8B5-4565-9637-B663511937C2}">
@@ -2802,19 +3391,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{F893DA57-4F3E-4975-A849-386A23D19BD0}">
-													<PropertyList>
-														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
 													<Reference>
@@ -2856,6 +3432,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{2FD23F72-F3B5-4C2C-87FF-F09BDE4E094F}">
+															<PropertyList>
+																<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+																<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+																<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Violins" ID="{248BE84B-C733-4AFC-A15F-358EBE21C54A}">
@@ -2866,19 +3457,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{2FD23F72-F3B5-4C2C-87FF-F09BDE4E094F}">
-													<PropertyList>
-														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
 													<Reference>
@@ -2925,6 +3503,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{47CFDE6E-6F51-4798-A0FF-11B642B6B178}">
+															<PropertyList>
+																<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+																<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+																<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+																<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="ISaidAreYaListening" ID="{308D2336-A240-4F88-95DF-28DCB759E752}">
@@ -2935,19 +3528,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{47CFDE6E-6F51-4798-A0FF-11B642B6B178}">
-													<PropertyList>
-														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
 													<Reference>
@@ -3003,37 +3583,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 									</ObjectLists>
 								</MusicSegment>
 							</ChildrenList>
-							<TransitionList>
-								<MusicTransition Name="Root" ID="{8F9FA26E-5A52-4670-87B9-8FADA905077C}">
-									<PropertyList>
-										<Property Name="IsFolder" Type="bool" Value="True"/>
-									</PropertyList>
-									<ChildrenList>
-										<MusicTransition Name="Transition" ID="{86A11145-3527-4CDD-A2EF-1B9BA8158D1F}">
-											<PropertyList>
-												<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-												<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-												<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-											</PropertyList>
-											<TransitionInfo/>
-										</MusicTransition>
-									</ChildrenList>
-									<TransitionInfo/>
-								</MusicTransition>
-							</TransitionList>
-							<Playlist>
-								<MusicPlaylistItem Name="" ID="{C8137C41-B198-49FE-8649-743545A37CE6}" ShortID="534574817">
-									<ChildrenList>
-										<MusicPlaylistItem Name="" ID="{DF04B8DB-8E36-479D-A417-5FBD152EA21D}" ShortID="18389232">
-											<PropertyList>
-												<Property Name="LoopCount" Type="int16" Value="0"/>
-												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
-											</PropertyList>
-											<SegmentRef Name="Level4" ID="{4FFAF71B-C947-4EE6-AA26-111ECE3043D2}"/>
-										</MusicPlaylistItem>
-									</ChildrenList>
-								</MusicPlaylistItem>
-							</Playlist>
 						</MusicPlaylistContainer>
 						<MusicSegment Name="GameOver" ID="{CA87BCBF-9615-4892-B961-62FD62A3889B}" ShortID="366529429">
 							<Comment>Audiokinetic Inc. All rights reserved.
@@ -3071,6 +3620,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 										</Reference>
+										<Reference Name="TransitionRoot">
+											<Custom>
+												<MusicTransition Name="Root" ID="{EB6B3DDA-5620-4610-9E1C-002342DAFD5D}">
+													<PropertyList>
+														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</Custom>
+										</Reference>
 									</ReferenceList>
 									<ChildrenList>
 										<AudioFileSource Name="GameOverBoy" ID="{42C7DA9A-C918-4E78-9F8F-8FA7A32AF06A}">
@@ -3081,19 +3645,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
-									<TransitionList>
-										<MusicTransition Name="Root" ID="{EB6B3DDA-5620-4610-9E1C-002342DAFD5D}">
-											<PropertyList>
-												<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-												<Property Name="IsFolder" Type="bool" Value="True"/>
-												<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-												<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-												<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-												<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-											</PropertyList>
-											<TransitionInfo/>
-										</MusicTransition>
-									</TransitionList>
 									<ObjectLists>
 										<ObjectList Name="Sequences">
 											<Reference>
@@ -3181,6 +3732,21 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 										</Reference>
+										<Reference Name="TransitionRoot">
+											<Custom>
+												<MusicTransition Name="Root" ID="{03EA0709-6040-4F18-91FE-121029D005D7}">
+													<PropertyList>
+														<Property Name="ExitSourceAt" Type="int16" Value="7"/>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+														<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
+														<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
+														<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
+														<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</Custom>
+										</Reference>
 									</ReferenceList>
 									<ChildrenList>
 										<AudioFileSource Name="ISaidAreYaListening" ID="{0D49A692-63F9-44A6-9767-8C7AFC73EB18}">
@@ -3191,19 +3757,6 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
-									<TransitionList>
-										<MusicTransition Name="Root" ID="{03EA0709-6040-4F18-91FE-121029D005D7}">
-											<PropertyList>
-												<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-												<Property Name="IsFolder" Type="bool" Value="True"/>
-												<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-												<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-												<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-												<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-											</PropertyList>
-											<TransitionInfo/>
-										</MusicTransition>
-									</TransitionList>
 									<ObjectLists>
 										<ObjectList Name="Sequences">
 											<Reference>
@@ -3251,494 +3804,159 @@ The Audio Content contained in this file is the property of Stéphane Beauchemin
 							</ObjectLists>
 						</MusicSegment>
 					</ChildrenList>
-					<TransitionList>
-						<MusicTransition Name="Root" ID="{09181777-8752-4891-8D27-BFC05E7A3DBE}">
-							<PropertyList>
-								<Property Name="IsFolder" Type="bool" Value="True"/>
-							</PropertyList>
-							<ChildrenList>
-								<MusicTransition Name="Transition" ID="{1926A2E6-2725-4B1C-AD09-29788FAAD813}">
-									<PropertyList>
-										<Property Name="ExitSourceAt" Type="int16" Value="2"/>
-										<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-										<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-									</PropertyList>
-									<TransitionInfo>
-										<SourceFadeOut>
-											<MusicFade Name="Source Fade-out" ID="{16BAF7DF-16FC-4F4D-8220-3C9529AB742F}">
-												<PropertyList>
-													<Property Name="FadeTime" Type="Real64" Value="0.01"/>
-													<Property Name="FadeType" Type="int16" Value="1"/>
-												</PropertyList>
-											</MusicFade>
-										</SourceFadeOut>
-									</TransitionInfo>
-								</MusicTransition>
-								<MusicTransition Name="Transition" ID="{0557B2D4-E857-4798-963F-D2544A9CBCDB}">
-									<PropertyList>
-										<Property Name="DestinationContextType" Type="int16" Value="2"/>
-										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
-										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
-										<Property Name="ExitSourceAt" Type="int16" Value="2"/>
-										<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-										<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-										<Property Name="SourceContextType" Type="int16" Value="2"/>
-										<Property Name="UseTransitionObject" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="DestinationContextObject">
-											<ObjectRef Name="LoopWithVoice" ID="{8CE81806-C54E-49B7-A3E4-81027F493F6D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										</Reference>
-										<Reference Name="SourceContextObject">
-											<ObjectRef Name="LoopIntro" ID="{5620C901-1435-46FC-A08F-DDDD24C2150A}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										</Reference>
-									</ReferenceList>
-									<TransitionInfo>
-										<JumpToPlaylistItemRef Name="" ID="{62342A3D-D448-4449-AE97-CC0FA3A27D00}"/>
-										<TransitionObjectRef Name="Transition" ID="{206F183C-AA3A-4430-89A5-65F0F29B810D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										<SourceFadeOut>
-											<MusicFade Name="Source Fade-out" ID="{6EF65630-FD72-4E1A-AC0F-D471C0B9BDFC}">
-												<PropertyList>
-													<Property Name="FadeTime" Type="Real64" Value="0.01"/>
-													<Property Name="FadeType" Type="int16" Value="1"/>
-												</PropertyList>
-											</MusicFade>
-										</SourceFadeOut>
-									</TransitionInfo>
-								</MusicTransition>
-								<MusicTransition Name="Transition" ID="{4F4ABA00-A453-4E45-BF3A-24A42BC7EB2F}">
-									<PropertyList>
-										<Property Name="DestinationContextType" Type="int16" Value="2"/>
-										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
-										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
-										<Property Name="ExitSourceAt" Type="int16" Value="2"/>
-										<Property Name="SourceContextType" Type="int16" Value="2"/>
-										<Property Name="UseTransitionObject" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="DestinationContextObject">
-											<ObjectRef Name="FightLoopLevel1" ID="{4662C10B-4F04-4150-9EFB-8DD0AD254AFC}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										</Reference>
-										<Reference Name="SourceContextObject">
-											<ObjectRef Name="LoopWithVoice" ID="{8CE81806-C54E-49B7-A3E4-81027F493F6D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										</Reference>
-									</ReferenceList>
-									<TransitionInfo>
-										<JumpToPlaylistItemRef Name="" ID="{2CBD4FDE-839D-4710-9A87-BA963869036F}"/>
-										<TransitionObjectRef Name="Transition" ID="{206F183C-AA3A-4430-89A5-65F0F29B810D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										<SourceFadeOut>
-											<MusicFade Name="Source Fade-out" ID="{C9983028-8A6B-4CF9-A83D-EE84FD273663}">
-												<PropertyList>
-													<Property Name="FadeTime" Type="Real64" Value="0.01"/>
-													<Property Name="FadeType" Type="int16" Value="1"/>
-												</PropertyList>
-											</MusicFade>
-										</SourceFadeOut>
-									</TransitionInfo>
-								</MusicTransition>
-								<MusicTransition Name="Transition" ID="{84931D13-DC91-48C2-A37E-0660D92425E3}">
-									<PropertyList>
-										<Property Name="DestinationContextType" Type="int16" Value="2"/>
-										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
-										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
-										<Property Name="ExitSourceAt" Type="int16" Value="2"/>
-										<Property Name="SourceContextType" Type="int16" Value="2"/>
-										<Property Name="UseTransitionObject" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="DestinationContextObject">
-											<ObjectRef Name="FightLoopLevel2" ID="{1073CEF6-01FB-4778-BFB7-2FD856EE2299}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										</Reference>
-										<Reference Name="SourceContextObject">
-											<ObjectRef Name="LoopWithVoice" ID="{8CE81806-C54E-49B7-A3E4-81027F493F6D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										</Reference>
-									</ReferenceList>
-									<TransitionInfo>
-										<JumpToPlaylistItemRef Name="" ID="{35CA2D8C-847A-48E3-8D1A-9C55E00079CF}"/>
-										<TransitionObjectRef Name="Transition" ID="{206F183C-AA3A-4430-89A5-65F0F29B810D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										<SourceFadeOut>
-											<MusicFade Name="Source Fade-out" ID="{0C5CF06A-9FD7-4870-9147-FA3AF496ED2A}">
-												<PropertyList>
-													<Property Name="FadeTime" Type="Real64" Value="0.01"/>
-													<Property Name="FadeType" Type="int16" Value="1"/>
-												</PropertyList>
-											</MusicFade>
-										</SourceFadeOut>
-									</TransitionInfo>
-								</MusicTransition>
-								<MusicTransition Name="Transition" ID="{CE42D6EB-8503-45A1-9466-33BD832F4AB6}">
-									<PropertyList>
-										<Property Name="DestinationContextType" Type="int16" Value="2"/>
-										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
-										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
-										<Property Name="ExitSourceAt" Type="int16" Value="2"/>
-										<Property Name="SourceContextType" Type="int16" Value="2"/>
-										<Property Name="UseTransitionObject" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="DestinationContextObject">
-											<ObjectRef Name="FightLoopLevel3" ID="{0AD2AA4A-53B4-4E91-9B74-784BBF0037F3}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										</Reference>
-										<Reference Name="SourceContextObject">
-											<ObjectRef Name="LoopWithVoice" ID="{8CE81806-C54E-49B7-A3E4-81027F493F6D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										</Reference>
-									</ReferenceList>
-									<TransitionInfo>
-										<JumpToPlaylistItemRef Name="" ID="{24F73D95-5C59-4729-BFE7-09A5C8EAB103}"/>
-										<TransitionObjectRef Name="Transition" ID="{206F183C-AA3A-4430-89A5-65F0F29B810D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										<SourceFadeOut>
-											<MusicFade Name="Source Fade-out" ID="{A986D89D-6040-4D00-B312-E6408C982F4F}">
-												<PropertyList>
-													<Property Name="FadeTime" Type="Real64" Value="0.01"/>
-													<Property Name="FadeType" Type="int16" Value="1"/>
-												</PropertyList>
-											</MusicFade>
-										</SourceFadeOut>
-									</TransitionInfo>
-								</MusicTransition>
-								<MusicTransition Name="Transition" ID="{916E955C-1E43-4F1E-BB7B-06342C7367D3}">
-									<PropertyList>
-										<Property Name="DestinationContextType" Type="int16" Value="2"/>
-										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
-										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
-										<Property Name="ExitSourceAt" Type="int16" Value="2"/>
-										<Property Name="SourceContextType" Type="int16" Value="2"/>
-										<Property Name="UseTransitionObject" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="DestinationContextObject">
-											<ObjectRef Name="FightLoopLevel4" ID="{F74D2C3D-1C54-44A0-8B8E-D5414C0232C6}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										</Reference>
-										<Reference Name="SourceContextObject">
-											<ObjectRef Name="LoopWithVoice" ID="{8CE81806-C54E-49B7-A3E4-81027F493F6D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										</Reference>
-									</ReferenceList>
-									<TransitionInfo>
-										<JumpToPlaylistItemRef Name="" ID="{E6E4A44B-EAC7-4D0D-B0A9-1ADC67E43B5D}"/>
-										<TransitionObjectRef Name="Transition" ID="{206F183C-AA3A-4430-89A5-65F0F29B810D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										<SourceFadeOut>
-											<MusicFade Name="Source Fade-out" ID="{CC168C11-BF1A-4221-8A18-7FE577C7EE25}">
-												<PropertyList>
-													<Property Name="FadeTime" Type="Real64" Value="0.01"/>
-													<Property Name="FadeType" Type="int16" Value="1"/>
-												</PropertyList>
-											</MusicFade>
-										</SourceFadeOut>
-									</TransitionInfo>
-								</MusicTransition>
-								<MusicTransition Name="Transition" ID="{12AFFA49-8E6C-455D-94E6-8729C7F6071C}">
-									<PropertyList>
-										<Property Name="DestinationContextType" Type="int16" Value="2"/>
-										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
-										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
-										<Property Name="ExitSourceAt" Type="int16" Value="2"/>
-										<Property Name="SourceContextType" Type="int16" Value="2"/>
-										<Property Name="UseTransitionObject" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="DestinationContextObject">
-											<ObjectRef Name="FightLoopLevel1" ID="{4662C10B-4F04-4150-9EFB-8DD0AD254AFC}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										</Reference>
-										<Reference Name="SourceContextObject">
-											<ObjectRef Name="LoopIntro" ID="{5620C901-1435-46FC-A08F-DDDD24C2150A}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										</Reference>
-									</ReferenceList>
-									<TransitionInfo>
-										<JumpToPlaylistItemRef Name="" ID="{2CBD4FDE-839D-4710-9A87-BA963869036F}"/>
-										<TransitionObjectRef Name="Transition" ID="{206F183C-AA3A-4430-89A5-65F0F29B810D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										<SourceFadeOut>
-											<MusicFade Name="Source Fade-out" ID="{04B937FA-BDCF-45F6-A592-78B6EF803569}">
-												<PropertyList>
-													<Property Name="FadeTime" Type="Real64" Value="0.01"/>
-													<Property Name="FadeType" Type="int16" Value="1"/>
-												</PropertyList>
-											</MusicFade>
-										</SourceFadeOut>
-									</TransitionInfo>
-								</MusicTransition>
-								<MusicTransition Name="Transition" ID="{A81EA3B6-AEEC-479E-9B8E-BCF98606DE5F}">
-									<PropertyList>
-										<Property Name="DestinationContextType" Type="int16" Value="2"/>
-										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
-										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
-										<Property Name="ExitSourceAt" Type="int16" Value="2"/>
-										<Property Name="SourceContextType" Type="int16" Value="2"/>
-										<Property Name="UseTransitionObject" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="DestinationContextObject">
-											<ObjectRef Name="FightLoopLevel2" ID="{1073CEF6-01FB-4778-BFB7-2FD856EE2299}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										</Reference>
-										<Reference Name="SourceContextObject">
-											<ObjectRef Name="LoopIntro" ID="{5620C901-1435-46FC-A08F-DDDD24C2150A}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										</Reference>
-									</ReferenceList>
-									<TransitionInfo>
-										<JumpToPlaylistItemRef Name="" ID="{35CA2D8C-847A-48E3-8D1A-9C55E00079CF}"/>
-										<TransitionObjectRef Name="Transition" ID="{206F183C-AA3A-4430-89A5-65F0F29B810D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										<SourceFadeOut>
-											<MusicFade Name="Source Fade-out" ID="{8D7040F6-3F34-4BF5-A2DA-65F901C76CC0}">
-												<PropertyList>
-													<Property Name="FadeTime" Type="Real64" Value="0.01"/>
-													<Property Name="FadeType" Type="int16" Value="1"/>
-												</PropertyList>
-											</MusicFade>
-										</SourceFadeOut>
-									</TransitionInfo>
-								</MusicTransition>
-								<MusicTransition Name="Transition" ID="{9B188906-9447-4A9F-B34B-54D4844DB22E}">
-									<PropertyList>
-										<Property Name="DestinationContextType" Type="int16" Value="2"/>
-										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
-										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
-										<Property Name="ExitSourceAt" Type="int16" Value="2"/>
-										<Property Name="SourceContextType" Type="int16" Value="2"/>
-										<Property Name="UseTransitionObject" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="DestinationContextObject">
-											<ObjectRef Name="FightLoopLevel3" ID="{0AD2AA4A-53B4-4E91-9B74-784BBF0037F3}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										</Reference>
-										<Reference Name="SourceContextObject">
-											<ObjectRef Name="LoopIntro" ID="{5620C901-1435-46FC-A08F-DDDD24C2150A}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										</Reference>
-									</ReferenceList>
-									<TransitionInfo>
-										<JumpToPlaylistItemRef Name="" ID="{24F73D95-5C59-4729-BFE7-09A5C8EAB103}"/>
-										<TransitionObjectRef Name="Transition" ID="{206F183C-AA3A-4430-89A5-65F0F29B810D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										<SourceFadeOut>
-											<MusicFade Name="Source Fade-out" ID="{790B1EF9-DFCE-4BEB-A4AA-63A2BAF82474}">
-												<PropertyList>
-													<Property Name="FadeTime" Type="Real64" Value="0.01"/>
-													<Property Name="FadeType" Type="int16" Value="1"/>
-												</PropertyList>
-											</MusicFade>
-										</SourceFadeOut>
-									</TransitionInfo>
-								</MusicTransition>
-								<MusicTransition Name="Transition" ID="{FBCDC107-B60F-47B3-B2AC-A78D92072B57}">
-									<PropertyList>
-										<Property Name="DestinationContextType" Type="int16" Value="2"/>
-										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
-										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
-										<Property Name="ExitSourceAt" Type="int16" Value="2"/>
-										<Property Name="SourceContextType" Type="int16" Value="2"/>
-										<Property Name="UseTransitionObject" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="DestinationContextObject">
-											<ObjectRef Name="FightLoopLevel4" ID="{F74D2C3D-1C54-44A0-8B8E-D5414C0232C6}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										</Reference>
-										<Reference Name="SourceContextObject">
-											<ObjectRef Name="LoopIntro" ID="{5620C901-1435-46FC-A08F-DDDD24C2150A}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										</Reference>
-									</ReferenceList>
-									<TransitionInfo>
-										<JumpToPlaylistItemRef Name="" ID="{E6E4A44B-EAC7-4D0D-B0A9-1ADC67E43B5D}"/>
-										<TransitionObjectRef Name="Transition" ID="{206F183C-AA3A-4430-89A5-65F0F29B810D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										<SourceFadeOut>
-											<MusicFade Name="Source Fade-out" ID="{EB75ADBD-038C-4B45-BDC5-751AF3D97BB2}">
-												<PropertyList>
-													<Property Name="FadeTime" Type="Real64" Value="0.01"/>
-													<Property Name="FadeType" Type="int16" Value="1"/>
-												</PropertyList>
-											</MusicFade>
-										</SourceFadeOut>
-									</TransitionInfo>
-								</MusicTransition>
-								<MusicTransition Name="Transition" ID="{F7AC4E11-BA7D-4850-9188-A5F74F4EA82E}">
-									<PropertyList>
-										<Property Name="DestinationContextType" Type="int16" Value="2"/>
-										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
-										<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
-										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
-										<Property Name="ExitSourceAt" Type="int16" Value="2"/>
-										<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-										<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-										<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="DestinationContextObject">
-											<ObjectRef Name="WinTheFight" ID="{E7E3901E-5ADF-4A8C-951B-F4C9CE3E3263}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										</Reference>
-									</ReferenceList>
-									<TransitionInfo>
-										<JumpToPlaylistItemRef Name="" ID="{C8137C41-B198-49FE-8649-743545A37CE6}"/>
-										<SourceFadeOut>
-											<MusicFade Name="Source Fade-out" ID="{6350F5A5-7B5F-4E34-AF63-72199124CD1F}">
-												<PropertyList>
-													<Property Name="FadeCurve" Type="int16" Value="1"/>
-													<Property Name="FadeOffset" Type="Real64" Value="5.1"/>
-													<Property Name="FadeTime" Type="Real64" Value="5"/>
-													<Property Name="FadeType" Type="int16" Value="1"/>
-												</PropertyList>
-											</MusicFade>
-										</SourceFadeOut>
-										<DestinationFadeIn>
-											<MusicFade Name="Destination Fade-in" ID="{19453B6D-87F8-477B-BA29-9629964526FB}">
-												<PropertyList>
-													<Property Name="FadeCurve" Type="int16" Value="1"/>
-													<Property Name="FadeTime" Type="Real64" Value="3.8"/>
-												</PropertyList>
-											</MusicFade>
-										</DestinationFadeIn>
-									</TransitionInfo>
-								</MusicTransition>
-								<MusicTransition Name="Transition" ID="{E8E4456E-CC62-4945-9082-5097EEEA8388}">
-									<PropertyList>
-										<Property Name="DestinationContextType" Type="int16" Value="2"/>
-										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
-										<Property Name="ExitSourceAt" Type="int16" Value="2"/>
-										<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-										<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-										<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-										<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="DestinationContextObject">
-											<ObjectRef Name="GameOver" ID="{CA87BCBF-9615-4892-B961-62FD62A3889B}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										</Reference>
-									</ReferenceList>
-									<TransitionInfo>
-										<SourceFadeOut>
-											<MusicFade Name="Source Fade-out" ID="{CB9CE1F2-FC39-4D6F-8AC2-AFCB6DFDE729}">
-												<PropertyList>
-													<Property Name="FadeCurve" Type="int16" Value="1"/>
-													<Property Name="FadeOffset" Type="Real64" Value="0.9"/>
-													<Property Name="FadeTime" Type="Real64" Value="0.9"/>
-													<Property Name="FadeType" Type="int16" Value="1"/>
-												</PropertyList>
-											</MusicFade>
-										</SourceFadeOut>
-									</TransitionInfo>
-								</MusicTransition>
-								<MusicTransition Name="Transition" ID="{F160A537-2DA0-489B-843B-F0F38662600A}">
-									<PropertyList>
-										<Property Name="DestinationContextType" Type="int16" Value="1"/>
-										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
-										<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-										<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-										<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-									</PropertyList>
-									<TransitionInfo>
-										<SourceFadeOut>
-											<MusicFade Name="Source Fade-out" ID="{B704AB64-1482-46F7-82D9-B412F17F9A04}">
-												<PropertyList>
-													<Property Name="FadeCurve" Type="int16" Value="1"/>
-													<Property Name="FadeTime" Type="Real64" Value="3.5"/>
-													<Property Name="FadeType" Type="int16" Value="1"/>
-												</PropertyList>
-											</MusicFade>
-										</SourceFadeOut>
-									</TransitionInfo>
-								</MusicTransition>
-								<MusicTransition Name="Transition" ID="{2EAD75AA-4E16-4EEA-B2A6-B31D85CCA128}">
-									<PropertyList>
-										<Property Name="DestinationContextType" Type="int16" Value="1"/>
-										<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-										<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-										<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-										<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-										<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-										<Property Name="SourceContextType" Type="int16" Value="2"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="SourceContextObject">
-											<ObjectRef Name="GameOver" ID="{CA87BCBF-9615-4892-B961-62FD62A3889B}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										</Reference>
-									</ReferenceList>
-									<TransitionInfo/>
-								</MusicTransition>
-								<MusicTransition Name="Transition" ID="{E83A5DDF-2481-4AFD-AAFF-09FE8E1C9CC5}">
-									<PropertyList>
-										<Property Name="DestinationContextType" Type="int16" Value="1"/>
-										<Property Name="ExitSourceAt" Type="int16" Value="7"/>
-										<Property Name="PlayDestinationPreEntry" Type="bool" Value="True"/>
-										<Property Name="PlaySourcePostExit" Type="bool" Value="True"/>
-										<Property Name="PlayTransitionPostExit" Type="bool" Value="True"/>
-										<Property Name="PlayTransitionPreEntry" Type="bool" Value="True"/>
-										<Property Name="SourceContextType" Type="int16" Value="2"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="SourceContextObject">
-											<ObjectRef Name="WinTheFight" ID="{E7E3901E-5ADF-4A8C-951B-F4C9CE3E3263}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
-										</Reference>
-									</ReferenceList>
-									<TransitionInfo/>
-								</MusicTransition>
-							</ChildrenList>
-							<TransitionInfo/>
-						</MusicTransition>
-					</TransitionList>
-					<ArgumentList>
-						<ArgumentRef Name="Music" ID="{382C9FD3-80EA-4989-8640-23D88CB9F8ED}"/>
-					</ArgumentList>
-					<EntryList>
-						<Entry>
-							<Path>
-								<PathElementRef Name="Fight_Dying" ID="{6DADFB0C-9D0E-4C01-B6A3-B888EB4E345C}"/>
-							</Path>
-							<AudioNodeInfo>
-								<AudioNodeRef Name="FightLoopLevel4" ID="{F74D2C3D-1C54-44A0-8B8E-D5414C0232C6}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}" Platform="Linked"/>
-							</AudioNodeInfo>
-						</Entry>
-						<Entry>
-							<Path>
-								<PathElementRef Name="Fight_Damaged" ID="{854E9525-151B-4E72-9BE7-7A70D391CBA8}"/>
-							</Path>
-							<AudioNodeInfo>
-								<AudioNodeRef Name="FightLoopLevel2" ID="{1073CEF6-01FB-4778-BFB7-2FD856EE2299}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}" Platform="Linked"/>
-							</AudioNodeInfo>
-						</Entry>
-						<Entry>
-							<Path>
-								<PathElementRef Name="Fight" ID="{FE408534-BD64-4F58-BEEA-DE18BEA509BB}"/>
-							</Path>
-							<AudioNodeInfo>
-								<AudioNodeRef Name="FightLoopLevel1" ID="{4662C10B-4F04-4150-9EFB-8DD0AD254AFC}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}" Platform="Linked"/>
-							</AudioNodeInfo>
-						</Entry>
-						<Entry>
-							<Path>
-								<PathElementRef Name="Exploring" ID="{6C0BB16B-B1C8-42CD-A760-50995219C615}"/>
-							</Path>
-							<AudioNodeInfo>
-								<AudioNodeRef Name="LoopIntro" ID="{5620C901-1435-46FC-A08F-DDDD24C2150A}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}" Platform="Linked"/>
-							</AudioNodeInfo>
-						</Entry>
-						<Entry>
-							<Path>
-								<PathElementRef Name="Winning_TheFight" ID="{8F368476-25B8-460B-9760-F53397657B0D}"/>
-							</Path>
-							<AudioNodeInfo>
-								<AudioNodeRef Name="WinTheFight" ID="{E7E3901E-5ADF-4A8C-951B-F4C9CE3E3263}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}" Platform="Linked"/>
-							</AudioNodeInfo>
-						</Entry>
-						<Entry>
-							<Path>
-								<PathElementRef Name="Playing" ID="{FB2C1D99-74D1-4E63-80A2-296AACFFBBC2}"/>
-							</Path>
-							<AudioNodeInfo>
-								<AudioNodeRef Name="LoopWithVoice" ID="{8CE81806-C54E-49B7-A3E4-81027F493F6D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}" Platform="Linked"/>
-							</AudioNodeInfo>
-						</Entry>
-						<Entry>
-							<Path>
-								<PathElementRef Name="Fight_LowHealth" ID="{9E38F9B5-E631-4D13-A8B1-C3D45C405DE5}"/>
-							</Path>
-							<AudioNodeInfo>
-								<AudioNodeRef Name="FightLoopLevel3" ID="{0AD2AA4A-53B4-4E91-9B74-784BBF0037F3}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}" Platform="Linked"/>
-							</AudioNodeInfo>
-						</Entry>
-						<Entry>
-							<Path>
-								<PathElementRef Name="GameOver" ID="{C0E5D5E8-C130-47CC-98E5-7C29A9638A35}"/>
-							</Path>
-							<AudioNodeInfo>
-								<AudioNodeRef Name="GameOver" ID="{CA87BCBF-9615-4892-B961-62FD62A3889B}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}" Platform="Linked"/>
-							</AudioNodeInfo>
-						</Entry>
-					</EntryList>
+					<ObjectLists>
+						<ObjectList Name="Arguments">
+							<Reference>
+								<ObjectRef Name="Music" ID="{382C9FD3-80EA-4989-8640-23D88CB9F8ED}" WorkUnitID="{6A8E32AE-15EA-4D76-97F1-D5F0C67A32DF}"/>
+							</Reference>
+						</ObjectList>
+						<ObjectList Name="Entries">
+							<Reference>
+								<Local>
+									<MultiSwitchEntry Name="" ID="{10170100-E495-4AF4-8D5B-D066641FE37C}">
+										<ReferenceList>
+											<Reference Name="AudioNode">
+												<ObjectRef Name="FightLoopLevel4" ID="{F74D2C3D-1C54-44A0-8B8E-D5414C0232C6}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+											</Reference>
+										</ReferenceList>
+										<ObjectLists>
+											<ObjectList Name="EntryPath">
+												<Reference>
+													<ObjectRef Name="Fight_Dying" ID="{6DADFB0C-9D0E-4C01-B6A3-B888EB4E345C}" WorkUnitID="{6A8E32AE-15EA-4D76-97F1-D5F0C67A32DF}"/>
+												</Reference>
+											</ObjectList>
+										</ObjectLists>
+									</MultiSwitchEntry>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MultiSwitchEntry Name="" ID="{BD1EC065-A579-4E41-B4A1-03CDC9169411}">
+										<ReferenceList>
+											<Reference Name="AudioNode">
+												<ObjectRef Name="FightLoopLevel2" ID="{1073CEF6-01FB-4778-BFB7-2FD856EE2299}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+											</Reference>
+										</ReferenceList>
+										<ObjectLists>
+											<ObjectList Name="EntryPath">
+												<Reference>
+													<ObjectRef Name="Fight_Damaged" ID="{854E9525-151B-4E72-9BE7-7A70D391CBA8}" WorkUnitID="{6A8E32AE-15EA-4D76-97F1-D5F0C67A32DF}"/>
+												</Reference>
+											</ObjectList>
+										</ObjectLists>
+									</MultiSwitchEntry>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MultiSwitchEntry Name="" ID="{DE5389EB-13FE-486B-B45E-6E83C882C713}">
+										<ReferenceList>
+											<Reference Name="AudioNode">
+												<ObjectRef Name="FightLoopLevel1" ID="{4662C10B-4F04-4150-9EFB-8DD0AD254AFC}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+											</Reference>
+										</ReferenceList>
+										<ObjectLists>
+											<ObjectList Name="EntryPath">
+												<Reference>
+													<ObjectRef Name="Fight" ID="{FE408534-BD64-4F58-BEEA-DE18BEA509BB}" WorkUnitID="{6A8E32AE-15EA-4D76-97F1-D5F0C67A32DF}"/>
+												</Reference>
+											</ObjectList>
+										</ObjectLists>
+									</MultiSwitchEntry>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MultiSwitchEntry Name="" ID="{7B34DF57-ABEB-4CDD-864A-6E4DF6C23FF6}">
+										<ReferenceList>
+											<Reference Name="AudioNode">
+												<ObjectRef Name="LoopIntro" ID="{5620C901-1435-46FC-A08F-DDDD24C2150A}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+											</Reference>
+										</ReferenceList>
+										<ObjectLists>
+											<ObjectList Name="EntryPath">
+												<Reference>
+													<ObjectRef Name="Exploring" ID="{6C0BB16B-B1C8-42CD-A760-50995219C615}" WorkUnitID="{6A8E32AE-15EA-4D76-97F1-D5F0C67A32DF}"/>
+												</Reference>
+											</ObjectList>
+										</ObjectLists>
+									</MultiSwitchEntry>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MultiSwitchEntry Name="" ID="{C65ADC80-0977-4E85-A5FE-66AA332C023E}">
+										<ReferenceList>
+											<Reference Name="AudioNode">
+												<ObjectRef Name="WinTheFight" ID="{E7E3901E-5ADF-4A8C-951B-F4C9CE3E3263}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+											</Reference>
+										</ReferenceList>
+										<ObjectLists>
+											<ObjectList Name="EntryPath">
+												<Reference>
+													<ObjectRef Name="Winning_TheFight" ID="{8F368476-25B8-460B-9760-F53397657B0D}" WorkUnitID="{6A8E32AE-15EA-4D76-97F1-D5F0C67A32DF}"/>
+												</Reference>
+											</ObjectList>
+										</ObjectLists>
+									</MultiSwitchEntry>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MultiSwitchEntry Name="" ID="{028C39C1-1990-48A5-93CD-559234F8EDE7}">
+										<ReferenceList>
+											<Reference Name="AudioNode">
+												<ObjectRef Name="LoopWithVoice" ID="{8CE81806-C54E-49B7-A3E4-81027F493F6D}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+											</Reference>
+										</ReferenceList>
+										<ObjectLists>
+											<ObjectList Name="EntryPath">
+												<Reference>
+													<ObjectRef Name="Playing" ID="{FB2C1D99-74D1-4E63-80A2-296AACFFBBC2}" WorkUnitID="{6A8E32AE-15EA-4D76-97F1-D5F0C67A32DF}"/>
+												</Reference>
+											</ObjectList>
+										</ObjectLists>
+									</MultiSwitchEntry>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MultiSwitchEntry Name="" ID="{1BE120D8-6B94-479B-99A0-591AD48B0F2D}">
+										<ReferenceList>
+											<Reference Name="AudioNode">
+												<ObjectRef Name="FightLoopLevel3" ID="{0AD2AA4A-53B4-4E91-9B74-784BBF0037F3}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+											</Reference>
+										</ReferenceList>
+										<ObjectLists>
+											<ObjectList Name="EntryPath">
+												<Reference>
+													<ObjectRef Name="Fight_LowHealth" ID="{9E38F9B5-E631-4D13-A8B1-C3D45C405DE5}" WorkUnitID="{6A8E32AE-15EA-4D76-97F1-D5F0C67A32DF}"/>
+												</Reference>
+											</ObjectList>
+										</ObjectLists>
+									</MultiSwitchEntry>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MultiSwitchEntry Name="" ID="{ACC25F7A-F216-4833-838F-36C9DEA6E5EE}">
+										<ReferenceList>
+											<Reference Name="AudioNode">
+												<ObjectRef Name="GameOver" ID="{CA87BCBF-9615-4892-B961-62FD62A3889B}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
+											</Reference>
+										</ReferenceList>
+										<ObjectLists>
+											<ObjectList Name="EntryPath">
+												<Reference>
+													<ObjectRef Name="GameOver" ID="{C0E5D5E8-C130-47CC-98E5-7C29A9638A35}" WorkUnitID="{6A8E32AE-15EA-4D76-97F1-D5F0C67A32DF}"/>
+												</Reference>
+											</ObjectList>
+										</ObjectLists>
+									</MultiSwitchEntry>
+								</Local>
+							</Reference>
+						</ObjectList>
+					</ObjectLists>
 				</MusicSwitchContainer>
 			</ChildrenList>
 		</WorkUnit>

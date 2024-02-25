@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}" SchemaVersion="110">
+<WwiseDocument Type="WorkUnit" ID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}" SchemaVersion="119">
 	<Busses>
 		<WorkUnit Name="Default Work Unit" ID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}" PersistMode="Standalone">
 			<ChildrenList>
@@ -23,33 +23,41 @@
 									</ValueList>
 								</Property>
 							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Effect0">
-									<Custom CreatedFrom="{FC9B2CA3-2F46-455A-8998-CE2C311CD26B}">
-										<Effect Name="_BigReverb (Define custom)" ID="{250E5FF9-A3D4-4017-904B-963821DB9B39}" ShortID="668148182" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-											<PropertyList>
-												<Property Name="DecayTime" Type="Real32" Value="6.8"/>
-												<Property Name="Density" Type="Real32" Value="70"/>
-												<Property Name="ERFrontBackDelay" Type="Real32" Value="100"/>
-												<Property Name="ERLevel" Type="Real32" Value="-31"/>
-												<Property Name="ERPattern" Type="int32" Value="9"/>
-												<Property Name="Filter1Freq" Type="Real32" Value="490"/>
-												<Property Name="Filter1Gain" Type="Real32" Value="-4.5"/>
-												<Property Name="Filter1InsertPos" Type="int32" Value="2"/>
-												<Property Name="Filter2InsertPos" Type="int32" Value="0"/>
-												<Property Name="Filter3Freq" Type="Real32" Value="11000"/>
-												<Property Name="Filter3Gain" Type="Real32" Value="-4.5"/>
-												<Property Name="HFDamping" Type="Real32" Value="5.7"/>
-												<Property Name="PreDelay" Type="Real32" Value="150"/>
-												<Property Name="Quality" Type="int32" Value="16"/>
-												<Property Name="ReverbLevel" Type="Real32" Value="-24"/>
-												<Property Name="RoomSize" Type="Real32" Value="100"/>
-											</PropertyList>
-										</Effect>
-									</Custom>
-								</Reference>
-							</ReferenceList>
 							<ObjectLists>
+								<ObjectList Name="Effects">
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{F1B41D99-65E0-4A24-9D01-8CE3D235CD6F}" ShortID="329380751">
+												<ReferenceList>
+													<Reference Name="Effect">
+														<Custom CreatedFrom="{FC9B2CA3-2F46-455A-8998-CE2C311CD26B}">
+															<Effect Name="_BigReverb (Define custom)" ID="{250E5FF9-A3D4-4017-904B-963821DB9B39}" ShortID="668148182" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																<PropertyList>
+																	<Property Name="DecayTime" Type="Real32" Value="6.8"/>
+																	<Property Name="Density" Type="Real32" Value="70"/>
+																	<Property Name="ERFrontBackDelay" Type="Real32" Value="100"/>
+																	<Property Name="ERLevel" Type="Real32" Value="-31"/>
+																	<Property Name="ERPattern" Type="int32" Value="9"/>
+																	<Property Name="Filter1Freq" Type="Real32" Value="490"/>
+																	<Property Name="Filter1Gain" Type="Real32" Value="-4.5"/>
+																	<Property Name="Filter1InsertPos" Type="int32" Value="2"/>
+																	<Property Name="Filter2InsertPos" Type="int32" Value="0"/>
+																	<Property Name="Filter3Freq" Type="Real32" Value="11000"/>
+																	<Property Name="Filter3Gain" Type="Real32" Value="-4.5"/>
+																	<Property Name="HFDamping" Type="Real32" Value="5.7"/>
+																	<Property Name="PreDelay" Type="Real32" Value="150"/>
+																	<Property Name="Quality" Type="int32" Value="16"/>
+																	<Property Name="ReverbLevel" Type="Real32" Value="-24"/>
+																	<Property Name="RoomSize" Type="Real32" Value="100"/>
+																</PropertyList>
+															</Effect>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</Local>
+									</Reference>
+								</ObjectList>
 								<ObjectList Name="RTPC">
 									<Reference>
 										<Local>
@@ -103,38 +111,56 @@
 												<Value>3840</Value>
 											</ValueList>
 										</Property>
-										<Property Name="BypassEffect0" Type="bool">
-											<ValueList>
-												<Value Platform="iOS">False</Value>
-											</ValueList>
-										</Property>
-										<Property Name="BypassEffect1" Type="bool">
-											<ValueList>
-												<Value Platform="iOS">False</Value>
-											</ValueList>
-										</Property>
-										<Property Name="BypassEffect2" Type="bool">
-											<ValueList>
-												<Value Platform="iOS">False</Value>
-											</ValueList>
-										</Property>
-										<Property Name="BypassEffect3" Type="bool">
-											<ValueList>
-												<Value Platform="iOS">False</Value>
-											</ValueList>
-										</Property>
 									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-											<ObjectRef Name="Hangar_Env" ID="{C2817027-BAD4-4483-8762-64C45E56497E}" WorkUnitID="{DC1BCA07-F4BB-483E-A207-A5D3F24C41B2}"/>
-										</Reference>
-										<Reference Name="Effect0" Platform="iOS" PluginName="Wwise Matrix Reverb" CompanyID="0" PluginID="115" PluginType="3">
-											<ObjectRef Name="Hangar_Env_Low" ID="{02B9CCFE-D719-4F10-B10C-844791DA0F01}" WorkUnitID="{DC1BCA07-F4BB-483E-A207-A5D3F24C41B2}"/>
-										</Reference>
-										<Reference Name="Effect1" Platform="iOS"/>
-										<Reference Name="Effect2" Platform="iOS"/>
-										<Reference Name="Effect3" Platform="iOS"/>
-									</ReferenceList>
+									<ObjectLists>
+										<ObjectList Name="Effects">
+											<Reference>
+												<Local>
+													<EffectSlot Name="" ID="{97FAE623-40FC-4DC8-96F2-E937C8C201AF}" ShortID="444871550">
+														<ReferenceList>
+															<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																<ObjectRef Name="Hangar_Env" ID="{C2817027-BAD4-4483-8762-64C45E56497E}" WorkUnitID="{DC1BCA07-F4BB-483E-A207-A5D3F24C41B2}"/>
+															</Reference>
+														</ReferenceList>
+													</EffectSlot>
+												</Local>
+											</Reference>
+										</ObjectList>
+										<ObjectList Name="Effects" Platform="iOS">
+											<Reference>
+												<Local>
+													<EffectSlot Name="" ID="{02C8E8ED-1053-4D15-BEF3-DF5BC89F5913}" ShortID="475037939">
+														<ReferenceList>
+															<Reference Name="Effect" PluginName="Wwise Matrix Reverb" CompanyID="0" PluginID="115" PluginType="3">
+																<ObjectRef Name="Hangar_Env_Low" ID="{02B9CCFE-D719-4F10-B10C-844791DA0F01}" WorkUnitID="{DC1BCA07-F4BB-483E-A207-A5D3F24C41B2}"/>
+															</Reference>
+														</ReferenceList>
+													</EffectSlot>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<EffectSlot Name="" ID="{F83F9F3E-4FA3-49A6-AA43-B2A108853C9C}" ShortID="147850768">
+														<ReferenceList/>
+													</EffectSlot>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<EffectSlot Name="" ID="{B48B311F-DAAB-4A0F-BFB0-0A9C4E73D01B}" ShortID="404550529">
+														<ReferenceList/>
+													</EffectSlot>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<EffectSlot Name="" ID="{D5E9DA5D-798A-426B-9583-B8D995B3A06B}" ShortID="294085282">
+														<ReferenceList/>
+													</EffectSlot>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
 								</AuxBus>
 							</ChildrenList>
 						</Bus>
@@ -285,11 +311,21 @@
 													</ValueList>
 												</Property>
 											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-													<ObjectRef Name="Hangar_Env" ID="{C2817027-BAD4-4483-8762-64C45E56497E}" WorkUnitID="{DC1BCA07-F4BB-483E-A207-A5D3F24C41B2}"/>
-												</Reference>
-											</ReferenceList>
+											<ObjectLists>
+												<ObjectList Name="Effects">
+													<Reference>
+														<Local>
+															<EffectSlot Name="" ID="{84363D20-0FD0-47B7-9E54-F7F0279B6E5F}" ShortID="152105190">
+																<ReferenceList>
+																	<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																		<ObjectRef Name="Hangar_Env" ID="{C2817027-BAD4-4483-8762-64C45E56497E}" WorkUnitID="{DC1BCA07-F4BB-483E-A207-A5D3F24C41B2}"/>
+																	</Reference>
+																</ReferenceList>
+															</EffectSlot>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
 										</AuxBus>
 										<AuxBus Name="Room1" ID="{1F639A50-6448-48BE-8746-13491225CF24}">
 											<PropertyList>
@@ -299,11 +335,21 @@
 													</ValueList>
 												</Property>
 											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-													<ObjectRef Name="Bright_Small_Hall" ID="{D8AD1955-D2BA-4C88-A806-E2D8AB47A90B}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-												</Reference>
-											</ReferenceList>
+											<ObjectLists>
+												<ObjectList Name="Effects">
+													<Reference>
+														<Local>
+															<EffectSlot Name="" ID="{D903E5DC-3313-4CB2-9F6E-375B14643DA1}" ShortID="701464566">
+																<ReferenceList>
+																	<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																		<ObjectRef Name="Bright_Small_Hall" ID="{D8AD1955-D2BA-4C88-A806-E2D8AB47A90B}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+																	</Reference>
+																</ReferenceList>
+															</EffectSlot>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
 										</AuxBus>
 									</ChildrenList>
 								</Bus>
@@ -355,23 +401,33 @@
 													</ValueList>
 												</Property>
 											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Effect0">
-													<Custom>
-														<Effect Name="Wwise Stereo Delay (Custom)" ID="{0B2C52C7-1D59-4230-989F-1ABE10AA66C2}" ShortID="204868897" PluginName="Wwise Stereo Delay" CompanyID="0" PluginID="135" PluginType="3">
-															<PropertyList>
-																<Property Name="DryLevel" Type="Real32" Value="-96"/>
-																<Property Name="EnableFeedback" Type="bool" Value="True"/>
-																<Property Name="FilterType" Type="int32" Value="4"/>
-																<Property Name="LeftDelayTime" Type="Real32" Value="0.15"/>
-																<Property Name="LeftFeedback" Type="Real32" Value="-8"/>
-																<Property Name="RightDelayTime" Type="Real32" Value="0.15"/>
-																<Property Name="RightFeedback" Type="Real32" Value="-8"/>
-															</PropertyList>
-														</Effect>
-													</Custom>
-												</Reference>
-											</ReferenceList>
+											<ObjectLists>
+												<ObjectList Name="Effects">
+													<Reference>
+														<Local>
+															<EffectSlot Name="" ID="{BA5BED93-CE3C-44B8-98FE-E54C7E15EB1F}" ShortID="85173142">
+																<ReferenceList>
+																	<Reference Name="Effect">
+																		<Custom>
+																			<Effect Name="Wwise Stereo Delay (Custom)" ID="{0B2C52C7-1D59-4230-989F-1ABE10AA66C2}" ShortID="204868897" PluginName="Wwise Stereo Delay" CompanyID="0" PluginID="135" PluginType="3">
+																				<PropertyList>
+																					<Property Name="DryLevel" Type="Real32" Value="-96"/>
+																					<Property Name="EnableFeedback" Type="bool" Value="True"/>
+																					<Property Name="FilterType" Type="int32" Value="4"/>
+																					<Property Name="LeftDelayTime" Type="Real32" Value="0.15"/>
+																					<Property Name="LeftFeedback" Type="Real32" Value="-8"/>
+																					<Property Name="RightDelayTime" Type="Real32" Value="0.15"/>
+																					<Property Name="RightFeedback" Type="Real32" Value="-8"/>
+																				</PropertyList>
+																			</Effect>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</EffectSlot>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
 										</AuxBus>
 									</ChildrenList>
 								</Bus>
@@ -445,11 +501,21 @@
 												</Property>
 												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-													<ObjectRef Name="Room_Medium_Tiled" ID="{0C0A3A92-A571-4FDB-AB40-ACFED04E0217}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-												</Reference>
-											</ReferenceList>
+											<ObjectLists>
+												<ObjectList Name="Effects">
+													<Reference>
+														<Local>
+															<EffectSlot Name="" ID="{85D69D03-0AC5-494D-935F-EE4578E3D894}" ShortID="181059252">
+																<ReferenceList>
+																	<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																		<ObjectRef Name="Room_Medium_Tiled" ID="{0C0A3A92-A571-4FDB-AB40-ACFED04E0217}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+																	</Reference>
+																</ReferenceList>
+															</EffectSlot>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
 										</AuxBus>
 										<AuxBus Name="Outside" ID="{2E789ECD-A9C0-4E30-8580-E3C417A3C9DC}">
 											<Comment>Because it is more prominent (in terms of length), it sends less in Room than Room sends in it.</Comment>
@@ -474,11 +540,21 @@
 												<Property Name="ListenerRelativeRouting" Type="bool" Value="True"/>
 												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-													<ObjectRef Name="Huge_Space_Garage" ID="{1AF92D84-49DD-4BBC-8F29-6C6D10082B6E}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-												</Reference>
-											</ReferenceList>
+											<ObjectLists>
+												<ObjectList Name="Effects">
+													<Reference>
+														<Local>
+															<EffectSlot Name="" ID="{89DB2613-9DF2-48AA-9448-EFCB75762763}" ShortID="725689907">
+																<ReferenceList>
+																	<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																		<ObjectRef Name="Huge_Space_Garage" ID="{1AF92D84-49DD-4BBC-8F29-6C6D10082B6E}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+																	</Reference>
+																</ReferenceList>
+															</EffectSlot>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
 										</AuxBus>
 									</ChildrenList>
 								</Bus>

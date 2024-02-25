@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{9A702AE6-A6FC-40E6-94AF-6E7972F20503}" SchemaVersion="110">
+<WwiseDocument Type="WorkUnit" ID="{9A702AE6-A6FC-40E6-94AF-6E7972F20503}" SchemaVersion="119">
 	<Events>
 		<WorkUnit Name="Default Work Unit" ID="{9A702AE6-A6FC-40E6-94AF-6E7972F20503}" PersistMode="Standalone">
 			<ChildrenList>
@@ -133,11 +133,11 @@
 				</Event>
 				<Event Name="Enable_Microphone_Delay" ID="{8D2E24BD-07E4-4CDB-A16D-2B06C9F989DA}">
 					<ChildrenList>
-						<Action Name="" ID="{0E6A11F8-9B39-4576-BEE8-1757A0A51EB5}" ShortID="1058115287">
+						<Action Name="" ID="{FB56254B-A7C3-4D72-98C7-5F72682A41FD}" ShortID="579655545">
 							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="25"/>
-								<Property Name="BypassEffect" Type="bool" Value="False"/>
-								<Property Name="BypassEffect1" Type="bool" Value="True"/>
+								<Property Name="ActionType" Type="int16" Value="50"/>
+								<Property Name="BypassFlag" Type="bool" Value="False"/>
+								<Property Name="EffectSlot" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
@@ -149,11 +149,10 @@
 				</Event>
 				<Event Name="Disable_Microphone_Delay" ID="{F0E0DCDC-66E0-4E79-BB86-69810CE2FD94}">
 					<ChildrenList>
-						<Action Name="" ID="{AEC47476-6838-43E2-9AC6-7ECEC54735FA}" ShortID="313702254">
+						<Action Name="" ID="{BF85C884-9536-4AC0-B712-84184B97B854}" ShortID="841147858">
 							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="24"/>
-								<Property Name="BypassEffect" Type="bool" Value="False"/>
-								<Property Name="BypassEffect1" Type="bool" Value="True"/>
+								<Property Name="ActionType" Type="int16" Value="50"/>
+								<Property Name="EffectSlot" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">

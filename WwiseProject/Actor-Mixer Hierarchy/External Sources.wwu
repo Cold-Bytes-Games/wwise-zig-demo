@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{C9823204-D123-4E77-ADFF-8583AB31A2CC}" SchemaVersion="110">
+<WwiseDocument Type="WorkUnit" ID="{C9823204-D123-4E77-ADFF-8583AB31A2CC}" SchemaVersion="119">
 	<AudioObjects>
 		<WorkUnit Name="External Sources" ID="{C9823204-D123-4E77-ADFF-8583AB31A2CC}" PersistMode="Standalone">
 			<ChildrenList>
@@ -72,11 +72,19 @@
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
-					<Playlist>
-						<ItemRef Name="1st Number" ID="{4BFF8336-9261-4F54-B420-9EE06CAE5F16}"/>
-						<ItemRef Name="2nd Number" ID="{580E757C-9473-4F47-A781-1D469F21862A}"/>
-						<ItemRef Name="3rd Number" ID="{76E2C321-F63E-45E0-AACA-1ADCAB74B354}"/>
-					</Playlist>
+					<ObjectLists>
+						<ObjectList Name="Playlist">
+							<Reference>
+								<ObjectRef Name="1st Number" ID="{4BFF8336-9261-4F54-B420-9EE06CAE5F16}" WorkUnitID="{C9823204-D123-4E77-ADFF-8583AB31A2CC}"/>
+							</Reference>
+							<Reference>
+								<ObjectRef Name="2nd Number" ID="{580E757C-9473-4F47-A781-1D469F21862A}" WorkUnitID="{C9823204-D123-4E77-ADFF-8583AB31A2CC}"/>
+							</Reference>
+							<Reference>
+								<ObjectRef Name="3rd Number" ID="{76E2C321-F63E-45E0-AACA-1ADCAB74B354}" WorkUnitID="{C9823204-D123-4E77-ADFF-8583AB31A2CC}"/>
+							</Reference>
+						</ObjectList>
+					</ObjectLists>
 				</RandomSequenceContainer>
 			</ChildrenList>
 		</WorkUnit>

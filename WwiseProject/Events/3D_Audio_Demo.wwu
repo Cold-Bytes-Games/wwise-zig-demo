@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{9342D351-4509-4EE0-A552-4239D68C9D72}" SchemaVersion="110">
+<WwiseDocument Type="WorkUnit" ID="{9342D351-4509-4EE0-A552-4239D68C9D72}" SchemaVersion="119">
 	<Events>
 		<WorkUnit Name="3D_Audio_Demo" ID="{9342D351-4509-4EE0-A552-4239D68C9D72}" PersistMode="Standalone">
 			<ChildrenList>

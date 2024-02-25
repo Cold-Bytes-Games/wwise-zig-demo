@@ -108,17 +108,17 @@
 				</Property>
 				<Property Name="SoundBankPostGenerateCustomCmdLines" Type="string">
 					<ValueList>
-						<Value Platform="Switch">"$(WwiseExePath)\tools\FilePackager.Console.exe" -generate "$(WwiseProjectPath)\myFilePackagerProjects\ExternalSources (Switch).wfpproj"</Value>
-						<Value Platform="Linux">"$(WwiseExePath)\tools\FilePackager.Console.exe" -generate "$(WwiseProjectPath)\myFilePackagerProjects\ExternalSources (Linux).wfpproj"</Value>
-						<Value Platform="iOS">"$(WwiseExePath)\tools\FilePackager.Console.exe" -generate "$(WwiseProjectPath)\myFilePackagerProjects\ExternalSources (iOS).wfpproj"</Value>
-						<Value Platform="Mac">"$(WwiseExePath)\tools\FilePackager.Console.exe" -generate "$(WwiseProjectPath)\myFilePackagerProjects\ExternalSources (Mac).wfpproj"</Value>
-						<Value Platform="PS4">"$(WwiseExePath)\tools\FilePackager.Console.exe" -generate "$(WwiseProjectPath)\myFilePackagerProjects\ExternalSources (PS4).wfpproj"</Value>
-						<Value Platform="Stadia">"$(WwiseExePath)\tools\FilePackager.Console.exe" -generate "$(WwiseProjectPath)\myFilePackagerProjects\ExternalSources (Stadia).wfpproj"</Value>
-						<Value Platform="XboxOne">"$(WwiseExePath)\tools\FilePackager.Console.exe" -generate "$(WwiseProjectPath)\myFilePackagerProjects\ExternalSources (XboxOne).wfpproj"</Value>
-						<Value Platform="Windows">"$(WwiseExePath)\tools\FilePackager.Console.exe" -generate "$(WwiseProjectPath)\myFilePackagerProjects\ExternalSources (Windows).wfpproj"</Value>
-						<Value Platform="PS5">"$(WwiseExePath)\tools\FilePackager.Console.exe" -generate "$(WwiseProjectPath)\myFilePackagerProjects\ExternalSources (PS5).wfpproj"</Value>
-						<Value Platform="XboxSeriesX">"$(WwiseExePath)\tools\FilePackager.Console.exe" -generate "$(WwiseProjectPath)\myFilePackagerProjects\ExternalSources (XboxSeriesX).wfpproj"</Value>
-						<Value Platform="Android">"$(WwiseExePath)\tools\FilePackager.Console.exe" -generate "$(WwiseProjectPath)\myFilePackagerProjects\ExternalSources (Android).wfpproj"</Value>
+						<Value Platform="Switch">"$(WwiseExePath)\FilePackager.Console.exe" -generate "$(WwiseProjectPath)\myFilePackagerProjects\ExternalSources (Switch).wfpproj"</Value>
+						<Value Platform="Linux">"$(WwiseExePath)\FilePackager.Console.exe" -generate "$(WwiseProjectPath)\myFilePackagerProjects\ExternalSources (Linux).wfpproj"</Value>
+						<Value Platform="iOS">"$(WwiseExePath)\FilePackager.Console.exe" -generate "$(WwiseProjectPath)\myFilePackagerProjects\ExternalSources (iOS).wfpproj"</Value>
+						<Value Platform="Mac">"$(WwiseExePath)\FilePackager.Console.exe" -generate "$(WwiseProjectPath)\myFilePackagerProjects\ExternalSources (Mac).wfpproj"</Value>
+						<Value Platform="PS4">"$(WwiseExePath)\FilePackager.Console.exe" -generate "$(WwiseProjectPath)\myFilePackagerProjects\ExternalSources (PS4).wfpproj"</Value>
+						<Value Platform="Stadia">"$(WwiseExePath)\FilePackager.Console.exe" -generate "$(WwiseProjectPath)\myFilePackagerProjects\ExternalSources (Stadia).wfpproj"</Value>
+						<Value Platform="XboxOne">"$(WwiseExePath)\FilePackager.Console.exe" -generate "$(WwiseProjectPath)\myFilePackagerProjects\ExternalSources (XboxOne).wfpproj"</Value>
+						<Value Platform="Windows">"$(WwiseExePath)\FilePackager.Console.exe" -generate "$(WwiseProjectPath)\myFilePackagerProjects\ExternalSources (Windows).wfpproj"</Value>
+						<Value Platform="PS5">"$(WwiseExePath)\FilePackager.Console.exe" -generate "$(WwiseProjectPath)\myFilePackagerProjects\ExternalSources (PS5).wfpproj"</Value>
+						<Value Platform="XboxSeriesX">"$(WwiseExePath)\FilePackager.Console.exe" -generate "$(WwiseProjectPath)\myFilePackagerProjects\ExternalSources (XboxSeriesX).wfpproj"</Value>
+						<Value Platform="Android">"$(WwiseExePath)\FilePackager.Console.exe" -generate "$(WwiseProjectPath)\myFilePackagerProjects\ExternalSources (Android).wfpproj"</Value>
 					</ValueList>
 				</Property>
 				<Property Name="SoundBankPreGenerateCustomCmdDescription" Type="string">

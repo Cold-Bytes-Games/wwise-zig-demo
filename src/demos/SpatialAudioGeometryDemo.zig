@@ -363,7 +363,6 @@ fn initGeometry(self: *Self) !void {
 
     geom.enable_diffraction = true;
     geom.enable_diffraction_on_boundary_edges = false;
-    geom.enable_triangles = true;
 
     try AK.SpatialAudio.setGeometry(.{ .id = 0 }, &geom);
 
@@ -413,7 +412,6 @@ fn initGeometry(self: *Self) !void {
 
     geom.enable_diffraction = true;
     geom.enable_diffraction_on_boundary_edges = false;
-    geom.enable_triangles = true;
 
     try AK.SpatialAudio.setGeometry(.{ .id = 1 }, &geom);
 

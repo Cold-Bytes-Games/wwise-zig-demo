@@ -114,13 +114,19 @@ fn toggleSetMedia(self: *Self) !void {
         if (stream_mgr_opt) |stream_mgr| {
             var stream_opt: ?*AK.IAkStdStream = null;
 
-            var flags = AK.AkFileSystemFlags{
+            const flags = AK.AkFileSystemFlags{
                 .company_id = AK.AKCOMPANYID_AUDIOKINETIC,
                 .codec_id = AK.AKCODECID_VORBIS,
                 .is_language_specific = true,
             };
 
-            try stream_mgr.createStdString(self.allocator, MediaFilename, &flags, .read, &stream_opt, true);
+            const open_file_data = AK.AkFileOpenData{
+                .file_name = MediaFilename,
+                .flags = flags,
+                .open_mode = .read,
+            };
+
+            try stream_mgr.createStd(self.allocator, open_file_data, &stream_opt, true);
 
             if (stream_opt) |stream| {
                 defer stream.destroy();

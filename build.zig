@@ -35,7 +35,7 @@ pub fn build(b: *std.Build) !void {
         .use_default_job_worker = true,
         .use_spatial_audio = true,
         .use_static_crt = true,
-        .include_file_package_io_blocking = true,
+        .include_file_package_io_deferred = true,
         .configuration = .profile,
         .static_plugins = @as([]const []const u8, &.{
             "AkToneSource",

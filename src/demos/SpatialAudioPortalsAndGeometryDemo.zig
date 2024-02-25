@@ -607,8 +607,6 @@ const GeometryInRooms = struct {
             // so that sound does not diffract via the top and bottom edges.
             geom.enable_diffraction_on_boundary_edges = false;
 
-            geom.enable_triangles = true;
-
             try AK.SpatialAudio.setGeometry(GeometryRoom, &geom);
 
             const instance_params = AK.SpatialAudio.AkGeometryInstanceParams{

@@ -94,7 +94,7 @@ pub const DxContext = struct {
 };
 
 pub const WwiseContext = struct {
-    io_hook: ?*AK.IOHooks.CAkFilePackageLowLevelIOBlocking = null,
+    io_hook: ?*AK.IOHooks.CAkFilePackageLowLevelIODeferred = null,
     init_bank_id: AK.AkBankID = 0,
     memory_settings: AK.AkMemSettings = .{},
     stream_mgr_settings: AK.StreamMgr.AkStreamMgrSettings = .{},
@@ -370,8 +370,8 @@ pub fn initWwise(allocator: std.mem.Allocator, demo: *DemoState) !void {
     _ = AK.StreamMgr.create(&demo.wwise_context.stream_mgr_settings);
 
     // Create the I/O hook using default FilePackage blocking I/O Hook
-    var io_hook = try AK.IOHooks.CAkFilePackageLowLevelIOBlocking.create(allocator);
-    try io_hook.init(&demo.wwise_context.device_settings, false);
+    var io_hook = try AK.IOHooks.CAkFilePackageLowLevelIODeferred.create(allocator);
+    try io_hook.init(&demo.wwise_context.device_settings);
     demo.wwise_context.io_hook = io_hook;
 
     // Gather init settings and init the sound engine

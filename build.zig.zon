@@ -4,8 +4,8 @@
     .paths = .{"."},
     .dependencies = .{
         .@"wwise-zig" = .{
-            .url = "https://github.com/Cold-Bytes-Games/wwise-zig/archive/d2da6b513a373bd38885a7f77d689fcbf7c31d3a.tar.gz",
-            .hash = "1220643bb5a3ae722fbc7520759e72e700a7bb4b0b382ad40a80d069cb663bfb729f",
+            .url = "https://github.com/Cold-Bytes-Games/wwise-zig/archive/4cab95d06e7a4edd5622c655b1d07def569b99e3.tar.gz",
+            .hash = "1220607253960e518c26c5671f55a6b7ecc37fe4a61c9188633c1c43a51fa900be07",
         },
         .zigwin32 = .{
             .url = "https://github.com/marlersoft/zigwin32/archive/6f9ebf17f42aa7b37f466b195159893ed8eae8fc.tar.gz",

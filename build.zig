@@ -10,7 +10,10 @@ pub fn build(b: *std.Build) !void {
     } });
     const optimize = b.standardOptimizeOption(.{});
 
+    const override_wwise_sdk_path_option = b.option([]const u8, "wwise_sdk", "Override the path to the Wwise SDK, by default it will use the path in environment variable WWISESDK");
+
     const build_soundbanks_step = try wwise_zig.addGenerateSoundBanksStep(b, "WwiseProject/IntegrationDemo.wproj", .{
+        .override_wwise_sdk_path = override_wwise_sdk_path_option,
         .target = target,
     });
 
@@ -37,6 +40,7 @@ pub fn build(b: *std.Build) !void {
         .use_static_crt = true,
         .include_file_package_io_blocking = true,
         .configuration = .profile,
+        .wwise_sdk = override_wwise_sdk_path_option orelse "",
         .static_plugins = @as([]const []const u8, &.{
             "AkToneSource",
             "AkParametricEQFX",

@@ -1,15 +1,18 @@
 .{
     .name = "wwise-zig-demo",
-    .version = "2023.1.4-zig0",
+    .version = "2023.1.4-zig1",
     .paths = .{"."},
     .dependencies = .{
         .@"wwise-zig" = .{
-            .url = "https://github.com/Cold-Bytes-Games/wwise-zig/archive/59cc2c53b9ff805e2c3dcb5302073112c5a0db70.tar.gz",
-            .hash = "122002f0f40d67674d71aca351e93811c85175b8c74cdb8128ad7af600156abfad30",
+            .url = "https://github.com/Cold-Bytes-Games/wwise-zig/archive/4698db00aafd0a220f6aa33bd47d24c76e606a24.tar.gz",
+            .hash = "1220fabf555f2ab9c2950dcedd7f0563a1ca3772e96450a9588d4bbb8974e146961b",
+        },
+        .zgui = .{
+            .path = "vendor/zgui",
         },
         .zigwin32 = .{
-            .url = "https://github.com/marlersoft/zigwin32/archive/6f9ebf17f42aa7b37f466b195159893ed8eae8fc.tar.gz",
-            .hash = "1220ff2400a1974b2a9dc52cfe5c9c0b2cc87a2e75291ca781dc5b78908afe5af0e8",
+            .url = "https://github.com/Cold-Bytes-Games/zigwin32/archive/c1b683e26930f0356eebb826fe8ece4132f2845a.tar.gz",
+            .hash = "122023ef82db4cd40ca336e907ae3ee3b46c957b24fea36a4e72048d5884e67ea9cc",
         },
     },
 }

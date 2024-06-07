@@ -148,11 +148,11 @@ pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
         }
 
         if (zgui.sliderFloat("Emitter Elevation", .{ .v = &self.emitter_elevation_deg, .min = 0.0, .max = 360.0 })) {
-            self.emitter_elevation = std.math.degreesToRadians(f32, self.emitter_elevation_deg);
+            self.emitter_elevation = std.math.degreesToRadians(self.emitter_elevation_deg);
         }
 
         if (zgui.sliderFloat("Emitter Azimut", .{ .v = &self.emitter_azimut_deg, .min = 0.0, .max = 360.0 })) {
-            self.emitter_azimut = std.math.degreesToRadians(f32, self.emitter_azimut_deg);
+            self.emitter_azimut = std.math.degreesToRadians(self.emitter_azimut_deg);
         }
 
         _ = zgui.sliderFloat("Listener Player Offset", .{ .v = &self.listener_player_offset, .min = 0.0, .max = 20.0 });

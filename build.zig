@@ -1,6 +1,4 @@
 const std = @import("std");
-
-const zgui = @import("vendor/zgui/build.zig");
 const wwise_zig = @import("wwise-zig");
 
 pub fn build(b: *std.Build) !void {
@@ -19,7 +17,7 @@ pub fn build(b: *std.Build) !void {
 
     const exe = b.addExecutable(.{
         .name = "wwise-zig-demo",
-        .root_source_file = .{ .path = "src/main.zig" },
+        .root_source_file = b.path("src/main.zig"),
         .target = target,
         .optimize = optimize,
     });
@@ -54,10 +52,10 @@ pub fn build(b: *std.Build) !void {
         }),
     });
 
-    const zgui_pkg = zgui.package(b, target, optimize, .{
-        .options = .{
-            .backend = .win32_dx11,
-        },
+    const zgui_dependency = b.dependency("zgui", .{
+        .target = target,
+        .optimize = optimize,
+        .backend = .win32_dx11,
     });
 
     const wwise_zig_module = wwise_dependency.module("wwise-zig");
@@ -68,9 +66,9 @@ pub fn build(b: *std.Build) !void {
 
     exe.root_module.addImport("wwise-ids", wwise_id_module);
     exe.root_module.addImport("wwise-zig", wwise_zig_module);
-    exe.root_module.addImport("zgui", zgui_pkg.zgui);
+    exe.root_module.addImport("zgui", zgui_dependency.module("root"));
     exe.root_module.addImport("zigwin32", zigwin32_dependency.module("zigwin32"));
-    zgui_pkg.link(exe);
+	exe.linkLibrary(zgui_dependency.artifact("imgui"));
 
     const run_cmd = b.addRunArtifact(exe);
     run_cmd.step.dependOn(b.getInstallStep());

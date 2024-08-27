@@ -57,32 +57,32 @@ pub const DxContext = struct {
     pub fn createRenderTarget(self: *DxContext) void {
         var back_buffer_opt: ?*d3d11.ID3D11Texture2D = null;
         if (self.swap_chain) |swap_chain| {
-            _ = swap_chain.IDXGISwapChain_GetBuffer(0, d3d11.IID_ID3D11Texture2D, @ptrCast(&back_buffer_opt));
+            _ = swap_chain.GetBuffer(0, d3d11.IID_ID3D11Texture2D, @ptrCast(&back_buffer_opt));
         }
         if (self.device) |device| {
-            _ = device.ID3D11Device_CreateRenderTargetView(@ptrCast(back_buffer_opt), null, @ptrCast(&self.main_render_target_view));
+            _ = device.CreateRenderTargetView(@ptrCast(back_buffer_opt), null, @ptrCast(&self.main_render_target_view));
         }
         if (back_buffer_opt) |back_buffer| {
-            _ = back_buffer.IUnknown_Release();
+            _ = back_buffer.IUnknown.Release();
         }
     }
 
     pub fn cleanupDeviceD3D(self: *DxContext) void {
         self.cleanupRenderTarget();
         if (self.swap_chain) |swap_chain| {
-            _ = swap_chain.IUnknown_Release();
+            _ = swap_chain.IUnknown.Release();
         }
         if (self.device_context) |device_context| {
-            _ = device_context.IUnknown_Release();
+            _ = device_context.IUnknown.Release();
         }
         if (self.device) |device| {
-            _ = device.IUnknown_Release();
+            _ = device.IUnknown.Release();
         }
     }
 
     pub fn cleanupRenderTarget(self: *DxContext) void {
         if (self.main_render_target_view) |main_render_target_view| {
-            _ = main_render_target_view.IUnknown_Release();
+            _ = main_render_target_view.IUnknown.Release();
             self.main_render_target_view = null;
         }
     }
@@ -495,7 +495,7 @@ fn update(allocator: std.mem.Allocator, demo: *DemoState) !void {
     if (demo.graphics_context.swap_chain) |swap_chain| {
         var desc: dxgi.DXGI_SWAP_CHAIN_DESC = undefined;
 
-        _ = swap_chain.IDXGISwapChain_GetDesc(&desc);
+        _ = swap_chain.GetDesc(&desc);
 
         width = desc.BufferDesc.Width;
         height = desc.BufferDesc.Height;
@@ -543,14 +543,14 @@ fn draw(demo: *DemoState) void {
     };
 
     if (graphics_context.device_context) |device_context| {
-        _ = device_context.ID3D11DeviceContext_OMSetRenderTargets(1, @ptrCast(@constCast(&graphics_context.main_render_target_view)), null);
-        _ = device_context.ID3D11DeviceContext_ClearRenderTargetView(graphics_context.main_render_target_view, @ptrCast(&clear_color));
+        _ = device_context.OMSetRenderTargets(1, @ptrCast(@constCast(&graphics_context.main_render_target_view)), null);
+        _ = device_context.ClearRenderTargetView(graphics_context.main_render_target_view, @ptrCast(&clear_color));
     }
 
     zgui.backend.draw();
 
     if (graphics_context.swap_chain) |swap_chain| {
-        _ = swap_chain.IDXGISwapChain_Present(1, 0);
+        _ = swap_chain.Present(1, 0);
     }
 }
 
@@ -662,7 +662,7 @@ pub fn WndProc(hWnd: win32.HWND, msg: u32, wParam: win32.WPARAM, lParam: win32.L
                 if (demo_opt) |demo| {
                     if (demo.graphics_context.swap_chain) |swap_chain| {
                         demo.graphics_context.cleanupRenderTarget();
-                        _ = swap_chain.IDXGISwapChain_ResizeBuffers(0, @as(u32, @intCast(lParam)) & 0xFFFF, (@as(u32, @intCast(lParam)) >> 16) & 0xFFFF, .UNKNOWN, 0);
+                        _ = swap_chain.ResizeBuffers(0, @as(u32, @intCast(lParam)) & 0xFFFF, (@as(u32, @intCast(lParam)) >> 16) & 0xFFFF, .UNKNOWN, 0);
                         demo.graphics_context.createRenderTarget();
                     }
                 }

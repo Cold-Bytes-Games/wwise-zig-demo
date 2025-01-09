@@ -62,9 +62,9 @@ pub fn build(b: *std.Build) void {
         });
 
         if (target.result.os.tag == .windows) {
-            lib.defineCMacro("IMGUI_API", "__declspec(dllexport)");
-            lib.defineCMacro("IMPLOT_API", "__declspec(dllexport)");
-            lib.defineCMacro("ZGUI_API", "__declspec(dllexport)");
+            lib.root_module.addCMacro("IMGUI_API", "__declspec(dllexport)");
+            lib.root_module.addCMacro("IMPLOT_API", "__declspec(dllexport)");
+            lib.root_module.addCMacro("ZGUI_API", "__declspec(dllexport)");
         }
 
         if (target.result.os.tag == .macos) {
@@ -104,7 +104,7 @@ pub fn build(b: *std.Build) void {
     });
 
     if (options.with_implot) {
-        imgui.defineCMacro("ZGUI_IMPLOT", "1");
+        imgui.root_module.addCMacro("ZGUI_IMPLOT", "1");
         imgui.addCSourceFiles(.{
             .files = &.{
                 "libs/imgui/implot_demo.cpp",
@@ -114,18 +114,18 @@ pub fn build(b: *std.Build) void {
             .flags = cflags,
         });
     } else {
-        imgui.defineCMacro("ZGUI_IMPLOT", "0");
+        imgui.root_module.addCMacro("ZGUI_IMPLOT", "0");
     }
 
     if (options.use_wchar32) {
-        imgui.defineCMacro("IMGUI_USE_WCHAR32", "1");
+        imgui.root_module.addCMacro("IMGUI_USE_WCHAR32", "1");
     }
 
     if (options.with_te) {
-        imgui.defineCMacro("ZGUI_TE", "1");
+        imgui.root_module.addCMacro("ZGUI_TE", "1");
 
-        imgui.defineCMacro("IMGUI_ENABLE_TEST_ENGINE", null);
-        imgui.defineCMacro("IMGUI_TEST_ENGINE_ENABLE_COROUTINE_STDTHREAD_IMPL", "1");
+        imgui.root_module.addCMacro("IMGUI_ENABLE_TEST_ENGINE", &.{});
+        imgui.root_module.addCMacro("IMGUI_TEST_ENGINE_ENABLE_COROUTINE_STDTHREAD_IMPL", "1");
 
         imgui.addIncludePath(b.path("libs/imgui_test_engine/"));
 
@@ -172,7 +172,7 @@ pub fn build(b: *std.Build) void {
                 "-Wall",
                 "-Wextra",
             } });
-            winpthreads.defineCMacro("__USE_MINGW_ANSI_STDIO", "1");
+            winpthreads.root_module.addCMacro("__USE_MINGW_ANSI_STDIO", "1");
             winpthreads.addIncludePath(b.path("libs/winpthreads/include"));
             winpthreads.addIncludePath(b.path("libs/winpthreads/src"));
             winpthreads.linkLibC();
@@ -181,7 +181,7 @@ pub fn build(b: *std.Build) void {
             imgui.addSystemIncludePath(b.path("libs/winpthreads/include"));
         }
     } else {
-        imgui.defineCMacro("ZGUI_TE", "0");
+        imgui.root_module.addCMacro("ZGUI_TE", "0");
     }
 
     switch (options.backend) {

@@ -4,15 +4,16 @@
     .paths = .{"."},
     .dependencies = .{
         .@"wwise-zig" = .{
-            .url = "https://github.com/Cold-Bytes-Games/wwise-zig/archive/d42537728291af8f06da6e00927448bfe7b89759.tar.gz",
-            .hash = "12205a089913802ea913a8c371252b9995a3a9f733026c6db959748f99e645522ed8",
+            // .url = "https://github.com/Cold-Bytes-Games/wwise-zig/archive/d42537728291af8f06da6e00927448bfe7b89759.tar.gz",
+            // .hash = "12205a089913802ea913a8c371252b9995a3a9f733026c6db959748f99e645522ed8",
+            .path = "../wwise-zig",
         },
         .zgui = .{
             .path = "vendor/zgui",
         },
         .zigwin32 = .{
-            .url = "https://github.com/marlersoft/zigwin32/archive/407a4c7b869ee3d10db520fdfae8b9faf9b2adb5.tar.gz",
-            .hash = "1220cc9c9028e20f4ec2ece1155ae3479acc1cc509f9ab93acb74e8f5bbf8eefd2a9",
+            .url = "https://github.com/Cold-Bytes-Games/zigwin32/archive/3cc574cc4eea69da7d8802a6e8c2bd33e5a3dee4.tar.gz",
+            .hash = "122086a0728a2ec9726d6241424e87457a4436e2240aadba7a28a1f4702b38d7a68d",
         },
     },
 }

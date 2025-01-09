@@ -397,15 +397,15 @@ fn SettingsInterface(comptime WrapperType: type, comptime SettingsType: type) ty
         pub fn init(self: *WrapperType, settings: *SettingsType) !void {
             inline for (std.meta.fields(WrapperType)) |field| {
                 switch (@typeInfo(field.type)) {
-                    .Bool,
-                    .Int,
-                    .ComptimeFloat,
-                    .ComptimeInt,
-                    .Float,
+                    .bool,
+                    .int,
+                    .comptime_float,
+                    .comptime_int,
+                    .float,
                     => {
                         @field(self, field.name) = @field(settings, field.name);
                     },
-                    .Struct => {
+                    .@"struct" => {
                         @field(self, field.name).selected_index = indexOfNamedValue(@field(settings, field.name), @field(field.type, "NamedValues")) orelse 0;
                     },
                     else => @compileError("Not supported"),
@@ -416,21 +416,21 @@ fn SettingsInterface(comptime WrapperType: type, comptime SettingsType: type) ty
         pub fn onUI(self: *WrapperType, demo: *Self, demo_state: *root.DemoState, callback: *const fn (self: *Self, demo_state: *root.DemoState) anyerror!void) !void {
             inline for (std.meta.fields(WrapperType)) |field| {
                 switch (@typeInfo(field.type)) {
-                    .Bool => {
+                    .bool => {
                         if (zgui.checkbox(@field(WrapperType.DisplayNames, field.name), .{ .v = &@field(self, field.name) })) {
                             try callback(demo, demo_state);
                         }
                     },
-                    .Int,
-                    .ComptimeFloat,
-                    .ComptimeInt,
-                    .Float,
+                    .int,
+                    .comptime_float,
+                    .comptime_int,
+                    .float,
                     => {
                         if (zgui.sliderScalar(@field(WrapperType.DisplayNames, field.name), field.type, .{ .v = &@field(self, field.name) })) {
                             try callback(demo, demo_state);
                         }
                     },
-                    .Struct => {
+                    .@"struct" => {
                         const NamedValues = @field(field.type, "NamedValues");
 
                         if (zgui.beginCombo(@field(WrapperType.DisplayNames, field.name), .{ .preview_value = NamedValues[@field(self, field.name).selected_index].name })) {
@@ -458,15 +458,15 @@ fn SettingsInterface(comptime WrapperType: type, comptime SettingsType: type) ty
         pub fn fillSettings(self: *WrapperType, settings: *SettingsType) !void {
             inline for (std.meta.fields(WrapperType)) |field| {
                 switch (@typeInfo(field.type)) {
-                    .Bool,
-                    .Int,
-                    .ComptimeFloat,
-                    .ComptimeInt,
-                    .Float,
+                    .bool,
+                    .int,
+                    .comptime_float,
+                    .comptime_int,
+                    .float,
                     => {
                         @field(settings, field.name) = @field(self, field.name);
                     },
-                    .Struct => {
+                    .@"struct" => {
                         @field(settings, field.name) = @field(field.type, "NamedValues")[@field(self, field.name).selected_index].value;
                     },
                     else => @compileError("Not supported"),

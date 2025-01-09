@@ -546,7 +546,7 @@ const GeometryInRooms = struct {
         {
             // Outer wall (assigned to Outside)
             //
-            //		  |
+            //        |
             //        |
             // -------|
 
@@ -625,7 +625,7 @@ const GeometryInRooms = struct {
             //
 
             // 45|------|32
-            //	 |		|
+            //   |      |
             // 76|------|01
 
             // Draw Lines.

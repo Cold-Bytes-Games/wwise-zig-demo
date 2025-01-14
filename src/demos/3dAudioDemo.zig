@@ -119,7 +119,7 @@ pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
         metering_y += line_height;
         for (0..self.mm_peaks) |index| {
             const db = linearToDb(self.main_mix_peaks[index]);
-            const length = std.math.clamp(@as(u32, @intCast(@as(i32, @intFromFloat(db)) + 100)), 10, 150);
+            const length = std.math.clamp(@as(u32, @bitCast(@as(i32, @intFromFloat(db)) + 100)), 10, 150);
             draw_list.addLine(.{
                 .p1 = [2]f32{ window_pos[0] + 50.0, window_pos[1] + @as(f32, @floatFromInt(metering_y)) },
                 .p2 = [2]f32{ window_pos[0] + 50.0 + @as(f32, @floatFromInt(length)), window_pos[1] + @as(f32, @floatFromInt(metering_y)) },
@@ -134,7 +134,7 @@ pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
             metering_y += line_height;
             for (0..self.pt_peaks) |index| {
                 const db = linearToDb(self.passthrough_peaks[index]);
-                const length = std.math.clamp(@as(u32, @intCast(@as(i32, @intFromFloat(db)) + 100)), 10, 150);
+                const length = std.math.clamp(@as(u32, @bitCast(@as(i32, @intFromFloat(db)) + 100)), 10, 150);
                 draw_list.addLine(.{
                     .p1 = [2]f32{ window_pos[0] + 50.0, window_pos[1] + @as(f32, @floatFromInt(metering_y)) },
                     .p2 = [2]f32{ window_pos[0] + 50.0 + @as(f32, @floatFromInt(length)), window_pos[1] + @as(f32, @floatFromInt(metering_y)) },
@@ -150,7 +150,7 @@ pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
             metering_y += line_height;
             for (0..self.obj_peaks) |index| {
                 const db = linearToDb(self.object_peaks[index]);
-                const length = std.math.clamp(@as(u32, @intCast(@as(i32, @intFromFloat(db)) + 100)), 10, 150);
+                const length = std.math.clamp(@as(u32, @bitCast(@as(i32, @intFromFloat(db)) + 100)), 10, 150);
                 draw_list.addLine(.{
                     .p1 = [2]f32{ window_pos[0] + 50.0, window_pos[1] + @as(f32, @floatFromInt(metering_y)) },
                     .p2 = [2]f32{ window_pos[0] + 50.0 + @as(f32, @floatFromInt(length)), window_pos[1] + @as(f32, @floatFromInt(metering_y)) },

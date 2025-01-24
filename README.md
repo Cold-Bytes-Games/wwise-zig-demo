@@ -1,4 +1,4 @@
-# wwise-zig-demo - Demo application of the wwise-zig bindings (2023.1.9)
+# wwise-zig-demo - Demo application of the wwise-zig bindings (2024.1.0)
 
 This a port of the Integration Demo from the samples in Zig using [wwise-zig](https://github.com/Cold-Bytes-Games/wwise-zig) and using [zig-gamedev](https://github.com/michal-z/zig-gamedev) `zgui` for the UI rendering.
 
@@ -22,7 +22,7 @@ wwise-zig-demo
 ==============
 MIT License
 
-Copyright (c) 2023 Cold Bytes Games Inc.
+Copyright (c) 2023-2025 Cold Bytes Games Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

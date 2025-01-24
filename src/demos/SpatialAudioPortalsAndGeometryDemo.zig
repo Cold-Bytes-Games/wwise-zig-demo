@@ -611,7 +611,6 @@ const GeometryInRooms = struct {
 
             const instance_params = AK.SpatialAudio.AkGeometryInstanceParams{
                 .geometry_set_id = GeometryRoom,
-                .room_id = AK.SpatialAudio.getOutdoorRoomID(),
             };
 
             try AK.SpatialAudio.setGeometryInstance(GeometryRoom, &instance_params);
@@ -717,7 +716,6 @@ const GeometryInRooms = struct {
 
             const instance_params = AK.SpatialAudio.AkGeometryInstanceParams{
                 .geometry_set_id = spatial_audio_id,
-                .room_id = Room,
             };
 
             try AK.SpatialAudio.setGeometryInstance(spatial_audio_id, &instance_params);
@@ -822,7 +820,6 @@ const GeometryInRooms = struct {
 
             const instance_params = AK.SpatialAudio.AkGeometryInstanceParams{
                 .geometry_set_id = spatial_audio_id,
-                .room_id = AK.SpatialAudio.getOutdoorRoomID(),
             };
             try AK.SpatialAudio.setGeometryInstance(spatial_audio_id, &instance_params);
         }

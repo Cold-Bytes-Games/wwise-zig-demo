@@ -506,19 +506,10 @@ const InitSettings = struct {
 };
 
 const MemorySettings = struct {
-    mem_allocation_size_limit: NamedValueInstance(MemoryLimits) = .{},
     memory_debug_level: NamedValueInstance(MemoryDebugLevels) = .{},
 
     pub const DisplayNames = .{
-        .mem_allocation_size_limit = "Memory Limit",
         .memory_debug_level = "Memory Debug Option",
-    };
-
-    pub const MemoryLimits: []const NamedValue(u64) = &.{
-        .{ .name = "Disabled", .value = 0 },
-        .{ .name = "32 MB", .value = 32 * 1024 * 1024 },
-        .{ .name = "64 MB", .value = 64 * 1024 * 1024 },
-        .{ .name = "128 MB", .value = 128 * 1024 * 1024 },
     };
 
     pub const MemoryDebugLevels: []const NamedValue(u32) = &.{

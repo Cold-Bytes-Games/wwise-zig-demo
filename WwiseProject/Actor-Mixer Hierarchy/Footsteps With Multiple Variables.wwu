@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{39255352-6310-4790-ACD5-F0B3026DF735}" SchemaVersion="119">
+<WwiseDocument Type="WorkUnit" ID="{39255352-6310-4790-ACD5-F0B3026DF735}" SchemaVersion="123">
 	<AudioObjects>
 		<WorkUnit Name="Footsteps With Multiple Variables" ID="{39255352-6310-4790-ACD5-F0B3026DF735}" PersistMode="Standalone">
 			<ChildrenList>
@@ -664,30 +664,22 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 										<ObjectList Name="Effects" Platform="iOS">
 											<Reference>
 												<Local>
-													<EffectSlot Name="" ID="{C32BE2BB-D2DE-4D22-A11A-52F45FC08F27}" ShortID="55577718">
-														<ReferenceList/>
-													</EffectSlot>
+													<EffectSlot Name="" ID="{C32BE2BB-D2DE-4D22-A11A-52F45FC08F27}" ShortID="55577718"/>
 												</Local>
 											</Reference>
 											<Reference>
 												<Local>
-													<EffectSlot Name="" ID="{C3138CBD-ADA7-47F2-A47D-4192C286C179}" ShortID="257838902">
-														<ReferenceList/>
-													</EffectSlot>
+													<EffectSlot Name="" ID="{C3138CBD-ADA7-47F2-A47D-4192C286C179}" ShortID="257838902"/>
 												</Local>
 											</Reference>
 											<Reference>
 												<Local>
-													<EffectSlot Name="" ID="{C924F80F-7C16-4760-B6B8-E4C0868F7117}" ShortID="893459350">
-														<ReferenceList/>
-													</EffectSlot>
+													<EffectSlot Name="" ID="{C924F80F-7C16-4760-B6B8-E4C0868F7117}" ShortID="893459350"/>
 												</Local>
 											</Reference>
 											<Reference>
 												<Local>
-													<EffectSlot Name="" ID="{6D466A30-F5A3-43E2-B896-337837668E08}" ShortID="122901375">
-														<ReferenceList/>
-													</EffectSlot>
+													<EffectSlot Name="" ID="{6D466A30-F5A3-43E2-B896-337837668E08}" ShortID="122901375"/>
 												</Local>
 											</Reference>
 										</ObjectList>
@@ -1030,30 +1022,22 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 								<ObjectList Name="Effects" Platform="iOS">
 									<Reference>
 										<Local>
-											<EffectSlot Name="" ID="{C114E35C-73AC-4C46-8197-4B63B3DEFFC2}" ShortID="210945175">
-												<ReferenceList/>
-											</EffectSlot>
+											<EffectSlot Name="" ID="{C114E35C-73AC-4C46-8197-4B63B3DEFFC2}" ShortID="210945175"/>
 										</Local>
 									</Reference>
 									<Reference>
 										<Local>
-											<EffectSlot Name="" ID="{DC10634E-16DA-4F73-836A-AE8A3B186E86}" ShortID="485521967">
-												<ReferenceList/>
-											</EffectSlot>
+											<EffectSlot Name="" ID="{DC10634E-16DA-4F73-836A-AE8A3B186E86}" ShortID="485521967"/>
 										</Local>
 									</Reference>
 									<Reference>
 										<Local>
-											<EffectSlot Name="" ID="{A29C4960-B7D7-430F-9628-898184E3FD2D}" ShortID="481041522">
-												<ReferenceList/>
-											</EffectSlot>
+											<EffectSlot Name="" ID="{A29C4960-B7D7-430F-9628-898184E3FD2D}" ShortID="481041522"/>
 										</Local>
 									</Reference>
 									<Reference>
 										<Local>
-											<EffectSlot Name="" ID="{2C062A93-D957-4BE0-9FE3-C3DDF6AD9671}" ShortID="895970378">
-												<ReferenceList/>
-											</EffectSlot>
+											<EffectSlot Name="" ID="{2C062A93-D957-4BE0-9FE3-C3DDF6AD9671}" ShortID="895970378"/>
 										</Local>
 									</Reference>
 								</ObjectList>
@@ -1407,30 +1391,22 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 								<ObjectList Name="Effects" Platform="iOS">
 									<Reference>
 										<Local>
-											<EffectSlot Name="" ID="{0BA74DEE-8961-48BB-AE88-8B0280AC59CA}" ShortID="15363551">
-												<ReferenceList/>
-											</EffectSlot>
+											<EffectSlot Name="" ID="{0BA74DEE-8961-48BB-AE88-8B0280AC59CA}" ShortID="15363551"/>
 										</Local>
 									</Reference>
 									<Reference>
 										<Local>
-											<EffectSlot Name="" ID="{B95B0841-2614-416A-BA0F-67408F7B6E72}" ShortID="103278882">
-												<ReferenceList/>
-											</EffectSlot>
+											<EffectSlot Name="" ID="{B95B0841-2614-416A-BA0F-67408F7B6E72}" ShortID="103278882"/>
 										</Local>
 									</Reference>
 									<Reference>
 										<Local>
-											<EffectSlot Name="" ID="{80016ACF-CCD4-4D98-B7A9-3894E989C53D}" ShortID="957980814">
-												<ReferenceList/>
-											</EffectSlot>
+											<EffectSlot Name="" ID="{80016ACF-CCD4-4D98-B7A9-3894E989C53D}" ShortID="957980814"/>
 										</Local>
 									</Reference>
 									<Reference>
 										<Local>
-											<EffectSlot Name="" ID="{B4132965-FB90-41D7-BD41-3667A9595E74}" ShortID="362959170">
-												<ReferenceList/>
-											</EffectSlot>
+											<EffectSlot Name="" ID="{B4132965-FB90-41D7-BD41-3667A9595E74}" ShortID="362959170"/>
 										</Local>
 									</Reference>
 								</ObjectList>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}" SchemaVersion="119">
+<WwiseDocument Type="WorkUnit" ID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}" SchemaVersion="123">
 	<Busses>
 		<WorkUnit Name="Default Work Unit" ID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}" PersistMode="Standalone">
 			<ChildrenList>
@@ -140,23 +140,17 @@
 											</Reference>
 											<Reference>
 												<Local>
-													<EffectSlot Name="" ID="{F83F9F3E-4FA3-49A6-AA43-B2A108853C9C}" ShortID="147850768">
-														<ReferenceList/>
-													</EffectSlot>
+													<EffectSlot Name="" ID="{F83F9F3E-4FA3-49A6-AA43-B2A108853C9C}" ShortID="147850768"/>
 												</Local>
 											</Reference>
 											<Reference>
 												<Local>
-													<EffectSlot Name="" ID="{B48B311F-DAAB-4A0F-BFB0-0A9C4E73D01B}" ShortID="404550529">
-														<ReferenceList/>
-													</EffectSlot>
+													<EffectSlot Name="" ID="{B48B311F-DAAB-4A0F-BFB0-0A9C4E73D01B}" ShortID="404550529"/>
 												</Local>
 											</Reference>
 											<Reference>
 												<Local>
-													<EffectSlot Name="" ID="{D5E9DA5D-798A-426B-9583-B8D995B3A06B}" ShortID="294085282">
-														<ReferenceList/>
-													</EffectSlot>
+													<EffectSlot Name="" ID="{D5E9DA5D-798A-426B-9583-B8D995B3A06B}" ShortID="294085282"/>
 												</Local>
 											</Reference>
 										</ObjectList>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{E011F67A-12DF-4D37-9F94-E7ADCE684B41}" SchemaVersion="119">
+<WwiseDocument Type="WorkUnit" ID="{E011F67A-12DF-4D37-9F94-E7ADCE684B41}" SchemaVersion="123">
 	<Conversions>
 		<WorkUnit Name="External Sources" ID="{E011F67A-12DF-4D37-9F94-E7ADCE684B41}" PersistMode="Standalone">
 			<ChildrenList>
@@ -37,17 +37,17 @@
 						</Property>
 						<Property Name="MaxSampleRate" Type="int32">
 							<ValueList>
-								<Value Platform="Switch">0</Value>
-								<Value Platform="Linux">0</Value>
-								<Value Platform="iOS">0</Value>
-								<Value Platform="Mac">0</Value>
-								<Value Platform="PS4">0</Value>
-								<Value Platform="Stadia">0</Value>
-								<Value Platform="XboxOne">0</Value>
-								<Value Platform="Windows">0</Value>
-								<Value Platform="PS5">0</Value>
-								<Value Platform="XboxSeriesX">0</Value>
-								<Value Platform="Android">0</Value>
+								<Value Platform="Switch">48000</Value>
+								<Value Platform="Linux">48000</Value>
+								<Value Platform="iOS">48000</Value>
+								<Value Platform="Mac">48000</Value>
+								<Value Platform="PS4">48000</Value>
+								<Value Platform="Stadia">48000</Value>
+								<Value Platform="XboxOne">48000</Value>
+								<Value Platform="Windows">48000</Value>
+								<Value Platform="PS5">48000</Value>
+								<Value Platform="XboxSeriesX">48000</Value>
+								<Value Platform="Android">48000</Value>
 							</ValueList>
 						</Property>
 						<Property Name="MinSampleRate" Type="int32">
@@ -84,81 +84,37 @@
 					</PropertyList>
 					<ConversionPluginInfoList>
 						<ConversionPluginInfo Platform="Switch">
-							<ConversionPlugin Name="" ID="{116371B1-C379-49F8-B599-3BB59C18BE18}" PluginName="ADPCM" CompanyID="0" PluginID="2">
-								<PropertyList>
-									<Property Name="FixLoopMethod" Type="int32" Value="1"/>
-								</PropertyList>
-							</ConversionPlugin>
+							<ConversionPlugin Name="" ID="{116371B1-C379-49F8-B599-3BB59C18BE18}" PluginName="ADPCM" CompanyID="0" PluginID="2"/>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="Linux">
-							<ConversionPlugin Name="" ID="{959F9890-2B1B-435F-A24A-010FC7AD70CE}" PluginName="ADPCM" CompanyID="0" PluginID="2">
-								<PropertyList>
-									<Property Name="FixLoopMethod" Type="int32" Value="1"/>
-								</PropertyList>
-							</ConversionPlugin>
+							<ConversionPlugin Name="" ID="{959F9890-2B1B-435F-A24A-010FC7AD70CE}" PluginName="ADPCM" CompanyID="0" PluginID="2"/>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="iOS">
-							<ConversionPlugin Name="" ID="{B42F628D-56DE-4063-A52D-BAE5563EDDE8}" PluginName="ADPCM" CompanyID="0" PluginID="2">
-								<PropertyList>
-									<Property Name="FixLoopMethod" Type="int32" Value="1"/>
-								</PropertyList>
-							</ConversionPlugin>
+							<ConversionPlugin Name="" ID="{B42F628D-56DE-4063-A52D-BAE5563EDDE8}" PluginName="ADPCM" CompanyID="0" PluginID="2"/>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="Mac">
-							<ConversionPlugin Name="" ID="{913AAA76-40D1-4173-A0AC-50D301D4405E}" PluginName="ADPCM" CompanyID="0" PluginID="2">
-								<PropertyList>
-									<Property Name="FixLoopMethod" Type="int32" Value="1"/>
-								</PropertyList>
-							</ConversionPlugin>
+							<ConversionPlugin Name="" ID="{913AAA76-40D1-4173-A0AC-50D301D4405E}" PluginName="ADPCM" CompanyID="0" PluginID="2"/>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="PS4">
-							<ConversionPlugin Name="" ID="{A27E7579-3412-4A8C-B039-CE6EB60EF677}" PluginName="ADPCM" CompanyID="0" PluginID="2">
-								<PropertyList>
-									<Property Name="FixLoopMethod" Type="int32" Value="1"/>
-								</PropertyList>
-							</ConversionPlugin>
+							<ConversionPlugin Name="" ID="{A27E7579-3412-4A8C-B039-CE6EB60EF677}" PluginName="ADPCM" CompanyID="0" PluginID="2"/>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="Stadia">
-							<ConversionPlugin Name="" ID="{7180A2C6-C242-447B-9654-1A516507CFDC}" PluginName="ADPCM" CompanyID="0" PluginID="2">
-								<PropertyList>
-									<Property Name="FixLoopMethod" Type="int32" Value="1"/>
-								</PropertyList>
-							</ConversionPlugin>
+							<ConversionPlugin Name="" ID="{7180A2C6-C242-447B-9654-1A516507CFDC}" PluginName="ADPCM" CompanyID="0" PluginID="2"/>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="XboxOne">
-							<ConversionPlugin Name="" ID="{0C7C3F5A-A48B-4031-8150-67ED48DDAF07}" PluginName="ADPCM" CompanyID="0" PluginID="2">
-								<PropertyList>
-									<Property Name="FixLoopMethod" Type="int32" Value="1"/>
-								</PropertyList>
-							</ConversionPlugin>
+							<ConversionPlugin Name="" ID="{0C7C3F5A-A48B-4031-8150-67ED48DDAF07}" PluginName="ADPCM" CompanyID="0" PluginID="2"/>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="Windows">
-							<ConversionPlugin Name="" ID="{7EADD3E3-1D4B-413C-A22E-B6B9738086EF}" PluginName="ADPCM" CompanyID="0" PluginID="2">
-								<PropertyList>
-									<Property Name="FixLoopMethod" Type="int32" Value="1"/>
-								</PropertyList>
-							</ConversionPlugin>
+							<ConversionPlugin Name="" ID="{7EADD3E3-1D4B-413C-A22E-B6B9738086EF}" PluginName="ADPCM" CompanyID="0" PluginID="2"/>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="PS5">
-							<ConversionPlugin Name="" ID="{93F4465D-50C9-42E1-9C47-3C19B49DC328}" PluginName="ADPCM" CompanyID="0" PluginID="2">
-								<PropertyList>
-									<Property Name="FixLoopMethod" Type="int32" Value="1"/>
-								</PropertyList>
-							</ConversionPlugin>
+							<ConversionPlugin Name="" ID="{93F4465D-50C9-42E1-9C47-3C19B49DC328}" PluginName="ADPCM" CompanyID="0" PluginID="2"/>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="XboxSeriesX">
-							<ConversionPlugin Name="" ID="{B49C3353-4C81-419E-8712-F62D7F8A4FCA}" PluginName="ADPCM" CompanyID="0" PluginID="2">
-								<PropertyList>
-									<Property Name="FixLoopMethod" Type="int32" Value="1"/>
-								</PropertyList>
-							</ConversionPlugin>
+							<ConversionPlugin Name="" ID="{B49C3353-4C81-419E-8712-F62D7F8A4FCA}" PluginName="ADPCM" CompanyID="0" PluginID="2"/>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="Android">
-							<ConversionPlugin Name="" ID="{B90BCF4E-7286-4FDA-B3C8-2D0044624AC1}" PluginName="ADPCM" CompanyID="0" PluginID="2">
-								<PropertyList>
-									<Property Name="FixLoopMethod" Type="int32" Value="1"/>
-								</PropertyList>
-							</ConversionPlugin>
+							<ConversionPlugin Name="" ID="{B90BCF4E-7286-4FDA-B3C8-2D0044624AC1}" PluginName="ADPCM" CompanyID="0" PluginID="2"/>
 						</ConversionPluginInfo>
 					</ConversionPluginInfoList>
 				</Conversion>
@@ -196,17 +152,17 @@
 						</Property>
 						<Property Name="MaxSampleRate" Type="int32">
 							<ValueList>
-								<Value Platform="Switch">0</Value>
-								<Value Platform="Linux">0</Value>
-								<Value Platform="iOS">0</Value>
-								<Value Platform="Mac">0</Value>
-								<Value Platform="PS4">0</Value>
-								<Value Platform="Stadia">0</Value>
-								<Value Platform="XboxOne">0</Value>
-								<Value Platform="Windows">0</Value>
-								<Value Platform="PS5">0</Value>
-								<Value Platform="XboxSeriesX">0</Value>
-								<Value Platform="Android">0</Value>
+								<Value Platform="Switch">48000</Value>
+								<Value Platform="Linux">48000</Value>
+								<Value Platform="iOS">48000</Value>
+								<Value Platform="Mac">48000</Value>
+								<Value Platform="PS4">48000</Value>
+								<Value Platform="Stadia">48000</Value>
+								<Value Platform="XboxOne">48000</Value>
+								<Value Platform="Windows">48000</Value>
+								<Value Platform="PS5">48000</Value>
+								<Value Platform="XboxSeriesX">48000</Value>
+								<Value Platform="Android">48000</Value>
 							</ValueList>
 						</Property>
 						<Property Name="MinSampleRate" Type="int32">

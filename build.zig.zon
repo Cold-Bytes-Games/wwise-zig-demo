@@ -1,11 +1,11 @@
 .{
     .name = "wwise-zig-demo",
-    .version = "2024.1.1-zig0",
+    .version = "2024.1.5-zig0",
     .paths = .{"."},
     .dependencies = .{
         .@"wwise-zig" = .{
-            .url = "https://github.com/Cold-Bytes-Games/wwise-zig/archive/bb6fd39899badfbd43a948a96b12a6880f59d8ea.tar.gz",
-            .hash = "1220398897933aa5be397c930daa6c26c937ea228555cf893ec63a31509914d42f95",
+            .url = "https://github.com/Cold-Bytes-Games/wwise-zig/archive/01c2e5f9d68536aa93a62e3d69d6c8c23e4c176a.tar.gz",
+            .hash = "1220cc941829f62ce8a5a14a56a62328f88a0326b93e8c060d8e1a96e09d038ec691",
         },
         .zgui = .{
             .path = "vendor/zgui",

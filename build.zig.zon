@@ -9,12 +9,16 @@
             .url = "https://github.com/Cold-Bytes-Games/wwise-zig/archive/2c20648d7fd47489c1317d13c13876f25285b0c3.tar.gz",
             .hash = "wwise_zig-2023.1.13-zig0-digfnp7dDQAEXqgMDKwf8xXHtzVkmU-JI1-9DARSOlCw",
         },
-        .zgui = .{
-            .path = "vendor/zgui",
-        },
         .zigwin32 = .{
             .url = "https://github.com/Cold-Bytes-Games/zigwin32/archive/3cc574cc4eea69da7d8802a6e8c2bd33e5a3dee4.tar.gz",
             .hash = "122086a0728a2ec9726d6241424e87457a4436e2240aadba7a28a1f4702b38d7a68d",
+        },
+        .zgui = .{
+            .url = "git+https://github.com/zig-gamedev/zgui#21dcc288ac5ee70b1fca789d53a06d5c49d51e5e",
+            .hash = "zgui-0.6.0-dev--L6sZKTBaADLHp09LtUUifdfFpsczwbnyH7r2ajfVPuJ",
+        },
+        .sdl = .{
+            .path = "../experiments/SDL",
         },
     },
 }

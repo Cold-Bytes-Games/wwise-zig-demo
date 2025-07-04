@@ -7,6 +7,14 @@ const zgui = @import("zgui");
 const zigwin32 = @import("zigwin32");
 const AK = @import("wwise-zig");
 
+const c = @cImport({
+    @cDefine("SDL_DISABLE_OLD_NAMES", {});
+    @cInclude("SDL3/SDL.h");
+    @cInclude("SDL3/SDL_revision.h");
+    @cDefine("SDL_MAIN_HANDLED", {}); // We are providing our own entry point
+    @cInclude("SDL3/SDL_main.h");
+});
+
 // Use wide API for zigwin32
 pub const UNICODE = true;
 
@@ -107,9 +115,16 @@ pub const WwiseContext = struct {
     spatial_audio_settings: if (AK.SpatialAudio != void) AK.SpatialAudio.AkSpatialAudioInitSettings else void = .{},
 };
 
+pub const SdlContext = struct {
+    window: *c.SDL_Window = undefined,
+    gpu_device: *c.SDL_GPUDevice = undefined,
+};
+
 pub const DemoState = struct {
     graphics_context: DxContext = .{},
     wwise_context: WwiseContext = .{},
+    sdl_context: SdlContext = .{},
+    main_allocator: std.heap.ThreadSafeAllocator = undefined,
     current_demo: DemoInterface = undefined,
     show_resource_monitor: bool = false,
 };
@@ -309,17 +324,18 @@ const AllMenus = [_]MenuData{
 pub const ListenerGameObjectID: AK.AkGameObjectID = 1;
 
 fn setupZGUI(allocator: std.mem.Allocator, demo: *DemoState) !void {
+    _ = demo; // autofix
     zgui.init(allocator);
 
-    if (!demo.graphics_context.createDeviceD3D()) {
-        return error.D3D11CreationFailed;
-    }
+    // if (!demo.graphics_context.createDeviceD3D()) {
+    //     return error.D3D11CreationFailed;
+    // }
 
-    zgui.backend.init(
-        demo.graphics_context.hwnd,
-        demo.graphics_context.device,
-        demo.graphics_context.device_context,
-    );
+    // zgui.backend.init(
+    //     demo.graphics_context.hwnd,
+    //     demo.graphics_context.device,
+    //     demo.graphics_context.device_context,
+    // );
 }
 
 fn getDefaultWwiseSettings(allocator: std.mem.Allocator, demo: *DemoState) !void {
@@ -554,143 +570,296 @@ fn draw(demo: *DemoState) void {
     }
 }
 
-pub fn main() !void {
-    var gpa = std.heap.GeneralPurposeAllocator(.{}){};
-    defer _ = gpa.deinit();
+// pub fn main() !void {
+//     var gpa = std.heap.GeneralPurposeAllocator(.{}){};
+//     defer _ = gpa.deinit();
 
-    const allocator = gpa.allocator();
+//     const allocator = gpa.allocator();
 
-    const demo = try allocator.create(DemoState);
+//     const demo = try allocator.create(DemoState);
+//     demo.* = .{};
+//     defer allocator.destroy(demo);
+
+//     var null_demo_instance = try allocator.create(NullDemo);
+//     try null_demo_instance.init(allocator, demo);
+
+//     demo.current_demo = null_demo_instance.demoInterface();
+
+//     const win_class: win32.WNDCLASSEXW = .{
+//         .cbSize = @sizeOf(win32.WNDCLASSEXW),
+//         .style = win32.CS_CLASSDC,
+//         .lpfnWndProc = WndProc,
+//         .cbClsExtra = 0,
+//         .cbWndExtra = 0,
+//         .hInstance = win32.GetModuleHandleW(null),
+//         .hIcon = null,
+//         .hCursor = null,
+//         .hbrBackground = null,
+//         .lpszMenuName = null,
+//         .lpszClassName = L("wwise-zig-demo"),
+//         .hIconSm = null,
+//     };
+
+//     _ = win32.RegisterClassExW(&win_class);
+//     defer _ = win32.UnregisterClassW(win_class.lpszClassName, win_class.hInstance);
+
+//     const hwnd = win32.CreateWindowExW(
+//         .{},
+//         win_class.lpszClassName,
+//         L("wwise-zig Integration Demo"),
+//         win32.WS_OVERLAPPEDWINDOW,
+//         0,
+//         0,
+//         1920,
+//         1080,
+//         null,
+//         null,
+//         win_class.hInstance,
+//         demo,
+//     );
+
+//     if (hwnd == null) {
+//         std.log.warn("Error creating Win32 Window = 0x{x}\n", .{@intFromEnum(win32.GetLastError())});
+//         return error.InvalidWin32Window;
+//     }
+
+//     demo.graphics_context.hwnd = hwnd;
+
+//     _ = win32.ShowWindow(hwnd, win32.SW_SHOWDEFAULT);
+//     _ = win32.UpdateWindow(hwnd);
+
+//     try getDefaultWwiseSettings(allocator, demo);
+//     try initWwise(allocator, demo);
+//     defer {
+//         destroyWwise(allocator, demo) catch unreachable;
+//     }
+
+//     try setupZGUI(allocator, demo);
+//     defer destroy(demo);
+
+//     var msg: win32.MSG = std.mem.zeroes(win32.MSG);
+//     while (msg.message != win32.WM_QUIT) {
+//         if (win32.PeekMessageW(&msg, null, 0, 0, win32.PM_REMOVE) != 0) {
+//             _ = win32.TranslateMessage(&msg);
+//             _ = win32.DispatchMessageW(&msg);
+//             continue;
+//         }
+
+//         try update(allocator, demo);
+//         draw(demo);
+
+//         try AK.SoundEngine.renderAudio(false);
+//     }
+// }
+
+fn sdlAppInit(app_state: ?*?*anyopaque, argv: [][*:0]u8) !c.SDL_AppResult {
+    _ = argv; // autofix
+
+    const demo = try std.heap.smp_allocator.create(DemoState);
     demo.* = .{};
-    defer allocator.destroy(demo);
-
-    var null_demo_instance = try allocator.create(NullDemo);
-    try null_demo_instance.init(allocator, demo);
-
-    demo.current_demo = null_demo_instance.demoInterface();
-
-    const win_class: win32.WNDCLASSEXW = .{
-        .cbSize = @sizeOf(win32.WNDCLASSEXW),
-        .style = win32.CS_CLASSDC,
-        .lpfnWndProc = WndProc,
-        .cbClsExtra = 0,
-        .cbWndExtra = 0,
-        .hInstance = win32.GetModuleHandleW(null),
-        .hIcon = null,
-        .hCursor = null,
-        .hbrBackground = null,
-        .lpszMenuName = null,
-        .lpszClassName = L("wwise-zig-demo"),
-        .hIconSm = null,
+    demo.main_allocator = .{
+        .child_allocator = std.heap.smp_allocator,
     };
 
-    _ = win32.RegisterClassExW(&win_class);
-    defer _ = win32.UnregisterClassW(win_class.lpszClassName, win_class.hInstance);
+    app_state.?.* = demo;
 
-    const hwnd = win32.CreateWindowExW(
-        .{},
-        win_class.lpszClassName,
-        L("wwise-zig Integration Demo"),
-        win32.WS_OVERLAPPEDWINDOW,
-        0,
-        0,
-        1920,
-        1080,
-        null,
-        null,
-        win_class.hInstance,
-        demo,
-    );
+    try errify(c.SDL_SetAppMetadata("wwise-zig-demo", "2023.1.13", "coldbytes.wwise-zig.demo"));
 
-    if (hwnd == null) {
-        std.log.warn("Error creating Win32 Window = 0x{x}\n", .{@intFromEnum(win32.GetLastError())});
-        return error.InvalidWin32Window;
-    }
+    try errify(c.SDL_Init(c.SDL_INIT_VIDEO | c.SDL_INIT_GAMEPAD));
 
-    demo.graphics_context.hwnd = hwnd;
+    errify(c.SDL_SetHint(c.SDL_HINT_RENDER_VSYNC, "1")) catch {};
 
-    _ = win32.ShowWindow(hwnd, win32.SW_SHOWDEFAULT);
-    _ = win32.UpdateWindow(hwnd);
+    const main_scale = c.SDL_GetDisplayContentScale(c.SDL_GetPrimaryDisplay());
+    demo.sdl_context.window = try errify(c.SDL_CreateWindow(
+        "wwise-zig Integration Demo",
+        @intFromFloat(1920.0 * main_scale),
+        @intFromFloat(1080.0 * main_scale),
+        c.SDL_WINDOW_RESIZABLE | c.SDL_WINDOW_HIDDEN | c.SDL_WINDOW_HIGH_PIXEL_DENSITY,
+    ));
 
-    try getDefaultWwiseSettings(allocator, demo);
-    try initWwise(allocator, demo);
-    defer {
-        destroyWwise(allocator, demo) catch unreachable;
-    }
+    _ = c.SDL_SetWindowPosition(demo.sdl_context.window, c.SDL_WINDOWPOS_CENTERED, c.SDL_WINDOWPOS_CENTERED);
+    _ = c.SDL_ShowWindow(demo.sdl_context.window);
 
-    try setupZGUI(allocator, demo);
-    defer destroy(demo);
+    // Create GPU Device
+    demo.sdl_context.gpu_device = try errify(c.SDL_CreateGPUDevice(c.SDL_GPU_SHADERFORMAT_SPIRV | c.SDL_GPU_SHADERFORMAT_DXIL | c.SDL_GPU_SHADERFORMAT_METALLIB, false, null));
 
-    var msg: win32.MSG = std.mem.zeroes(win32.MSG);
-    while (msg.message != win32.WM_QUIT) {
-        if (win32.PeekMessageW(&msg, null, 0, 0, win32.PM_REMOVE) != 0) {
-            _ = win32.TranslateMessage(&msg);
-            _ = win32.DispatchMessageW(&msg);
-            continue;
-        }
+    // Claim window for GPU Device
+    try errify(c.SDL_ClaimWindowForGPUDevice(demo.sdl_context.gpu_device, demo.sdl_context.window));
 
-        try update(allocator, demo);
-        draw(demo);
+    _ = c.SDL_SetGPUSwapchainParameters(demo.sdl_context.gpu_device, demo.sdl_context.window, c.SDL_GPU_SWAPCHAINCOMPOSITION_SDR, c.SDL_GPU_PRESENTMODE_MAILBOX);
 
-        try AK.SoundEngine.renderAudio(false);
-    }
+    zgui.init(demo.main_allocator.allocator());
+
+    zgui.backend.init(demo.sdl_context.window, .{
+        .device = demo.sdl_context.gpu_device,
+        .color_target_format = @intCast(c.SDL_GetGPUSwapchainTextureFormat(demo.sdl_context.gpu_device, demo.sdl_context.window)),
+        .msaa_samples = c.SDL_GPU_SAMPLECOUNT_1,
+    });
+
+    return c.SDL_APP_CONTINUE;
 }
 
-pub fn WndProc(hWnd: win32.HWND, msg: u32, wParam: win32.WPARAM, lParam: win32.LPARAM) callconv(.C) win32.LRESULT {
-    if (zgui.backend.wndProcHandler(hWnd, msg, wParam, lParam) != 0) {
-        return 1;
+fn sdlAppIterate(app_state: ?*anyopaque) !c.SDL_AppResult {
+    const demo: *DemoState = @alignCast(@ptrCast(app_state.?));
+
+    zgui.backend.newFrame(1920.0, 1080.0, 1.0);
+
+    zgui.showDemoWindow(null);
+
+    zgui.backend.render();
+
+    const command_buffer = try errify(c.SDL_AcquireGPUCommandBuffer(demo.sdl_context.gpu_device));
+
+    var swapchain_texture_opt: ?*c.SDL_GPUTexture = null;
+    try errify(c.SDL_AcquireGPUSwapchainTexture(command_buffer, demo.sdl_context.window, &swapchain_texture_opt, null, null));
+    if (swapchain_texture_opt) |swapchain_texture| {
+        zgui.backend.prepareDrawData(command_buffer);
+
+        const target_info: c.SDL_GPUColorTargetInfo = .{
+            .texture = swapchain_texture,
+            .clear_color = .{ .r = 0.0, .g = 0.0, .b = 0.0, .a = 0.0 },
+            .load_op = c.SDL_GPU_LOADOP_CLEAR,
+            .store_op = c.SDL_GPU_STOREOP_STORE,
+            .mip_level = 0,
+            .layer_or_depth_plane = 0,
+            .cycle = false,
+        };
+
+        const render_pass = try errify(c.SDL_BeginGPURenderPass(command_buffer, &target_info, 1, null));
+
+        zgui.backend.renderDrawData(command_buffer, render_pass, null);
+
+        c.SDL_EndGPURenderPass(render_pass);
     }
 
-    var demo_opt: ?*DemoState = null;
-    if (msg == win32.WM_NCCREATE) {
-        const create_struct: *win32.CREATESTRUCTW = @ptrFromInt(@as(usize, @intCast(lParam)));
+    try errify(c.SDL_SubmitGPUCommandBuffer(command_buffer));
 
-        demo_opt = @ptrCast(@alignCast(create_struct.lpCreateParams));
+    return c.SDL_APP_CONTINUE;
+}
 
-        win32.SetLastError(win32.ERROR_SUCCESS);
-        if (win32.SetWindowLongPtrW(hWnd, win32.GWL_USERDATA, @as(isize, @intCast(@intFromPtr(demo_opt)))) == 0) {
-            if (win32.GetLastError() != win32.ERROR_SUCCESS)
-                return 1;
-        }
-    } else {
-        demo_opt = @ptrFromInt(@as(usize, @intCast(win32.GetWindowLongPtrW(hWnd, win32.GWL_USERDATA))));
+fn sdlAppEvent(app_state: ?*anyopaque, event: *c.SDL_Event) !c.SDL_AppResult {
+    _ = app_state; // autofix
+
+    switch (event.type) {
+        c.SDL_EVENT_QUIT => {
+            return c.SDL_APP_SUCCESS;
+        },
+        else => {
+            _ = zgui.backend.processEvent(event);
+        },
     }
 
-    switch (msg) {
-        win32.WM_SIZE => {
-            if (wParam != win32.SIZE_MINIMIZED) {
-                if (demo_opt) |demo| {
-                    if (demo.graphics_context.swap_chain) |swap_chain| {
-                        demo.graphics_context.cleanupRenderTarget();
-                        _ = swap_chain.ResizeBuffers(0, @as(u32, @intCast(lParam)) & 0xFFFF, (@as(u32, @intCast(lParam)) >> 16) & 0xFFFF, .UNKNOWN, 0);
-                        demo.graphics_context.createRenderTarget();
-                    }
-                }
+    return c.SDL_APP_CONTINUE;
+}
+
+fn sdlAppQuit(app_state: ?*anyopaque, result: anyerror!c.SDL_AppResult) void {
+    _ = result catch |err| if (err == error.SdlError) {
+        std.log.err("{s}", .{c.SDL_GetError()});
+    };
+
+    if (app_state == null) {
+        return;
+    }
+
+    const demo: *DemoState = @alignCast(@ptrCast(app_state.?));
+
+    _ = c.SDL_WaitForGPUIdle(demo.sdl_context.gpu_device);
+
+    zgui.backend.deinit();
+    zgui.deinit();
+
+    c.SDL_ReleaseWindowFromGPUDevice(demo.sdl_context.gpu_device, demo.sdl_context.window);
+    c.SDL_DestroyGPUDevice(demo.sdl_context.gpu_device);
+
+    c.SDL_DestroyWindow(demo.sdl_context.window);
+
+    std.heap.smp_allocator.destroy(demo);
+}
+
+pub fn main() !u8 {
+    app_err.reset();
+    var empty_argv: [0:null]?[*:0]u8 = .{};
+    const status: u8 = @truncate(@as(c_uint, @bitCast(c.SDL_RunApp(empty_argv.len, @ptrCast(&empty_argv), sdlMainC, null))));
+    return app_err.load() orelse status;
+}
+
+fn sdlMainC(argc: c_int, argv: ?[*:null]?[*:0]u8) callconv(.c) c_int {
+    return c.SDL_EnterAppMainCallbacks(argc, @ptrCast(argv), sdlAppInitC, sdlAppIterateC, sdlAppEventC, sdlAppQuitC);
+}
+
+fn sdlAppInitC(appstate: ?*?*anyopaque, argc: c_int, argv: ?[*:null]?[*:0]u8) callconv(.c) c.SDL_AppResult {
+    return sdlAppInit(appstate.?, @ptrCast(argv.?[0..@intCast(argc)])) catch |err| app_err.store(err);
+}
+
+fn sdlAppIterateC(appstate: ?*anyopaque) callconv(.c) c.SDL_AppResult {
+    return sdlAppIterate(appstate) catch |err| app_err.store(err);
+}
+
+fn sdlAppEventC(appstate: ?*anyopaque, event: ?*c.SDL_Event) callconv(.c) c.SDL_AppResult {
+    return sdlAppEvent(appstate, event.?) catch |err| app_err.store(err);
+}
+
+fn sdlAppQuitC(appstate: ?*anyopaque, result: c.SDL_AppResult) callconv(.c) void {
+    sdlAppQuit(appstate, app_err.load() orelse result);
+}
+
+/// Converts the return value of an SDL function to an error union.
+inline fn errify(value: anytype) error{SdlError}!switch (@typeInfo(@TypeOf(value))) {
+    .bool => void,
+    .pointer, .optional => @TypeOf(value.?),
+    .int => |info| switch (info.signedness) {
+        .signed => @TypeOf(@max(0, value)),
+        .unsigned => @TypeOf(value),
+    },
+    else => @compileError("unerrifiable type: " ++ @typeName(@TypeOf(value))),
+} {
+    return switch (@typeInfo(@TypeOf(value))) {
+        .bool => if (!value) error.SdlError,
+        .pointer, .optional => value orelse error.SdlError,
+        .int => |info| switch (info.signedness) {
+            .signed => if (value >= 0) @max(0, value) else error.SdlError,
+            .unsigned => if (value != 0) value else error.SdlError,
+        },
+        else => comptime unreachable,
+    };
+}
+
+var app_err: ErrorStore = .{};
+
+const ErrorStore = struct {
+    const status_not_stored = 0;
+    const status_storing = 1;
+    const status_stored = 2;
+
+    status: c.SDL_AtomicInt = .{},
+    err: anyerror = undefined,
+    trace_index: usize = undefined,
+    trace_addrs: [32]usize = undefined,
+
+    fn reset(es: *ErrorStore) void {
+        _ = c.SDL_SetAtomicInt(&es.status, status_not_stored);
+    }
+
+    fn store(es: *ErrorStore, err: anyerror) c.SDL_AppResult {
+        if (c.SDL_CompareAndSwapAtomicInt(&es.status, status_not_stored, status_storing)) {
+            es.err = err;
+            if (@errorReturnTrace()) |src_trace| {
+                es.trace_index = src_trace.index;
+                const len = @min(es.trace_addrs.len, src_trace.instruction_addresses.len);
+                @memcpy(es.trace_addrs[0..len], src_trace.instruction_addresses[0..len]);
             }
-            return 0;
-        },
-        win32.WM_SYSCOMMAND => {
-            if ((wParam & 0xfff0) == win32.SC_KEYMENU) {
-                return 0;
-            }
-        },
-        win32.WM_DESTROY => {
-            _ = win32.PostQuitMessage(0);
-            return 0;
-        },
-        else => {},
+            _ = c.SDL_SetAtomicInt(&es.status, status_stored);
+        }
+        return c.SDL_APP_FAILURE;
     }
 
-    return win32.DefWindowProcW(hWnd, msg, wParam, lParam);
-}
-
-pub export fn WinMain(hInstance: ?win32.HINSTANCE, hPrevInstance: ?win32.HINSTANCE, lpCmdLine: ?std.os.windows.LPWSTR, nShowCmd: i32) i32 {
-    _ = hInstance;
-    _ = hPrevInstance;
-    _ = lpCmdLine;
-    _ = nShowCmd;
-
-    main() catch unreachable;
-
-    return 0;
-}
+    fn load(es: *ErrorStore) ?anyerror {
+        if (c.SDL_GetAtomicInt(&es.status) != status_stored) return null;
+        if (@errorReturnTrace()) |dst_trace| {
+            dst_trace.index = es.trace_index;
+            const len = @min(dst_trace.instruction_addresses.len, es.trace_addrs.len);
+            @memcpy(dst_trace.instruction_addresses[0..len], es.trace_addrs[0..len]);
+        }
+        return es.err;
+    }
+};

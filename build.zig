@@ -15,17 +15,10 @@ pub fn build(b: *std.Build) !void {
         .target = target,
     });
 
-    const exe = b.addExecutable(.{
-        .name = "wwise-zig-demo",
-        .root_source_file = b.path("src/main.zig"),
+    const sdl_dependency = b.dependency("sdl", .{
         .target = target,
         .optimize = optimize,
     });
-    exe.step.dependOn(&build_soundbanks_step.step);
-
-    exe.subsystem = .Windows;
-
-    b.installArtifact(exe);
 
     const zigwin32_dependency = b.dependency("zigwin32", .{});
 
@@ -55,7 +48,7 @@ pub fn build(b: *std.Build) !void {
     const zgui_dependency = b.dependency("zgui", .{
         .target = target,
         .optimize = optimize,
-        .backend = .win32_dx11,
+        .backend = .sdl3_gpu,
     });
 
     const wwise_zig_module = wwise_dependency.module("wwise-zig");
@@ -64,11 +57,38 @@ pub fn build(b: *std.Build) !void {
         .previous_step = &build_soundbanks_step.step,
     });
 
-    exe.root_module.addImport("wwise-ids", wwise_id_module);
-    exe.root_module.addImport("wwise-zig", wwise_zig_module);
-    exe.root_module.addImport("zgui", zgui_dependency.module("root"));
-    exe.root_module.addImport("zigwin32", zigwin32_dependency.module("zigwin32"));
-	exe.linkLibrary(zgui_dependency.artifact("imgui"));
+    const exe_module = b.createModule(.{
+        .root_source_file = b.path("src/main.zig"),
+        .target = target,
+        .optimize = optimize,
+        .imports = &.{
+            .{
+                .name = "wwise-ids",
+                .module = wwise_id_module,
+            },
+            .{
+                .name = "wwise-zig",
+                .module = wwise_zig_module,
+            },
+            .{
+                .name = "zgui",
+                .module = zgui_dependency.module("root"),
+            },
+            .{
+                .name = "zigwin32",
+                .module = zigwin32_dependency.module("zigwin32"),
+            },
+        },
+    });
+    exe_module.linkLibrary(zgui_dependency.artifact("imgui"));
+    exe_module.linkLibrary(sdl_dependency.artifact("SDL3"));
+
+    const exe = b.addExecutable(.{
+        .name = "wwise-zig-demo",
+        .root_module = exe_module,
+    });
+    exe.step.dependOn(&build_soundbanks_step.step);
+    b.installArtifact(exe);
 
     const run_cmd = b.addRunArtifact(exe);
     run_cmd.step.dependOn(b.getInstallStep());

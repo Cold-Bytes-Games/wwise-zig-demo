@@ -51,7 +51,7 @@ const GeometryRoom: AK.SpatialAudio.AkGeometrySetID = .{ .id = 0 };
 const PositionRange: f32 = 200.0;
 const RepeatTime = 20;
 
-pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoState) !void {
+pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.WwiseDemoApp) !void {
     _ = demo_state;
     self.* = .{
         .allocator = allocator,
@@ -76,7 +76,7 @@ pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoSta
     _ = try AK.SoundEngine.postEventID(ID.EVENTS.PLAY_CLUSTER, EmitterObj, .{});
 }
 
-pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
+pub fn deinit(self: *Self, demo_state: *root.WwiseDemoApp) void {
     _ = demo_state;
 
     self.lines.deinit(self.allocator);
@@ -98,7 +98,7 @@ pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
     self.allocator.destroy(self);
 }
 
-pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
+pub fn onUI(self: *Self, demo_state: *root.WwiseDemoApp) !void {
     _ = demo_state;
 
     zgui.setNextWindowSize(.{

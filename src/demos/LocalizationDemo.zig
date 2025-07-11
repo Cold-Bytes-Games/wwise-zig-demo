@@ -14,7 +14,7 @@ const DemoGameObjectID: AK.AkGameObjectID = 3;
 
 const Languages = &[_][:0]const u8{ "English(US)", "French(Canada)" };
 
-pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoState) !void {
+pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.WwiseDemoApp) !void {
     _ = demo_state;
     self.* = .{
         .allocator = allocator,
@@ -26,7 +26,7 @@ pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoSta
     try AK.SoundEngine.registerGameObjWithName(allocator, DemoGameObjectID, "LocalizationDemo");
 }
 
-pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
+pub fn deinit(self: *Self, demo_state: *root.WwiseDemoApp) void {
     _ = demo_state;
     AK.StreamMgr.setCurrentLanguage(self.allocator, Languages[0]) catch {};
 
@@ -36,7 +36,7 @@ pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
     self.allocator.destroy(self);
 }
 
-pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
+pub fn onUI(self: *Self, demo_state: *root.WwiseDemoApp) !void {
     _ = demo_state;
     if (zgui.begin("Localization Demo", .{ .popen = &self.is_visible, .flags = .{ .always_auto_resize = true } })) {
         if (zgui.button("Say \"Hello\"", .{})) {

@@ -17,7 +17,7 @@ const Self = @This();
 
 const DemoGameObjectID: AK.AkGameObjectID = 2;
 
-pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoState) !void {
+pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.WwiseDemoApp) !void {
     _ = demo_state;
     self.* = .{
         .allocator = allocator,
@@ -28,7 +28,7 @@ pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoSta
     try AK.SoundEngine.registerGameObjWithName(allocator, DemoGameObjectID, "SubtitleDemo");
 }
 
-pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
+pub fn deinit(self: *Self, demo_state: *root.WwiseDemoApp) void {
     _ = demo_state;
     AK.SoundEngine.unloadBankID(self.bank_id, null, .{}) catch {};
 
@@ -39,7 +39,7 @@ pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
     self.allocator.destroy(self);
 }
 
-pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
+pub fn onUI(self: *Self, demo_state: *root.WwiseDemoApp) !void {
     _ = demo_state;
     if (zgui.begin("Subtitle Demo", .{ .popen = &self.is_visible, .flags = .{ .always_auto_resize = true } })) {
         if (self.is_playing) {

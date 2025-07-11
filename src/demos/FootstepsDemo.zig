@@ -45,7 +45,7 @@ const SurfaceInfo = struct {
 
 var Surfaces: [4]SurfaceInfo = undefined;
 
-pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoState) !void {
+pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.WwiseDemoApp) !void {
     _ = demo_state;
     self.* = .{
         .allocator = allocator,
@@ -67,7 +67,7 @@ pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoSta
     SurfaceGroup = try AK.SoundEngine.getIDFromString(allocator, "Surface");
 }
 
-pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
+pub fn deinit(self: *Self, demo_state: *root.WwiseDemoApp) void {
     _ = demo_state;
     AK.SoundEngine.unregisterGameObj(DemoGameObjectID) catch {};
 
@@ -82,7 +82,7 @@ pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
     self.allocator.destroy(self);
 }
 
-pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
+pub fn onUI(self: *Self, demo_state: *root.WwiseDemoApp) !void {
     _ = demo_state;
     self.tick_count += 1;
 
@@ -183,7 +183,7 @@ fn manageSurfaces(self: *Self, window_size: [2]f32) !void {
 }
 
 fn manageEnvironment(self: *Self, window_size: [2]f32) !void {
-    const ListenerID = @import("root").ListenerGameObjectID;
+    const ListenerID = @import("root").LISTENER_GAME_OBJECT_ID;
 
     const half_width = @as(i32, @intFromFloat(window_size[0] / 2.0));
     const half_height = @as(i32, @intFromFloat(window_size[1] / 2.0));

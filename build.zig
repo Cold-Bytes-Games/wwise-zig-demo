@@ -20,8 +20,6 @@ pub fn build(b: *std.Build) !void {
         .optimize = optimize,
     });
 
-    const zigwin32_dependency = b.dependency("zigwin32", .{});
-
     const wwise_dependency = b.dependency("wwise-zig", .{
         .target = target,
         .optimize = optimize,
@@ -73,10 +71,6 @@ pub fn build(b: *std.Build) !void {
             .{
                 .name = "zgui",
                 .module = zgui_dependency.module("root"),
-            },
-            .{
-                .name = "zigwin32",
-                .module = zigwin32_dependency.module("zigwin32"),
             },
         },
     });

@@ -31,7 +31,7 @@ const DeviceId = struct {
     device_id: u32 = 0,
 };
 
-pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoState) !void {
+pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.WwiseDemoApp) !void {
     self.* = .{
         .allocator = allocator,
         .string_area = std.heap.ArenaAllocator.init(allocator),
@@ -54,7 +54,7 @@ pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoSta
     }
 }
 
-pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
+pub fn deinit(self: *Self, demo_state: *root.WwiseDemoApp) void {
     _ = demo_state;
 
     self.string_area.deinit();
@@ -65,7 +65,7 @@ pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
     self.allocator.destroy(self);
 }
 
-pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
+pub fn onUI(self: *Self, demo_state: *root.WwiseDemoApp) !void {
     if (zgui.begin("Options", .{ .popen = &self.is_visible, .flags = .{ .always_auto_resize = true } })) {
         if (zgui.beginCombo("Device", .{ .preview_value = self.device_names.items[self.active_device_index] })) {
             for (self.device_names.items, 0..) |device_name, index| {
@@ -228,7 +228,7 @@ fn updateSpeakerConfigForShareset(self: *Self) !void {
     }
 }
 
-fn updateOutputDevice(self: *Self, demo_state: *root.DemoState) !void {
+fn updateOutputDevice(self: *Self, demo_state: *root.WwiseDemoApp) !void {
     if (!AK.SoundEngine.isInitialized()) {
         try self.initSettingsChanged(demo_state);
     }
@@ -278,8 +278,8 @@ fn getDefaultAudioSharesetId(self: *Self) !u32 {
     return self.default_audio_device_shareset_id.?;
 }
 
-fn initSettingsChanged(self: *Self, demo_state: *root.DemoState) !void {
-    try root.destroyWwise(self.allocator, demo_state);
+fn initSettingsChanged(self: *Self, demo_state: *root.WwiseDemoApp) !void {
+    try demo_state.wwise_context.deinit(demo_state.main_allocator.allocator());
 
     const memory_settings = &demo_state.wwise_context.memory_settings;
     const init_settings = &demo_state.wwise_context.init_settings;
@@ -293,7 +293,7 @@ fn initSettingsChanged(self: *Self, demo_state: *root.DemoState) !void {
 
     if (AK.JobWorkerMgr != void) {
         const job_worker_mgr_settings = &demo_state.wwise_context.job_worker_settings;
-        job_worker_mgr_settings.num_worker_threads = if (self.num_job_workers > 0) root.MaxThreadWorkers else 0;
+        job_worker_mgr_settings.num_worker_threads = if (self.num_job_workers > 0) root.MAX_THREAD_WORKERS else 0;
 
         var job_mgr_settings = job_worker_mgr_settings.getJobMgrSettings();
         for (0..AK.AK_NUM_JOB_TYPES) |index| {
@@ -303,7 +303,7 @@ fn initSettingsChanged(self: *Self, demo_state: *root.DemoState) !void {
         init_settings.settings_job_manager = job_mgr_settings;
     }
 
-    try root.initWwise(self.allocator, demo_state);
+    try demo_state.wwise_context.init(demo_state.main_allocator.allocator());
 }
 
 fn indexOfChannelConfig(slice: []const AK.AkChannelConfig, value: AK.AkChannelConfig) ?usize {
@@ -413,7 +413,7 @@ fn SettingsInterface(comptime WrapperType: type, comptime SettingsType: type) ty
             }
         }
 
-        pub fn onUI(self: *WrapperType, demo: *Self, demo_state: *root.DemoState, callback: *const fn (self: *Self, demo_state: *root.DemoState) anyerror!void) !void {
+        pub fn onUI(self: *WrapperType, demo: *Self, demo_state: *root.WwiseDemoApp, callback: *const fn (self: *Self, demo_state: *root.WwiseDemoApp) anyerror!void) !void {
             inline for (std.meta.fields(WrapperType)) |field| {
                 switch (@typeInfo(field.type)) {
                     .bool => {

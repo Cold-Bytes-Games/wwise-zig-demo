@@ -33,7 +33,7 @@ const GameObjectAmbience: AK.AkGameObjectID = 100;
 const GameObjectFootsteps: AK.AkGameObjectID = 101;
 const PositionRange: f32 = 200.0;
 
-pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoState) !void {
+pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.WwiseDemoApp) !void {
     _ = demo_state;
     self.* = .{
         .allocator = allocator,
@@ -49,7 +49,7 @@ pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoSta
     try AK.SoundEngine.registerOutputDeviceMeteringCallback(0, deviceMeteringCallback, .{ .enable_bus_meter_peak = true }, self);
 }
 
-pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
+pub fn deinit(self: *Self, demo_state: *root.WwiseDemoApp) void {
     _ = demo_state;
 
     AK.SoundEngine.registerOutputDeviceMeteringCallback(0, null, .{}, null) catch {};
@@ -62,7 +62,7 @@ pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
     self.allocator.destroy(self);
 }
 
-pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
+pub fn onUI(self: *Self, demo_state: *root.WwiseDemoApp) !void {
     _ = demo_state;
 
     self.tick += 1;

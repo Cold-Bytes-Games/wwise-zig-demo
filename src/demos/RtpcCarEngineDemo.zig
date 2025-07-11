@@ -16,7 +16,7 @@ const MinRPMValue = 1000;
 const MaxRPMValue = 10000;
 const DemoGameObjectID: AK.AkGameObjectID = 4;
 
-pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoState) !void {
+pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.WwiseDemoApp) !void {
     _ = demo_state;
     self.* = .{
         .allocator = allocator,
@@ -28,7 +28,7 @@ pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoSta
     try AK.SoundEngine.setRTPCValueString(allocator, "RPM", @floatFromInt(self.rpm_value), .{ .game_object_id = DemoGameObjectID });
 }
 
-pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
+pub fn deinit(self: *Self, demo_state: *root.WwiseDemoApp) void {
     _ = demo_state;
     AK.SoundEngine.unloadBankID(self.bank_id, null, .{}) catch {};
     AK.SoundEngine.unregisterGameObj(DemoGameObjectID) catch {};
@@ -36,7 +36,7 @@ pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
     self.allocator.destroy(self);
 }
 
-pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
+pub fn onUI(self: *Self, demo_state: *root.WwiseDemoApp) !void {
     _ = demo_state;
     if (zgui.begin("RTPC Demo (Car Engine)", .{ .popen = &self.is_visible, .flags = .{ .always_auto_resize = true } })) {
         const button_text = if (self.is_playing) "Stop Engine" else "Start Engine";

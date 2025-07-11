@@ -27,7 +27,7 @@ const PositionOffset = AK.AkVector64{
     .z = 40000000.0,
 };
 
-pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoState) !void {
+pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.WwiseDemoApp) !void {
     _ = demo_state;
     self.* = .{
         .allocator = allocator,
@@ -49,10 +49,10 @@ pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoSta
             .y = 1.0,
         },
     };
-    try AK.SoundEngine.setPosition(root.ListenerGameObjectID, shifted_pos, .{});
+    try AK.SoundEngine.setPosition(root.LISTENER_GAME_OBJECT_ID, shifted_pos, .{});
 }
 
-pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
+pub fn deinit(self: *Self, demo_state: *root.WwiseDemoApp) void {
     _ = demo_state;
 
     const neutral_pos = AK.AkSoundPosition{
@@ -64,7 +64,7 @@ pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
             .y = 1.0,
         },
     };
-    AK.SoundEngine.setPosition(root.ListenerGameObjectID, neutral_pos, .{}) catch {};
+    AK.SoundEngine.setPosition(root.LISTENER_GAME_OBJECT_ID, neutral_pos, .{}) catch {};
 
     AK.SoundEngine.unloadBankID(self.bank_id, null, .{}) catch {};
 
@@ -73,7 +73,7 @@ pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
     self.allocator.destroy(self);
 }
 
-pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
+pub fn onUI(self: *Self, demo_state: *root.WwiseDemoApp) !void {
     _ = demo_state;
 
     zgui.setNextWindowSize(.{

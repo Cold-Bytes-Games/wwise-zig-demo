@@ -28,7 +28,7 @@ const Self = @This();
 const EmitterObj: AK.AkGameObjectID = 100;
 const ListenerObj: AK.AkGameObjectID = 103;
 const PositionRange: f32 = 200.0;
-const RepeatTime = 20;
+const RepeatTime = 40;
 
 pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.WwiseDemoApp) !void {
     _ = demo_state;
@@ -82,8 +82,8 @@ pub fn onUI(self: *Self, demo_state: *root.WwiseDemoApp) !void {
         const window_size = zgui.getContentRegionAvail();
 
         if (self.is_first_update) {
-            self.width = window_size[0] - Cursor.Margin;
-            self.height = window_size[1] - Cursor.Margin;
+            self.width = window_size[0] - Cursor.MARGIN;
+            self.height = window_size[1] - Cursor.MARGIN;
             self.is_first_update = false;
 
             self.listener_cursor.update();
@@ -116,7 +116,7 @@ pub fn onUI(self: *Self, demo_state: *root.WwiseDemoApp) !void {
 
         draw_list.addRect(.{
             .pmin = window_pos,
-            .pmax = [2]f32{ window_pos[0] + window_size[0] - Cursor.Margin, window_pos[1] + window_size[1] - Cursor.Margin },
+            .pmax = [2]f32{ window_pos[0] + window_size[0] - Cursor.MARGIN, window_pos[1] + window_size[1] - Cursor.MARGIN },
             .col = white_color,
         });
 

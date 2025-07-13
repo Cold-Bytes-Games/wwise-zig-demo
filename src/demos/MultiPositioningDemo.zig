@@ -94,8 +94,8 @@ pub fn onUI(self: *Self, demo_state: *root.WwiseDemoApp) !void {
         const window_size = zgui.getContentRegionAvail();
 
         if (self.is_first_update) {
-            self.width = window_size[0] - Cursor.Margin;
-            self.height = window_size[1] - Cursor.Margin;
+            self.width = window_size[0] - Cursor.MARGIN;
+            self.height = window_size[1] - Cursor.MARGIN;
             self.is_first_update = false;
         }
 
@@ -113,7 +113,7 @@ pub fn onUI(self: *Self, demo_state: *root.WwiseDemoApp) !void {
 
         draw_list.addRect(.{
             .pmin = window_pos,
-            .pmax = [2]f32{ window_pos[0] + window_size[0] - Cursor.Margin, window_pos[1] + window_size[1] - Cursor.Margin },
+            .pmax = [2]f32{ window_pos[0] + window_size[0] - Cursor.MARGIN, window_pos[1] + window_size[1] - Cursor.MARGIN },
             .col = white_color,
         });
 

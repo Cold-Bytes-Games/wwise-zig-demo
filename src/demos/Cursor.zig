@@ -3,22 +3,22 @@ const zgui = @import("zgui");
 
 x: f32 = 0.0,
 y: f32 = 0.0,
-max_speed: f32 = DefaultMaxSpeed,
+max_speed: f32 = DEFAULT_MAX_SPEED,
 color: [4]f32 = [4]f32{ 1.0, 1.0, 1.0, 1.0 },
 is_first_update: bool = true,
 label: []const u8 = "O",
 
 const Self = @This();
 
-const DefaultMaxSpeed = 5.0;
-pub const Margin = 15.0;
+const DEFAULT_MAX_SPEED = 3.0;
+pub const MARGIN = 15.0;
 
 pub fn update(self: *Self) void {
     const window_size = zgui.getContentRegionAvail();
 
     if (self.is_first_update) {
-        self.x = (window_size[0] - Margin) / 2.0;
-        self.y = (window_size[1] - Margin) / 2.0;
+        self.x = (window_size[0] - MARGIN) / 2.0;
+        self.y = (window_size[1] - MARGIN) / 2.0;
         self.is_first_update = false;
     }
 
@@ -32,12 +32,12 @@ pub fn update(self: *Self) void {
         self.x += self.max_speed;
     }
 
-    if (self.x >= window_size[0] - Margin) {
-        self.x = window_size[0] - Margin;
+    if (self.x >= window_size[0] - MARGIN) {
+        self.x = window_size[0] - MARGIN;
     }
 
-    if (self.y >= window_size[1] - Margin) {
-        self.y = window_size[1] - Margin;
+    if (self.y >= window_size[1] - MARGIN) {
+        self.y = window_size[1] - MARGIN;
     }
 
     if (self.x < 0) {

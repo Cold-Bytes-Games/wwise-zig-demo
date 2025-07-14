@@ -15,6 +15,7 @@ pub const LISTENER_GAME_OBJECT_ID: AK.AkGameObjectID = 1;
 
 const DemoInterface = @import("DemoInterface.zig");
 const NullDemo = @import("demos/NullDemo.zig");
+const FramePacer = @import("FramePacer.zig");
 
 const DemoEntry = struct {
     name: [:0]const u8,
@@ -377,9 +378,13 @@ pub const WwiseDemoApp = struct {
     main_allocator: std.heap.ThreadSafeAllocator = undefined,
     current_demo: DemoInterface = undefined,
     show_resource_monitor: bool = false,
+    frame_pacer: FramePacer = .{},
 
     pub fn init(self: *WwiseDemoApp) !void {
         const allocator = self.main_allocator.allocator();
+
+        // Init the frame pacer
+        self.frame_pacer = try FramePacer.init(60);
 
         // Create null demo
         var null_demo_instance = try allocator.create(NullDemo);
@@ -558,8 +563,14 @@ fn sdlAppInit(app_state: ?*?*anyopaque, argv: [][*:0]u8) !c.SDL_AppResult {
 fn sdlAppIterate(app_state: ?*anyopaque) !c.SDL_AppResult {
     const demo: *WwiseDemoApp = @alignCast(@ptrCast(app_state.?));
 
-    try demo.update();
-    try demo.draw();
+    try demo.frame_pacer.tick();
+
+    while (demo.frame_pacer.shouldUpdate()) {
+        try demo.update();
+        try demo.draw();
+
+        demo.frame_pacer.consume();
+    }
 
     return c.SDL_APP_CONTINUE;
 }

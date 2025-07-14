@@ -10,7 +10,7 @@ label: []const u8 = "O",
 
 const Self = @This();
 
-const DEFAULT_MAX_SPEED = 3.0;
+const DEFAULT_MAX_SPEED = 5.0;
 pub const MARGIN = 15.0;
 
 pub fn update(self: *Self) void {

@@ -49,7 +49,7 @@ const Portal0: AK.SpatialAudio.AkPortalID = .{ .id = 300 };
 const Portal1: AK.SpatialAudio.AkPortalID = .{ .id = 301 };
 const GeometryRoom: AK.SpatialAudio.AkGeometrySetID = .{ .id = 0 };
 const PositionRange: f32 = 200.0;
-const RepeatTime = 40;
+const RepeatTime = 20;
 
 pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.WwiseDemoApp) !void {
     _ = demo_state;

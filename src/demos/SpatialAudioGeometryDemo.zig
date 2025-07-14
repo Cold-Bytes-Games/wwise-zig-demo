@@ -28,7 +28,7 @@ const Self = @This();
 const EmitterObj: AK.AkGameObjectID = 100;
 const ListenerObj: AK.AkGameObjectID = 103;
 const PositionRange: f32 = 200.0;
-const RepeatTime = 40;
+const RepeatTime = 20;
 
 pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.WwiseDemoApp) !void {
     _ = demo_state;

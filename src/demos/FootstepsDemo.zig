@@ -21,10 +21,10 @@ const Self = @This();
 const DEMO_GAME_OBJECT_ID: AK.AkGameObjectID = 5;
 const HANGAR_TRANSITION_ZONE: f32 = 25.0;
 const HANGAR_SIZE: u8 = 70;
-const CURSOR_SPEED = 2.1;
+const CURSOR_SPEED = 5.0;
 const BUFFER_ZONE: f32 = 20.0;
 const DISTANCE_TO_SPEED = 10.0 / CURSOR_SPEED;
-const WALK_PERIOD = 60;
+const WALK_PERIOD = 30;
 
 var SurfaceGroup: u32 = undefined;
 

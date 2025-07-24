@@ -14,7 +14,8 @@
             .hash = "zgui-0.6.0-dev--L6sZKTBaADLHp09LtUUifdfFpsczwbnyH7r2ajfVPuJ",
         },
         .sdl = .{
-            .path = "../experiments/SDL",
+            .url = "git+https://github.com/Cold-Bytes-Games/SDL#bd5c79beaade3dd0dc1a282a9a42c05ac0725f98",
+            .hash = "sdl-0.2.5+3.2.18-7uIn9PYZfwHyzruTdNOs3N_H4pCljXC5Ci8S2Hv2aoR0",
         },
     },
 }

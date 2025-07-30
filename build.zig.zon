@@ -1,13 +1,13 @@
 .{
     .name = .wwise_zig_demo,
-    .version = "2024.1.5-zig1",
+    .version = "2024.1.5-zig2",
     .minimum_zig_version = "0.14.1",
     .fingerprint = 0xaa8ada4cd5d9741f,
     .paths = .{"."},
     .dependencies = .{
         .@"wwise-zig" = .{
-            .url = "https://github.com/Cold-Bytes-Games/wwise-zig/archive/517d86332fc045eb000c0f97f330f9a9a3eb7002.tar.gz",
-            .hash = "wwise_zig-2024.1.5-zig1-digfnkxADgCpYmaKcfG156mAG17hcmodrELEF3ZTsj-u",
+            .url = "git+https://github.com/Cold-Bytes-Games/wwise-zig#159a17a8f36798e15c09358612d29984c48c33aa",
+            .hash = "wwise_zig-2024.1.5-zig1-digfnkNADgB6rRw6SGSG6sNvS_thUwtzHyABfnXcprfV",
         },
         .zgui = .{
             .url = "git+https://github.com/zig-gamedev/zgui#21dcc288ac5ee70b1fca789d53a06d5c49d51e5e",

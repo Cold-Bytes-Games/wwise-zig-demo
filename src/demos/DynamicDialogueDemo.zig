@@ -50,7 +50,7 @@ const Captions = [_][:0]const u8{
     "Test 18 - Using events with Dynamic Dialogue.",
 };
 
-pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoState) !void {
+pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.WwiseDemoApp) !void {
     _ = demo_state;
     self.* = .{
         .allocator = allocator,
@@ -61,7 +61,7 @@ pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoSta
     try AK.SoundEngine.registerGameObjWithName(allocator, DemoGameObjectID, "Radio");
 }
 
-pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
+pub fn deinit(self: *Self, demo_state: *root.WwiseDemoApp) void {
     _ = demo_state;
     self.stopAndReleaseTests() catch {};
 
@@ -72,7 +72,7 @@ pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
     self.allocator.destroy(self);
 }
 
-pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
+pub fn onUI(self: *Self, demo_state: *root.WwiseDemoApp) !void {
     _ = demo_state;
     try self.update();
 

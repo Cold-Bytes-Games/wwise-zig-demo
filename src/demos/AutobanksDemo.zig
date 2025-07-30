@@ -19,7 +19,7 @@ const EventName = "Play_Hello_Reverb";
 const MediaID: AK.AkUniqueID = 399670944;
 const MediaFilename = "399670944.wem";
 
-pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoState) !void {
+pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.WwiseDemoApp) !void {
     _ = demo_state;
     self.* = .{
         .allocator = allocator,
@@ -30,7 +30,7 @@ pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoSta
     self.bank_id = try AK.SoundEngine.loadBankString(allocator, EventName ++ ".bnk", .{ .bank_type = .event });
 }
 
-pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
+pub fn deinit(self: *Self, demo_state: *root.WwiseDemoApp) void {
     _ = demo_state;
 
     if (self.is_prepared) {
@@ -52,7 +52,7 @@ pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
     self.allocator.destroy(self);
 }
 
-pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
+pub fn onUI(self: *Self, demo_state: *root.WwiseDemoApp) !void {
     _ = demo_state;
     if (zgui.begin("Autobanks Demo", .{ .popen = &self.is_visible, .flags = .{ .always_auto_resize = true } })) {
         if (self.is_prepared) {

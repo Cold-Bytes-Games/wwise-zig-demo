@@ -33,7 +33,7 @@ const GameObjectAmbience: AK.AkGameObjectID = 100;
 const GameObjectFootsteps: AK.AkGameObjectID = 101;
 const PositionRange: f32 = 200.0;
 
-pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoState) !void {
+pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.WwiseDemoApp) !void {
     _ = demo_state;
     self.* = .{
         .allocator = allocator,
@@ -49,7 +49,7 @@ pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.DemoSta
     try AK.SoundEngine.registerOutputDeviceMeteringCallback(0, deviceMeteringCallback, .{ .enable_bus_meter_peak = true }, self);
 }
 
-pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
+pub fn deinit(self: *Self, demo_state: *root.WwiseDemoApp) void {
     _ = demo_state;
 
     AK.SoundEngine.registerOutputDeviceMeteringCallback(0, null, .{}, null) catch {};
@@ -62,7 +62,7 @@ pub fn deinit(self: *Self, demo_state: *root.DemoState) void {
     self.allocator.destroy(self);
 }
 
-pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
+pub fn onUI(self: *Self, demo_state: *root.WwiseDemoApp) !void {
     _ = demo_state;
 
     self.tick += 1;
@@ -77,8 +77,8 @@ pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
         const window_size = zgui.getContentRegionAvail();
 
         if (self.is_first_update) {
-            self.width = window_size[0] - Cursor.Margin;
-            self.height = window_size[1] - Cursor.Margin;
+            self.width = window_size[0] - Cursor.MARGIN;
+            self.height = window_size[1] - Cursor.MARGIN;
             self.is_first_update = false;
 
             self.cursor.update();
@@ -98,14 +98,14 @@ pub fn onUI(self: *Self, demo_state: *root.DemoState) !void {
 
         draw_list.addRect(.{
             .pmin = window_pos,
-            .pmax = [2]f32{ window_pos[0] + window_size[0] - Cursor.Margin, window_pos[1] + window_size[1] - Cursor.Margin },
+            .pmax = [2]f32{ window_pos[0] + window_size[0] - Cursor.MARGIN, window_pos[1] + window_size[1] - Cursor.MARGIN },
             .col = white_color,
         });
 
         self.cursor.draw(draw_list);
 
-        const origin_x: f32 = (self.width - Cursor.Margin) / 2.0;
-        const origin_y: f32 = (self.height - Cursor.Margin) / 2.0;
+        const origin_x: f32 = (self.width - Cursor.MARGIN) / 2.0;
+        const origin_y: f32 = (self.height - Cursor.MARGIN) / 2.0;
         draw_list.addTextUnformatted(
             [2]f32{ window_pos[0] + origin_x, window_pos[1] + origin_y },
             white_color,

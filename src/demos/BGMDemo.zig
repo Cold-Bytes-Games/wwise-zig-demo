@@ -63,7 +63,7 @@ pub fn onUI(self: *Self, demo_state: *root.WwiseDemoApp) !void {
 
     if (zgui.begin("Background Music Demo", .{ .popen = &self.is_visible, .flags = .{ .always_auto_resize = true } })) {
         if (self.play_licensed) {
-            if (zgui.button("Stop", .{})) {
+            if (zgui.button("Stop##RecordableMusic", .{})) {
                 AK.SoundEngine.stopAll(.{ .game_object_id = DemoGameObjectID });
                 self.play_licensed = false;
             }
@@ -75,7 +75,7 @@ pub fn onUI(self: *Self, demo_state: *root.WwiseDemoApp) !void {
         }
 
         if (self.play_copyright) {
-            if (zgui.button("Stop", .{})) {
+            if (zgui.button("Stop##NonRecordableMusic", .{})) {
                 AK.SoundEngine.stopAll(.{ .game_object_id = DemoGameObjectID });
                 self.play_copyright = false;
             }

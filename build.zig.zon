@@ -1,21 +1,21 @@
 .{
     .name = .wwise_zig_demo,
     .version = "2024.1.7-zig0",
-    .minimum_zig_version = "0.14.1",
+    .minimum_zig_version = "0.15.1",
     .fingerprint = 0xaa8ada4cd5d9741f,
     .paths = .{"."},
     .dependencies = .{
         .@"wwise-zig" = .{
-            .url = "git+https://github.com/Cold-Bytes-Games/wwise-zig#a78361608d87a8fae1b09e20eafb40f45e990123",
-            .hash = "wwise_zig-2024.1.7-zig0-digfnqKvDgC4IBmHmBXCdT2VbcWg4-IebC3SP8ctMj-v",
+            .url = "git+https://github.com/Cold-Bytes-Games/wwise-zig#de0d5ba72f37d69f70edb79dd71ed270de70ba6e",
+            .hash = "wwise_zig-2024.1.7-zig0-digfnsKxDgC7yIcbJIhjFBC3jDq-PCNcTZBxO8QVqUML",
         },
         .zgui = .{
-            .url = "git+https://github.com/zig-gamedev/zgui#21dcc288ac5ee70b1fca789d53a06d5c49d51e5e",
-            .hash = "zgui-0.6.0-dev--L6sZKTBaADLHp09LtUUifdfFpsczwbnyH7r2ajfVPuJ",
+            .url = "git+https://github.com/Cold-Bytes-Games/zgui#ec778f3d59b4493d99a1b9555c604c6c2ce9a2b5",
+            .hash = "zgui-0.6.0-dev--L6sZOvIbQCsixaLdtoVRolmgodj0mjGPZL4470l-6Nm",
         },
         .sdl = .{
-            .url = "git+https://github.com/Cold-Bytes-Games/SDL#bd5c79beaade3dd0dc1a282a9a42c05ac0725f98",
-            .hash = "sdl-0.2.5+3.2.18-7uIn9PYZfwHyzruTdNOs3N_H4pCljXC5Ci8S2Hv2aoR0",
+            .url = "git+https://github.com/castholm/SDL#b1913e7c31ad72ecfd3ab04aeac387027754cfaf",
+            .hash = "sdl-0.3.0+3.2.22-7uIn9Pg3fwGG2IyIOPxxOSVe-75nUng9clt7tXGFLzMr",
         },
     },
 }

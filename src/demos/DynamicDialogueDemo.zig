@@ -1033,7 +1033,7 @@ fn set14_1_StartPlaybackWithCallback(self: *Self) !void {
     self.playing_id = 0;
 }
 
-fn set14_Callback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackInfo) callconv(.C) void {
+fn set14_Callback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackInfo) callconv(.c) void {
     var self: *Self = @ptrCast(@alignCast(in_callback_info.cookie));
 
     if (in_type.end_of_dynamic_sequence_item) {
@@ -1102,7 +1102,7 @@ fn set15_1_StartPlaybackWithCallback(self: *Self) !void {
     try AK.SoundEngine.DynamicSequence.play(self.playing_id, .{});
 }
 
-fn set15_Callback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackInfo) callconv(.C) void {
+fn set15_Callback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackInfo) callconv(.c) void {
     var self: *Self = @ptrCast(@alignCast(in_callback_info.cookie));
 
     if (in_type.end_of_dynamic_sequence_item) {
@@ -1190,7 +1190,7 @@ fn set16_1_StartPlaybackWithCallback(self: *Self) !void {
     try AK.SoundEngine.DynamicSequence.close(self.set16_seq1_playing_id);
 }
 
-fn set16_Callback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackInfo) callconv(.C) void {
+fn set16_Callback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackInfo) callconv(.c) void {
     var self: *Self = @ptrCast(@alignCast(in_callback_info.cookie));
     const event_info: *AK.AkEventCallbackInfo = @ptrCast(in_callback_info);
 
@@ -1260,7 +1260,7 @@ fn set17_1_StartPlaybackWithCallback(self: *Self) !void {
     try AK.SoundEngine.DynamicSequence.play(self.playing_id, .{});
 }
 
-fn set17_Callback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackInfo) callconv(.C) void {
+fn set17_Callback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackInfo) callconv(.c) void {
     var self: *Self = @ptrCast(@alignCast(in_callback_info.cookie));
 
     if (in_type.end_of_dynamic_sequence_item and !self.set17_done_playing) {

@@ -189,7 +189,7 @@ inline fn linearToDb(in_linear_value: f32) f32 {
     return 20.0 * std.math.log10(in_linear_value);
 }
 
-fn deviceMeteringCallback(in_callback_info: *AK.AkOutputDeviceMeteringCallbackInfo) callconv(.C) void {
+fn deviceMeteringCallback(in_callback_info: *AK.AkOutputDeviceMeteringCallbackInfo) callconv(.c) void {
     var self: *Self = @ptrCast(@alignCast(in_callback_info.base.cookie));
 
     @memset(self.main_mix_peaks[0..], 0.0);

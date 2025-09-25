@@ -24,14 +24,14 @@ memory_settings: MemorySettings = .{},
 init_settings: InitSettings = .{},
 platform_settings: PlatformSettings = .{},
 
-const Self = @This();
+const OptionsDemo = @This();
 
 const DeviceId = struct {
     shareset_id: u32 = 0,
     device_id: u32 = 0,
 };
 
-pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.WwiseDemoApp) !void {
+pub fn init(self: *OptionsDemo, allocator: std.mem.Allocator, demo_state: *root.WwiseDemoApp) !void {
     self.* = .{
         .allocator = allocator,
         .string_area = std.heap.ArenaAllocator.init(allocator),
@@ -45,16 +45,16 @@ pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.WwiseDe
     self.active_channel_config = AK.SoundEngine.getSpeakerConfiguration(0);
     self.active_channel_index = indexOfChannelConfig(DefaultSpeakerConfig, self.active_channel_config) orelse 0;
 
-    try self.memory_settings.init(&demo_state.wwise_context.memory_settings);
-    try self.init_settings.init(&demo_state.wwise_context.init_settings);
-    try self.platform_settings.init(&demo_state.wwise_context.platform_init_settings);
+    try MemorySettings.UI.init(&self.memory_settings, &demo_state.wwise_context.memory_settings);
+    try InitSettings.UI.init(&self.init_settings, &demo_state.wwise_context.init_settings);
+    try PlatformSettings.UI.init(&self.platform_settings, &demo_state.wwise_context.platform_init_settings);
 
     if (AK.JobWorkerMgr != void) {
         self.num_job_workers = @intCast(demo_state.wwise_context.init_settings.settings_job_manager.max_active_workers[AK.AkJobType_AudioProcessing]);
     }
 }
 
-pub fn deinit(self: *Self, demo_state: *root.WwiseDemoApp) void {
+pub fn deinit(self: *OptionsDemo, demo_state: *root.WwiseDemoApp) void {
     _ = demo_state;
 
     self.string_area.deinit();
@@ -65,7 +65,7 @@ pub fn deinit(self: *Self, demo_state: *root.WwiseDemoApp) void {
     self.allocator.destroy(self);
 }
 
-pub fn onUI(self: *Self, demo_state: *root.WwiseDemoApp) !void {
+pub fn onUI(self: *OptionsDemo, demo_state: *root.WwiseDemoApp) !void {
     if (zgui.begin("Options", .{ .popen = &self.is_visible, .flags = .{ .always_auto_resize = true } })) {
         if (zgui.beginCombo("Device", .{ .preview_value = self.device_names.items[self.active_device_index] })) {
             for (self.device_names.items, 0..) |device_name, index| {
@@ -121,7 +121,7 @@ pub fn onUI(self: *Self, demo_state: *root.WwiseDemoApp) !void {
             zgui.endCombo();
         }
 
-        try self.init_settings.onUI(self, demo_state, initSettingsChanged);
+        try InitSettings.UI.onUI(&self.init_settings, self, demo_state, initSettingsChanged);
 
         if (AK.JobWorkerMgr != void) {
             if (zgui.sliderScalar("Job Workers", u32, .{ .v = &self.num_job_workers, .min = 0, .max = 8 })) {
@@ -136,26 +136,26 @@ pub fn onUI(self: *Self, demo_state: *root.WwiseDemoApp) !void {
             }
         }
 
-        try self.memory_settings.onUI(self, demo_state, initSettingsChanged);
-        try self.platform_settings.onUI(self, demo_state, initSettingsChanged);
+        try MemorySettings.UI.onUI(&self.memory_settings, self, demo_state, initSettingsChanged);
+        try PlatformSettings.UI.onUI(&self.platform_settings, self, demo_state, initSettingsChanged);
 
         zgui.end();
     }
 }
 
-pub fn isVisible(self: *Self) bool {
+pub fn isVisible(self: *OptionsDemo) bool {
     return self.is_visible;
 }
 
-pub fn show(self: *Self) void {
+pub fn show(self: *OptionsDemo) void {
     self.is_visible = true;
 }
 
-pub fn demoInterface(self: *Self) DemoInterface {
+pub fn demoInterface(self: *OptionsDemo) DemoInterface {
     return DemoInterface.toDemoInteface(self);
 }
 
-fn populateOutputDeviceOptions(self: *Self) !void {
+fn populateOutputDeviceOptions(self: *OptionsDemo) !void {
     try self.device_ids.append(self.allocator, DeviceId{});
     try self.device_names.append(self.allocator, try self.string_area_allocator.dupeZ(u8, "Use Default"));
 
@@ -179,7 +179,7 @@ fn populateOutputDeviceOptions(self: *Self) !void {
             var device_count: u32 = 0;
             AK.SoundEngine.getDeviceListShareSet(self.allocator, shareset_id, &device_count, null) catch {};
             if (device_count == 0) {
-                const name = try std.fmt.allocPrintZ(self.string_area_allocator, "{s} - Primary  Output", .{shareset_name});
+                const name = try std.fmt.allocPrintSentinel(self.string_area_allocator, "{s} - Primary  Output", .{shareset_name}, 0);
                 try self.device_ids.append(self.allocator, DeviceId{ .shareset_id = shareset_id });
                 try self.device_names.append(self.allocator, name);
             } else {
@@ -196,7 +196,7 @@ fn populateOutputDeviceOptions(self: *Self) !void {
                 var real_count: u32 = 0;
                 for (devices) |device| {
                     if (device.device_state_mask.active) {
-                        const name = try std.fmt.allocPrintZ(self.string_area_allocator, "{s} - {s}", .{ shareset_name, device.device_name });
+                        const name = try std.fmt.allocPrintSentinel(self.string_area_allocator, "{s} - {s}", .{ shareset_name, device.device_name }, 0);
                         try self.device_ids.append(self.allocator, DeviceId{ .shareset_id = shareset_id, .device_id = device.id_device });
                         try self.device_names.append(self.allocator, name);
 
@@ -219,7 +219,7 @@ fn populateOutputDeviceOptions(self: *Self) !void {
     }
 }
 
-fn updateSpeakerConfigForShareset(self: *Self) !void {
+fn updateSpeakerConfigForShareset(self: *OptionsDemo) !void {
     if (self.device_ids.items[self.active_device_index].shareset_id == try self.getDefaultAudioSharesetId() or self.device_ids.items[self.active_channel_index].shareset_id == 0) {
         self.active_channel_config = DefaultSpeakerConfig[self.active_channel_index];
     } else {
@@ -228,7 +228,7 @@ fn updateSpeakerConfigForShareset(self: *Self) !void {
     }
 }
 
-fn updateOutputDevice(self: *Self, demo_state: *root.WwiseDemoApp) !void {
+fn updateOutputDevice(self: *OptionsDemo, demo_state: *root.WwiseDemoApp) !void {
     if (!AK.SoundEngine.isInitialized()) {
         try self.initSettingsChanged(demo_state);
     }
@@ -239,7 +239,7 @@ fn updateOutputDevice(self: *Self, demo_state: *root.WwiseDemoApp) !void {
     try AK.SoundEngine.replaceOutput(&new_settings, 0, null);
 }
 
-fn fillOutputSetting(self: *Self, new_settings: *AK.AkOutputSettings) !void {
+fn fillOutputSetting(self: *OptionsDemo, new_settings: *AK.AkOutputSettings) !void {
     const new_device_id = if (self.active_device_index < self.device_ids.items.len) self.device_ids.items[self.active_device_index] else DeviceId{ .shareset_id = try self.getDefaultAudioSharesetId() };
 
     const new_channel_config = self.active_channel_config;
@@ -263,13 +263,13 @@ fn fillOutputSetting(self: *Self, new_settings: *AK.AkOutputSettings) !void {
     }
 }
 
-fn toPrettyCString(self: *Self, value: []const u8) ![:0]const u8 {
+fn toPrettyCString(self: *OptionsDemo, value: []const u8) ![:0]const u8 {
     const pretty_ctring = try self.allocator.dupeZ(u8, value);
     pretty_ctring[0] = std.ascii.toUpper(pretty_ctring[0]);
     return pretty_ctring;
 }
 
-fn getDefaultAudioSharesetId(self: *Self) !u32 {
+fn getDefaultAudioSharesetId(self: *OptionsDemo) !u32 {
     if (self.default_audio_device_shareset_id) |default_audio_device_shareset_id| {
         return default_audio_device_shareset_id;
     }
@@ -278,7 +278,7 @@ fn getDefaultAudioSharesetId(self: *Self) !u32 {
     return self.default_audio_device_shareset_id.?;
 }
 
-fn initSettingsChanged(self: *Self, demo_state: *root.WwiseDemoApp) !void {
+fn initSettingsChanged(self: *OptionsDemo, demo_state: *root.WwiseDemoApp) !void {
     try demo_state.wwise_context.deinit(demo_state.main_allocator.allocator());
 
     const memory_settings = &demo_state.wwise_context.memory_settings;
@@ -287,9 +287,9 @@ fn initSettingsChanged(self: *Self, demo_state: *root.WwiseDemoApp) !void {
 
     try self.fillOutputSetting(&init_settings.settings_main_output);
 
-    try self.memory_settings.fillSettings(memory_settings);
-    try self.init_settings.fillSettings(init_settings);
-    try self.platform_settings.fillSettings(platform_init_settings);
+    try MemorySettings.UI.fillSettings(&self.memory_settings, memory_settings);
+    try InitSettings.UI.fillSettings(&self.init_settings, init_settings);
+    try PlatformSettings.UI.fillSettings(&self.platform_settings, platform_init_settings);
 
     if (AK.JobWorkerMgr != void) {
         const job_worker_mgr_settings = &demo_state.wwise_context.job_worker_settings;
@@ -316,7 +316,7 @@ fn indexOfChannelConfig(slice: []const AK.AkChannelConfig, value: AK.AkChannelCo
     return null;
 }
 
-fn getSpatialAudioSharesetId(self: *Self) !u32 {
+fn getSpatialAudioSharesetId(self: *OptionsDemo) !u32 {
     if (self.spatial_audio_shareset_id) |spatial_audio_shareset_id| {
         return spatial_audio_shareset_id;
     }
@@ -413,7 +413,7 @@ fn SettingsInterface(comptime WrapperType: type, comptime SettingsType: type) ty
             }
         }
 
-        pub fn onUI(self: *WrapperType, demo: *Self, demo_state: *root.WwiseDemoApp, callback: *const fn (self: *Self, demo_state: *root.WwiseDemoApp) anyerror!void) !void {
+        pub fn onUI(self: *WrapperType, demo: *OptionsDemo, demo_state: *root.WwiseDemoApp, callback: *const fn (self: *OptionsDemo, demo_state: *root.WwiseDemoApp) anyerror!void) !void {
             inline for (std.meta.fields(WrapperType)) |field| {
                 switch (@typeInfo(field.type)) {
                     .bool => {
@@ -502,7 +502,7 @@ const InitSettings = struct {
         .{ .name = "+48dB", .value = 256.0 },
     };
 
-    pub usingnamespace SettingsInterface(InitSettings, AK.AkInitSettings);
+    pub const UI = SettingsInterface(InitSettings, AK.AkInitSettings);
 };
 
 const MemorySettings = struct {
@@ -519,7 +519,7 @@ const MemorySettings = struct {
         .{ .name = "Stomp Allocator and Leaks", .value = 3 },
     };
 
-    pub usingnamespace SettingsInterface(MemorySettings, AK.AkMemSettings);
+    pub const UI = SettingsInterface(MemorySettings, AK.AkMemSettings);
 };
 
 const RefillBuffers: []const NamedValue(u16) = &.{
@@ -568,7 +568,7 @@ const WindowsPlatformSettings = struct {
         .{ .name = "30", .value = 0 },
     };
 
-    pub usingnamespace SettingsInterface(WindowsPlatformSettings, AK.AkPlatformInitSettings);
+    pub const UI = SettingsInterface(WindowsPlatformSettings, AK.AkPlatformInitSettings);
 };
 
 const LinuxPlatformSettings = struct {
@@ -595,7 +595,7 @@ const LinuxPlatformSettings = struct {
         .{ .name = "ALSA", .value = AK.AkAudioAPILinux{ .alsa = true } },
     };
 
-    pub usingnamespace SettingsInterface(LinuxPlatformSettings, AK.AkPlatformInitSettings);
+    pub const UI = SettingsInterface(LinuxPlatformSettings, AK.AkPlatformInitSettings);
 };
 
 const MacPlatformSettings = struct {
@@ -607,7 +607,7 @@ const MacPlatformSettings = struct {
         .sample_rate = SampleRateDisplayName,
     };
 
-    pub usingnamespace SettingsInterface(MacPlatformSettings, AK.AkPlatformInitSettings);
+    pub const UI = SettingsInterface(MacPlatformSettings, AK.AkPlatformInitSettings);
 };
 
 const iOSPlatformSettings = struct {
@@ -621,7 +621,7 @@ const iOSPlatformSettings = struct {
         .verbose_system_output = "Verbose Debug Output",
     };
 
-    pub usingnamespace SettingsInterface(iOSPlatformSettings, AK.AkPlatformInitSettings);
+    pub const UI = SettingsInterface(iOSPlatformSettings, AK.AkPlatformInitSettings);
 };
 
 const AndroidPlatformSettings = struct {
@@ -647,5 +647,5 @@ const AndroidPlatformSettings = struct {
         .{ .name = "OpenSL ES", .value = AK.AkAudioAPIAndroid{ .opensl_es = true } },
     };
 
-    pub usingnamespace SettingsInterface(AndroidPlatformSettings, AK.AkPlatformInitSettings);
+    pub const UI = SettingsInterface(AndroidPlatformSettings, AK.AkPlatformInitSettings);
 };

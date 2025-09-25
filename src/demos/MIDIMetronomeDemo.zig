@@ -156,7 +156,7 @@ fn objectCallback(self: *Self) !void {
     self.callback_counter += 1;
 }
 
-fn staticCallback(in_context: ?*AK.IAkGlobalPluginContext, in_location: AK.AkGlobalCallbackLocation, in_cookie: ?*anyopaque) callconv(.C) void {
+fn staticCallback(in_context: ?*AK.IAkGlobalPluginContext, in_location: AK.AkGlobalCallbackLocation, in_cookie: ?*anyopaque) callconv(.c) void {
     _ = in_location;
     _ = in_context;
 

@@ -353,7 +353,7 @@ pub const WwiseContext = struct {
 
     var current_resource_monitor_data: AK.AkResourceMonitorDataSummary = .{};
 
-    fn resourceMonitorCallback(in_data_summary: ?*const AK.AkResourceMonitorDataSummary) callconv(.C) void {
+    fn resourceMonitorCallback(in_data_summary: ?*const AK.AkResourceMonitorDataSummary) callconv(.c) void {
         if (in_data_summary) |data_summary| {
             current_resource_monitor_data = data_summary.*;
         }
@@ -561,7 +561,7 @@ fn sdlAppInit(app_state: ?*?*anyopaque, argv: [][*:0]u8) !c.SDL_AppResult {
 }
 
 fn sdlAppIterate(app_state: ?*anyopaque) !c.SDL_AppResult {
-    const demo: *WwiseDemoApp = @alignCast(@ptrCast(app_state.?));
+    const demo: *WwiseDemoApp = @ptrCast(@alignCast(app_state.?));
 
     try demo.frame_pacer.tick();
 
@@ -599,7 +599,7 @@ fn sdlAppQuit(app_state: ?*anyopaque, result: anyerror!c.SDL_AppResult) void {
         return;
     }
 
-    const demo: *WwiseDemoApp = @alignCast(@ptrCast(app_state.?));
+    const demo: *WwiseDemoApp = @ptrCast(@alignCast(app_state.?));
 
     demo.deinit();
 

@@ -46,6 +46,7 @@ pub fn build(b: *std.Build) !void {
     const zgui_dependency = b.dependency("zgui", .{
         .target = target,
         .optimize = optimize,
+        .shared = false,
         .backend = .sdl3_gpu,
     });
 
@@ -74,8 +75,13 @@ pub fn build(b: *std.Build) !void {
             },
         },
     });
-    exe_module.linkLibrary(zgui_dependency.artifact("imgui"));
+
+    if (target.result.os.tag == .windows and target.result.abi == .msvc) {
+        exe_module.addCMacro("_Avx2WmemEnabledWeakValue", "_Avx2WmemEnabled");
+    }
+
     exe_module.linkLibrary(sdl_dependency.artifact("SDL3"));
+    exe_module.linkLibrary(zgui_dependency.artifact("imgui"));
 
     const exe = b.addExecutable(.{
         .name = "wwise-zig-demo",

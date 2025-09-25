@@ -96,7 +96,7 @@ pub fn demoInterface(self: *Self) DemoInterface {
     return DemoInterface.toDemoInteface(self);
 }
 
-fn MusicCallback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackInfo) callconv(.C) void {
+fn MusicCallback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackInfo) callconv(.c) void {
     var self: *Self = @ptrCast(@alignCast(in_callback_info.cookie));
 
     if (in_type.music_sync_bar) {

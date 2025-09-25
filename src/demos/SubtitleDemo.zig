@@ -92,7 +92,7 @@ pub fn setSubtitleText(self: *Self, text: [*:0]const u8) void {
     self.subtitle_text = self.allocator.dupeZ(u8, text[0..std.mem.len(text)]) catch unreachable;
 }
 
-fn WwiseSubtitleCallback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackInfo) callconv(.C) void {
+fn WwiseSubtitleCallback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackInfo) callconv(.c) void {
     if (in_type.marker) {
         if (in_callback_info.cookie) |cookie| {
             var self: *Self = @ptrCast(@alignCast(cookie));

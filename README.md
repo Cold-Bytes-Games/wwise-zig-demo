@@ -1,4 +1,4 @@
-# wwise-zig-demo - Demo application of the wwise-zig bindings (2024.1.7)
+# wwise-zig-demo - Demo application of the wwise-zig bindings (2024.1.10)
 
 This a port of the Integration Demo from the samples in Zig using [wwise-zig](https://github.com/Cold-Bytes-Games/wwise-zig) and using [zig-gamedev](https://github.com/michal-z/zig-gamedev) `zgui` for the UI rendering.
 
@@ -10,10 +10,10 @@ This is a 3rd party implementation and it is not affiliated with Audiokinetic.
 
 ## Zig version
 
-This library uses zig 0.15.1. To install using [`zigup`](https://github.com/marler8997/zigup):
+This library uses zig 0.15.2. To install using [`zigup`](https://github.com/marler8997/zigup):
 
 ```sh
-zigup 0.15.1
+zigup 0.15.2
 ```
 
 # LICENSE

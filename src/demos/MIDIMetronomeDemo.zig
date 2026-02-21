@@ -173,7 +173,7 @@ fn postMIDIEvents(self: *Self, in_sample_offset: u32) !void {
 
     const posts = [_]AK.AkMIDIPost{
         .{
-            .base = .{
+            .midi_event = .{
                 .by_type = AK.AK_MIDI_EVENT_TYPE_NOTE_ON,
                 .by_chan = 0,
                 .message = .{
@@ -186,7 +186,7 @@ fn postMIDIEvents(self: *Self, in_sample_offset: u32) !void {
             .offset = in_sample_offset,
         },
         .{
-            .base = .{
+            .midi_event = .{
                 .by_type = AK.AK_MIDI_EVENT_TYPE_NOTE_OFF,
                 .by_chan = 0,
                 .message = .{

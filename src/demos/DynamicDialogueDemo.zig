@@ -1033,8 +1033,10 @@ fn set14_1_StartPlaybackWithCallback(self: *Self) !void {
     self.playing_id = 0;
 }
 
-fn set14_Callback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackInfo) callconv(.c) void {
-    var self: *Self = @ptrCast(@alignCast(in_callback_info.cookie));
+fn set14_Callback(in_type: AK.AkCallbackType, in_event_info: *AK.AkEventCallbackInfo, in_callback_info: ?*anyopaque, in_cookie: ?*anyopaque) callconv(.c) void {
+    _ = in_event_info; // autofix
+    _ = in_callback_info; // autofix
+    var self: *Self = @ptrCast(@alignCast(in_cookie));
 
     if (in_type.end_of_dynamic_sequence_item) {
         self.set14_param_index += 1;
@@ -1102,8 +1104,11 @@ fn set15_1_StartPlaybackWithCallback(self: *Self) !void {
     try AK.SoundEngine.DynamicSequence.play(self.playing_id, .{});
 }
 
-fn set15_Callback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackInfo) callconv(.c) void {
-    var self: *Self = @ptrCast(@alignCast(in_callback_info.cookie));
+fn set15_Callback(in_type: AK.AkCallbackType, in_event_info: *AK.AkEventCallbackInfo, in_callback_info: ?*anyopaque, in_cookie: ?*anyopaque) callconv(.c) void {
+    _ = in_event_info; // autofix
+    _ = in_callback_info; // autofix
+
+    var self: *Self = @ptrCast(@alignCast(in_cookie));
 
     if (in_type.end_of_dynamic_sequence_item) {
         self.set15_items_played += 1;
@@ -1190,11 +1195,12 @@ fn set16_1_StartPlaybackWithCallback(self: *Self) !void {
     try AK.SoundEngine.DynamicSequence.close(self.set16_seq1_playing_id);
 }
 
-fn set16_Callback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackInfo) callconv(.c) void {
-    var self: *Self = @ptrCast(@alignCast(in_callback_info.cookie));
-    const event_info: *AK.AkEventCallbackInfo = @ptrCast(in_callback_info);
+fn set16_Callback(in_type: AK.AkCallbackType, in_event_info: *AK.AkEventCallbackInfo, in_callback_info: ?*anyopaque, in_cookie: ?*anyopaque) callconv(.c) void {
+    _ = in_callback_info; // autofix
 
-    if (in_type.end_of_event and event_info.playing_id == self.set16_seq1_playing_id) {
+    var self: *Self = @ptrCast(@alignCast(in_cookie));
+
+    if (in_type.end_of_event and in_event_info.playing_id == self.set16_seq1_playing_id) {
         AK.SoundEngine.DynamicSequence.play(self.set16_seq2_playing_id, .{}) catch unreachable;
         AK.SoundEngine.DynamicSequence.close(self.set16_seq2_playing_id) catch unreachable;
 
@@ -1260,8 +1266,11 @@ fn set17_1_StartPlaybackWithCallback(self: *Self) !void {
     try AK.SoundEngine.DynamicSequence.play(self.playing_id, .{});
 }
 
-fn set17_Callback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackInfo) callconv(.c) void {
-    var self: *Self = @ptrCast(@alignCast(in_callback_info.cookie));
+fn set17_Callback(in_type: AK.AkCallbackType, in_event_info: *AK.AkEventCallbackInfo, in_callback_info: ?*anyopaque, in_cookie: ?*anyopaque) callconv(.c) void {
+    _ = in_event_info; // autofix
+    _ = in_callback_info; // autofix
+
+    var self: *Self = @ptrCast(@alignCast(in_cookie));
 
     if (in_type.end_of_dynamic_sequence_item and !self.set17_done_playing) {
         const playlist_opt = AK.SoundEngine.DynamicSequence.lockPlaylist(self.playing_id);

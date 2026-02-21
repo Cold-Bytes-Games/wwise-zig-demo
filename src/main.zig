@@ -215,7 +215,6 @@ pub const WwiseContext = struct {
     device_settings: AK.StreamMgr.AkDeviceSettings = .{},
     init_settings: AK.AkInitSettings = .{},
     platform_init_settings: AK.AkPlatformInitSettings = .{},
-    music_settings: AK.MusicEngine.AkMusicSettings = .{},
     comm_settings: if (AK.Comm != void) AK.Comm.AkCommSettings else void = .{},
     job_worker_settings: if (AK.JobWorkerMgr != void) AK.JobWorkerMgr.InitSettings else void = .{},
     spatial_audio_settings: if (AK.SpatialAudio != void) AK.SpatialAudio.AkSpatialAudioInitSettings else void = .{},
@@ -237,8 +236,6 @@ pub const WwiseContext = struct {
 
         // Gather init settings and init the sound engine
         try AK.SoundEngine.init(allocator, &self.init_settings, &self.platform_init_settings);
-
-        try AK.MusicEngine.init(&self.music_settings);
 
         // Setup communication for debugging with the Wwise Authoring
         if (AK.Comm != void) {
@@ -323,8 +320,6 @@ pub const WwiseContext = struct {
         try AK.SoundEngine.getDefaultInitSettings(allocator, &self.init_settings);
 
         AK.SoundEngine.getDefaultPlatformInitSettings(&self.platform_init_settings);
-
-        AK.MusicEngine.getDefaultInitSettings(&self.music_settings);
 
         // Setup communication for debugging with the Wwise Authoring
         if (AK.Comm != void) {

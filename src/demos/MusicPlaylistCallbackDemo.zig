@@ -90,11 +90,13 @@ pub fn demoInterface(self: *Self) DemoInterface {
     return DemoInterface.toDemoInteface(self);
 }
 
-fn MusicCallback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackInfo) callconv(.c) void {
-    var self: *Self = @ptrCast(@alignCast(in_callback_info.cookie));
+fn MusicCallback(in_type: AK.AkCallbackType, in_event_info: *AK.AkEventCallbackInfo, in_callback_info: ?*anyopaque, in_cookie: ?*anyopaque) callconv(.c) void {
+    _ = in_event_info; // autofix
+
+    var self: *Self = @ptrCast(@alignCast(in_cookie));
 
     if (in_type.music_playlist_select) {
-        const playlist_info: *AK.AkMusicPlaylistCallbackInfo = @ptrCast(in_callback_info);
+        const playlist_info: *AK.AkMusicPlaylistCallbackInfo = @ptrCast(@alignCast(in_callback_info));
         playlist_info.playlist_item_done = @intFromBool(self.stop_playlist);
         playlist_info.playlist_selection = self.playlist_item;
         self.playlist_item += 1;

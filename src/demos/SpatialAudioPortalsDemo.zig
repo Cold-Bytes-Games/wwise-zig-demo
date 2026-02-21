@@ -554,8 +554,8 @@ const GameSideObstructionComponent = struct {
         const obs_portal_0 = if (relative_listener_x < 0 and relative_listener_y > 0) Obstructed else 0.0;
         const obs_portal_1 = if (relative_listener_x > 0 and relative_listener_y < 0) Obstructed else 0.0;
 
-        try AK.SpatialAudio.setPortalObstructionAndOcclusion(Portal0, obs_portal_0, 0.0);
-        try AK.SpatialAudio.setPortalObstructionAndOcclusion(Portal1, obs_portal_1, 0.0);
+        try AK.SpatialAudio.setPortalObstructionAndOcclusion(Portal0, obs_portal_0, 0.0, .{});
+        try AK.SpatialAudio.setPortalObstructionAndOcclusion(Portal1, obs_portal_1, 0.0, .{});
 
         var obs_emitter: f32 = 0.0;
 

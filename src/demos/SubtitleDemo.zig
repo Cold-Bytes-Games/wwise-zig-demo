@@ -50,7 +50,6 @@ pub fn onUI(self: *Self, demo_state: *root.WwiseDemoApp) !void {
                     .flags = .{
                         .marker = true,
                         .end_of_event = true,
-                        .enable_get_source_play_position = true,
                     },
                     .callback = WwiseSubtitleCallback,
                     .cookie = self,
@@ -92,11 +91,13 @@ pub fn setSubtitleText(self: *Self, text: [*:0]const u8) void {
     self.subtitle_text = self.allocator.dupeZ(u8, text[0..std.mem.len(text)]) catch unreachable;
 }
 
-fn WwiseSubtitleCallback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackInfo) callconv(.c) void {
+fn WwiseSubtitleCallback(in_type: AK.AkCallbackType, in_event_info: *AK.AkEventCallbackInfo, in_callback_info: ?*anyopaque, in_cookie: ?*anyopaque) callconv(.c) void {
+    _ = in_event_info; // autofix
+
     if (in_type.marker) {
-        if (in_callback_info.cookie) |cookie| {
+        if (in_cookie) |cookie| {
             var self: *Self = @ptrCast(@alignCast(cookie));
-            const marker_callback: *AK.AkMarkerCallbackInfo = @ptrCast(in_callback_info);
+            const marker_callback: *AK.AkMarkerCallbackInfo = @ptrCast(@alignCast(in_callback_info));
 
             if (marker_callback.str_label) |label| {
                 self.setSubtitleText(label);
@@ -106,7 +107,7 @@ fn WwiseSubtitleCallback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCal
             self.subtitle_position = marker_callback.position;
         }
     } else if (in_type.end_of_event) {
-        if (in_callback_info.cookie) |cookie| {
+        if (in_cookie) |cookie| {
             var self: *Self = @ptrCast(@alignCast(cookie));
 
             self.setSubtitleText("");

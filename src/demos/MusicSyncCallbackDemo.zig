@@ -31,7 +31,6 @@ pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.WwiseDe
         DemoGameObjectID,
         .{
             .flags = .{
-                .enable_get_source_play_position = true,
                 .music_sync_beat = true,
                 .music_sync_bar = true,
                 .music_sync_entry = true,
@@ -96,8 +95,11 @@ pub fn demoInterface(self: *Self) DemoInterface {
     return DemoInterface.toDemoInteface(self);
 }
 
-fn MusicCallback(in_type: AK.AkCallbackType, in_callback_info: *AK.AkCallbackInfo) callconv(.c) void {
-    var self: *Self = @ptrCast(@alignCast(in_callback_info.cookie));
+fn MusicCallback(in_type: AK.AkCallbackType, in_event_info: *AK.AkEventCallbackInfo, in_callback_info: ?*anyopaque, in_cookie: ?*anyopaque) callconv(.c) void {
+    _ = in_event_info; // autofix
+    _ = in_callback_info; // autofix
+
+    var self: *Self = @ptrCast(@alignCast(in_cookie));
 
     if (in_type.music_sync_bar) {
         self.beat_count = 0;

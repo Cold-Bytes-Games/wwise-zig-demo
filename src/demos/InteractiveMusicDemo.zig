@@ -82,8 +82,7 @@ pub fn onUI(self: *Self, demo_state: *root.WwiseDemoApp) !void {
             _ = try AK.SoundEngine.postEventID(ID.EVENTS.IM_WINTHEFIGHT, DemoGameObjectID, .{});
         }
 
-        var segment_info = AK.AkSegmentInfo{};
-        AK.MusicEngine.getPlayingSegmentInfo(self.playing_id, &segment_info, true) catch {};
+        const segment_info: AK.AkSegmentInfo = AK.SoundEngine.getPlayingSegmentInfo(self.playing_id, .{}) catch .{};
 
         zgui.text("Position: {}", .{segment_info.current_position});
         zgui.text("Segment duration: {}", .{segment_info.active_duration});

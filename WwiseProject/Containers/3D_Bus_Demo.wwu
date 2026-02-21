@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{653976DD-C047-41EE-8492-E1E2DE8C9DAB}" SchemaVersion="123">
-	<AudioObjects>
+<WwiseDocument Type="WorkUnit" ID="{653976DD-C047-41EE-8492-E1E2DE8C9DAB}" SchemaVersion="133">
+	<Containers>
 		<WorkUnit Name="3D_Bus_Demo" ID="{653976DD-C047-41EE-8492-E1E2DE8C9DAB}" PersistMode="Standalone">
 			<ChildrenList>
-				<ActorMixer Name="Spatialized" ID="{48DAE8F6-AD94-4C71-ABC1-1384E1623A57}" ShortID="159910665">
+				<PropertyContainer Name="Spatialized" ID="{48DAE8F6-AD94-4C71-ABC1-1384E1623A57}" ShortID="159910665">
 					<PropertyList>
 						<Property Name="3DSpatialization" Type="int16" Value="2"/>
 						<Property Name="HdrEnvelopeSensitivity" Type="Real64" Value="20"/>
@@ -96,7 +96,7 @@
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
-				</ActorMixer>
+				</PropertyContainer>
 				<BlendContainer Name="Cluster" ID="{3169C5C9-3CEF-433C-9CAB-2386C8A5EBFA}" ShortID="158006593">
 					<PropertyList>
 						<Property Name="HdrEnvelopeSensitivity" Type="Real64" Value="20"/>
@@ -206,7 +206,7 @@
 						</Sound>
 					</ChildrenList>
 				</BlendContainer>
-				<ActorMixer Name="Portals" ID="{B67893E7-894D-48A9-885C-5AAC88CBF9B7}" ShortID="860660208">
+				<PropertyContainer Name="Portals" ID="{B67893E7-894D-48A9-885C-5AAC88CBF9B7}" ShortID="860660208">
 					<PropertyList>
 						<Property Name="3DSpatialization" Type="int16" Value="2"/>
 						<Property Name="EnableDiffraction" Type="bool" Value="True"/>
@@ -311,9 +311,9 @@
 							</ChildrenList>
 							<ObjectLists>
 								<ObjectList Name="RTPC">
-									<Reference>
-										<Local>
-											<RTPC Name="" ID="{9C7644A8-5EF4-4197-B103-06C3E549B378}" ShortID="446752903">
+									
+									
+								<RTPC Name="" ID="{9C7644A8-5EF4-4197-B103-06C3E549B378}" ShortID="446752903">
 												<PropertyList>
 													<Property Name="PropertyName" Type="string" Value="Lowpass"/>
 												</PropertyList>
@@ -348,12 +348,7 @@
 														</Custom>
 													</Reference>
 												</ReferenceList>
-											</RTPC>
-										</Local>
-									</Reference>
-									<Reference>
-										<Local>
-											<RTPC Name="" ID="{F886B2BA-0D92-4EE6-A831-D9E3A3BA86DD}" ShortID="186854587">
+											</RTPC><RTPC Name="" ID="{F886B2BA-0D92-4EE6-A831-D9E3A3BA86DD}" ShortID="186854587">
 												<PropertyList>
 													<Property Name="PropertyName" Type="string" Value="Pitch"/>
 												</PropertyList>
@@ -388,10 +383,7 @@
 														</Custom>
 													</Reference>
 												</ReferenceList>
-											</RTPC>
-										</Local>
-									</Reference>
-								</ObjectList>
+											</RTPC></ObjectList>
 							</ObjectLists>
 						</RandomSequenceContainer>
 						<RandomSequenceContainer Name="Room_Emitter" ID="{7293CC5B-C9F9-407A-BCC1-07D6CC9E6EF1}" ShortID="266388078">
@@ -456,10 +448,10 @@
 							</ChildrenList>
 							<ObjectLists>
 								<ObjectList Name="Playlist">
-									<Reference>
+									
+								<PluginInnerObject Name="" ID="{A7F2B7D2-6203-4CFD-BDCB-BD197190E69E}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86"><ReferenceList><Reference Name="PlaylistObject">
 										<ObjectRef Name="Markers_Test" ID="{9808AEFC-AB39-4E59-9A89-B7FBAB3FA4F3}" WorkUnitID="{653976DD-C047-41EE-8492-E1E2DE8C9DAB}"/>
-									</Reference>
-								</ObjectList>
+									</Reference></ReferenceList></PluginInnerObject></ObjectList>
 							</ObjectLists>
 						</RandomSequenceContainer>
 						<Sound Name="Ambience_Quad" ID="{172A9E9E-FAF4-4E32-99E3-566AE0650CCD}" ShortID="258628149">
@@ -507,8 +499,8 @@ Provided by Studio Lab SONORUM
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
-				</ActorMixer>
+				</PropertyContainer>
 			</ChildrenList>
 		</WorkUnit>
-	</AudioObjects>
+	</Containers>
 </WwiseDocument>

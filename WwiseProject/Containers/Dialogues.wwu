@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}" SchemaVersion="123">
-	<AudioObjects>
+<WwiseDocument Type="WorkUnit" ID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}" SchemaVersion="133">
+	<Containers>
 		<WorkUnit Name="Dialogues" ID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}" PersistMode="Standalone">
 			<ChildrenList>
-				<ActorMixer Name="Captain_A" ID="{7D3CD915-0359-480A-84A5-5CE5CC26B643}" ShortID="755158117">
+				<PropertyContainer Name="Captain_A" ID="{7D3CD915-0359-480A-84A5-5CE5CC26B643}" ShortID="755158117">
 					<PropertyList>
 						<Property Name="CenterPercentage" Type="int32">
 							<ValueList>
@@ -877,8 +877,8 @@ www.technicolor.com</Comment>
 							</ChildrenList>
 						</RandomSequenceContainer>
 					</ChildrenList>
-				</ActorMixer>
-				<ActorMixer Name="Captain_B" ID="{B29E6346-27A0-4C2A-BC54-479C16962088}" ShortID="850058532">
+				</PropertyContainer>
+				<PropertyContainer Name="Captain_B" ID="{B29E6346-27A0-4C2A-BC54-479C16962088}" ShortID="850058532">
 					<PropertyList>
 						<Property Name="CenterPercentage" Type="int32">
 							<ValueList>
@@ -1752,8 +1752,8 @@ www.technicolor.com</Comment>
 							</ChildrenList>
 						</RandomSequenceContainer>
 					</ChildrenList>
-				</ActorMixer>
-				<ActorMixer Name="Walkie-Talkie" ID="{1B043D3B-35A8-4C90-AC48-7DA0BA8F4400}" ShortID="952694387">
+				</PropertyContainer>
+				<PropertyContainer Name="Walkie-Talkie" ID="{1B043D3B-35A8-4C90-AC48-7DA0BA8F4400}" ShortID="952694387">
 					<PropertyList>
 						<Property Name="CenterPercentage" Type="int32">
 							<ValueList>
@@ -2100,8 +2100,8 @@ www.technicolor.com</Comment>
 							</ChildrenList>
 						</RandomSequenceContainer>
 					</ChildrenList>
-				</ActorMixer>
+				</PropertyContainer>
 			</ChildrenList>
 		</WorkUnit>
-	</AudioObjects>
+	</Containers>
 </WwiseDocument>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{875EE732-41A2-46B4-81D3-18BD32F634A1}" SchemaVersion="123">
-	<AudioObjects>
+<WwiseDocument Type="WorkUnit" ID="{875EE732-41A2-46B4-81D3-18BD32F634A1}" SchemaVersion="133">
+	<Containers>
 		<WorkUnit Name="3D_Audio_Demo" ID="{875EE732-41A2-46B4-81D3-18BD32F634A1}" PersistMode="Standalone">
 			<ChildrenList>
-				<ActorMixer Name="Spatialized Ambience" ID="{9E515555-F9D8-4146-9E2C-063891DAC1BA}" ShortID="992740904">
+				<PropertyContainer Name="Spatialized Ambience" ID="{9E515555-F9D8-4146-9E2C-063891DAC1BA}" ShortID="992740904">
 					<PropertyList>
 						<Property Name="HdrEnvelopeSensitivity" Type="Real64" Value="20"/>
 						<Property Name="VirtualVoiceQueueBehavior" Type="int16" Value="1"/>
@@ -336,15 +336,15 @@
 							</ChildrenList>
 							<ObjectLists>
 								<ObjectList Name="Playlist">
-									<Reference>
+									
+								<PluginInnerObject Name="" ID="{079779CF-DC9D-4353-830A-B1206F17E1B6}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86"><ReferenceList><Reference Name="PlaylistObject">
 										<ObjectRef Name="seagulls" ID="{734BE003-E13A-4021-A0E4-FFB2BD4DCF9F}" WorkUnitID="{875EE732-41A2-46B4-81D3-18BD32F634A1}"/>
-									</Reference>
-								</ObjectList>
+									</Reference></ReferenceList></PluginInnerObject></ObjectList>
 							</ObjectLists>
 						</RandomSequenceContainer>
 					</ChildrenList>
-				</ActorMixer>
-				<ActorMixer Name="Hero Sounds" ID="{00DC3823-557C-472E-BF9E-85DA0B98C706}" ShortID="510500270">
+				</PropertyContainer>
+				<PropertyContainer Name="Hero Sounds" ID="{00DC3823-557C-472E-BF9E-85DA0B98C706}" ShortID="510500270">
 					<PropertyList>
 						<Property Name="3DSpatialization" Type="int16" Value="1"/>
 						<Property Name="CenterPercentage" Type="int32">
@@ -502,8 +502,8 @@
 							</ChildrenList>
 						</RandomSequenceContainer>
 					</ChildrenList>
-				</ActorMixer>
-				<ActorMixer Name="Music" ID="{204E6365-C9F8-4548-810B-10C8F331B874}" ShortID="199329151">
+				</PropertyContainer>
+				<PropertyContainer Name="Music" ID="{204E6365-C9F8-4548-810B-10C8F331B874}" ShortID="199329151">
 					<PropertyList>
 						<Property Name="HdrEnvelopeSensitivity" Type="Real64" Value="20"/>
 						<Property Name="VirtualVoiceQueueBehavior" Type="int16" Value="1"/>
@@ -562,8 +562,8 @@
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
-				</ActorMixer>
+				</PropertyContainer>
 			</ChildrenList>
 		</WorkUnit>
-	</AudioObjects>
+	</Containers>
 </WwiseDocument>

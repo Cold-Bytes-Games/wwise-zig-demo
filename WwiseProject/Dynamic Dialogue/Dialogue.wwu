@@ -1,1257 +1,1677 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{F9788322-410B-4DC8-8B34-E33609B748D5}" SchemaVersion="123">
+<WwiseDocument Type="WorkUnit" ID="{F9788322-410B-4DC8-8B34-E33609B748D5}" SchemaVersion="133">
 	<DynamicDialogue>
 		<WorkUnit Name="Dialogue" ID="{F9788322-410B-4DC8-8B34-E33609B748D5}" PersistMode="Standalone">
 			<ChildrenList>
 				<DialogueEvent Name="Objective_Status" ID="{3C874205-5335-4290-830F-A8BFF3AE8A6B}">
 					<ObjectLists>
 						<ObjectList Name="Arguments">
-							<Reference>
-								<ObjectRef Name="Unit" ID="{AB619779-DBCA-455C-B1FA-3DA0D1BFEAF1}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
-							</Reference>
-							<Reference>
-								<ObjectRef Name="Objective" ID="{D9391B7B-44F2-49E3-8756-9A592468BDAA}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
-							</Reference>
-							<Reference>
-								<ObjectRef Name="ObjectiveStatus" ID="{5034CAD2-36B1-41F8-8249-CA8FBF8AD4AE}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
-							</Reference>
+							<PluginInnerObject Name="" ID="{0637326A-22D1-4FD9-BD7A-B1799EF95276}" PluginName="ArgumentsSlot" CompanyID="0" PluginID="87">
+								<ReferenceList>
+									<Reference Name="Argument">
+										<ObjectRef Name="Unit" ID="{AB619779-DBCA-455C-B1FA-3DA0D1BFEAF1}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
+									</Reference>
+								</ReferenceList>
+							</PluginInnerObject>
+							<PluginInnerObject Name="" ID="{E3161B70-3E9E-41A7-8468-E43CF9217486}" PluginName="ArgumentsSlot" CompanyID="0" PluginID="87">
+								<ReferenceList>
+									<Reference Name="Argument">
+										<ObjectRef Name="Objective" ID="{D9391B7B-44F2-49E3-8756-9A592468BDAA}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
+									</Reference>
+								</ReferenceList>
+							</PluginInnerObject>
+							<PluginInnerObject Name="" ID="{33CFBA92-8022-4458-981D-6FCC6CAA14B3}" PluginName="ArgumentsSlot" CompanyID="0" PluginID="87">
+								<ReferenceList>
+									<Reference Name="Argument">
+										<ObjectRef Name="ObjectiveStatus" ID="{5034CAD2-36B1-41F8-8249-CA8FBF8AD4AE}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
+									</Reference>
+								</ReferenceList>
+							</PluginInnerObject>
 						</ObjectList>
 						<ObjectList Name="Entries">
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{3F284F2E-F73A-4B34-A106-ACAFAF9A4891}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNA-DB-OS_01" ID="{CFA81CFE-9D22-4078-9738-83471EF92418}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+							<MultiSwitchEntry Name="" ID="{3F284F2E-F73A-4B34-A106-ACAFAF9A4891}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNA-DB-OS_01" ID="{CFA81CFE-9D22-4078-9738-83471EF92418}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{9C4597DB-9A3C-4424-A249-726CA0607B5C}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_A" ID="{611F2138-AEA5-41CC-8848-E4A9A0DD8D5F}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{AFE92C17-5898-4123-94ED-651D571DE87F}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="DefuseBomb" ID="{8F3721D6-5D95-4EB9-BB3A-E12839A98B4B}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{0FE9CAFC-13CF-4CF6-ABBC-F9998068D5C5}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="ObjectiveStatus" ID="{5034CAD2-36B1-41F8-8249-CA8FBF8AD4AE}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{1BD6A0D5-FB5E-4C13-9E81-8E93C14D421D}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNA-NH-OS_01" ID="{159E1241-6590-42CB-A84C-EDB187C60134}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{1BD6A0D5-FB5E-4C13-9E81-8E93C14D421D}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNA-NH-OS_01" ID="{159E1241-6590-42CB-A84C-EDB187C60134}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{482CFF45-6EF7-4635-8A92-C5FE76D751F6}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_A" ID="{611F2138-AEA5-41CC-8848-E4A9A0DD8D5F}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{3CB8C0AD-12F1-4233-AD1C-706201DE0258}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="NeutralizeHostile" ID="{CE911D1E-00AF-4330-B216-2B933BB1ADA0}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{30E0BA99-B44D-4CE9-9686-963243387E1B}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="ObjectiveStatus" ID="{5034CAD2-36B1-41F8-8249-CA8FBF8AD4AE}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{2FA0AA1A-8426-4712-A4D0-26267CF79709}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNA-RH-OS_01" ID="{15671CF7-DD05-48DF-9C2B-041DB1C3F5B2}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{2FA0AA1A-8426-4712-A4D0-26267CF79709}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNA-RH-OS_01" ID="{15671CF7-DD05-48DF-9C2B-041DB1C3F5B2}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{EB22564E-E170-454E-B870-80FAC9801B00}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_A" ID="{611F2138-AEA5-41CC-8848-E4A9A0DD8D5F}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{C9219296-3649-4621-A8D3-F4D6A7A04065}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="RescueHostage" ID="{A5CF8DAF-3C4B-4838-80C2-DF81E5303024}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{6230C8C8-760D-4FF6-8E23-55C38BE63ED6}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="ObjectiveStatus" ID="{5034CAD2-36B1-41F8-8249-CA8FBF8AD4AE}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{152BE216-9D5D-4D81-AC2D-A3D9FAB6D2C4}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNB-OB-OS" ID="{4A3EE175-B34A-4289-8BA3-0E8BB223E2E9}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{152BE216-9D5D-4D81-AC2D-A3D9FAB6D2C4}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNB-OB-OS" ID="{4A3EE175-B34A-4289-8BA3-0E8BB223E2E9}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{39FA78A9-6232-472F-A6D0-AE123D5F4223}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_B" ID="{AE09F08E-89EA-4E99-990D-60216073FC4D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{C3E7B9F1-0B28-46A6-988D-40A1BD375F1F}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Objective" ID="{D9391B7B-44F2-49E3-8756-9A592468BDAA}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{93D732E4-98B6-4C7C-ADAC-4DE92D1CA696}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="ObjectiveStatus" ID="{5034CAD2-36B1-41F8-8249-CA8FBF8AD4AE}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{E2F0AD59-37B4-4865-A21E-2FB83C85D85F}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNB-DB-OS_01" ID="{E130697B-FECF-4E52-B3EE-761A70A189E5}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{E2F0AD59-37B4-4865-A21E-2FB83C85D85F}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNB-DB-OS_01" ID="{E130697B-FECF-4E52-B3EE-761A70A189E5}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{9B10A49D-AC22-45D8-91D7-05D6BA23B7FA}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_B" ID="{AE09F08E-89EA-4E99-990D-60216073FC4D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{BEF62598-CC3A-488B-AE10-3F604543F0C1}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="DefuseBomb" ID="{8F3721D6-5D95-4EB9-BB3A-E12839A98B4B}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{E70D198C-D52A-49D7-A950-72C2859D454A}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="ObjectiveStatus" ID="{5034CAD2-36B1-41F8-8249-CA8FBF8AD4AE}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{F2014812-1F9D-4076-958B-355288244FE1}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNB-NH-OS_01" ID="{E4435D31-1FF8-432A-B81D-E10ED8332CDD}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{F2014812-1F9D-4076-958B-355288244FE1}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNB-NH-OS_01" ID="{E4435D31-1FF8-432A-B81D-E10ED8332CDD}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{207F17A8-EA6A-4182-9491-B93AC4CC2B1C}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_B" ID="{AE09F08E-89EA-4E99-990D-60216073FC4D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{8B3AA975-CC70-4BF2-92BD-E22BABF8EE19}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="NeutralizeHostile" ID="{CE911D1E-00AF-4330-B216-2B933BB1ADA0}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{3A8D1236-8CB1-4C61-BA0F-87CBCC528FCA}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="ObjectiveStatus" ID="{5034CAD2-36B1-41F8-8249-CA8FBF8AD4AE}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{2EB7D95C-619C-46E8-B794-A688D6A7E0C9}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNB-RH-OS_01" ID="{1EC41601-B8D9-423C-8230-51A0A8CB17A7}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{2EB7D95C-619C-46E8-B794-A688D6A7E0C9}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNB-RH-OS_01" ID="{1EC41601-B8D9-423C-8230-51A0A8CB17A7}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{7147CAE5-FF38-4941-830E-F4B2CF38581A}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_B" ID="{AE09F08E-89EA-4E99-990D-60216073FC4D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{720B374F-8127-40F1-B7E3-C4D2E75D9DF8}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="RescueHostage" ID="{A5CF8DAF-3C4B-4838-80C2-DF81E5303024}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{6D3E215C-69D8-4681-883C-3F5B43882C11}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="ObjectiveStatus" ID="{5034CAD2-36B1-41F8-8249-CA8FBF8AD4AE}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{4E7EDA35-3CDC-4191-AEFE-5589C6E54D54}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNA-OB-CP" ID="{D0E22889-0752-4C0B-8F15-CD41A0C5396F}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{4E7EDA35-3CDC-4191-AEFE-5589C6E54D54}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNA-OB-CP" ID="{D0E22889-0752-4C0B-8F15-CD41A0C5396F}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{E3786491-A2C6-4CD6-8936-9DB3930D13F7}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_A" ID="{611F2138-AEA5-41CC-8848-E4A9A0DD8D5F}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{E6DACB36-05BD-4C9B-ADE1-461DAEFA0157}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Objective" ID="{D9391B7B-44F2-49E3-8756-9A592468BDAA}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{E954C5BE-099A-4739-B9EA-D072F7C188E7}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Completed" ID="{79AFFBD8-8AD6-4ED3-B206-8178B812FE39}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{D98905BA-33C3-4C1B-87A4-45F1853B4F00}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNA-DB-CP_01" ID="{70201BB0-07D8-469B-87DF-5F968DE75CC6}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{D98905BA-33C3-4C1B-87A4-45F1853B4F00}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNA-DB-CP_01" ID="{70201BB0-07D8-469B-87DF-5F968DE75CC6}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{471C3475-22C3-4488-BF03-BEF806482753}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_A" ID="{611F2138-AEA5-41CC-8848-E4A9A0DD8D5F}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{C4D73339-AE9C-46F3-8304-E599CFC557B5}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="DefuseBomb" ID="{8F3721D6-5D95-4EB9-BB3A-E12839A98B4B}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{3BDCFD8B-4078-41EE-AE67-66D08D016184}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Completed" ID="{79AFFBD8-8AD6-4ED3-B206-8178B812FE39}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{384692DB-6CC6-44C9-8E7F-05FD5B5A7154}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNA-DB-FL_01" ID="{F9683A2A-35DA-4786-83AD-B3B0E200E9E5}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{384692DB-6CC6-44C9-8E7F-05FD5B5A7154}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNA-DB-FL_01" ID="{F9683A2A-35DA-4786-83AD-B3B0E200E9E5}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{125896C3-89A7-4C88-A6B6-1D3FB800FE80}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_A" ID="{611F2138-AEA5-41CC-8848-E4A9A0DD8D5F}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{7886623B-A1A0-40D0-8CDA-EBF035520D97}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="DefuseBomb" ID="{8F3721D6-5D95-4EB9-BB3A-E12839A98B4B}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{07E1DD77-E11E-4B47-9A77-27459448ACAD}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Failed" ID="{FCB7B551-8690-4861-B30C-8295EB311CB7}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{2F91740A-54C7-4FE0-94E4-B6B06072A14B}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNA-NH-CP_01" ID="{ABD1B612-AC54-4C7E-AB06-A680AAC383D2}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{2F91740A-54C7-4FE0-94E4-B6B06072A14B}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNA-NH-CP_01" ID="{ABD1B612-AC54-4C7E-AB06-A680AAC383D2}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{1093323F-29E6-48A1-995C-1919CC21DE85}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_A" ID="{611F2138-AEA5-41CC-8848-E4A9A0DD8D5F}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{7F481126-EBDF-4074-B4A3-4423CB3BE5AE}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="NeutralizeHostile" ID="{CE911D1E-00AF-4330-B216-2B933BB1ADA0}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{7E9964B4-0EA6-43C6-832B-73DF95808683}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Completed" ID="{79AFFBD8-8AD6-4ED3-B206-8178B812FE39}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{B762A1C2-5952-4439-8BFE-2BE83DE3A66E}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNA-NH-FL_01" ID="{E75C5CCB-F5D3-4622-B337-1E3996EADCD3}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{B762A1C2-5952-4439-8BFE-2BE83DE3A66E}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNA-NH-FL_01" ID="{E75C5CCB-F5D3-4622-B337-1E3996EADCD3}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{6492BCE6-58D2-49F9-BAF6-F57985E11778}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_A" ID="{611F2138-AEA5-41CC-8848-E4A9A0DD8D5F}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{DE46B358-3EBC-4F9D-8FCC-E6C55EE50C9E}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="NeutralizeHostile" ID="{CE911D1E-00AF-4330-B216-2B933BB1ADA0}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{2074736F-817C-4111-8134-15C604D6FC68}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Failed" ID="{FCB7B551-8690-4861-B30C-8295EB311CB7}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{BDD5B3C6-D4D5-46A4-9A49-FEA55DE8C17C}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNA-OB-FL_01" ID="{49ABA133-3B5D-4E27-B9AB-D133E8F40A4A}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{BDD5B3C6-D4D5-46A4-9A49-FEA55DE8C17C}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNA-OB-FL_01" ID="{49ABA133-3B5D-4E27-B9AB-D133E8F40A4A}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{092575C8-A38A-44D0-8111-3228612C9684}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_A" ID="{611F2138-AEA5-41CC-8848-E4A9A0DD8D5F}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{4DCBC47A-3108-4623-A963-1EEC62369BB3}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Objective" ID="{D9391B7B-44F2-49E3-8756-9A592468BDAA}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{5CD6D4DE-F2F1-45B3-B078-A7713EEA5452}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Failed" ID="{FCB7B551-8690-4861-B30C-8295EB311CB7}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{F2FCCC1E-6DD4-4AEC-9211-0C633030A4BB}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNA-RH-CP_01" ID="{FC66F992-9EF2-4186-9C25-B743A62574D8}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{F2FCCC1E-6DD4-4AEC-9211-0C633030A4BB}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNA-RH-CP_01" ID="{FC66F992-9EF2-4186-9C25-B743A62574D8}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{3EAAE8FD-CF27-47C2-ACB0-7AD6592272EC}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_A" ID="{611F2138-AEA5-41CC-8848-E4A9A0DD8D5F}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{28F048D1-708B-432C-97DB-78B4E64E4A40}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="RescueHostage" ID="{A5CF8DAF-3C4B-4838-80C2-DF81E5303024}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{251F52A8-DC7C-4EE7-AB52-D5B5BE6C1266}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Completed" ID="{79AFFBD8-8AD6-4ED3-B206-8178B812FE39}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{0B64A375-D441-461F-91B3-17F7375423F3}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNA-RH-FL_01" ID="{77782CE1-F0A4-4780-9712-3B586AE87D90}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{0B64A375-D441-461F-91B3-17F7375423F3}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNA-RH-FL_01" ID="{77782CE1-F0A4-4780-9712-3B586AE87D90}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{116D6E9F-1C4B-4DA3-B0DD-82B2B077B73D}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_A" ID="{611F2138-AEA5-41CC-8848-E4A9A0DD8D5F}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{CE0F0C83-9CD1-4DAE-A3F6-8E4D2E50C4BE}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="RescueHostage" ID="{A5CF8DAF-3C4B-4838-80C2-DF81E5303024}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{26AFC0DC-055A-433A-A4E2-91E52365A90A}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Failed" ID="{FCB7B551-8690-4861-B30C-8295EB311CB7}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{C0F58FC1-F9D4-4BED-9E99-5D25630F04EF}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNB-OB-CP" ID="{1A07BF00-57AD-4CF7-AD6F-EA27A63BE1E0}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{C0F58FC1-F9D4-4BED-9E99-5D25630F04EF}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNB-OB-CP" ID="{1A07BF00-57AD-4CF7-AD6F-EA27A63BE1E0}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{421DA89B-FC3F-4D96-808A-B75EA848BD97}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_B" ID="{AE09F08E-89EA-4E99-990D-60216073FC4D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{466D60AA-7FC9-4A1F-B4BA-CFF50D76294C}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Objective" ID="{D9391B7B-44F2-49E3-8756-9A592468BDAA}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{4CC2E66D-32B4-4CF0-9D35-E0B56061DCE7}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Completed" ID="{79AFFBD8-8AD6-4ED3-B206-8178B812FE39}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{D699FBB0-D980-464E-AF2E-B64FF15C9F11}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNB-DB-CP_01" ID="{1A2E3675-36EF-463B-803E-AF5C12F36C8B}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{D699FBB0-D980-464E-AF2E-B64FF15C9F11}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNB-DB-CP_01" ID="{1A2E3675-36EF-463B-803E-AF5C12F36C8B}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{589554F9-0A5F-4387-B76F-724D89D6E021}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_B" ID="{AE09F08E-89EA-4E99-990D-60216073FC4D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{03092F10-AA6D-48B2-9B72-C748136482B8}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="DefuseBomb" ID="{8F3721D6-5D95-4EB9-BB3A-E12839A98B4B}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{F4A6A0A9-706D-409E-A023-2CD91FD2F163}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Completed" ID="{79AFFBD8-8AD6-4ED3-B206-8178B812FE39}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{537375A2-C87C-42D8-9735-FF3B7FF1CD31}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNB-DB-FL_01" ID="{19F12FEC-D7A8-4595-A344-EBB037020C5E}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{537375A2-C87C-42D8-9735-FF3B7FF1CD31}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNB-DB-FL_01" ID="{19F12FEC-D7A8-4595-A344-EBB037020C5E}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{37D4B330-3C8C-4618-B27B-D3509B8504B2}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_B" ID="{AE09F08E-89EA-4E99-990D-60216073FC4D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{43B20042-CA09-48E7-AEA2-6989DDEF8F62}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="DefuseBomb" ID="{8F3721D6-5D95-4EB9-BB3A-E12839A98B4B}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{5F059811-6488-4F85-8A82-5E310633CBC5}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Failed" ID="{FCB7B551-8690-4861-B30C-8295EB311CB7}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{326D6657-C332-423F-9201-558DA39D442E}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNB-NH-CP_01" ID="{02900C79-3E09-4537-BEB4-DC0109D24590}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{326D6657-C332-423F-9201-558DA39D442E}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNB-NH-CP_01" ID="{02900C79-3E09-4537-BEB4-DC0109D24590}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{FF6BBF94-B7B1-413F-B21F-B77E889C1EE3}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_B" ID="{AE09F08E-89EA-4E99-990D-60216073FC4D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{F409559F-35A1-4933-A4E3-B944E9BF0FC3}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="NeutralizeHostile" ID="{CE911D1E-00AF-4330-B216-2B933BB1ADA0}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{7B7ACC0C-983E-4816-A316-E0BD2EE22A32}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Completed" ID="{79AFFBD8-8AD6-4ED3-B206-8178B812FE39}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{4D55D6EE-0E51-4EA2-A131-AACCA6502169}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNB-NH-FL_01" ID="{F29400ED-E6B7-4FA6-A907-9D6724185B97}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{4D55D6EE-0E51-4EA2-A131-AACCA6502169}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNB-NH-FL_01" ID="{F29400ED-E6B7-4FA6-A907-9D6724185B97}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{CDFB069C-F723-4C45-8B95-7135E721C8FE}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_B" ID="{AE09F08E-89EA-4E99-990D-60216073FC4D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{AA2DE26B-9A0A-49EE-8163-E530A466870C}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="NeutralizeHostile" ID="{CE911D1E-00AF-4330-B216-2B933BB1ADA0}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{D9081FA6-02A9-42DD-AAF1-64E536083F54}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Failed" ID="{FCB7B551-8690-4861-B30C-8295EB311CB7}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{59193E6C-320F-43D2-A099-4CC4D8B7F1D0}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNB-OB-FL_01" ID="{F7E13D80-2188-4A93-B92F-7D6781CFC671}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{59193E6C-320F-43D2-A099-4CC4D8B7F1D0}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNB-OB-FL_01" ID="{F7E13D80-2188-4A93-B92F-7D6781CFC671}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{BACEDCED-7555-4883-A5F8-D97F9B647112}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_B" ID="{AE09F08E-89EA-4E99-990D-60216073FC4D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{BFA6B23B-D695-4C3D-848E-79C3EC3A41EA}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Objective" ID="{D9391B7B-44F2-49E3-8756-9A592468BDAA}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{06B234ED-B2A8-47FA-A71F-2759D3CDE008}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Failed" ID="{FCB7B551-8690-4861-B30C-8295EB311CB7}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{EFBE5D43-0804-42E6-BA2D-91B7A2CDCA9C}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNB-RH-CP_01" ID="{0B48479B-1A06-4E70-B0B6-1AB0A290462F}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{EFBE5D43-0804-42E6-BA2D-91B7A2CDCA9C}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNB-RH-CP_01" ID="{0B48479B-1A06-4E70-B0B6-1AB0A290462F}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{3AFCCA63-219C-4A59-8052-9C75D9433C76}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_B" ID="{AE09F08E-89EA-4E99-990D-60216073FC4D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{D0086FA8-E9D1-469E-86B0-AA164FC8DA92}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="RescueHostage" ID="{A5CF8DAF-3C4B-4838-80C2-DF81E5303024}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{B4689107-7A7A-453E-B7C5-BC66F264DA80}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Completed" ID="{79AFFBD8-8AD6-4ED3-B206-8178B812FE39}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{2B2BD6D1-B935-4503-8DF6-1B300BC3BD7B}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNB-RH-FL_01" ID="{8D0B72BB-4372-4692-9001-CE9416E7D949}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{2B2BD6D1-B935-4503-8DF6-1B300BC3BD7B}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNB-RH-FL_01" ID="{8D0B72BB-4372-4692-9001-CE9416E7D949}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{BC28DD18-B29E-4FA3-AE29-77360D4C6FCB}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_B" ID="{AE09F08E-89EA-4E99-990D-60216073FC4D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{5FC1E9DF-B744-48C7-9EA9-B53833E8573E}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="RescueHostage" ID="{A5CF8DAF-3C4B-4838-80C2-DF81E5303024}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{7ADA6969-1851-4038-A413-28CAC3948ECE}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Failed" ID="{FCB7B551-8690-4861-B30C-8295EB311CB7}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{949AAD35-F66B-4E5B-A266-F5CA2D31AC96}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNA-OB-OS" ID="{235CAE24-95D0-446C-8895-1F6407F404C4}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{949AAD35-F66B-4E5B-A266-F5CA2D31AC96}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNA-OB-OS" ID="{235CAE24-95D0-446C-8895-1F6407F404C4}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{5447CF1B-1723-464E-A9E4-A082763EDB44}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_A" ID="{611F2138-AEA5-41CC-8848-E4A9A0DD8D5F}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{DAAB41EA-DC67-43CE-8077-2A4DA5CFA2F5}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Objective" ID="{D9391B7B-44F2-49E3-8756-9A592468BDAA}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{9660C45E-CF0A-4831-BA85-B97A05132282}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="ObjectiveStatus" ID="{5034CAD2-36B1-41F8-8249-CA8FBF8AD4AE}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{47A23174-0A13-4BB6-A8C6-81A637C7DB8A}">
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{47A23174-0A13-4BB6-A8C6-81A637C7DB8A}">
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{0BD96892-CBEB-48AC-9162-543A917936E4}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit" ID="{AB619779-DBCA-455C-B1FA-3DA0D1BFEAF1}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{B470864B-E69A-417A-B0E9-65101E93024C}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Objective" ID="{D9391B7B-44F2-49E3-8756-9A592468BDAA}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{558AB0D7-8694-483B-BB4D-A94A654EEFE4}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="ObjectiveStatus" ID="{5034CAD2-36B1-41F8-8249-CA8FBF8AD4AE}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
 						</ObjectList>
 					</ObjectLists>
 				</DialogueEvent>
 				<DialogueEvent Name="Unit_Under_Attack" ID="{BB5E4307-3363-43FD-B5FA-091526E189F2}">
 					<ObjectLists>
 						<ObjectList Name="Arguments">
-							<Reference>
-								<ObjectRef Name="Unit" ID="{AB619779-DBCA-455C-B1FA-3DA0D1BFEAF1}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
-							</Reference>
-							<Reference>
-								<ObjectRef Name="Hostile" ID="{2A19ADA9-B6C0-4C4F-AD5A-E811629C83B5}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
-							</Reference>
-							<Reference>
-								<ObjectRef Name="Location" ID="{587FB8C3-591C-469F-87BF-7334E1821AB4}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
-							</Reference>
+							<PluginInnerObject Name="" ID="{3C2A3DA6-1901-485F-884E-EF71B91AA2FB}" PluginName="ArgumentsSlot" CompanyID="0" PluginID="87">
+								<ReferenceList>
+									<Reference Name="Argument">
+										<ObjectRef Name="Unit" ID="{AB619779-DBCA-455C-B1FA-3DA0D1BFEAF1}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
+									</Reference>
+								</ReferenceList>
+							</PluginInnerObject>
+							<PluginInnerObject Name="" ID="{630B2CE8-450D-4E5F-A936-3840DA9E9659}" PluginName="ArgumentsSlot" CompanyID="0" PluginID="87">
+								<ReferenceList>
+									<Reference Name="Argument">
+										<ObjectRef Name="Hostile" ID="{2A19ADA9-B6C0-4C4F-AD5A-E811629C83B5}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
+									</Reference>
+								</ReferenceList>
+							</PluginInnerObject>
+							<PluginInnerObject Name="" ID="{EE696553-36C2-4FDB-917E-6F3BC3D2EBA1}" PluginName="ArgumentsSlot" CompanyID="0" PluginID="87">
+								<ReferenceList>
+									<Reference Name="Argument">
+										<ObjectRef Name="Location" ID="{587FB8C3-591C-469F-87BF-7334E1821AB4}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
+									</Reference>
+								</ReferenceList>
+							</PluginInnerObject>
 						</ObjectList>
 						<ObjectList Name="Entries">
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{BE77BBB7-80E9-4F98-8796-CB000BBEABBB}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNA-BM-AL_01" ID="{B12ECF33-68AA-4983-9771-7025A827D442}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+							<MultiSwitchEntry Name="" ID="{BE77BBB7-80E9-4F98-8796-CB000BBEABBB}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNA-BM-AL_01" ID="{B12ECF33-68AA-4983-9771-7025A827D442}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{92EEF4A6-E285-4C36-AF77-8260CD4EF943}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_A" ID="{611F2138-AEA5-41CC-8848-E4A9A0DD8D5F}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{4954BC12-660E-42E4-9883-E60507B81D6B}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Bum" ID="{397F1531-B376-416C-B488-DBBF8E1B3E8D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{7D732DE5-67ED-4CB6-A216-E8DDC8CD3660}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Alley" ID="{A1915FDE-C459-4E8E-97EA-7EBDAE394DD9}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{E461A14F-4621-4A92-992C-120A77E2A995}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNA-BM-HG_01" ID="{A20C7B94-B634-4C5E-A5F9-DDFEDD4C6828}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{E461A14F-4621-4A92-992C-120A77E2A995}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNA-BM-HG_01" ID="{A20C7B94-B634-4C5E-A5F9-DDFEDD4C6828}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{504C4FEC-D9BF-4908-9FD2-8CDD357A96FD}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_A" ID="{611F2138-AEA5-41CC-8848-E4A9A0DD8D5F}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{F8D3B6CB-9530-4E06-B3A8-20A86EC9B8A0}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Bum" ID="{397F1531-B376-416C-B488-DBBF8E1B3E8D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{F95A927D-E1B6-41B9-BF55-811BF81D7A25}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Hangar" ID="{4499006D-4DCC-47C2-A71E-F7841B2D8B77}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{792C739E-27EF-485F-AFB2-4095920757BD}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNA-BM-LO_01" ID="{908A5E92-D4BB-443C-8FE4-2649FA050474}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{792C739E-27EF-485F-AFB2-4095920757BD}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNA-BM-LO_01" ID="{908A5E92-D4BB-443C-8FE4-2649FA050474}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{2D48D180-D72D-46EB-BF76-D92A94331E49}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_A" ID="{611F2138-AEA5-41CC-8848-E4A9A0DD8D5F}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{A3A89201-33B7-4128-B629-8FC7B8E35311}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Bum" ID="{397F1531-B376-416C-B488-DBBF8E1B3E8D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{96EA9B5D-FB31-4573-A876-F2DC564997F1}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Location" ID="{587FB8C3-591C-469F-87BF-7334E1821AB4}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{6C42A629-D1B9-41A2-A54C-774BC29D36B1}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNA-BM-ST_01" ID="{467DB425-9D2A-4F85-802C-D355D89BFA91}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{6C42A629-D1B9-41A2-A54C-774BC29D36B1}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNA-BM-ST_01" ID="{467DB425-9D2A-4F85-802C-D355D89BFA91}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{B46A8CC8-3211-4C64-AC8E-FBAE425F3A55}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_A" ID="{611F2138-AEA5-41CC-8848-E4A9A0DD8D5F}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{C6FA880D-090B-4DD1-A14D-0FF4D1BC4241}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Bum" ID="{397F1531-B376-416C-B488-DBBF8E1B3E8D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{AC23106B-65A6-4ECA-9553-B4F192D2DCAA}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Street" ID="{B61C7481-E82D-4B9E-80DF-EAFF6C531B01}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{DF2BDF50-EC9C-440B-A07E-0DCB9FA0FA3A}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNA-GG-AL_01" ID="{53576C7D-90C6-48CB-A9CF-D93218CA1A71}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{DF2BDF50-EC9C-440B-A07E-0DCB9FA0FA3A}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNA-GG-AL_01" ID="{53576C7D-90C6-48CB-A9CF-D93218CA1A71}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{46EEF284-1AA1-4377-8A3C-69F1A45BE5DD}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_A" ID="{611F2138-AEA5-41CC-8848-E4A9A0DD8D5F}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{D3BA225C-440B-472A-919E-CCBC0EBBA7BD}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Gang" ID="{264FF8D0-E732-4C6B-8423-AEEC7C45FC8A}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{0B3729C8-F70F-4ADC-AA72-20C2FB9E1D74}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Alley" ID="{A1915FDE-C459-4E8E-97EA-7EBDAE394DD9}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{F4A507F9-4681-409C-88DD-D5BDA3AE85DC}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNA-GG-HG_01" ID="{D2F87A0D-7D5C-429D-B13D-03478450C2A2}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{F4A507F9-4681-409C-88DD-D5BDA3AE85DC}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNA-GG-HG_01" ID="{D2F87A0D-7D5C-429D-B13D-03478450C2A2}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{3E456CA6-1665-42F3-806C-B7BE7D210E18}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_A" ID="{611F2138-AEA5-41CC-8848-E4A9A0DD8D5F}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{6C2B83C9-A275-430B-BC65-6A06F7E96F50}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Gang" ID="{264FF8D0-E732-4C6B-8423-AEEC7C45FC8A}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{DB576A2E-9700-4C30-859D-C45344BD2018}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Hangar" ID="{4499006D-4DCC-47C2-A71E-F7841B2D8B77}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{5AC94A7A-19E1-40EE-9DF1-FAC4DCDDD338}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNA-GG-LO_01" ID="{1D4BF5DA-A537-45C7-8431-4574DED19607}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{5AC94A7A-19E1-40EE-9DF1-FAC4DCDDD338}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNA-GG-LO_01" ID="{1D4BF5DA-A537-45C7-8431-4574DED19607}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{62B578CD-ACB9-46D8-B49B-E426EE0BFD0E}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_A" ID="{611F2138-AEA5-41CC-8848-E4A9A0DD8D5F}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{D35E899B-4CCF-4C5B-8761-3A48C2967B2D}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Gang" ID="{264FF8D0-E732-4C6B-8423-AEEC7C45FC8A}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{034160D4-66C4-4C75-849D-38851216AAE9}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Location" ID="{587FB8C3-591C-469F-87BF-7334E1821AB4}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{9EDDA514-9AB4-4BD5-BB75-C9D94355C13D}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNA-GG-ST_01" ID="{9901CEF3-5F28-45CA-B70A-4B4C8C670EC2}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{9EDDA514-9AB4-4BD5-BB75-C9D94355C13D}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNA-GG-ST_01" ID="{9901CEF3-5F28-45CA-B70A-4B4C8C670EC2}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{23CD48BC-C077-4661-86B5-1C12994B4EFC}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_A" ID="{611F2138-AEA5-41CC-8848-E4A9A0DD8D5F}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{887F4DBB-074D-4FA6-9D6B-F9E42F0A7F0A}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Gang" ID="{264FF8D0-E732-4C6B-8423-AEEC7C45FC8A}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{B723ECC2-E6B1-4E25-A11D-81A0698413D4}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Street" ID="{B61C7481-E82D-4B9E-80DF-EAFF6C531B01}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{445586DF-49C9-4584-9A7E-4B65EF1D9042}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNA-HS-AL_01" ID="{62912824-1D2D-4B50-B806-27A7FE9E1F73}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{445586DF-49C9-4584-9A7E-4B65EF1D9042}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNA-HS-AL_01" ID="{62912824-1D2D-4B50-B806-27A7FE9E1F73}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{F287477C-3A60-42B0-86DD-0CFA7C6E1762}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_A" ID="{611F2138-AEA5-41CC-8848-E4A9A0DD8D5F}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{A0AC9897-ADF4-4495-ABBA-9828846C0DCC}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Hostile" ID="{2A19ADA9-B6C0-4C4F-AD5A-E811629C83B5}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{3F8DF338-3199-430A-B2AE-236D72128B72}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Alley" ID="{A1915FDE-C459-4E8E-97EA-7EBDAE394DD9}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{87954330-326A-4BB4-8CDD-19DE50583EA8}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNA-HS-HG_01" ID="{9F621023-D9F1-4D88-906A-0D89548CF6BB}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{87954330-326A-4BB4-8CDD-19DE50583EA8}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNA-HS-HG_01" ID="{9F621023-D9F1-4D88-906A-0D89548CF6BB}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{84FF7230-442B-4F35-8C85-5853AD549C20}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_A" ID="{611F2138-AEA5-41CC-8848-E4A9A0DD8D5F}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{E13D999D-0A12-44DE-9466-FB493CF3968F}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Hostile" ID="{2A19ADA9-B6C0-4C4F-AD5A-E811629C83B5}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{271BA126-1305-4D0F-A84E-51570632E7A5}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Hangar" ID="{4499006D-4DCC-47C2-A71E-F7841B2D8B77}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{09D9726B-378E-4AA5-911E-E462EEA4A316}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNA-HS-LO_01" ID="{25FF772A-1121-457F-9C1A-4F0EF241F480}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{09D9726B-378E-4AA5-911E-E462EEA4A316}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNA-HS-LO_01" ID="{25FF772A-1121-457F-9C1A-4F0EF241F480}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{9225C52A-676D-4BA7-914F-3A9AA387D869}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_A" ID="{611F2138-AEA5-41CC-8848-E4A9A0DD8D5F}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{39BCEE09-EAC0-4501-90D7-9851CCCFBD00}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Hostile" ID="{2A19ADA9-B6C0-4C4F-AD5A-E811629C83B5}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{71F4C4DE-70EA-4843-876F-531EE1F29909}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Location" ID="{587FB8C3-591C-469F-87BF-7334E1821AB4}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{DE17A16D-0B0D-4106-B5C5-7A00692309C6}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNA-HS-ST_01" ID="{A2660699-19AC-4654-AC66-AD133D2A0695}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{DE17A16D-0B0D-4106-B5C5-7A00692309C6}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNA-HS-ST_01" ID="{A2660699-19AC-4654-AC66-AD133D2A0695}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{966D73FE-D334-4F79-97B3-B4A088FA6CDE}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_A" ID="{611F2138-AEA5-41CC-8848-E4A9A0DD8D5F}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{543F0213-A99A-41A6-B031-490318E946D3}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Hostile" ID="{2A19ADA9-B6C0-4C4F-AD5A-E811629C83B5}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{136D6729-4DDA-480B-9C2C-0E0DEFA17471}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Street" ID="{B61C7481-E82D-4B9E-80DF-EAFF6C531B01}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{694C58FB-E16A-49EE-8BFF-3EF9603A66EF}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNB-BM-AL_01" ID="{5E2038A3-B1CB-4637-9A0C-E60EEC3B1F5B}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{694C58FB-E16A-49EE-8BFF-3EF9603A66EF}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNB-BM-AL_01" ID="{5E2038A3-B1CB-4637-9A0C-E60EEC3B1F5B}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{BCD7406A-A256-458A-8DA2-BE090D81AE78}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_B" ID="{AE09F08E-89EA-4E99-990D-60216073FC4D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{4FD73CF4-002B-4FE6-BC0E-3C95059FD44C}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Bum" ID="{397F1531-B376-416C-B488-DBBF8E1B3E8D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{55BE2C84-9A9D-4357-9179-0F85C5F0ABEE}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Alley" ID="{A1915FDE-C459-4E8E-97EA-7EBDAE394DD9}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{A302EAA1-636B-4942-89E3-38A98465DB79}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNB-BM-HG_01" ID="{ADE842DB-EB90-46A0-AAF6-55820EA03ED3}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{A302EAA1-636B-4942-89E3-38A98465DB79}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNB-BM-HG_01" ID="{ADE842DB-EB90-46A0-AAF6-55820EA03ED3}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{8C95C33A-C160-49DB-B5E5-303DAB561936}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_B" ID="{AE09F08E-89EA-4E99-990D-60216073FC4D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{2B6930AD-FB97-4297-8AB4-27E4B3B1505D}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Bum" ID="{397F1531-B376-416C-B488-DBBF8E1B3E8D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{3D73C17C-AB0B-4E41-9281-E201D39A8335}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Hangar" ID="{4499006D-4DCC-47C2-A71E-F7841B2D8B77}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{0941A604-D4E6-4109-81CB-918B435B9A63}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNB-BM-LO_01" ID="{32A3613D-BD9F-4469-BBA1-3220695606EC}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{0941A604-D4E6-4109-81CB-918B435B9A63}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNB-BM-LO_01" ID="{32A3613D-BD9F-4469-BBA1-3220695606EC}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{E2542271-80DD-4252-B08D-A6E8A19C6195}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_B" ID="{AE09F08E-89EA-4E99-990D-60216073FC4D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{971C1B66-5FF6-4E38-87FF-50AC8673AB62}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Bum" ID="{397F1531-B376-416C-B488-DBBF8E1B3E8D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{8E94F155-30A3-4E12-9261-376A17227E9D}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Location" ID="{587FB8C3-591C-469F-87BF-7334E1821AB4}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{49705B57-B84A-48EF-A30C-340D43DD7A1B}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNB-BM-ST_01" ID="{382AD719-4A5C-4762-B43B-96873DE4043D}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{49705B57-B84A-48EF-A30C-340D43DD7A1B}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNB-BM-ST_01" ID="{382AD719-4A5C-4762-B43B-96873DE4043D}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{253845F9-DF39-48F3-8B4D-482198825D8D}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_B" ID="{AE09F08E-89EA-4E99-990D-60216073FC4D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{811275A2-3AFA-4698-8AB8-E1AE7D4D818B}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Bum" ID="{397F1531-B376-416C-B488-DBBF8E1B3E8D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{DCF11AEA-BD11-43EB-9D98-63035EE5B32F}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Street" ID="{B61C7481-E82D-4B9E-80DF-EAFF6C531B01}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{DC8560E1-711E-4051-99A5-D3529B64B9DB}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNB-GG-AL_01" ID="{AE91E498-5104-4F70-915C-2F90E951EAC8}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{DC8560E1-711E-4051-99A5-D3529B64B9DB}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNB-GG-AL_01" ID="{AE91E498-5104-4F70-915C-2F90E951EAC8}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{8D98AFD1-11AC-41EB-8CB5-9C07D0A1B180}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_B" ID="{AE09F08E-89EA-4E99-990D-60216073FC4D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{5E58308F-383B-4011-94C5-3720448B4F78}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Gang" ID="{264FF8D0-E732-4C6B-8423-AEEC7C45FC8A}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{E04EB574-D8CF-4BFE-BCF9-24C3EC9050E8}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Alley" ID="{A1915FDE-C459-4E8E-97EA-7EBDAE394DD9}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{4A2FE186-ABA6-4D66-869D-D09391F9B1AA}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNB-GG-HG_01" ID="{3FEABFA4-E9D3-428F-A4F5-DF90C3FAA884}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{4A2FE186-ABA6-4D66-869D-D09391F9B1AA}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNB-GG-HG_01" ID="{3FEABFA4-E9D3-428F-A4F5-DF90C3FAA884}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{D2FC9F83-BF89-4420-A181-B29B5CD64F77}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_B" ID="{AE09F08E-89EA-4E99-990D-60216073FC4D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{AA4EC474-B790-4B47-A3B6-BA8ECE1AB782}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Gang" ID="{264FF8D0-E732-4C6B-8423-AEEC7C45FC8A}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{055CED06-A13A-43B6-9BCF-86EBED58E3B6}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Hangar" ID="{4499006D-4DCC-47C2-A71E-F7841B2D8B77}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{D152C8EF-DFBF-4D6B-8F96-0E8565759467}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNB-GG-LO_01" ID="{C6D9D4E9-F0E9-46B1-A81E-5F8A563B7254}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{D152C8EF-DFBF-4D6B-8F96-0E8565759467}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNB-GG-LO_01" ID="{C6D9D4E9-F0E9-46B1-A81E-5F8A563B7254}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{9D5F663C-74D6-442A-BBFB-7C786B46D1A8}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_B" ID="{AE09F08E-89EA-4E99-990D-60216073FC4D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{9346EF3E-F429-46D8-A450-B143CF47A48E}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Gang" ID="{264FF8D0-E732-4C6B-8423-AEEC7C45FC8A}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{E8A24A9D-F00F-49B7-8A79-3AA1F74545EE}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Location" ID="{587FB8C3-591C-469F-87BF-7334E1821AB4}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{44DB1D31-A241-4A1A-83F9-7071D864D6C4}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNB-GG-ST_01" ID="{4FD62292-4F77-4AD3-BA89-CA23B60E35C1}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{44DB1D31-A241-4A1A-83F9-7071D864D6C4}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNB-GG-ST_01" ID="{4FD62292-4F77-4AD3-BA89-CA23B60E35C1}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{CA4CE488-8ECB-434D-9343-F58758AFC99D}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_B" ID="{AE09F08E-89EA-4E99-990D-60216073FC4D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{14E4EDAA-FE99-4F39-9FE2-4877F19AD045}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Gang" ID="{264FF8D0-E732-4C6B-8423-AEEC7C45FC8A}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{DC989DC7-5FB4-416C-B446-006616EAC9C7}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Street" ID="{B61C7481-E82D-4B9E-80DF-EAFF6C531B01}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{D761944D-464B-411B-92CA-566A9C198921}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNB-HS-AL_01" ID="{100AC385-D64D-47D8-BE42-ED46F4F772EF}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{D761944D-464B-411B-92CA-566A9C198921}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNB-HS-AL_01" ID="{100AC385-D64D-47D8-BE42-ED46F4F772EF}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{DC2FC710-110F-4945-9D14-AD1F07AA74C0}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_B" ID="{AE09F08E-89EA-4E99-990D-60216073FC4D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{63133CDC-33ED-4655-AD9E-F4C8A0CE0058}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Hostile" ID="{2A19ADA9-B6C0-4C4F-AD5A-E811629C83B5}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{1AD63B33-F0B3-4716-938C-072FB48B95A4}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Alley" ID="{A1915FDE-C459-4E8E-97EA-7EBDAE394DD9}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{F922F629-8613-438D-AADC-BFDC05729418}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNB-HS-HG_01" ID="{C2593775-3882-461D-95F7-17F2E8A06463}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{F922F629-8613-438D-AADC-BFDC05729418}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNB-HS-HG_01" ID="{C2593775-3882-461D-95F7-17F2E8A06463}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{10A864A2-D592-4EB4-AA71-4FA59470A471}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_B" ID="{AE09F08E-89EA-4E99-990D-60216073FC4D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{5B7F529F-6192-408D-890A-0DE4B7B0991C}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Hostile" ID="{2A19ADA9-B6C0-4C4F-AD5A-E811629C83B5}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{DB11EE6E-E45F-4C39-BEE3-3E9F0F2D30DF}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Hangar" ID="{4499006D-4DCC-47C2-A71E-F7841B2D8B77}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{28B04A21-FE36-4AE2-A346-36561FAF7CFB}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNB-HS-LO_01" ID="{EE8303E8-6E28-4D3F-9BE0-820085D7E0D7}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{28B04A21-FE36-4AE2-A346-36561FAF7CFB}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNB-HS-LO_01" ID="{EE8303E8-6E28-4D3F-9BE0-820085D7E0D7}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{7573CCFA-E3DC-475E-B519-DD44F57CED5A}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_B" ID="{AE09F08E-89EA-4E99-990D-60216073FC4D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{0AF9D2E4-937A-40C8-A1E4-61064E3E6E6E}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Hostile" ID="{2A19ADA9-B6C0-4C4F-AD5A-E811629C83B5}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{A2D4D284-1CAB-460C-B843-0893D7D9B987}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Location" ID="{587FB8C3-591C-469F-87BF-7334E1821AB4}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{27222EAE-D671-4445-94FC-BB91AF40F39C}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="UNB-HS-ST_01" ID="{2D841330-669A-4837-A0F8-5D151838B944}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{27222EAE-D671-4445-94FC-BB91AF40F39C}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="UNB-HS-ST_01" ID="{2D841330-669A-4837-A0F8-5D151838B944}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{79B288F7-B3C1-4238-B249-914C54D57893}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Unit_B" ID="{AE09F08E-89EA-4E99-990D-60216073FC4D}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{BF27346B-2A15-4CEB-854A-4BF71B4ABB3F}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Hostile" ID="{2A19ADA9-B6C0-4C4F-AD5A-E811629C83B5}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+										<PluginInnerObject Name="" ID="{9D1A1A97-29BA-4DCC-9039-5D2426717259}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Street" ID="{B61C7481-E82D-4B9E-80DF-EAFF6C531B01}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
 						</ObjectList>
 					</ObjectLists>
 				</DialogueEvent>
 				<DialogueEvent Name="WalkieTalkie" ID="{AB9BBA39-26FD-4D6A-8A4F-C8FD6F3DCA89}">
 					<ObjectLists>
 						<ObjectList Name="Arguments">
-							<Reference>
-								<ObjectRef Name="WalkieTalkie" ID="{37B800E1-46C8-4DB3-AB5F-94C347246482}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
-							</Reference>
+							<PluginInnerObject Name="" ID="{E4578314-1CD4-45BD-B333-95E6417C3E1D}" PluginName="ArgumentsSlot" CompanyID="0" PluginID="87">
+								<ReferenceList>
+									<Reference Name="Argument">
+										<ObjectRef Name="WalkieTalkie" ID="{37B800E1-46C8-4DB3-AB5F-94C347246482}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
+									</Reference>
+								</ReferenceList>
+							</PluginInnerObject>
 						</ObjectList>
 						<ObjectList Name="Entries">
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{4E4DCD18-057E-4C58-A934-525C93C8D9EE}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="WalkieTalkie_IN" ID="{07E335AE-333C-4005-AC09-611016580EF2}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+							<MultiSwitchEntry Name="" ID="{4E4DCD18-057E-4C58-A934-525C93C8D9EE}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="WalkieTalkie_IN" ID="{07E335AE-333C-4005-AC09-611016580EF2}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{2B6D7852-ED25-4EED-B6F9-292EBC77D897}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Comm_In" ID="{1923BF16-E5D2-4E58-979A-D4DEFCD1018F}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
-							<Reference>
-								<Local>
-									<MultiSwitchEntry Name="" ID="{D7A3A05B-8B7B-4A26-8120-A9622C2D1E52}">
-										<ReferenceList>
-											<Reference Name="AudioNode">
-												<ObjectRef Name="WalkieTalkie_OUT" ID="{E7AF7641-4A00-404D-B3C2-5E2A7AAF3739}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
-											</Reference>
-										</ReferenceList>
-										<ObjectLists>
-											<ObjectList Name="EntryPath">
-												<Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{D7A3A05B-8B7B-4A26-8120-A9622C2D1E52}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="WalkieTalkie_OUT" ID="{E7AF7641-4A00-404D-B3C2-5E2A7AAF3739}" WorkUnitID="{0D074CF2-E1C0-4B2F-BD83-FADC7FA3F7F7}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{5C8EF2A1-6F9C-4882-88A3-A4DB58937569}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Comm_Out" ID="{CF6FCE92-B34B-4FA1-AC28-596EF4CA0BFB}" WorkUnitID="{669F0DAE-C407-4600-BE0F-F91C12CEC42B}"/>
 												</Reference>
-											</ObjectList>
-										</ObjectLists>
-									</MultiSwitchEntry>
-								</Local>
-							</Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
 						</ObjectList>
 					</ObjectLists>
 				</DialogueEvent>

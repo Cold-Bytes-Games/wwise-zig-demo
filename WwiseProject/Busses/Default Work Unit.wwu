@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}" SchemaVersion="123">
+<WwiseDocument Type="WorkUnit" ID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}" SchemaVersion="133">
 	<Busses>
 		<WorkUnit Name="Default Work Unit" ID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}" PersistMode="Standalone">
 			<ChildrenList>
@@ -25,9 +25,8 @@
 							</PropertyList>
 							<ObjectLists>
 								<ObjectList Name="Effects">
-									<Reference>
-										<Local>
-											<EffectSlot Name="" ID="{F1B41D99-65E0-4A24-9D01-8CE3D235CD6F}" ShortID="329380751">
+									
+								<EffectSlot Name="" ID="{F1B41D99-65E0-4A24-9D01-8CE3D235CD6F}" ShortID="329380751">
 												<ReferenceList>
 													<Reference Name="Effect">
 														<Custom CreatedFrom="{FC9B2CA3-2F46-455A-8998-CE2C311CD26B}">
@@ -54,14 +53,10 @@
 														</Custom>
 													</Reference>
 												</ReferenceList>
-											</EffectSlot>
-										</Local>
-									</Reference>
-								</ObjectList>
+											</EffectSlot></ObjectList>
 								<ObjectList Name="RTPC">
-									<Reference>
-										<Local>
-											<RTPC Name="" ID="{6458FE37-14E4-44DC-94A6-944431441F02}" ShortID="783660359">
+									
+								<RTPC Name="" ID="{6458FE37-14E4-44DC-94A6-944431441F02}" ShortID="783660359">
 												<PropertyList>
 													<Property Name="PropertyName" Type="string" Value="BypassEffect"/>
 												</PropertyList>
@@ -96,10 +91,7 @@
 														</Custom>
 													</Reference>
 												</ReferenceList>
-											</RTPC>
-										</Local>
-									</Reference>
-								</ObjectList>
+											</RTPC></ObjectList>
 							</ObjectLists>
 						</Bus>
 						<Bus Name="Environmental Bus" ID="{53D0C673-DFDE-4CD6-92E6-5A1C2D92FBE1}">
@@ -114,46 +106,26 @@
 									</PropertyList>
 									<ObjectLists>
 										<ObjectList Name="Effects">
-											<Reference>
-												<Local>
-													<EffectSlot Name="" ID="{97FAE623-40FC-4DC8-96F2-E937C8C201AF}" ShortID="444871550">
+											
+										<EffectSlot Name="" ID="{97FAE623-40FC-4DC8-96F2-E937C8C201AF}" ShortID="444871550">
 														<ReferenceList>
 															<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
 																<ObjectRef Name="Hangar_Env" ID="{C2817027-BAD4-4483-8762-64C45E56497E}" WorkUnitID="{DC1BCA07-F4BB-483E-A207-A5D3F24C41B2}"/>
 															</Reference>
 														</ReferenceList>
-													</EffectSlot>
-												</Local>
-											</Reference>
-										</ObjectList>
+													</EffectSlot></ObjectList>
 										<ObjectList Name="Effects" Platform="iOS">
-											<Reference>
-												<Local>
-													<EffectSlot Name="" ID="{02C8E8ED-1053-4D15-BEF3-DF5BC89F5913}" ShortID="475037939">
+											
+											
+											
+											
+										<EffectSlot Name="" ID="{02C8E8ED-1053-4D15-BEF3-DF5BC89F5913}" ShortID="475037939">
 														<ReferenceList>
 															<Reference Name="Effect" PluginName="Wwise Matrix Reverb" CompanyID="0" PluginID="115" PluginType="3">
 																<ObjectRef Name="Hangar_Env_Low" ID="{02B9CCFE-D719-4F10-B10C-844791DA0F01}" WorkUnitID="{DC1BCA07-F4BB-483E-A207-A5D3F24C41B2}"/>
 															</Reference>
 														</ReferenceList>
-													</EffectSlot>
-												</Local>
-											</Reference>
-											<Reference>
-												<Local>
-													<EffectSlot Name="" ID="{F83F9F3E-4FA3-49A6-AA43-B2A108853C9C}" ShortID="147850768"/>
-												</Local>
-											</Reference>
-											<Reference>
-												<Local>
-													<EffectSlot Name="" ID="{B48B311F-DAAB-4A0F-BFB0-0A9C4E73D01B}" ShortID="404550529"/>
-												</Local>
-											</Reference>
-											<Reference>
-												<Local>
-													<EffectSlot Name="" ID="{D5E9DA5D-798A-426B-9583-B8D995B3A06B}" ShortID="294085282"/>
-												</Local>
-											</Reference>
-										</ObjectList>
+													</EffectSlot><EffectSlot Name="" ID="{F83F9F3E-4FA3-49A6-AA43-B2A108853C9C}" ShortID="147850768"/><EffectSlot Name="" ID="{B48B311F-DAAB-4A0F-BFB0-0A9C4E73D01B}" ShortID="404550529"/><EffectSlot Name="" ID="{D5E9DA5D-798A-426B-9583-B8D995B3A06B}" ShortID="294085282"/></ObjectList>
 									</ObjectLists>
 								</AuxBus>
 							</ChildrenList>
@@ -221,7 +193,7 @@
 												</LowPassFilterUsage>
 												<HighPassFilterUsage>
 													<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
-												</HighPassFilterUsage>
+												</HighPassFilterUsage><DualShelfUsage><CurveUsageInfo Platform="Linked" CurveToUse="None"/></DualShelfUsage>
 												<SpreadUsage>
 													<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
 												</SpreadUsage>
@@ -236,7 +208,7 @@
 												</ObstructionLPFUsage>
 												<ObstructionHPFUsage>
 													<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-												</ObstructionHPFUsage>
+												</ObstructionHPFUsage><ObstructionDSFUsage><CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/></ObstructionDSFUsage>
 												<OcclusionVolumeUsage>
 													<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
 												</OcclusionVolumeUsage>
@@ -245,7 +217,7 @@
 												</OcclusionLPFUsage>
 												<OcclusionHPFUsage>
 													<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-												</OcclusionHPFUsage>
+												</OcclusionHPFUsage><OcclusionDSFUsage><CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/></OcclusionDSFUsage>
 												<DiffractionVolumeUsage>
 													<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
 												</DiffractionVolumeUsage>
@@ -254,7 +226,7 @@
 												</DiffractionLPFUsage>
 												<DiffractionHPFUsage>
 													<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-												</DiffractionHPFUsage>
+												</DiffractionHPFUsage><DiffractionDSFUsage><CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/></DiffractionDSFUsage>
 												<TransmissionVolumeUsage>
 													<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
 												</TransmissionVolumeUsage>
@@ -263,7 +235,7 @@
 												</TransmissionLPFUsage>
 												<TransmissionHPFUsage>
 													<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-												</TransmissionHPFUsage>
+												</TransmissionHPFUsage><TransmissionDSFUsage><CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/></TransmissionDSFUsage>
 											</CurveUsageInfoList>
 										</Attenuation>
 									</Custom>
@@ -307,18 +279,14 @@
 											</PropertyList>
 											<ObjectLists>
 												<ObjectList Name="Effects">
-													<Reference>
-														<Local>
-															<EffectSlot Name="" ID="{84363D20-0FD0-47B7-9E54-F7F0279B6E5F}" ShortID="152105190">
+													
+												<EffectSlot Name="" ID="{84363D20-0FD0-47B7-9E54-F7F0279B6E5F}" ShortID="152105190">
 																<ReferenceList>
 																	<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
 																		<ObjectRef Name="Hangar_Env" ID="{C2817027-BAD4-4483-8762-64C45E56497E}" WorkUnitID="{DC1BCA07-F4BB-483E-A207-A5D3F24C41B2}"/>
 																	</Reference>
 																</ReferenceList>
-															</EffectSlot>
-														</Local>
-													</Reference>
-												</ObjectList>
+															</EffectSlot></ObjectList>
 											</ObjectLists>
 										</AuxBus>
 										<AuxBus Name="Room1" ID="{1F639A50-6448-48BE-8746-13491225CF24}">
@@ -331,18 +299,14 @@
 											</PropertyList>
 											<ObjectLists>
 												<ObjectList Name="Effects">
-													<Reference>
-														<Local>
-															<EffectSlot Name="" ID="{D903E5DC-3313-4CB2-9F6E-375B14643DA1}" ShortID="701464566">
+													
+												<EffectSlot Name="" ID="{D903E5DC-3313-4CB2-9F6E-375B14643DA1}" ShortID="701464566">
 																<ReferenceList>
 																	<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
 																		<ObjectRef Name="Bright_Small_Hall" ID="{D8AD1955-D2BA-4C88-A806-E2D8AB47A90B}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
 																	</Reference>
 																</ReferenceList>
-															</EffectSlot>
-														</Local>
-													</Reference>
-												</ObjectList>
+															</EffectSlot></ObjectList>
 											</ObjectLists>
 										</AuxBus>
 									</ChildrenList>
@@ -397,9 +361,8 @@
 											</PropertyList>
 											<ObjectLists>
 												<ObjectList Name="Effects">
-													<Reference>
-														<Local>
-															<EffectSlot Name="" ID="{BA5BED93-CE3C-44B8-98FE-E54C7E15EB1F}" ShortID="85173142">
+													
+												<EffectSlot Name="" ID="{BA5BED93-CE3C-44B8-98FE-E54C7E15EB1F}" ShortID="85173142">
 																<ReferenceList>
 																	<Reference Name="Effect">
 																		<Custom>
@@ -417,10 +380,7 @@
 																		</Custom>
 																	</Reference>
 																</ReferenceList>
-															</EffectSlot>
-														</Local>
-													</Reference>
-												</ObjectList>
+															</EffectSlot></ObjectList>
 											</ObjectLists>
 										</AuxBus>
 									</ChildrenList>
@@ -497,18 +457,14 @@
 											</PropertyList>
 											<ObjectLists>
 												<ObjectList Name="Effects">
-													<Reference>
-														<Local>
-															<EffectSlot Name="" ID="{85D69D03-0AC5-494D-935F-EE4578E3D894}" ShortID="181059252">
+													
+												<EffectSlot Name="" ID="{85D69D03-0AC5-494D-935F-EE4578E3D894}" ShortID="181059252">
 																<ReferenceList>
 																	<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
 																		<ObjectRef Name="Room_Medium_Tiled" ID="{0C0A3A92-A571-4FDB-AB40-ACFED04E0217}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
 																	</Reference>
 																</ReferenceList>
-															</EffectSlot>
-														</Local>
-													</Reference>
-												</ObjectList>
+															</EffectSlot></ObjectList>
 											</ObjectLists>
 										</AuxBus>
 										<AuxBus Name="Outside" ID="{2E789ECD-A9C0-4E30-8580-E3C417A3C9DC}">
@@ -536,18 +492,14 @@
 											</PropertyList>
 											<ObjectLists>
 												<ObjectList Name="Effects">
-													<Reference>
-														<Local>
-															<EffectSlot Name="" ID="{89DB2613-9DF2-48AA-9448-EFCB75762763}" ShortID="725689907">
+													
+												<EffectSlot Name="" ID="{89DB2613-9DF2-48AA-9448-EFCB75762763}" ShortID="725689907">
 																<ReferenceList>
 																	<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
 																		<ObjectRef Name="Huge_Space_Garage" ID="{1AF92D84-49DD-4BBC-8F29-6C6D10082B6E}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
 																	</Reference>
 																</ReferenceList>
-															</EffectSlot>
-														</Local>
-													</Reference>
-												</ObjectList>
+															</EffectSlot></ObjectList>
 											</ObjectLists>
 										</AuxBus>
 									</ChildrenList>
@@ -712,10 +664,10 @@ Note that this bus forces its output to be router to the audio device's Main Mix
 											</PropertyList>
 											<ObjectLists>
 												<ObjectList Name="Metadata">
-													<Reference PluginName="Wwise System Output Settings" CompanyID="0" PluginID="900" PluginType="9">
+													
+												<PluginInnerObject Name="" ID="{0CEB69D6-9439-46FA-A6BB-55CDC014D547}" PluginName="MetadataSlot" CompanyID="0" PluginID="85"><ReferenceList><Reference PluginName="Wwise System Output Settings" CompanyID="0" PluginID="900" PluginType="9" Name="Metadata">
 														<ObjectRef Name="RouteToMainMix" ID="{10C2B58D-5565-42CF-A5BE-5DB6E9417FE3}" WorkUnitID="{FA5C26E2-8747-4387-A720-CCE1F9C8814E}"/>
-													</Reference>
-												</ObjectList>
+													</Reference></ReferenceList></PluginInnerObject></ObjectList>
 											</ObjectLists>
 										</Bus>
 										<Bus Name="Sounds" ID="{9710B44F-0296-40F1-BB0B-DEFC366464DC}">
@@ -755,7 +707,7 @@ This bus is configured as "Same as parent", same as all its ancestors up to the 
 						<StateGroupList>
 							<StateGroupInfo>
 								<StateGroupRef Name="PlayerHealth" ID="{04DA61D8-C090-4BA1-A0A3-CCAD0587AE0E}"/>
-							</StateGroupInfo>
+							<StateGroupInfo Name="" ID="{EFF91A81-B453-475D-8B37-7EB63F798C8F}"/></StateGroupInfo>
 						</StateGroupList>
 						<CustomStateList>
 							<CustomState>

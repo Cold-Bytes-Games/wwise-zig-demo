@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{0CB25EE0-4A76-4A92-A48A-4A708C73630A}" SchemaVersion="123">
-	<AudioDevices>
+<WwiseDocument Type="WorkUnit" ID="{0CB25EE0-4A76-4A92-A48A-4A708C73630A}" SchemaVersion="133">
+	<Devices>
 		<WorkUnit Name="Default Work Unit" ID="{0CB25EE0-4A76-4A92-A48A-4A708C73630A}" PersistMode="Standalone">
 			<ChildrenList>
 				<AudioDevice Name="Pad_Output" ID="{48154961-0A00-4FB7-8F13-EB143DE4B518}" PluginName="Controller Speaker" CompanyID="0" PluginID="179" PluginType="7"/>
@@ -11,5 +11,5 @@
 				<AudioDevice Name="No_Output" ID="{88C2A285-870C-40D9-8712-07CA2B2DD297}" PluginName="No Output" CompanyID="0" PluginID="181" PluginType="7"/>
 			</ChildrenList>
 		</WorkUnit>
-	</AudioDevices>
+	</Devices>
 </WwiseDocument>

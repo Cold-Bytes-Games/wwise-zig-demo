@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{F5D6A1B7-0351-492B-A43C-CFCD9FE2A1EF}" SchemaVersion="123">
-	<AudioObjects>
+<WwiseDocument Type="WorkUnit" ID="{F5D6A1B7-0351-492B-A43C-CFCD9FE2A1EF}" SchemaVersion="133">
+	<Containers>
 		<WorkUnit Name="MIDI" ID="{F5D6A1B7-0351-492B-A43C-CFCD9FE2A1EF}" PersistMode="Standalone">
 			<ChildrenList>
 				<Sound Name="Metronome" ID="{3BB365E3-DA05-436E-B60E-3334D8CE9ADA}" ShortID="673985831">
@@ -25,9 +25,8 @@
 							</PropertyList>
 							<ObjectLists>
 								<ObjectList Name="RTPC">
-									<Reference>
-										<Local>
-											<RTPC Name="" ID="{7F2F0D31-5C83-4476-8FE4-91E84391ACA5}" ShortID="220813828">
+									
+								<RTPC Name="" ID="{7F2F0D31-5C83-4476-8FE4-91E84391ACA5}" ShortID="220813828">
 												<PropertyList>
 													<Property Name="PropertyName" Type="string" Value="OutputLevel"/>
 												</PropertyList>
@@ -64,10 +63,7 @@
 														</Custom>
 													</Reference>
 												</ReferenceList>
-											</RTPC>
-										</Local>
-									</Reference>
-								</ObjectList>
+											</RTPC></ObjectList>
 							</ObjectLists>
 							<Language>SFX</Language>
 						</SourcePlugin>
@@ -78,5 +74,5 @@
 				</Sound>
 			</ChildrenList>
 		</WorkUnit>
-	</AudioObjects>
+	</Containers>
 </WwiseDocument>

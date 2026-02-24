@@ -7,13 +7,15 @@
 					<PropertyList>
 						<Property Name="Channels" Type="int32">
 							<ValueList>
+								<Value Platform="Switch2">4</Value>
 								<Value Platform="Switch">4</Value>
 								<Value Platform="Linux">4</Value>
 								<Value Platform="iOS">4</Value>
 								<Value Platform="Mac">4</Value>
 								<Value Platform="PS4">4</Value>
-								<Value Platform="Stadia">4</Value>
+								<Value Platform="OpenHarmony">4</Value>
 								<Value Platform="XboxOne">4</Value>
+								<Value Platform="Web">4</Value>
 								<Value Platform="Windows">4</Value>
 								<Value Platform="PS5">4</Value>
 								<Value Platform="XboxSeriesX">4</Value>
@@ -22,13 +24,15 @@
 						</Property>
 						<Property Name="LRMix" Type="Real64">
 							<ValueList>
+								<Value Platform="Switch2">0</Value>
 								<Value Platform="Switch">0</Value>
 								<Value Platform="Linux">0</Value>
 								<Value Platform="iOS">0</Value>
 								<Value Platform="Mac">0</Value>
 								<Value Platform="PS4">0</Value>
-								<Value Platform="Stadia">0</Value>
+								<Value Platform="OpenHarmony">0</Value>
 								<Value Platform="XboxOne">0</Value>
+								<Value Platform="Web">0</Value>
 								<Value Platform="Windows">0</Value>
 								<Value Platform="PS5">0</Value>
 								<Value Platform="XboxSeriesX">0</Value>
@@ -37,13 +41,15 @@
 						</Property>
 						<Property Name="MaxSampleRate" Type="int32">
 							<ValueList>
+								<Value Platform="Switch2">48000</Value>
 								<Value Platform="Switch">48000</Value>
 								<Value Platform="Linux">48000</Value>
 								<Value Platform="iOS">48000</Value>
 								<Value Platform="Mac">48000</Value>
 								<Value Platform="PS4">48000</Value>
-								<Value Platform="Stadia">48000</Value>
+								<Value Platform="OpenHarmony">48000</Value>
 								<Value Platform="XboxOne">48000</Value>
+								<Value Platform="Web">48000</Value>
 								<Value Platform="Windows">48000</Value>
 								<Value Platform="PS5">48000</Value>
 								<Value Platform="XboxSeriesX">48000</Value>
@@ -52,13 +58,15 @@
 						</Property>
 						<Property Name="MinSampleRate" Type="int32">
 							<ValueList>
+								<Value Platform="Switch2">0</Value>
 								<Value Platform="Switch">0</Value>
 								<Value Platform="Linux">0</Value>
 								<Value Platform="iOS">0</Value>
 								<Value Platform="Mac">0</Value>
 								<Value Platform="PS4">0</Value>
-								<Value Platform="Stadia">0</Value>
+								<Value Platform="OpenHarmony">0</Value>
 								<Value Platform="XboxOne">0</Value>
+								<Value Platform="Web">0</Value>
 								<Value Platform="Windows">0</Value>
 								<Value Platform="PS5">0</Value>
 								<Value Platform="XboxSeriesX">0</Value>
@@ -67,13 +75,15 @@
 						</Property>
 						<Property Name="SampleRate" Type="int32">
 							<ValueList>
+								<Value Platform="Switch2">0</Value>
 								<Value Platform="Switch">0</Value>
 								<Value Platform="Linux">0</Value>
 								<Value Platform="iOS">32000</Value>
 								<Value Platform="Mac">0</Value>
 								<Value Platform="PS4">0</Value>
-								<Value Platform="Stadia">0</Value>
+								<Value Platform="OpenHarmony">32000</Value>
 								<Value Platform="XboxOne">0</Value>
+								<Value Platform="Web">0</Value>
 								<Value Platform="Windows">0</Value>
 								<Value Platform="PS5">0</Value>
 								<Value Platform="XboxSeriesX">0</Value>
@@ -82,38 +92,96 @@
 						</Property>
 					</PropertyList>
 					<ConversionPluginInfoList>
+						<ConversionPluginInfo Platform="Switch2">
+							<ConversionPlugin Name="" ID="{1E0B330F-9858-461E-A7A3-358AB16CD6EC}" PluginName="WEM Opus" CompanyID="0" PluginID="20">
+								<PropertyList>
+									<Property Name="Quality" Type="int32" Value="32"/>
+								</PropertyList>
+							</ConversionPlugin>
+						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="Switch">
-							<ConversionPlugin Name="" ID="{D887B27E-80BD-45AD-89B8-8191CFEED1E2}" PluginName="ADPCM" CompanyID="0" PluginID="2"/>
+							<ConversionPlugin Name="" ID="{7D9CC2BB-0F61-4E7F-AEB0-F794477E4ACF}" PluginName="Vorbis" CompanyID="0" PluginID="4">
+								<PropertyList>
+									<Property Name="SeekTableGranularity" Type="int32" Value="4"/>
+								</PropertyList>
+							</ConversionPlugin>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="Linux">
-							<ConversionPlugin Name="" ID="{0FA77F63-B8B4-4325-A95B-7544CD9526D6}" PluginName="ADPCM" CompanyID="0" PluginID="2"/>
+							<ConversionPlugin Name="" ID="{2BA68540-0A78-40AF-993B-7C339FDC4A40}" PluginName="Vorbis" CompanyID="0" PluginID="4">
+								<PropertyList>
+									<Property Name="SeekTableGranularity" Type="int32" Value="4"/>
+								</PropertyList>
+							</ConversionPlugin>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="iOS">
-							<ConversionPlugin Name="" ID="{E8A0F22F-9257-4ABE-BFF4-F86FCE536721}" PluginName="ADPCM" CompanyID="0" PluginID="2"/>
+							<ConversionPlugin Name="" ID="{BDCDD496-7333-4B87-A67F-CD52C40D90E1}" PluginName="Vorbis" CompanyID="0" PluginID="4">
+								<PropertyList>
+									<Property Name="SeekTableGranularity" Type="int32" Value="4"/>
+								</PropertyList>
+							</ConversionPlugin>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="Mac">
-							<ConversionPlugin Name="" ID="{549F2E7B-1C2B-492B-9D8D-33D9F84CE2B3}" PluginName="ADPCM" CompanyID="0" PluginID="2"/>
+							<ConversionPlugin Name="" ID="{C11F8E38-7A97-4F11-A6BB-7AB0B0EE61EC}" PluginName="Vorbis" CompanyID="0" PluginID="4">
+								<PropertyList>
+									<Property Name="SeekTableGranularity" Type="int32" Value="4"/>
+								</PropertyList>
+							</ConversionPlugin>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="PS4">
-							<ConversionPlugin Name="" ID="{D4DE5C2B-FA7B-4625-B418-900623031F31}" PluginName="ADPCM" CompanyID="0" PluginID="2"/>
+							<ConversionPlugin Name="" ID="{CF48B203-86FE-42A1-9E55-3224294C181D}" PluginName="Vorbis" CompanyID="0" PluginID="4">
+								<PropertyList>
+									<Property Name="SeekTableGranularity" Type="int32" Value="4"/>
+								</PropertyList>
+							</ConversionPlugin>
 						</ConversionPluginInfo>
-						<ConversionPluginInfo Platform="Stadia">
-							<ConversionPlugin Name="" ID="{F19E18F2-59B7-49BE-8D76-9A7EBBE953AE}" PluginName="ADPCM" CompanyID="0" PluginID="2"/>
+						<ConversionPluginInfo Platform="OpenHarmony">
+							<ConversionPlugin Name="" ID="{B247509A-2D79-4360-BC90-4A86EA8EEDAD}" PluginName="Vorbis" CompanyID="0" PluginID="4">
+								<PropertyList>
+									<Property Name="SeekTableGranularity" Type="int32" Value="4"/>
+								</PropertyList>
+							</ConversionPlugin>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="XboxOne">
-							<ConversionPlugin Name="" ID="{FC7E8AF8-8638-4F71-BBF5-42BD03E498EC}" PluginName="ADPCM" CompanyID="0" PluginID="2"/>
+							<ConversionPlugin Name="" ID="{F8E5878F-9D7A-44D4-B107-AF3B4D78F18B}" PluginName="Vorbis" CompanyID="0" PluginID="4">
+								<PropertyList>
+									<Property Name="SeekTableGranularity" Type="int32" Value="4"/>
+								</PropertyList>
+							</ConversionPlugin>
+						</ConversionPluginInfo>
+						<ConversionPluginInfo Platform="Web">
+							<ConversionPlugin Name="" ID="{7F5AD7E1-F9C8-43E6-ABA2-0599A67882E2}" PluginName="Vorbis" CompanyID="0" PluginID="4">
+								<PropertyList>
+									<Property Name="SeekTableGranularity" Type="int32" Value="4"/>
+								</PropertyList>
+							</ConversionPlugin>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="Windows">
-							<ConversionPlugin Name="" ID="{0D16B9C6-E867-4422-9F26-A12FD5D10698}" PluginName="ADPCM" CompanyID="0" PluginID="2"/>
+							<ConversionPlugin Name="" ID="{637FEBC4-4A61-47B5-B731-8E05ACF790A1}" PluginName="Vorbis" CompanyID="0" PluginID="4">
+								<PropertyList>
+									<Property Name="SeekTableGranularity" Type="int32" Value="4"/>
+								</PropertyList>
+							</ConversionPlugin>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="PS5">
-							<ConversionPlugin Name="" ID="{1C2454F0-975E-49D0-9DCE-C3090E190AAC}" PluginName="ADPCM" CompanyID="0" PluginID="2"/>
+							<ConversionPlugin Name="" ID="{85C4ABC6-CDC3-45DE-AB7A-E699D9A70442}" PluginName="Vorbis" CompanyID="0" PluginID="4">
+								<PropertyList>
+									<Property Name="SeekTableGranularity" Type="int32" Value="4"/>
+								</PropertyList>
+							</ConversionPlugin>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="XboxSeriesX">
-							<ConversionPlugin Name="" ID="{5F668133-DFC3-4DA4-A0FE-CDAA75E84738}" PluginName="ADPCM" CompanyID="0" PluginID="2"/>
+							<ConversionPlugin Name="" ID="{9ED1252B-5BF5-4D91-9D5F-72BE3E15B695}" PluginName="Vorbis" CompanyID="0" PluginID="4">
+								<PropertyList>
+									<Property Name="SeekTableGranularity" Type="int32" Value="4"/>
+								</PropertyList>
+							</ConversionPlugin>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="Android">
-							<ConversionPlugin Name="" ID="{66D4583D-6D18-40B4-ACE2-DE0733DDD5FE}" PluginName="ADPCM" CompanyID="0" PluginID="2"/>
+							<ConversionPlugin Name="" ID="{033568A1-9052-4BFD-9FFE-35B1CD78B118}" PluginName="Vorbis" CompanyID="0" PluginID="4">
+								<PropertyList>
+									<Property Name="SeekTableGranularity" Type="int32" Value="4"/>
+								</PropertyList>
+							</ConversionPlugin>
 						</ConversionPluginInfo>
 					</ConversionPluginInfoList>
 				</Conversion>
@@ -121,13 +189,15 @@
 					<PropertyList>
 						<Property Name="Channels" Type="int32">
 							<ValueList>
+								<Value Platform="Switch2">4</Value>
 								<Value Platform="Switch">4</Value>
 								<Value Platform="Linux">4</Value>
 								<Value Platform="iOS">4</Value>
 								<Value Platform="Mac">4</Value>
 								<Value Platform="PS4">4</Value>
-								<Value Platform="Stadia">4</Value>
+								<Value Platform="OpenHarmony">4</Value>
 								<Value Platform="XboxOne">4</Value>
+								<Value Platform="Web">4</Value>
 								<Value Platform="Windows">4</Value>
 								<Value Platform="PS5">4</Value>
 								<Value Platform="XboxSeriesX">4</Value>
@@ -136,13 +206,15 @@
 						</Property>
 						<Property Name="LRMix" Type="Real64">
 							<ValueList>
+								<Value Platform="Switch2">0</Value>
 								<Value Platform="Switch">0</Value>
 								<Value Platform="Linux">0</Value>
 								<Value Platform="iOS">0</Value>
 								<Value Platform="Mac">0</Value>
 								<Value Platform="PS4">0</Value>
-								<Value Platform="Stadia">0</Value>
+								<Value Platform="OpenHarmony">0</Value>
 								<Value Platform="XboxOne">0</Value>
+								<Value Platform="Web">0</Value>
 								<Value Platform="Windows">0</Value>
 								<Value Platform="PS5">0</Value>
 								<Value Platform="XboxSeriesX">0</Value>
@@ -151,13 +223,15 @@
 						</Property>
 						<Property Name="MaxSampleRate" Type="int32">
 							<ValueList>
+								<Value Platform="Switch2">48000</Value>
 								<Value Platform="Switch">48000</Value>
 								<Value Platform="Linux">48000</Value>
 								<Value Platform="iOS">48000</Value>
 								<Value Platform="Mac">48000</Value>
 								<Value Platform="PS4">48000</Value>
-								<Value Platform="Stadia">48000</Value>
+								<Value Platform="OpenHarmony">48000</Value>
 								<Value Platform="XboxOne">48000</Value>
+								<Value Platform="Web">48000</Value>
 								<Value Platform="Windows">48000</Value>
 								<Value Platform="PS5">48000</Value>
 								<Value Platform="XboxSeriesX">48000</Value>
@@ -166,13 +240,15 @@
 						</Property>
 						<Property Name="MinSampleRate" Type="int32">
 							<ValueList>
+								<Value Platform="Switch2">0</Value>
 								<Value Platform="Switch">0</Value>
 								<Value Platform="Linux">0</Value>
 								<Value Platform="iOS">0</Value>
 								<Value Platform="Mac">0</Value>
 								<Value Platform="PS4">0</Value>
-								<Value Platform="Stadia">0</Value>
+								<Value Platform="OpenHarmony">0</Value>
 								<Value Platform="XboxOne">0</Value>
+								<Value Platform="Web">0</Value>
 								<Value Platform="Windows">0</Value>
 								<Value Platform="PS5">0</Value>
 								<Value Platform="XboxSeriesX">0</Value>
@@ -182,13 +258,15 @@
 						<Property Name="SampleRate" Type="int32">
 							<ValueList>
 								<Value>0</Value>
+								<Value Platform="Switch2">0</Value>
 								<Value Platform="Switch">0</Value>
 								<Value Platform="Linux">0</Value>
 								<Value Platform="iOS">32000</Value>
 								<Value Platform="Mac">0</Value>
 								<Value Platform="PS4">0</Value>
-								<Value Platform="Stadia">0</Value>
+								<Value Platform="OpenHarmony">32000</Value>
 								<Value Platform="XboxOne">0</Value>
+								<Value Platform="Web">0</Value>
 								<Value Platform="Windows">0</Value>
 								<Value Platform="PS5">0</Value>
 								<Value Platform="XboxSeriesX">0</Value>
@@ -197,6 +275,13 @@
 						</Property>
 					</PropertyList>
 					<ConversionPluginInfoList>
+						<ConversionPluginInfo Platform="Switch2">
+							<ConversionPlugin Name="" ID="{C9C3108E-B5E2-4272-95D7-DBCB4318DBD6}" PluginName="WEM Opus" CompanyID="0" PluginID="20">
+								<PropertyList>
+									<Property Name="Quality" Type="int32" Value="32"/>
+								</PropertyList>
+							</ConversionPlugin>
+						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="Switch">
 							<ConversionPlugin Name="" ID="{323719A1-8C87-4006-91C0-BB58D083A4E7}" PluginName="Vorbis" CompanyID="0" PluginID="4">
 								<PropertyList>
@@ -212,7 +297,11 @@
 							</ConversionPlugin>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="iOS">
-							<ConversionPlugin Name="" ID="{A43601B9-AC29-44F2-908E-F181D3F8306C}" PluginName="ADPCM" CompanyID="0" PluginID="2"/>
+							<ConversionPlugin Name="" ID="{8C072753-FE42-4DD8-B0C6-6F5EDDE0DEAB}" PluginName="Vorbis" CompanyID="0" PluginID="4">
+								<PropertyList>
+									<Property Name="SeekTableGranularity" Type="int32" Value="4"/>
+								</PropertyList>
+							</ConversionPlugin>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="Mac">
 							<ConversionPlugin Name="" ID="{7F731595-1701-4358-9E82-870D222E8BD8}" PluginName="Vorbis" CompanyID="0" PluginID="4">
@@ -228,15 +317,22 @@
 								</PropertyList>
 							</ConversionPlugin>
 						</ConversionPluginInfo>
-						<ConversionPluginInfo Platform="Stadia">
-							<ConversionPlugin Name="" ID="{9BBE2798-DC9C-4C9F-B4C3-AB3C32F25C43}" PluginName="Vorbis" CompanyID="0" PluginID="4">
+						<ConversionPluginInfo Platform="OpenHarmony">
+							<ConversionPlugin Name="" ID="{21E8C711-C4D4-438A-9A63-CABEF4A497BD}" PluginName="Vorbis" CompanyID="0" PluginID="4">
 								<PropertyList>
-									<Property Name="SeekTableGranularity" Type="int32" Value="2"/>
+									<Property Name="SeekTableGranularity" Type="int32" Value="4"/>
 								</PropertyList>
 							</ConversionPlugin>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="XboxOne">
 							<ConversionPlugin Name="" ID="{299B5D66-6338-4A11-992D-B7FD25D32740}" PluginName="Vorbis" CompanyID="0" PluginID="4">
+								<PropertyList>
+									<Property Name="SeekTableGranularity" Type="int32" Value="2"/>
+								</PropertyList>
+							</ConversionPlugin>
+						</ConversionPluginInfo>
+						<ConversionPluginInfo Platform="Web">
+							<ConversionPlugin Name="" ID="{A282E759-0111-4663-B3DA-EC89B584B02B}" PluginName="Vorbis" CompanyID="0" PluginID="4">
 								<PropertyList>
 									<Property Name="SeekTableGranularity" Type="int32" Value="2"/>
 								</PropertyList>
@@ -264,7 +360,11 @@
 							</ConversionPlugin>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="Android">
-							<ConversionPlugin Name="" ID="{6EDED085-5F47-4BCA-AE59-97AC289785B3}" PluginName="ADPCM" CompanyID="0" PluginID="2"/>
+							<ConversionPlugin Name="" ID="{AADEE9EB-52F0-44FF-95F4-A187AED0B704}" PluginName="Vorbis" CompanyID="0" PluginID="4">
+								<PropertyList>
+									<Property Name="SeekTableGranularity" Type="int32" Value="4"/>
+								</PropertyList>
+							</ConversionPlugin>
 						</ConversionPluginInfo>
 					</ConversionPluginInfoList>
 				</Conversion>
@@ -272,13 +372,15 @@
 					<PropertyList>
 						<Property Name="Channels" Type="int32">
 							<ValueList>
+								<Value Platform="Switch2">4</Value>
 								<Value Platform="Switch">4</Value>
 								<Value Platform="Linux">4</Value>
 								<Value Platform="iOS">4</Value>
 								<Value Platform="Mac">4</Value>
 								<Value Platform="PS4">4</Value>
-								<Value Platform="Stadia">4</Value>
+								<Value Platform="OpenHarmony">4</Value>
 								<Value Platform="XboxOne">4</Value>
+								<Value Platform="Web">4</Value>
 								<Value Platform="Windows">4</Value>
 								<Value Platform="PS5">4</Value>
 								<Value Platform="XboxSeriesX">4</Value>
@@ -287,13 +389,15 @@
 						</Property>
 						<Property Name="LRMix" Type="Real64">
 							<ValueList>
+								<Value Platform="Switch2">0</Value>
 								<Value Platform="Switch">0</Value>
 								<Value Platform="Linux">0</Value>
 								<Value Platform="iOS">0</Value>
 								<Value Platform="Mac">0</Value>
 								<Value Platform="PS4">0</Value>
-								<Value Platform="Stadia">0</Value>
+								<Value Platform="OpenHarmony">0</Value>
 								<Value Platform="XboxOne">0</Value>
+								<Value Platform="Web">0</Value>
 								<Value Platform="Windows">0</Value>
 								<Value Platform="PS5">0</Value>
 								<Value Platform="XboxSeriesX">0</Value>
@@ -302,13 +406,15 @@
 						</Property>
 						<Property Name="MaxSampleRate" Type="int32">
 							<ValueList>
+								<Value Platform="Switch2">48000</Value>
 								<Value Platform="Switch">48000</Value>
 								<Value Platform="Linux">48000</Value>
 								<Value Platform="iOS">48000</Value>
 								<Value Platform="Mac">48000</Value>
 								<Value Platform="PS4">48000</Value>
-								<Value Platform="Stadia">48000</Value>
+								<Value Platform="OpenHarmony">48000</Value>
 								<Value Platform="XboxOne">48000</Value>
+								<Value Platform="Web">48000</Value>
 								<Value Platform="Windows">48000</Value>
 								<Value Platform="PS5">48000</Value>
 								<Value Platform="XboxSeriesX">48000</Value>
@@ -317,13 +423,15 @@
 						</Property>
 						<Property Name="MinSampleRate" Type="int32">
 							<ValueList>
+								<Value Platform="Switch2">0</Value>
 								<Value Platform="Switch">0</Value>
 								<Value Platform="Linux">0</Value>
 								<Value Platform="iOS">0</Value>
 								<Value Platform="Mac">0</Value>
 								<Value Platform="PS4">0</Value>
-								<Value Platform="Stadia">0</Value>
+								<Value Platform="OpenHarmony">0</Value>
 								<Value Platform="XboxOne">0</Value>
+								<Value Platform="Web">0</Value>
 								<Value Platform="Windows">0</Value>
 								<Value Platform="PS5">0</Value>
 								<Value Platform="XboxSeriesX">0</Value>
@@ -333,13 +441,15 @@
 						<Property Name="SampleRate" Type="int32">
 							<ValueList>
 								<Value>0</Value>
+								<Value Platform="Switch2">0</Value>
 								<Value Platform="Switch">0</Value>
 								<Value Platform="Linux">0</Value>
 								<Value Platform="iOS">0</Value>
 								<Value Platform="Mac">0</Value>
 								<Value Platform="PS4">0</Value>
-								<Value Platform="Stadia">0</Value>
+								<Value Platform="OpenHarmony">0</Value>
 								<Value Platform="XboxOne">0</Value>
+								<Value Platform="Web">0</Value>
 								<Value Platform="Windows">0</Value>
 								<Value Platform="PS5">0</Value>
 								<Value Platform="XboxSeriesX">0</Value>
@@ -348,44 +458,94 @@
 						</Property>
 					</PropertyList>
 					<ConversionPluginInfoList>
+						<ConversionPluginInfo Platform="Switch2">
+							<ConversionPlugin Name="" ID="{B991BCB8-B0DB-457F-8377-57C718104C5E}" PluginName="WEM Opus" CompanyID="0" PluginID="20">
+								<PropertyList>
+									<Property Name="Quality" Type="int32" Value="32"/>
+								</PropertyList>
+							</ConversionPlugin>
+						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="Switch">
-							<ConversionPlugin Name="" ID="{CBE54F89-53C7-4F65-839E-3E711971C885}" PluginName="Vorbis" CompanyID="0" PluginID="4"/>
+							<ConversionPlugin Name="" ID="{E58CFA6B-0F66-4FC3-B064-A1B7D3FB3114}" PluginName="WEM Opus" CompanyID="0" PluginID="20">
+								<PropertyList>
+									<Property Name="Quality" Type="int32" Value="32"/>
+								</PropertyList>
+							</ConversionPlugin>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="Linux">
-							<ConversionPlugin Name="" ID="{9EB7AE64-6486-4819-9DB1-23B54C071F67}" PluginName="Vorbis" CompanyID="0" PluginID="4"/>
+							<ConversionPlugin Name="" ID="{9029AE37-64C4-427E-8125-D70A120E3D9D}" PluginName="WEM Opus" CompanyID="0" PluginID="20">
+								<PropertyList>
+									<Property Name="Quality" Type="int32" Value="32"/>
+								</PropertyList>
+							</ConversionPlugin>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="iOS">
-							<ConversionPlugin Name="" ID="{C499655E-A967-4793-A0A1-9776AC13D8AE}" PluginName="Vorbis" CompanyID="0" PluginID="4">
+							<ConversionPlugin Name="" ID="{653274DD-344B-45BB-ACBF-917E469D7A83}" PluginName="WEM Opus" CompanyID="0" PluginID="20">
 								<PropertyList>
-									<Property Name="SeekTableGranularity" Type="int32" Value="4"/>
+									<Property Name="Quality" Type="int32" Value="32"/>
 								</PropertyList>
 							</ConversionPlugin>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="Mac">
-							<ConversionPlugin Name="" ID="{A32B2809-2394-4EEF-9E81-AFC54F870981}" PluginName="Vorbis" CompanyID="0" PluginID="4"/>
+							<ConversionPlugin Name="" ID="{6DCE6880-F964-4B12-A25D-EACE2520E788}" PluginName="WEM Opus" CompanyID="0" PluginID="20">
+								<PropertyList>
+									<Property Name="Quality" Type="int32" Value="32"/>
+								</PropertyList>
+							</ConversionPlugin>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="PS4">
-							<ConversionPlugin Name="" ID="{BDFC9418-02F0-4E8D-B554-C1BFC007224F}" PluginName="Vorbis" CompanyID="0" PluginID="4"/>
+							<ConversionPlugin Name="" ID="{F1B46AB8-4194-4A60-8852-151BCA2D0C4A}" PluginName="WEM Opus" CompanyID="0" PluginID="20">
+								<PropertyList>
+									<Property Name="Quality" Type="int32" Value="32"/>
+								</PropertyList>
+							</ConversionPlugin>
 						</ConversionPluginInfo>
-						<ConversionPluginInfo Platform="Stadia">
-							<ConversionPlugin Name="" ID="{84F3B38F-4911-4ADF-97E6-179F705CF87C}" PluginName="Vorbis" CompanyID="0" PluginID="4"/>
+						<ConversionPluginInfo Platform="OpenHarmony">
+							<ConversionPlugin Name="" ID="{12AE0ABB-EFD5-4DB1-89BA-850AE6B738E6}" PluginName="WEM Opus" CompanyID="0" PluginID="20">
+								<PropertyList>
+									<Property Name="Quality" Type="int32" Value="32"/>
+								</PropertyList>
+							</ConversionPlugin>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="XboxOne">
-							<ConversionPlugin Name="" ID="{E163806A-3D8F-48AF-BC29-79CF3F456EDC}" PluginName="Vorbis" CompanyID="0" PluginID="4"/>
+							<ConversionPlugin Name="" ID="{4D369966-20EA-478D-9431-586AB9CEB769}" PluginName="WEM Opus" CompanyID="0" PluginID="20">
+								<PropertyList>
+									<Property Name="Quality" Type="int32" Value="32"/>
+								</PropertyList>
+							</ConversionPlugin>
+						</ConversionPluginInfo>
+						<ConversionPluginInfo Platform="Web">
+							<ConversionPlugin Name="" ID="{73BEF338-6FA7-4CAD-9475-71B792C53260}" PluginName="WEM Opus" CompanyID="0" PluginID="20">
+								<PropertyList>
+									<Property Name="Quality" Type="int32" Value="32"/>
+								</PropertyList>
+							</ConversionPlugin>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="Windows">
-							<ConversionPlugin Name="" ID="{CBA45CAC-1775-4F06-BF29-145CE0A12DF0}" PluginName="Vorbis" CompanyID="0" PluginID="4"/>
+							<ConversionPlugin Name="" ID="{36AA8B2E-78A7-4EBE-A3B2-D2D911F5C302}" PluginName="WEM Opus" CompanyID="0" PluginID="20">
+								<PropertyList>
+									<Property Name="Quality" Type="int32" Value="32"/>
+								</PropertyList>
+							</ConversionPlugin>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="PS5">
-							<ConversionPlugin Name="" ID="{0256C22C-46D0-46F0-890B-5CF249D41D15}" PluginName="Vorbis" CompanyID="0" PluginID="4"/>
+							<ConversionPlugin Name="" ID="{A7D5A4D1-E0CA-4C1B-AE3E-CDA16D677D46}" PluginName="WEM Opus" CompanyID="0" PluginID="20">
+								<PropertyList>
+									<Property Name="Quality" Type="int32" Value="32"/>
+								</PropertyList>
+							</ConversionPlugin>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="XboxSeriesX">
-							<ConversionPlugin Name="" ID="{02E5607D-07E3-46EF-B18C-AD79451EC983}" PluginName="Vorbis" CompanyID="0" PluginID="4"/>
+							<ConversionPlugin Name="" ID="{60C7C394-B0DE-45F5-A256-2410AA08EE6A}" PluginName="WEM Opus" CompanyID="0" PluginID="20">
+								<PropertyList>
+									<Property Name="Quality" Type="int32" Value="32"/>
+								</PropertyList>
+							</ConversionPlugin>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="Android">
-							<ConversionPlugin Name="" ID="{6AFA7305-C528-4A89-9DF4-9912AE55D21D}" PluginName="Vorbis" CompanyID="0" PluginID="4">
+							<ConversionPlugin Name="" ID="{3CFB09A9-B6CE-41FD-9C32-07D72FD0049D}" PluginName="WEM Opus" CompanyID="0" PluginID="20">
 								<PropertyList>
-									<Property Name="SeekTableGranularity" Type="int32" Value="4"/>
+									<Property Name="Quality" Type="int32" Value="32"/>
 								</PropertyList>
 							</ConversionPlugin>
 						</ConversionPluginInfo>
@@ -395,13 +555,15 @@
 					<PropertyList>
 						<Property Name="Channels" Type="int32">
 							<ValueList>
+								<Value Platform="Switch2">4</Value>
 								<Value Platform="Switch">4</Value>
 								<Value Platform="Linux">4</Value>
 								<Value Platform="iOS">4</Value>
 								<Value Platform="Mac">4</Value>
 								<Value Platform="PS4">4</Value>
-								<Value Platform="Stadia">4</Value>
+								<Value Platform="OpenHarmony">4</Value>
 								<Value Platform="XboxOne">4</Value>
+								<Value Platform="Web">4</Value>
 								<Value Platform="Windows">4</Value>
 								<Value Platform="PS5">4</Value>
 								<Value Platform="XboxSeriesX">4</Value>
@@ -410,13 +572,15 @@
 						</Property>
 						<Property Name="LRMix" Type="Real64">
 							<ValueList>
+								<Value Platform="Switch2">0</Value>
 								<Value Platform="Switch">0</Value>
 								<Value Platform="Linux">0</Value>
 								<Value Platform="iOS">0</Value>
 								<Value Platform="Mac">0</Value>
 								<Value Platform="PS4">0</Value>
-								<Value Platform="Stadia">0</Value>
+								<Value Platform="OpenHarmony">0</Value>
 								<Value Platform="XboxOne">0</Value>
+								<Value Platform="Web">0</Value>
 								<Value Platform="Windows">0</Value>
 								<Value Platform="PS5">0</Value>
 								<Value Platform="XboxSeriesX">0</Value>
@@ -425,13 +589,15 @@
 						</Property>
 						<Property Name="MaxSampleRate" Type="int32">
 							<ValueList>
+								<Value Platform="Switch2">48000</Value>
 								<Value Platform="Switch">48000</Value>
 								<Value Platform="Linux">48000</Value>
 								<Value Platform="iOS">48000</Value>
 								<Value Platform="Mac">48000</Value>
 								<Value Platform="PS4">48000</Value>
-								<Value Platform="Stadia">48000</Value>
+								<Value Platform="OpenHarmony">48000</Value>
 								<Value Platform="XboxOne">48000</Value>
+								<Value Platform="Web">48000</Value>
 								<Value Platform="Windows">48000</Value>
 								<Value Platform="PS5">48000</Value>
 								<Value Platform="XboxSeriesX">48000</Value>
@@ -440,13 +606,15 @@
 						</Property>
 						<Property Name="MinSampleRate" Type="int32">
 							<ValueList>
+								<Value Platform="Switch2">0</Value>
 								<Value Platform="Switch">0</Value>
 								<Value Platform="Linux">0</Value>
 								<Value Platform="iOS">0</Value>
 								<Value Platform="Mac">0</Value>
 								<Value Platform="PS4">0</Value>
-								<Value Platform="Stadia">0</Value>
+								<Value Platform="OpenHarmony">0</Value>
 								<Value Platform="XboxOne">0</Value>
+								<Value Platform="Web">0</Value>
 								<Value Platform="Windows">0</Value>
 								<Value Platform="PS5">0</Value>
 								<Value Platform="XboxSeriesX">0</Value>
@@ -456,13 +624,15 @@
 						<Property Name="SampleRate" Type="int32">
 							<ValueList>
 								<Value>0</Value>
+								<Value Platform="Switch2">0</Value>
 								<Value Platform="Switch">0</Value>
 								<Value Platform="Linux">0</Value>
 								<Value Platform="iOS">0</Value>
 								<Value Platform="Mac">0</Value>
 								<Value Platform="PS4">0</Value>
-								<Value Platform="Stadia">0</Value>
+								<Value Platform="OpenHarmony">0</Value>
 								<Value Platform="XboxOne">0</Value>
+								<Value Platform="Web">0</Value>
 								<Value Platform="Windows">0</Value>
 								<Value Platform="PS5">0</Value>
 								<Value Platform="XboxSeriesX">0</Value>
@@ -471,38 +641,44 @@
 						</Property>
 					</PropertyList>
 					<ConversionPluginInfoList>
+						<ConversionPluginInfo Platform="Switch2">
+							<ConversionPlugin Name="" ID="{C61B1A05-582B-4847-A250-EEB1A3E47CC2}" PluginName="WEM Opus" CompanyID="0" PluginID="20"/>
+						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="Switch">
-							<ConversionPlugin Name="" ID="{86E111A6-DB6C-4821-92AF-5DE4E9324212}" PluginName="Vorbis" CompanyID="0" PluginID="4"/>
+							<ConversionPlugin Name="" ID="{2A64B5A6-97D9-4A47-AA14-B988B46CBDDF}" PluginName="WEM Opus" CompanyID="0" PluginID="20"/>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="Linux">
-							<ConversionPlugin Name="" ID="{25A79A2F-03A9-4680-89EE-01D109EAAA6B}" PluginName="Vorbis" CompanyID="0" PluginID="4"/>
+							<ConversionPlugin Name="" ID="{F52A177F-65ED-45E7-9174-B59453D2F4E8}" PluginName="WEM Opus" CompanyID="0" PluginID="20"/>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="iOS">
-							<ConversionPlugin Name="" ID="{A7911B46-9BDB-48BC-8AF4-301A10599462}" PluginName="ADPCM" CompanyID="0" PluginID="2"/>
+							<ConversionPlugin Name="" ID="{EBFC179A-2515-4A96-B30D-8DAD35858B07}" PluginName="WEM Opus" CompanyID="0" PluginID="20"/>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="Mac">
-							<ConversionPlugin Name="" ID="{32D0E176-CBB1-444A-8764-9F260ECB78E3}" PluginName="Vorbis" CompanyID="0" PluginID="4"/>
+							<ConversionPlugin Name="" ID="{676079E2-2DEE-4395-B6D0-1F6D9B817368}" PluginName="WEM Opus" CompanyID="0" PluginID="20"/>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="PS4">
-							<ConversionPlugin Name="" ID="{25E14749-8F22-44DD-AFCD-DED6A632ACF9}" PluginName="Vorbis" CompanyID="0" PluginID="4"/>
+							<ConversionPlugin Name="" ID="{DAC5FA1A-96D7-4D51-B62A-296D12326309}" PluginName="WEM Opus" CompanyID="0" PluginID="20"/>
 						</ConversionPluginInfo>
-						<ConversionPluginInfo Platform="Stadia">
-							<ConversionPlugin Name="" ID="{0ED7C8FB-06FA-479A-8617-44EB7BC1B50E}" PluginName="Vorbis" CompanyID="0" PluginID="4"/>
+						<ConversionPluginInfo Platform="OpenHarmony">
+							<ConversionPlugin Name="" ID="{864C935D-9B55-4988-899D-8BA1FCF793DE}" PluginName="WEM Opus" CompanyID="0" PluginID="20"/>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="XboxOne">
-							<ConversionPlugin Name="" ID="{EF7496AE-0EF7-4FA9-8ED4-DD46BE654017}" PluginName="Vorbis" CompanyID="0" PluginID="4"/>
+							<ConversionPlugin Name="" ID="{384E7658-7FB0-41E2-A14F-A18D50139624}" PluginName="WEM Opus" CompanyID="0" PluginID="20"/>
+						</ConversionPluginInfo>
+						<ConversionPluginInfo Platform="Web">
+							<ConversionPlugin Name="" ID="{CE6D1A52-8D39-4B5A-A2B9-1A573643D1D3}" PluginName="WEM Opus" CompanyID="0" PluginID="20"/>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="Windows">
-							<ConversionPlugin Name="" ID="{A8E76AAA-E1A6-40DF-8058-6A2A1CAFFE8B}" PluginName="Vorbis" CompanyID="0" PluginID="4"/>
+							<ConversionPlugin Name="" ID="{1903073A-720D-477C-B86A-B8EB091863B6}" PluginName="WEM Opus" CompanyID="0" PluginID="20"/>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="PS5">
-							<ConversionPlugin Name="" ID="{C820A986-1E2C-4630-A962-CCB559CB5159}" PluginName="Vorbis" CompanyID="0" PluginID="4"/>
+							<ConversionPlugin Name="" ID="{A60E5B40-33C9-4BA6-9706-E6EBE9602551}" PluginName="WEM Opus" CompanyID="0" PluginID="20"/>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="XboxSeriesX">
-							<ConversionPlugin Name="" ID="{3AA4261A-9DB0-4DA2-BC97-A0A17FB0A899}" PluginName="Vorbis" CompanyID="0" PluginID="4"/>
+							<ConversionPlugin Name="" ID="{3144D392-9F50-4CD7-A044-3A09D3670489}" PluginName="WEM Opus" CompanyID="0" PluginID="20"/>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="Android">
-							<ConversionPlugin Name="" ID="{2321D94A-A08B-4EF6-98A0-A99FF2025EAD}" PluginName="ADPCM" CompanyID="0" PluginID="2"/>
+							<ConversionPlugin Name="" ID="{7E689E2F-4890-4A67-8516-E89F5FDC1212}" PluginName="WEM Opus" CompanyID="0" PluginID="20"/>
 						</ConversionPluginInfo>
 					</ConversionPluginInfoList>
 				</Conversion>

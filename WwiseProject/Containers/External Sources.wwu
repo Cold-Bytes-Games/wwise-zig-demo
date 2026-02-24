@@ -9,21 +9,21 @@
 						<Property Name="RandomOrSequence" Type="int16" Value="0"/>
 					</PropertyList>
 					<ReferenceList>
-						<Reference Name="Conversion">
+						<Reference Name="Conversion" CompanyID="4095" PluginID="65535" PluginType="15">
 							<ObjectRef Name="SFX" ID="{3A429FCB-87D8-458B-B315-DBE8023064B3}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
 						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+						<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
 						<Sound Name="1st Number" ID="{4BFF8336-9261-4F54-B420-9EE06CAE5F16}" ShortID="953414125">
 							<ReferenceList>
-								<Reference Name="Conversion">
+								<Reference Name="Conversion" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="SFX" ID="{3A429FCB-87D8-458B-B315-DBE8023064B3}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
 								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+								<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
@@ -37,11 +37,11 @@
 						</Sound>
 						<Sound Name="2nd Number" ID="{580E757C-9473-4F47-A781-1D469F21862A}" ShortID="89139085">
 							<ReferenceList>
-								<Reference Name="Conversion">
+								<Reference Name="Conversion" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="SFX" ID="{3A429FCB-87D8-458B-B315-DBE8023064B3}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
 								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+								<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
@@ -55,11 +55,11 @@
 						</Sound>
 						<Sound Name="3rd Number" ID="{76E2C321-F63E-45E0-AACA-1ADCAB74B354}" ShortID="624811221">
 							<ReferenceList>
-								<Reference Name="Conversion">
+								<Reference Name="Conversion" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="SFX" ID="{3A429FCB-87D8-458B-B315-DBE8023064B3}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
 								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+								<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
@@ -74,16 +74,28 @@
 					</ChildrenList>
 					<ObjectLists>
 						<ObjectList Name="Playlist">
-							
-							
-							
-						<PluginInnerObject Name="" ID="{F2C34F53-22C6-483E-B5F1-9E621F2B9417}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86"><ReferenceList><Reference Name="PlaylistObject">
-								<ObjectRef Name="1st Number" ID="{4BFF8336-9261-4F54-B420-9EE06CAE5F16}" WorkUnitID="{C9823204-D123-4E77-ADFF-8583AB31A2CC}"/>
-							</Reference></ReferenceList></PluginInnerObject><PluginInnerObject Name="" ID="{057AAD7A-AC50-4DD9-A33B-1CC8E9D204FD}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86"><ReferenceList><Reference Name="PlaylistObject">
-								<ObjectRef Name="2nd Number" ID="{580E757C-9473-4F47-A781-1D469F21862A}" WorkUnitID="{C9823204-D123-4E77-ADFF-8583AB31A2CC}"/>
-							</Reference></ReferenceList></PluginInnerObject><PluginInnerObject Name="" ID="{3D7368E5-9BE8-4341-8D6B-8D001C5C3D79}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86"><ReferenceList><Reference Name="PlaylistObject">
-								<ObjectRef Name="3rd Number" ID="{76E2C321-F63E-45E0-AACA-1ADCAB74B354}" WorkUnitID="{C9823204-D123-4E77-ADFF-8583AB31A2CC}"/>
-							</Reference></ReferenceList></PluginInnerObject></ObjectList>
+							<PluginInnerObject Name="" ID="{D38FED35-4959-4D3A-A795-DD185A5C18CE}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86">
+								<ReferenceList>
+									<Reference Name="PlaylistObject" CompanyID="4095" PluginID="65535" PluginType="15">
+										<ObjectRef Name="1st Number" ID="{4BFF8336-9261-4F54-B420-9EE06CAE5F16}" WorkUnitID="{C9823204-D123-4E77-ADFF-8583AB31A2CC}"/>
+									</Reference>
+								</ReferenceList>
+							</PluginInnerObject>
+							<PluginInnerObject Name="" ID="{29B0B589-6C66-4C9A-99C4-E47F44757A9A}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86">
+								<ReferenceList>
+									<Reference Name="PlaylistObject" CompanyID="4095" PluginID="65535" PluginType="15">
+										<ObjectRef Name="2nd Number" ID="{580E757C-9473-4F47-A781-1D469F21862A}" WorkUnitID="{C9823204-D123-4E77-ADFF-8583AB31A2CC}"/>
+									</Reference>
+								</ReferenceList>
+							</PluginInnerObject>
+							<PluginInnerObject Name="" ID="{83ADEC59-B09B-471F-B96A-B86F8BA1DA13}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86">
+								<ReferenceList>
+									<Reference Name="PlaylistObject" CompanyID="4095" PluginID="65535" PluginType="15">
+										<ObjectRef Name="3rd Number" ID="{76E2C321-F63E-45E0-AACA-1ADCAB74B354}" WorkUnitID="{C9823204-D123-4E77-ADFF-8583AB31A2CC}"/>
+									</Reference>
+								</ReferenceList>
+							</PluginInnerObject>
+						</ObjectList>
 					</ObjectLists>
 				</RandomSequenceContainer>
 			</ChildrenList>

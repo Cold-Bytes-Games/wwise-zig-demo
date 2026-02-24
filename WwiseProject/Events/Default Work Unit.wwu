@@ -10,7 +10,7 @@
 								<Property Name="ActionType" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="Engine" ID="{DD540EA0-95C1-4CB0-B446-15C3F29C7959}" WorkUnitID="{88012962-D6A8-4400-BC86-DF1A5980EDFA}"/>
 								</Reference>
 							</ReferenceList>
@@ -24,7 +24,7 @@
 								<Property Name="ActionType" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="Hello" ID="{5BA74442-2DEC-4370-AD70-97FC17EBF05D}" WorkUnitID="{88012962-D6A8-4400-BC86-DF1A5980EDFA}"/>
 								</Reference>
 							</ReferenceList>
@@ -38,7 +38,7 @@
 								<Property Name="ActionType" Type="int16" Value="2"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="Engine" ID="{DD540EA0-95C1-4CB0-B446-15C3F29C7959}" WorkUnitID="{88012962-D6A8-4400-BC86-DF1A5980EDFA}"/>
 								</Reference>
 							</ReferenceList>
@@ -52,7 +52,7 @@
 								<Property Name="ActionType" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="Markers_Test" ID="{447BE3DF-9FCC-438D-B834-95621EDCBB98}" WorkUnitID="{88012962-D6A8-4400-BC86-DF1A5980EDFA}"/>
 								</Reference>
 							</ReferenceList>
@@ -96,7 +96,7 @@
 								<Property Name="ActionType" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="Microphone" ID="{DE905730-2690-4B1F-A21D-5CDFF373ED98}" WorkUnitID="{88012962-D6A8-4400-BC86-DF1A5980EDFA}"/>
 								</Reference>
 							</ReferenceList>
@@ -110,7 +110,7 @@
 								<Property Name="ActionType" Type="int16" Value="2"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="Microphone" ID="{DE905730-2690-4B1F-A21D-5CDFF373ED98}" WorkUnitID="{88012962-D6A8-4400-BC86-DF1A5980EDFA}"/>
 								</Reference>
 							</ReferenceList>
@@ -124,7 +124,7 @@
 								<Property Name="ActionType" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="Footsteps" ID="{9CB2A2A7-05D7-4FB7-918A-368A80EE1807}" WorkUnitID="{39255352-6310-4790-ACD5-F0B3026DF735}"/>
 								</Reference>
 							</ReferenceList>
@@ -133,14 +133,14 @@
 				</Event>
 				<Event Name="Enable_Microphone_Delay" ID="{8D2E24BD-07E4-4CDB-A16D-2B06C9F989DA}">
 					<ChildrenList>
-						<Action Name="" ID="{FB56254B-A7C3-4D72-98C7-5F72682A41FD}" ShortID="579655545">
+						<Action Name="" ID="{00E53517-F97D-4E69-9064-FF0B56770E96}" ShortID="221447364">
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="50"/>
 								<Property Name="BypassFlag" Type="bool" Value="False"/>
 								<Property Name="EffectSlot" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="Microphone" ID="{DE905730-2690-4B1F-A21D-5CDFF373ED98}" WorkUnitID="{88012962-D6A8-4400-BC86-DF1A5980EDFA}"/>
 								</Reference>
 							</ReferenceList>
@@ -149,13 +149,13 @@
 				</Event>
 				<Event Name="Disable_Microphone_Delay" ID="{F0E0DCDC-66E0-4E79-BB86-69810CE2FD94}">
 					<ChildrenList>
-						<Action Name="" ID="{BF85C884-9536-4AC0-B712-84184B97B854}" ShortID="841147858">
+						<Action Name="" ID="{FA8E0ECF-B8F0-4AAF-900E-3C91C93670D0}" ShortID="781717812">
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="50"/>
 								<Property Name="EffectSlot" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="Microphone" ID="{DE905730-2690-4B1F-A21D-5CDFF373ED98}" WorkUnitID="{88012962-D6A8-4400-BC86-DF1A5980EDFA}"/>
 								</Reference>
 							</ReferenceList>
@@ -169,7 +169,7 @@
 								<Property Name="ActionType" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="Positioning_Demo" ID="{909498C3-C3D7-403B-A189-832A2B6674BD}" WorkUnitID="{88012962-D6A8-4400-BC86-DF1A5980EDFA}"/>
 								</Reference>
 							</ReferenceList>
@@ -184,8 +184,8 @@
 								<Property Name="Scope" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -199,8 +199,8 @@
 								<Property Name="Scope" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -213,7 +213,7 @@
 								<Property Name="ActionType" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="NonRecordableMusic" ID="{25C31C5B-9955-46C8-BC4C-DA953F59FFFD}" WorkUnitID="{88012962-D6A8-4400-BC86-DF1A5980EDFA}"/>
 								</Reference>
 							</ReferenceList>
@@ -227,7 +227,7 @@
 								<Property Name="ActionType" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="RecordableMusic" ID="{F31BBA14-D4C1-4D38-9E60-F3C22386D5B3}" WorkUnitID="{88012962-D6A8-4400-BC86-DF1A5980EDFA}"/>
 								</Reference>
 							</ReferenceList>
@@ -243,7 +243,7 @@
 										<Property Name="ActionType" Type="int16" Value="1"/>
 									</PropertyList>
 									<ReferenceList>
-										<Reference Name="Target">
+										<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 											<ObjectRef Name="Area2" ID="{C9055DA3-BB6F-4FD6-AD11-18CFA8B875AD}" WorkUnitID="{88012962-D6A8-4400-BC86-DF1A5980EDFA}"/>
 										</Reference>
 									</ReferenceList>
@@ -257,7 +257,7 @@
 										<Property Name="ActionType" Type="int16" Value="1"/>
 									</PropertyList>
 									<ReferenceList>
-										<Reference Name="Target">
+										<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 											<ObjectRef Name="Area1" ID="{11478EEE-AD48-44E2-AAA4-A61B7BB6457A}" WorkUnitID="{88012962-D6A8-4400-BC86-DF1A5980EDFA}"/>
 										</Reference>
 									</ReferenceList>
@@ -275,7 +275,7 @@
 										<Property Name="ActionType" Type="int16" Value="1"/>
 									</PropertyList>
 									<ReferenceList>
-										<Reference Name="Target">
+										<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 											<ObjectRef Name="Hello_Reverb" ID="{690E0B04-9D41-4793-8102-C0F5105BE1ED}" WorkUnitID="{88012962-D6A8-4400-BC86-DF1A5980EDFA}"/>
 										</Reference>
 									</ReferenceList>
@@ -284,6 +284,42 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
+				<Event Name="Play_Command_Buffer_Demo" ID="{9DA3EB29-0801-4B4F-B976-D798B12C77C2}">
+					<ChildrenList>
+						<Action Name="" ID="{5DA26DFE-23A8-49CA-8C1D-CB45BDCCADB8}" ShortID="873870026">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Command_Buffer_Demo" ID="{2D9B5B24-C0BA-4D6E-B4D5-96027F8DC8EC}" WorkUnitID="{88012962-D6A8-4400-BC86-DF1A5980EDFA}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{F9B4B177-C81C-44AF-A79C-EF430045D2EA}" ShortID="36667586">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="36"/>
+								<Property Name="SeekPercent" Type="Real64" Value="50">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{E0F919B2-B350-438C-8AC5-367B8CBD7EE9}">
+												<PropertyList>
+													<Property Name="Max" Type="Real64" Value="45"/>
+													<Property Name="Min" Type="Real64" Value="-50"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Command_Buffer_Demo" ID="{2D9B5B24-C0BA-4D6E-B4D5-96027F8DC8EC}" WorkUnitID="{88012962-D6A8-4400-BC86-DF1A5980EDFA}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

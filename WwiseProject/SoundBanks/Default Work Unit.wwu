@@ -126,6 +126,20 @@
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>
+				<SoundBank Name="Spatial_Audio_Demo" ID="{C8C7361D-7D26-4944-AE19-4F5F53445D50}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Spatial_Audio_Demo" ID="{2830FA7F-5AAE-4315-9BD6-7A55B4435CEA}" WorkUnitID="{2830FA7F-5AAE-4315-9BD6-7A55B4435CEA}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="Command_Buffer_Demo" ID="{A7F5932D-F9D4-4A9F-A1F8-E14BD50BDCEB}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Play_Command_Buffer_Demo" ID="{9DA3EB29-0801-4B4F-B976-D798B12C77C2}" WorkUnitID="{9A702AE6-A6FC-40E6-94AF-6E7972F20503}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
 			</ChildrenList>
 		</WorkUnit>
 	</SoundBanks>

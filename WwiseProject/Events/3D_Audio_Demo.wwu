@@ -10,7 +10,7 @@
 								<Property Name="ActionType" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="repeat_seagulls" ID="{22F80BDE-3279-4299-A15A-796633579EF9}" WorkUnitID="{875EE732-41A2-46B4-81D3-18BD32F634A1}"/>
 								</Reference>
 							</ReferenceList>
@@ -20,7 +20,7 @@
 								<Property Name="ActionType" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="waves" ID="{9237D803-E6BE-4005-BAF2-0128161ED6D8}" WorkUnitID="{875EE732-41A2-46B4-81D3-18BD32F634A1}"/>
 								</Reference>
 							</ReferenceList>
@@ -30,7 +30,7 @@
 								<Property Name="ActionType" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="piano_quad" ID="{54EE7258-6A09-4A84-A678-22928AFA3C81}" WorkUnitID="{875EE732-41A2-46B4-81D3-18BD32F634A1}"/>
 								</Reference>
 							</ReferenceList>
@@ -44,7 +44,7 @@
 								<Property Name="ActionType" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="Dirt_Footsteps" ID="{FED1D288-2973-4EB7-912A-DFD37F16CFC5}" WorkUnitID="{875EE732-41A2-46B4-81D3-18BD32F634A1}"/>
 								</Reference>
 							</ReferenceList>

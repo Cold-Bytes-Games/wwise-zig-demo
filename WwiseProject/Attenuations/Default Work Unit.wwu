@@ -623,7 +623,141 @@
 						</TransmissionDSFUsage>
 					</CurveUsageInfoList>
 				</Attenuation>
-				<Attenuation Name="Environmental Curves Migration" ID="{70BE941A-8381-4066-8361-3FA718E05E18}" ShortID="826392979">
+				<Attenuation Name="3DAudio_WithSpread" ID="{40C73677-FCF0-405B-BDF9-34CEE362F34E}" ShortID="1004505229">
+					<PropertyList>
+						<Property Name="ConeUse" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<CurveUsageInfoList>
+						<VolumeDryUsage>
+							<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+								<Curve Name="VolumeDry" ID="{90BBD708-E245-439E-825E-ABB8C461B789}">
+									<PropertyList>
+										<Property Name="Flags" Type="int32" Value="3"/>
+									</PropertyList>
+									<PointList>
+										<Point>
+											<XPos>0</XPos>
+											<YPos>0</YPos>
+											<Flags>5</Flags>
+										</Point>
+										<Point>
+											<XPos>16.8254</XPos>
+											<YPos>-6.26668</YPos>
+											<Flags>0</Flags>
+										</Point>
+										<Point>
+											<XPos>100</XPos>
+											<YPos>-200</YPos>
+											<Flags>37</Flags>
+										</Point>
+									</PointList>
+								</Curve>
+							</CurveUsageInfo>
+						</VolumeDryUsage>
+						<VolumeWetGameUsage>
+							<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+						</VolumeWetGameUsage>
+						<VolumeWetUserUsage>
+							<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+						</VolumeWetUserUsage>
+						<LowPassFilterUsage>
+							<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+						</LowPassFilterUsage>
+						<HighPassFilterUsage>
+							<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+						</HighPassFilterUsage>
+						<DualShelfUsage>
+							<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+						</DualShelfUsage>
+						<SpreadUsage>
+							<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+								<Curve Name="Spread" ID="{6844E361-6B31-4CE0-867E-00BC793809D5}">
+									<PropertyList>
+										<Property Name="Flags" Type="int32" Value="1"/>
+									</PropertyList>
+									<PointList>
+										<Point>
+											<XPos>0</XPos>
+											<YPos>100</YPos>
+											<Flags>5</Flags>
+										</Point>
+										<Point>
+											<XPos>4.82759</XPos>
+											<YPos>39.04805</YPos>
+											<Flags>0</Flags>
+										</Point>
+										<Point>
+											<XPos>9.48276</XPos>
+											<YPos>14.51442</YPos>
+											<Flags>0</Flags>
+										</Point>
+										<Point>
+											<XPos>100</XPos>
+											<YPos>0</YPos>
+											<Flags>37</Flags>
+										</Point>
+									</PointList>
+								</Curve>
+							</CurveUsageInfo>
+						</SpreadUsage>
+						<FocusUsage>
+							<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+						</FocusUsage>
+						<ObstructionVolumeUsage>
+							<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+						</ObstructionVolumeUsage>
+						<ObstructionLPFUsage>
+							<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+						</ObstructionLPFUsage>
+						<ObstructionHPFUsage>
+							<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+						</ObstructionHPFUsage>
+						<ObstructionDSFUsage>
+							<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+						</ObstructionDSFUsage>
+						<OcclusionVolumeUsage>
+							<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+						</OcclusionVolumeUsage>
+						<OcclusionLPFUsage>
+							<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+						</OcclusionLPFUsage>
+						<OcclusionHPFUsage>
+							<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+						</OcclusionHPFUsage>
+						<OcclusionDSFUsage>
+							<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+						</OcclusionDSFUsage>
+						<DiffractionVolumeUsage>
+							<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+						</DiffractionVolumeUsage>
+						<DiffractionLPFUsage>
+							<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+						</DiffractionLPFUsage>
+						<DiffractionHPFUsage>
+							<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+						</DiffractionHPFUsage>
+						<DiffractionDSFUsage>
+							<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+						</DiffractionDSFUsage>
+						<TransmissionVolumeUsage>
+							<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+						</TransmissionVolumeUsage>
+						<TransmissionLPFUsage>
+							<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+						</TransmissionLPFUsage>
+						<TransmissionHPFUsage>
+							<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+						</TransmissionHPFUsage>
+						<TransmissionDSFUsage>
+							<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+						</TransmissionDSFUsage>
+					</CurveUsageInfoList>
+				</Attenuation>
+				<Attenuation Name="Environmental Curves Migration" ID="{A1FAC950-C6FE-4659-BA7F-76407893C395}" ShortID="688283441">
 					<CurveUsageInfoList>
 						<VolumeDryUsage>
 							<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
@@ -728,7 +862,25 @@
 							</CurveUsageInfo>
 						</ObstructionHPFUsage>
 						<ObstructionDSFUsage>
-							<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+							<CurveUsageInfo Platform="Linked" CurveToUse="None">
+								<Curve Name="ObstructionDSF" ID="{EE87B90F-A809-4423-813E-3D693D896E37}">
+									<PropertyList>
+										<Property Name="Flags" Type="int32" Value="3"/>
+									</PropertyList>
+									<PointList>
+										<Point>
+											<XPos>0</XPos>
+											<YPos>0</YPos>
+											<Flags>5</Flags>
+										</Point>
+										<Point>
+											<XPos>100</XPos>
+											<YPos>-200</YPos>
+											<Flags>37</Flags>
+										</Point>
+									</PointList>
+								</Curve>
+							</CurveUsageInfo>
 						</ObstructionDSFUsage>
 						<OcclusionVolumeUsage>
 							<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
@@ -799,11 +951,29 @@
 							</CurveUsageInfo>
 						</OcclusionHPFUsage>
 						<OcclusionDSFUsage>
-							<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+							<CurveUsageInfo Platform="Linked" CurveToUse="None">
+								<Curve Name="OcclusionDSF" ID="{CD4F7716-762B-4C70-9694-70AEFCC1DDE0}">
+									<PropertyList>
+										<Property Name="Flags" Type="int32" Value="3"/>
+									</PropertyList>
+									<PointList>
+										<Point>
+											<XPos>0</XPos>
+											<YPos>0</YPos>
+											<Flags>5</Flags>
+										</Point>
+										<Point>
+											<XPos>100</XPos>
+											<YPos>-200</YPos>
+											<Flags>37</Flags>
+										</Point>
+									</PointList>
+								</Curve>
+							</CurveUsageInfo>
 						</OcclusionDSFUsage>
 						<DiffractionVolumeUsage>
 							<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
-								<Curve Name="D" ID="{FDAA700B-96F8-4235-9834-20E04572A88C}">
+								<Curve Name="D" ID="{AB22AAE8-7311-444D-9A79-39EAC7165CF1}">
 									<PropertyList>
 										<Property Name="Flags" Type="int32" Value="257"/>
 									</PropertyList>
@@ -829,7 +999,7 @@
 						</DiffractionVolumeUsage>
 						<DiffractionLPFUsage>
 							<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
-								<Curve Name="D" ID="{0D6CF0E8-0D15-4744-A590-6FCBEAD236C3}">
+								<Curve Name="D" ID="{B1F908CE-435B-4F3A-97FF-6EF4314D3C58}">
 									<PropertyList>
 										<Property Name="Flags" Type="int32" Value="257"/>
 									</PropertyList>
@@ -860,7 +1030,7 @@
 						</DiffractionLPFUsage>
 						<DiffractionHPFUsage>
 							<CurveUsageInfo Platform="Linked" CurveToUse="None">
-								<Curve Name="D" ID="{49BD4FE0-2325-4385-BA6E-ADC54EC8CA0D}">
+								<Curve Name="D" ID="{956406DA-5AED-4437-B5A0-D5A7540A5876}">
 									<PropertyList>
 										<Property Name="Flags" Type="int32" Value="1"/>
 									</PropertyList>
@@ -880,11 +1050,29 @@
 							</CurveUsageInfo>
 						</DiffractionHPFUsage>
 						<DiffractionDSFUsage>
-							<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+							<CurveUsageInfo Platform="Linked" CurveToUse="None">
+								<Curve Name="DiffractionDSF" ID="{94716566-8A74-4CE0-B71D-EDA9BD99C14D}">
+									<PropertyList>
+										<Property Name="Flags" Type="int32" Value="3"/>
+									</PropertyList>
+									<PointList>
+										<Point>
+											<XPos>0</XPos>
+											<YPos>0</YPos>
+											<Flags>5</Flags>
+										</Point>
+										<Point>
+											<XPos>100</XPos>
+											<YPos>-26.05</YPos>
+											<Flags>37</Flags>
+										</Point>
+									</PointList>
+								</Curve>
+							</CurveUsageInfo>
 						</DiffractionDSFUsage>
 						<TransmissionVolumeUsage>
 							<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
-								<Curve Name="T" ID="{D059B461-AA3C-4558-8ABD-A983B1482397}">
+								<Curve Name="T" ID="{6109A664-F07F-4494-85B7-3CB7E5E8278B}">
 									<PropertyList>
 										<Property Name="Flags" Type="int32" Value="257"/>
 									</PropertyList>
@@ -910,7 +1098,7 @@
 						</TransmissionVolumeUsage>
 						<TransmissionLPFUsage>
 							<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
-								<Curve Name="T" ID="{88E22DAD-4EFE-438D-9B60-F6FBF6D3ADAF}">
+								<Curve Name="T" ID="{D89A8588-7B9A-4B6A-8267-77A7B2B784F3}">
 									<PropertyList>
 										<Property Name="Flags" Type="int32" Value="257"/>
 									</PropertyList>
@@ -931,7 +1119,7 @@
 						</TransmissionLPFUsage>
 						<TransmissionHPFUsage>
 							<CurveUsageInfo Platform="Linked" CurveToUse="None">
-								<Curve Name="T" ID="{FCEC0228-DA2C-4C27-8C7D-C9F91FE96316}">
+								<Curve Name="T" ID="{023D3F46-8CD4-4E39-A27C-B591F70711D5}">
 									<PropertyList>
 										<Property Name="Flags" Type="int32" Value="1"/>
 									</PropertyList>
@@ -951,7 +1139,25 @@
 							</CurveUsageInfo>
 						</TransmissionHPFUsage>
 						<TransmissionDSFUsage>
-							<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+							<CurveUsageInfo Platform="Linked" CurveToUse="None">
+								<Curve Name="TransmissionDSF" ID="{86963ADA-E7AE-4A7E-96B8-A831B6341AC0}">
+									<PropertyList>
+										<Property Name="Flags" Type="int32" Value="3"/>
+									</PropertyList>
+									<PointList>
+										<Point>
+											<XPos>0</XPos>
+											<YPos>0</YPos>
+											<Flags>5</Flags>
+										</Point>
+										<Point>
+											<XPos>100</XPos>
+											<YPos>-200</YPos>
+											<Flags>37</Flags>
+										</Point>
+									</PointList>
+								</Curve>
+							</CurveUsageInfo>
 						</TransmissionDSFUsage>
 					</CurveUsageInfoList>
 				</Attenuation>

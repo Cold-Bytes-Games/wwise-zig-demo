@@ -10,7 +10,7 @@
 								<Property Name="ActionType" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="MarchingBand" ID="{061BABBC-479A-4FA9-968E-6CFAF5A1A109}" WorkUnitID="{33D8A269-9B19-4CCD-B9B7-77FEA744BBDA}"/>
 								</Reference>
 							</ReferenceList>
@@ -24,7 +24,7 @@
 								<Property Name="ActionType" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="CallbackPlaylist" ID="{EC08EC25-B9C9-440B-86BE-B7C6E35F0215}" WorkUnitID="{33D8A269-9B19-4CCD-B9B7-77FEA744BBDA}"/>
 								</Reference>
 							</ReferenceList>
@@ -38,7 +38,7 @@
 								<Property Name="ActionType" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="MIDICallbacks" ID="{BA216879-018E-490F-9515-E5A02277A896}" WorkUnitID="{33D8A269-9B19-4CCD-B9B7-77FEA744BBDA}"/>
 								</Reference>
 							</ReferenceList>

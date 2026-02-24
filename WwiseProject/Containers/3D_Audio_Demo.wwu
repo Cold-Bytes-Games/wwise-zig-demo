@@ -4,15 +4,11 @@
 		<WorkUnit Name="3D_Audio_Demo" ID="{875EE732-41A2-46B4-81D3-18BD32F634A1}" PersistMode="Standalone">
 			<ChildrenList>
 				<PropertyContainer Name="Spatialized Ambience" ID="{9E515555-F9D8-4146-9E2C-063891DAC1BA}" ShortID="992740904">
-					<PropertyList>
-						<Property Name="HdrEnvelopeSensitivity" Type="Real64" Value="20"/>
-						<Property Name="VirtualVoiceQueueBehavior" Type="int16" Value="1"/>
-					</PropertyList>
 					<ReferenceList>
-						<Reference Name="Conversion">
+						<Reference Name="Conversion" CompanyID="4095" PluginID="65535" PluginType="15">
 							<ObjectRef Name="SFX" ID="{3A429FCB-87D8-458B-B315-DBE8023064B3}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
 						</Reference>
-						<Reference Name="OutputBus">
+						<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
 							<ObjectRef Name="Environments" ID="{E977EBE2-57B9-46C3-A4EE-CC06C269DB1B}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 						</Reference>
 					</ReferenceList>
@@ -20,17 +16,15 @@
 						<Sound Name="waves" ID="{9237D803-E6BE-4005-BAF2-0128161ED6D8}" ShortID="718663556">
 							<PropertyList>
 								<Property Name="EnableAttenuation" Type="bool" Value="False"/>
-								<Property Name="HdrEnvelopeSensitivity" Type="Real64" Value="20"/>
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
-								<Property Name="VirtualVoiceQueueBehavior" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Conversion">
+								<Reference Name="Conversion" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="SFX" ID="{3A429FCB-87D8-458B-B315-DBE8023064B3}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
 								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+								<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
@@ -65,7 +59,6 @@
 						</Sound>
 						<RandomSequenceContainer Name="repeat_seagulls" ID="{22F80BDE-3279-4299-A15A-796633579EF9}" ShortID="928596133">
 							<PropertyList>
-								<Property Name="HdrEnvelopeSensitivity" Type="Real64" Value="20"/>
 								<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 								<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
 								<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
@@ -83,14 +76,13 @@
 								</Property>
 								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 								<Property Name="RandomOrSequence" Type="int16" Value="0"/>
-								<Property Name="VirtualVoiceQueueBehavior" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Conversion">
+								<Reference Name="Conversion" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="SFX" ID="{3A429FCB-87D8-458B-B315-DBE8023064B3}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
 								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+								<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
@@ -98,32 +90,26 @@
 									<PropertyList>
 										<Property Name="3DPosition" Type="int16" Value="1"/>
 										<Property Name="3DSpatialization" Type="int16" Value="1"/>
-										<Property Name="HdrEnvelopeSensitivity" Type="Real64" Value="20"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
 										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="5"/>
-										<Property Name="VirtualVoiceQueueBehavior" Type="int16" Value="1"/>
 									</PropertyList>
 									<ReferenceList>
-										<Reference Name="Conversion">
+										<Reference Name="Conversion" CompanyID="4095" PluginID="65535" PluginType="15">
 											<ObjectRef Name="SFX" ID="{3A429FCB-87D8-458B-B315-DBE8023064B3}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
 										</Reference>
-										<Reference Name="OutputBus">
+										<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
 											<ObjectRef Name="Environments" ID="{E977EBE2-57B9-46C3-A4EE-CC06C269DB1B}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
 										<Sound Name="seagull4" ID="{FD4956F7-BEE1-4628-A8AD-C960182D4B67}" ShortID="934326213">
-											<PropertyList>
-												<Property Name="HdrEnvelopeSensitivity" Type="Real64" Value="20"/>
-												<Property Name="VirtualVoiceQueueBehavior" Type="int16" Value="1"/>
-											</PropertyList>
 											<ReferenceList>
-												<Reference Name="Conversion">
+												<Reference Name="Conversion" CompanyID="4095" PluginID="65535" PluginType="15">
 													<ObjectRef Name="SFX" ID="{3A429FCB-87D8-458B-B315-DBE8023064B3}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
 												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+												<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
@@ -146,16 +132,12 @@
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="seagull3" ID="{83593B85-C144-411C-8317-B2B32A7D72B4}" ShortID="367961651">
-											<PropertyList>
-												<Property Name="HdrEnvelopeSensitivity" Type="Real64" Value="20"/>
-												<Property Name="VirtualVoiceQueueBehavior" Type="int16" Value="1"/>
-											</PropertyList>
 											<ReferenceList>
-												<Reference Name="Conversion">
+												<Reference Name="Conversion" CompanyID="4095" PluginID="65535" PluginType="15">
 													<ObjectRef Name="SFX" ID="{3A429FCB-87D8-458B-B315-DBE8023064B3}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
 												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+												<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
@@ -178,16 +160,12 @@
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="seagull2" ID="{B4FA9BEF-089E-4C0F-8423-113F522D4343}" ShortID="352296577">
-											<PropertyList>
-												<Property Name="HdrEnvelopeSensitivity" Type="Real64" Value="20"/>
-												<Property Name="VirtualVoiceQueueBehavior" Type="int16" Value="1"/>
-											</PropertyList>
 											<ReferenceList>
-												<Reference Name="Conversion">
+												<Reference Name="Conversion" CompanyID="4095" PluginID="65535" PluginType="15">
 													<ObjectRef Name="SFX" ID="{3A429FCB-87D8-458B-B315-DBE8023064B3}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
 												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+												<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
@@ -210,16 +188,12 @@
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="seagull1" ID="{B61C4E29-64F4-4DCD-BC97-64E83C06F8BD}" ShortID="1033833667">
-											<PropertyList>
-												<Property Name="HdrEnvelopeSensitivity" Type="Real64" Value="20"/>
-												<Property Name="VirtualVoiceQueueBehavior" Type="int16" Value="1"/>
-											</PropertyList>
 											<ReferenceList>
-												<Reference Name="Conversion">
+												<Reference Name="Conversion" CompanyID="4095" PluginID="65535" PluginType="15">
 													<ObjectRef Name="SFX" ID="{3A429FCB-87D8-458B-B315-DBE8023064B3}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
 												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+												<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
@@ -336,10 +310,14 @@
 							</ChildrenList>
 							<ObjectLists>
 								<ObjectList Name="Playlist">
-									
-								<PluginInnerObject Name="" ID="{079779CF-DC9D-4353-830A-B1206F17E1B6}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86"><ReferenceList><Reference Name="PlaylistObject">
-										<ObjectRef Name="seagulls" ID="{734BE003-E13A-4021-A0E4-FFB2BD4DCF9F}" WorkUnitID="{875EE732-41A2-46B4-81D3-18BD32F634A1}"/>
-									</Reference></ReferenceList></PluginInnerObject></ObjectList>
+									<PluginInnerObject Name="" ID="{879C60F5-E86A-4A0A-8F1A-326D02220AC5}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86">
+										<ReferenceList>
+											<Reference Name="PlaylistObject" CompanyID="4095" PluginID="65535" PluginType="15">
+												<ObjectRef Name="seagulls" ID="{734BE003-E13A-4021-A0E4-FFB2BD4DCF9F}" WorkUnitID="{875EE732-41A2-46B4-81D3-18BD32F634A1}"/>
+											</Reference>
+										</ReferenceList>
+									</PluginInnerObject>
+								</ObjectList>
 							</ObjectLists>
 						</RandomSequenceContainer>
 					</ChildrenList>
@@ -352,17 +330,15 @@
 								<Value>100</Value>
 							</ValueList>
 						</Property>
-						<Property Name="HdrEnvelopeSensitivity" Type="Real64" Value="20"/>
-						<Property Name="VirtualVoiceQueueBehavior" Type="int16" Value="1"/>
 					</PropertyList>
 					<ReferenceList>
-						<Reference Name="Attenuation">
-							<ObjectRef Name="TEST" ID="{25F18D70-26B2-4DED-B075-E604291CD27C}" WorkUnitID="{FA0B1D22-7FD9-4D5C-AE85-F167ACFF5AAC}"/>
+						<Reference Name="Attenuation" CompanyID="4095" PluginID="65535" PluginType="15">
+							<ObjectRef Name="3DAudio_WithSpread" ID="{40C73677-FCF0-405B-BDF9-34CEE362F34E}" WorkUnitID="{FA0B1D22-7FD9-4D5C-AE85-F167ACFF5AAC}"/>
 						</Reference>
-						<Reference Name="Conversion">
+						<Reference Name="Conversion" CompanyID="4095" PluginID="65535" PluginType="15">
 							<ObjectRef Name="SFX" ID="{3A429FCB-87D8-458B-B315-DBE8023064B3}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
 						</Reference>
-						<Reference Name="OutputBus">
+						<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
 							<ObjectRef Name="Sounds" ID="{9710B44F-0296-40F1-BB0B-DEFC366464DC}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 						</Reference>
 					</ReferenceList>
@@ -370,30 +346,25 @@
 						<RandomSequenceContainer Name="Dirt_Footsteps" ID="{FED1D288-2973-4EB7-912A-DFD37F16CFC5}" ShortID="997883789">
 							<PropertyList>
 								<Property Name="BelowThresholdBehavior" Type="int16" Value="1"/>
-								<Property Name="HdrEnvelopeSensitivity" Type="Real64" Value="20"/>
 								<Property Name="RandomAvoidRepeating" Type="bool" Value="False"/>
 								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Conversion">
+								<Reference Name="Conversion" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="SFX" ID="{3A429FCB-87D8-458B-B315-DBE8023064B3}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
 								</Reference>
-								<Reference Name="OutputBus">
+								<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="Environmental Bus" ID="{53D0C673-DFDE-4CD6-92E6-5A1C2D92FBE1}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
 								<Sound Name="FS_Dirt_01" ID="{226957BC-A102-42A1-86DF-D82A201F8714}" ShortID="414630652">
-									<PropertyList>
-										<Property Name="HdrEnvelopeSensitivity" Type="Real64" Value="20"/>
-										<Property Name="VirtualVoiceQueueBehavior" Type="int16" Value="1"/>
-									</PropertyList>
 									<ReferenceList>
-										<Reference Name="Conversion">
+										<Reference Name="Conversion" CompanyID="4095" PluginID="65535" PluginType="15">
 											<ObjectRef Name="SFX" ID="{3A429FCB-87D8-458B-B315-DBE8023064B3}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
 										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+										<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -413,16 +384,12 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="FS_Dirt_02" ID="{14F2BB05-9BA8-439F-A42E-878F9B227074}" ShortID="782139588">
-									<PropertyList>
-										<Property Name="HdrEnvelopeSensitivity" Type="Real64" Value="20"/>
-										<Property Name="VirtualVoiceQueueBehavior" Type="int16" Value="1"/>
-									</PropertyList>
 									<ReferenceList>
-										<Reference Name="Conversion">
+										<Reference Name="Conversion" CompanyID="4095" PluginID="65535" PluginType="15">
 											<ObjectRef Name="SFX" ID="{3A429FCB-87D8-458B-B315-DBE8023064B3}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
 										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+										<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -442,16 +409,12 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="FS_Dirt_03" ID="{F848E4B5-FA41-4442-8DBF-4F36DDC99768}" ShortID="425999306">
-									<PropertyList>
-										<Property Name="HdrEnvelopeSensitivity" Type="Real64" Value="20"/>
-										<Property Name="VirtualVoiceQueueBehavior" Type="int16" Value="1"/>
-									</PropertyList>
 									<ReferenceList>
-										<Reference Name="Conversion">
+										<Reference Name="Conversion" CompanyID="4095" PluginID="65535" PluginType="15">
 											<ObjectRef Name="SFX" ID="{3A429FCB-87D8-458B-B315-DBE8023064B3}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
 										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+										<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -471,16 +434,12 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="FS_Dirt_04" ID="{0C6323E1-BBA5-4BA3-A2A0-FB3A0110E7B7}" ShortID="520138124">
-									<PropertyList>
-										<Property Name="HdrEnvelopeSensitivity" Type="Real64" Value="20"/>
-										<Property Name="VirtualVoiceQueueBehavior" Type="int16" Value="1"/>
-									</PropertyList>
 									<ReferenceList>
-										<Reference Name="Conversion">
+										<Reference Name="Conversion" CompanyID="4095" PluginID="65535" PluginType="15">
 											<ObjectRef Name="SFX" ID="{3A429FCB-87D8-458B-B315-DBE8023064B3}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
 										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+										<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -504,15 +463,11 @@
 					</ChildrenList>
 				</PropertyContainer>
 				<PropertyContainer Name="Music" ID="{204E6365-C9F8-4548-810B-10C8F331B874}" ShortID="199329151">
-					<PropertyList>
-						<Property Name="HdrEnvelopeSensitivity" Type="Real64" Value="20"/>
-						<Property Name="VirtualVoiceQueueBehavior" Type="int16" Value="1"/>
-					</PropertyList>
 					<ReferenceList>
-						<Reference Name="Conversion">
+						<Reference Name="Conversion" CompanyID="4095" PluginID="65535" PluginType="15">
 							<ObjectRef Name="SFX" ID="{3A429FCB-87D8-458B-B315-DBE8023064B3}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
 						</Reference>
-						<Reference Name="OutputBus">
+						<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
 							<ObjectRef Name="BGM" ID="{4C9139BD-220D-47AF-8F52-67E41A185701}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 						</Reference>
 					</ReferenceList>
@@ -520,14 +475,12 @@
 						<Sound Name="piano_quad" ID="{54EE7258-6A09-4A84-A678-22928AFA3C81}" ShortID="678823939">
 							<Comment>Composed &amp; produced by Hugo Bédard</Comment>
 							<PropertyList>
-								<Property Name="HdrEnvelopeSensitivity" Type="Real64" Value="20"/>
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 								<Property Name="IsStreamingEnabled" Type="bool">
 									<ValueList>
 										<Value>True</Value>
 									</ValueList>
 								</Property>
-								<Property Name="VirtualVoiceQueueBehavior" Type="int16" Value="1"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
 										<Value>-2</Value>
@@ -535,11 +488,11 @@
 								</Property>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Conversion">
+								<Reference Name="Conversion" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="SFX" ID="{3A429FCB-87D8-458B-B315-DBE8023064B3}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
 								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+								<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>

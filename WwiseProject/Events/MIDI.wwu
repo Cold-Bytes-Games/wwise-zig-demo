@@ -10,7 +10,7 @@
 								<Property Name="ActionType" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="Metronome" ID="{3BB365E3-DA05-436E-B60E-3334D8CE9ADA}" WorkUnitID="{F5D6A1B7-0351-492B-A43C-CFCD9FE2A1EF}"/>
 								</Reference>
 							</ReferenceList>

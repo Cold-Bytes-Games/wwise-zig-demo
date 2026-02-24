@@ -23,13 +23,13 @@
 						</Property>
 					</PropertyList>
 					<ReferenceList>
-						<Reference Name="Conversion">
+						<Reference Name="Conversion" CompanyID="4095" PluginID="65535" PluginType="15">
 							<ObjectRef Name="SFX" ID="{3A429FCB-87D8-458B-B315-DBE8023064B3}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
 						</Reference>
-						<Reference Name="OutputBus">
+						<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
 							<ObjectRef Name="Environmental Bus" ID="{53D0C673-DFDE-4CD6-92E6-5A1C2D92FBE1}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 						</Reference>
-						<Reference Name="SwitchGroupOrStateGroup">
+						<Reference Name="SwitchGroupOrStateGroup" CompanyID="4095" PluginID="65535" PluginType="15">
 							<ObjectRef Name="Surface" ID="{EAB62AA7-5069-491B-BC8F-495B01CA7501}" WorkUnitID="{B20FB0D4-883A-4F6E-8912-3864DE39DCAB}"/>
 						</Reference>
 					</ReferenceList>
@@ -83,8 +83,8 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 								</Property>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+								<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
@@ -93,8 +93,8 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 									</PropertyList>
 									<ReferenceList>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+										<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -115,8 +115,8 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 									</PropertyList>
 									<ReferenceList>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+										<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -137,8 +137,8 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 									</PropertyList>
 									<ReferenceList>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+										<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -152,39 +152,39 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 									</ChildrenList>
 									<ObjectLists>
 										<ObjectList Name="Effects">
-											
-										<EffectSlot Name="" ID="{31B9338E-FB25-4EBE-B6F5-31DDAB24C502}" ShortID="439959952">
-														<ReferenceList>
-															<Reference Name="Effect">
-																<Custom CreatedFrom="{C2817027-BAD4-4483-8762-64C45E56497E}">
-																	<Effect Name="Hangar_Env (Define custom)" ID="{8CC52879-4B17-4F3E-B613-DCC8004E4A3E}" ShortID="685399972" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-																		<PropertyList>
-																			<Property Name="DecayTime" Type="Real32" Value="6.1"/>
-																			<Property Name="Density" Type="Real32" Value="100"/>
-																			<Property Name="Diffusion" Type="Real32" Value="0.53"/>
-																			<Property Name="ERFrontBackDelay" Type="Real32" Value="100"/>
-																			<Property Name="ERLevel" Type="Real32" Value="-15"/>
-																			<Property Name="ERPattern" Type="int32" Value="5"/>
-																			<Property Name="Filter1Freq" Type="Real32" Value="490"/>
-																			<Property Name="Filter1Gain" Type="Real32" Value="-4.5"/>
-																			<Property Name="Filter2Freq" Type="Real32" Value="2200"/>
-																			<Property Name="Filter2InsertPos" Type="int32" Value="0"/>
-																			<Property Name="Filter2Q" Type="Real32" Value="0.1"/>
-																			<Property Name="Filter3Freq" Type="Real32" Value="10240"/>
-																			<Property Name="Filter3Gain" Type="Real32" Value="3"/>
-																			<Property Name="HFDamping" Type="Real32" Value="6.9"/>
-																			<Property Name="PreDelay" Type="Real32" Value="95"/>
-																			<Property Name="Quality" Type="int32" Value="6"/>
-																			<Property Name="ReverbLevel" Type="Real32" Value="-17"/>
-																			<Property Name="RoomShape" Type="Real32" Value="0"/>
-																			<Property Name="RoomSize" Type="Real32" Value="71"/>
-																			<Property Name="StereoWidth" Type="Real32" Value="139"/>
-																		</PropertyList>
-																	</Effect>
-																</Custom>
-															</Reference>
-														</ReferenceList>
-													</EffectSlot></ObjectList>
+											<EffectSlot Name="" ID="{595AA364-3416-444F-8170-B791B8F0C42E}" ShortID="339676715">
+												<ReferenceList>
+													<Reference Name="Effect">
+														<Custom CreatedFrom="{C2817027-BAD4-4483-8762-64C45E56497E}">
+															<Effect Name="Hangar_Env (Define custom)" ID="{8CC52879-4B17-4F3E-B613-DCC8004E4A3E}" ShortID="685399972" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																<PropertyList>
+																	<Property Name="DecayTime" Type="Real32" Value="6.1"/>
+																	<Property Name="Density" Type="Real32" Value="100"/>
+																	<Property Name="Diffusion" Type="Real32" Value="0.53"/>
+																	<Property Name="ERFrontBackDelay" Type="Real32" Value="100"/>
+																	<Property Name="ERLevel" Type="Real32" Value="-15"/>
+																	<Property Name="ERPattern" Type="int32" Value="5"/>
+																	<Property Name="Filter1Freq" Type="Real32" Value="490"/>
+																	<Property Name="Filter1Gain" Type="Real32" Value="-4.5"/>
+																	<Property Name="Filter2Freq" Type="Real32" Value="2200"/>
+																	<Property Name="Filter2InsertPos" Type="int32" Value="0"/>
+																	<Property Name="Filter2Q" Type="Real32" Value="0.1"/>
+																	<Property Name="Filter3Freq" Type="Real32" Value="10240"/>
+																	<Property Name="Filter3Gain" Type="Real32" Value="3"/>
+																	<Property Name="HFDamping" Type="Real32" Value="6.9"/>
+																	<Property Name="PreDelay" Type="Real32" Value="95"/>
+																	<Property Name="Quality" Type="int32" Value="6"/>
+																	<Property Name="ReverbLevel" Type="Real32" Value="-17"/>
+																	<Property Name="RoomShape" Type="Real32" Value="0"/>
+																	<Property Name="RoomSize" Type="Real32" Value="71"/>
+																	<Property Name="StereoWidth" Type="Real32" Value="139"/>
+																</PropertyList>
+															</Effect>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</ObjectList>
 									</ObjectLists>
 									<ActiveSourceList>
 										<ActiveSource Name="AK_FS_Run_Gravel_01" ID="{67B5E2E3-C582-42C8-BBC2-48667E62EF4F}" Platform="Linked"/>
@@ -193,123 +193,123 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 							</ChildrenList>
 							<ObjectLists>
 								<ObjectList Name="Effects">
-									
-								<EffectSlot Name="" ID="{355C5E14-D7E2-4489-A06D-0F9C50C787BA}" ShortID="228082979">
-												<ReferenceList>
-													<Reference Name="Effect" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
-														<ObjectRef Name="GravelEQ" ID="{34A4C6AF-F669-40BA-8351-0C6C1772D137}" WorkUnitID="{81786A24-8893-4DE1-81AF-602DBDFCFF71}"/>
-													</Reference>
-												</ReferenceList>
-											</EffectSlot></ObjectList>
+									<EffectSlot Name="" ID="{6DF1B14E-27C0-4FC9-A9B4-FBE8DEB924F7}" ShortID="624643331">
+										<ReferenceList>
+											<Reference Name="Effect" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+												<ObjectRef Name="GravelEQ" ID="{34A4C6AF-F669-40BA-8351-0C6C1772D137}" WorkUnitID="{81786A24-8893-4DE1-81AF-602DBDFCFF71}"/>
+											</Reference>
+										</ReferenceList>
+									</EffectSlot>
+								</ObjectList>
 								<ObjectList Name="RTPC">
-									
-									
-									
-								<RTPC Name="" ID="{C7EE43ED-025A-4613-868F-E4AA88F61863}" ShortID="585963557">
-												<PropertyList>
-													<Property Name="PropertyName" Type="string" Value="Pitch"/>
-												</PropertyList>
-												<ReferenceList>
-													<Reference Name="ControlInput">
-														<ObjectRef Name="Footstep_Speed" ID="{90B8D510-B555-4C88-93AE-F2326AC1DC26}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
-													</Reference>
-													<Reference Name="Curve">
-														<Custom>
-															<Curve Name="" ID="{B1B38C17-BA2C-4EC9-A8BB-2E4720E215ED}">
-																<PropertyList>
-																	<Property Name="Flags" Type="int32" Value="65537"/>
-																</PropertyList>
-																<PointList>
-																	<Point>
-																		<XPos>0</XPos>
-																		<YPos>-300</YPos>
-																		<Flags>5</Flags>
-																		<SegmentShape>SCurve</SegmentShape>
-																	</Point>
-																	<Point>
-																		<XPos>10</XPos>
-																		<YPos>600</YPos>
-																		<Flags>37</Flags>
-																	</Point>
-																</PointList>
-															</Curve>
-														</Custom>
-													</Reference>
-												</ReferenceList>
-											</RTPC><RTPC Name="" ID="{C76D8EF0-0858-454B-A5D5-E5690FF3F7DE}" ShortID="298101273">
-												<PropertyList>
-													<Property Name="PropertyName" Type="string" Value="Pitch"/>
-												</PropertyList>
-												<ReferenceList>
-													<Reference Name="ControlInput">
-														<ObjectRef Name="Footstep_Weight" ID="{8552C51B-A366-48C0-9248-D559631D031E}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
-													</Reference>
-													<Reference Name="Curve">
-														<Custom>
-															<Curve Name="" ID="{A0C96220-920A-4EAB-8279-80A081029D6F}">
-																<PropertyList>
-																	<Property Name="Flags" Type="int32" Value="65537"/>
-																</PropertyList>
-																<PointList>
-																	<Point>
-																		<XPos>0</XPos>
-																		<YPos>0</YPos>
-																		<Flags>5</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>100</XPos>
-																		<YPos>-500</YPos>
-																		<Flags>37</Flags>
-																	</Point>
-																</PointList>
-															</Curve>
-														</Custom>
-													</Reference>
-												</ReferenceList>
-											</RTPC><RTPC Name="" ID="{9EC12B71-D46E-46BE-AF9E-C5B41F88B788}" ShortID="10127129">
-												<PropertyList>
-													<Property Name="PropertyName" Type="string" Value="Volume"/>
-												</PropertyList>
-												<ReferenceList>
-													<Reference Name="ControlInput">
-														<ObjectRef Name="Footstep_Speed" ID="{90B8D510-B555-4C88-93AE-F2326AC1DC26}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
-													</Reference>
-													<Reference Name="Curve">
-														<Custom>
-															<Curve Name="" ID="{B43A9A63-3974-4360-8F05-7D966F2C7189}">
-																<PropertyList>
-																	<Property Name="Flags" Type="int32" Value="3"/>
-																</PropertyList>
-																<PointList>
-																	<Point>
-																		<XPos>0</XPos>
-																		<YPos>0</YPos>
-																		<Flags>5</Flags>
-																		<SegmentShape>Exp2</SegmentShape>
-																	</Point>
-																	<Point>
-																		<XPos>10</XPos>
-																		<YPos>6</YPos>
-																		<Flags>37</Flags>
-																	</Point>
-																</PointList>
-															</Curve>
-														</Custom>
-													</Reference>
-												</ReferenceList>
-											</RTPC></ObjectList>
+									<RTPC Name="" ID="{C7EE43ED-025A-4613-868F-E4AA88F61863}" ShortID="585963557">
+										<PropertyList>
+											<Property Name="PropertyName" Type="string" Value="Pitch"/>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="ControlInput" CompanyID="4095" PluginID="65535" PluginType="15">
+												<ObjectRef Name="Footstep_Speed" ID="{90B8D510-B555-4C88-93AE-F2326AC1DC26}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
+											</Reference>
+											<Reference Name="Curve">
+												<Custom>
+													<Curve Name="" ID="{B1B38C17-BA2C-4EC9-A8BB-2E4720E215ED}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="65537"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-300</YPos>
+																<Flags>5</Flags>
+																<SegmentShape>SCurve</SegmentShape>
+															</Point>
+															<Point>
+																<XPos>10</XPos>
+																<YPos>600</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</RTPC>
+									<RTPC Name="" ID="{C76D8EF0-0858-454B-A5D5-E5690FF3F7DE}" ShortID="298101273">
+										<PropertyList>
+											<Property Name="PropertyName" Type="string" Value="Pitch"/>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="ControlInput" CompanyID="4095" PluginID="65535" PluginType="15">
+												<ObjectRef Name="Footstep_Weight" ID="{8552C51B-A366-48C0-9248-D559631D031E}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
+											</Reference>
+											<Reference Name="Curve">
+												<Custom>
+													<Curve Name="" ID="{A0C96220-920A-4EAB-8279-80A081029D6F}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="65537"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>0</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>-500</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</RTPC>
+									<RTPC Name="" ID="{9EC12B71-D46E-46BE-AF9E-C5B41F88B788}" ShortID="10127129">
+										<PropertyList>
+											<Property Name="PropertyName" Type="string" Value="Volume"/>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="ControlInput" CompanyID="4095" PluginID="65535" PluginType="15">
+												<ObjectRef Name="Footstep_Speed" ID="{90B8D510-B555-4C88-93AE-F2326AC1DC26}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
+											</Reference>
+											<Reference Name="Curve">
+												<Custom>
+													<Curve Name="" ID="{B43A9A63-3974-4360-8F05-7D966F2C7189}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>0</YPos>
+																<Flags>5</Flags>
+																<SegmentShape>Exp2</SegmentShape>
+															</Point>
+															<Point>
+																<XPos>10</XPos>
+																<YPos>6</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</RTPC>
+								</ObjectList>
 							</ObjectLists>
 						</RandomSequenceContainer>
 						<SwitchContainer Name="Wood" ID="{DF7FD4E5-D3B4-44D1-943D-D1D91B89108F}" ShortID="647863731">
 							<Comment>Running and walking on wood have very different sounds so they are split in two discrete containers, switched with the Speed RTPC-driven switch.</Comment>
 							<ReferenceList>
-								<Reference Name="DefaultSwitchOrState">
+								<Reference Name="DefaultSwitchOrState" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="Walk" ID="{BC1ACFB8-2BAC-4A89-8AB2-9B2335C7F29A}" WorkUnitID="{B20FB0D4-883A-4F6E-8912-3864DE39DCAB}"/>
 								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+								<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 								</Reference>
-								<Reference Name="SwitchGroupOrStateGroup">
+								<Reference Name="SwitchGroupOrStateGroup" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="Footstep_Gait" ID="{BB88E245-BA7F-4FCB-9108-08751641F08B}" WorkUnitID="{B20FB0D4-883A-4F6E-8912-3864DE39DCAB}"/>
 								</Reference>
 							</ReferenceList>
@@ -335,13 +335,13 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 										</Property>
 									</PropertyList>
 									<ReferenceList>
-										<Reference Name="DefaultSwitchOrState">
+										<Reference Name="DefaultSwitchOrState" CompanyID="4095" PluginID="65535" PluginType="15">
 											<ObjectRef Name="Light" ID="{B0F764A0-8171-4899-A530-67C404CEF373}" WorkUnitID="{B20FB0D4-883A-4F6E-8912-3864DE39DCAB}"/>
 										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+										<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 										</Reference>
-										<Reference Name="SwitchGroupOrStateGroup">
+										<Reference Name="SwitchGroupOrStateGroup" CompanyID="4095" PluginID="65535" PluginType="15">
 											<ObjectRef Name="Footstep_Weight" ID="{648DF293-402C-4794-BB75-E8DAA57AB5CB}" WorkUnitID="{B20FB0D4-883A-4F6E-8912-3864DE39DCAB}"/>
 										</Reference>
 									</ReferenceList>
@@ -378,15 +378,15 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 												</Property>
 											</PropertyList>
 											<ReferenceList>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+												<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<Sound Name="f_woodsolid_walk_01_res" ID="{78C6375F-FDD4-4347-B207-EC34935D0453}" ShortID="740911467">
 													<ReferenceList>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+														<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
@@ -404,8 +404,8 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 												</Sound>
 												<Sound Name="f_woodsolid_walk_03_res" ID="{FB3B7E94-6913-4C46-8474-4B2EF02808F1}" ShortID="554585243">
 													<ReferenceList>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+														<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
@@ -423,8 +423,8 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 												</Sound>
 												<Sound Name="f_woodsolid_walk_04_res" ID="{78AA23CB-AE64-4636-BF5E-B1776BBCEF0F}" ShortID="49493099">
 													<ReferenceList>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+														<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
@@ -443,38 +443,38 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 											</ChildrenList>
 											<ObjectLists>
 												<ObjectList Name="RTPC">
-													
-												<RTPC Name="" ID="{2E6F6DBA-BC7F-4804-9197-BBA532891D86}" ShortID="90994158">
-																<PropertyList>
-																	<Property Name="PropertyName" Type="string" Value="Pitch"/>
-																</PropertyList>
-																<ReferenceList>
-																	<Reference Name="ControlInput">
-																		<ObjectRef Name="Footstep_Weight" ID="{8552C51B-A366-48C0-9248-D559631D031E}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
-																	</Reference>
-																	<Reference Name="Curve">
-																		<Custom>
-																			<Curve Name="" ID="{20CD53AD-4671-436C-B500-2EB9BB0203C8}">
-																				<PropertyList>
-																					<Property Name="Flags" Type="int32" Value="65537"/>
-																				</PropertyList>
-																				<PointList>
-																					<Point>
-																						<XPos>0</XPos>
-																						<YPos>100</YPos>
-																						<Flags>5</Flags>
-																					</Point>
-																					<Point>
-																						<XPos>100</XPos>
-																						<YPos>-400</YPos>
-																						<Flags>37</Flags>
-																					</Point>
-																				</PointList>
-																			</Curve>
-																		</Custom>
-																	</Reference>
-																</ReferenceList>
-															</RTPC></ObjectList>
+													<RTPC Name="" ID="{2E6F6DBA-BC7F-4804-9197-BBA532891D86}" ShortID="90994158">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="Pitch"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput" CompanyID="4095" PluginID="65535" PluginType="15">
+																<ObjectRef Name="Footstep_Weight" ID="{8552C51B-A366-48C0-9248-D559631D031E}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{20CD53AD-4671-436C-B500-2EB9BB0203C8}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="65537"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>100</YPos>
+																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>100</XPos>
+																				<YPos>-400</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</ObjectList>
 											</ObjectLists>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Heavy" ID="{3E2AFE98-75B6-46DE-9107-77D81622F256}" ShortID="24927329">
@@ -506,15 +506,15 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 												<Property Name="RandomAvoidRepeating" Type="bool" Value="False"/>
 											</PropertyList>
 											<ReferenceList>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+												<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<Sound Name="f_woodsolid_walk_02_res" ID="{36E8E54E-ECEF-4550-B4F5-5314DB19089E}" ShortID="393681894">
 													<ReferenceList>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+														<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
@@ -532,8 +532,8 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 												</Sound>
 												<Sound Name="f_woodsolid_walk_05_res" ID="{72F8A4B9-23F1-4832-AF21-C63C8D7B239B}" ShortID="514094160">
 													<ReferenceList>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+														<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
@@ -552,89 +552,89 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 											</ChildrenList>
 											<ObjectLists>
 												<ObjectList Name="RTPC">
-													
-													
-												<RTPC Name="" ID="{5259BEC3-F7C1-43AD-BEAD-6E0AA21478A6}" ShortID="311801600">
-																<PropertyList>
-																	<Property Name="PropertyName" Type="string" Value="Lowpass"/>
-																</PropertyList>
-																<ReferenceList>
-																	<Reference Name="ControlInput">
-																		<ObjectRef Name="Footstep_Weight" ID="{8552C51B-A366-48C0-9248-D559631D031E}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
-																	</Reference>
-																	<Reference Name="Curve">
-																		<Custom>
-																			<Curve Name="" ID="{FB0E0D1A-BE31-4CFC-9C25-1192EE971817}">
-																				<PropertyList>
-																					<Property Name="Flags" Type="int32" Value="65537"/>
-																				</PropertyList>
-																				<PointList>
-																					<Point>
-																						<XPos>0</XPos>
-																						<YPos>0</YPos>
-																						<Flags>5</Flags>
-																					</Point>
-																					<Point>
-																						<XPos>50.1477832512315</XPos>
-																						<YPos>0</YPos>
-																						<Flags>0</Flags>
-																					</Point>
-																					<Point>
-																						<XPos>100</XPos>
-																						<YPos>46</YPos>
-																						<Flags>37</Flags>
-																					</Point>
-																				</PointList>
-																			</Curve>
-																		</Custom>
-																	</Reference>
-																</ReferenceList>
-															</RTPC><RTPC Name="" ID="{8D1DAF3A-2C46-4DAB-A336-0EEC30CA3A80}" ShortID="207753143">
-																<PropertyList>
-																	<Property Name="PropertyName" Type="string" Value="Pitch"/>
-																</PropertyList>
-																<ReferenceList>
-																	<Reference Name="ControlInput">
-																		<ObjectRef Name="Footstep_Weight" ID="{8552C51B-A366-48C0-9248-D559631D031E}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
-																	</Reference>
-																	<Reference Name="Curve">
-																		<Custom>
-																			<Curve Name="" ID="{FB713B54-0A2F-4ECD-9756-2DD25A61CDC6}">
-																				<PropertyList>
-																					<Property Name="Flags" Type="int32" Value="65537"/>
-																				</PropertyList>
-																				<PointList>
-																					<Point>
-																						<XPos>0</XPos>
-																						<YPos>0</YPos>
-																						<Flags>5</Flags>
-																					</Point>
-																					<Point>
-																						<XPos>50.04926</XPos>
-																						<YPos>99</YPos>
-																						<Flags>0</Flags>
-																					</Point>
-																					<Point>
-																						<XPos>100</XPos>
-																						<YPos>-400</YPos>
-																						<Flags>37</Flags>
-																					</Point>
-																				</PointList>
-																			</Curve>
-																		</Custom>
-																	</Reference>
-																</ReferenceList>
-															</RTPC></ObjectList>
+													<RTPC Name="" ID="{5259BEC3-F7C1-43AD-BEAD-6E0AA21478A6}" ShortID="311801600">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="Lowpass"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput" CompanyID="4095" PluginID="65535" PluginType="15">
+																<ObjectRef Name="Footstep_Weight" ID="{8552C51B-A366-48C0-9248-D559631D031E}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{FB0E0D1A-BE31-4CFC-9C25-1192EE971817}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="65537"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>0</YPos>
+																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>50.1477832512315</XPos>
+																				<YPos>0</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>100</XPos>
+																				<YPos>46</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+													<RTPC Name="" ID="{8D1DAF3A-2C46-4DAB-A336-0EEC30CA3A80}" ShortID="207753143">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="Pitch"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput" CompanyID="4095" PluginID="65535" PluginType="15">
+																<ObjectRef Name="Footstep_Weight" ID="{8552C51B-A366-48C0-9248-D559631D031E}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{FB713B54-0A2F-4ECD-9756-2DD25A61CDC6}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="65537"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>0</YPos>
+																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>50.04926</XPos>
+																				<YPos>99</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>100</XPos>
+																				<YPos>-400</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</ObjectList>
 											</ObjectLists>
 										</RandomSequenceContainer>
 									</ChildrenList>
 									<ObjectLists>
 										<ObjectList Name="Effects" Platform="iOS">
-											
-											
-											
-											
-										<EffectSlot Name="" ID="{C32BE2BB-D2DE-4D22-A11A-52F45FC08F27}" ShortID="55577718"/><EffectSlot Name="" ID="{C3138CBD-ADA7-47F2-A47D-4192C286C179}" ShortID="257838902"/><EffectSlot Name="" ID="{C924F80F-7C16-4760-B6B8-E4C0868F7117}" ShortID="893459350"/><EffectSlot Name="" ID="{6D466A30-F5A3-43E2-B896-337837668E08}" ShortID="122901375"/></ObjectList>
+											<EffectSlot Name="" ID="{C5ECAAB0-30FD-423A-9EC1-6734CB432FE9}" ShortID="476069919"/>
+											<EffectSlot Name="" ID="{6A1E144B-9681-4256-948C-74C94F220CEA}" ShortID="581786751"/>
+											<EffectSlot Name="" ID="{8544605D-A5D1-4E61-84F0-342893E999A0}" ShortID="63232482"/>
+											<EffectSlot Name="" ID="{485531B8-8CA1-4D06-8388-2448761C40E9}" ShortID="2168286"/>
+										</ObjectList>
 									</ObjectLists>
 									<GroupingInfo>
 										<GroupingBehaviorList>
@@ -705,15 +705,15 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 										</Property>
 									</PropertyList>
 									<ReferenceList>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+										<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
 										<Sound Name="f_woodsolid_run_01_res" ID="{DD3FDCB3-2BFA-44D9-B041-CC04B28809F3}" ShortID="927768345">
 											<ReferenceList>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+												<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
@@ -731,8 +731,8 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 										</Sound>
 										<Sound Name="f_woodsolid_run_02_res" ID="{278EB28D-EFA0-44C0-B81F-976472D15473}" ShortID="326159860">
 											<ReferenceList>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+												<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
@@ -750,8 +750,8 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 										</Sound>
 										<Sound Name="f_woodsolid_run_03_res" ID="{1E565CD3-0B8B-4238-B59A-7D99A3430DD3}" ShortID="23456958">
 											<ReferenceList>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+												<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
@@ -769,8 +769,8 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 										</Sound>
 										<Sound Name="f_woodsolid_run_04_res" ID="{3708F499-8419-48BA-BB07-9BB179DC0968}" ShortID="92220105">
 											<ReferenceList>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+												<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
@@ -788,8 +788,8 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 										</Sound>
 										<Sound Name="f_woodsolid_run_05_res" ID="{D8DF3917-C732-4FB4-A415-657436121CB4}" ShortID="1013428228">
 											<ReferenceList>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+												<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
@@ -808,159 +808,159 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 									</ChildrenList>
 									<ObjectLists>
 										<ObjectList Name="RTPC">
-											
-											
-											
-											
-										<RTPC Name="" ID="{C5883004-64E7-4717-AE6C-D93282078D8B}" ShortID="641342530">
-														<PropertyList>
-															<Property Name="PropertyName" Type="string" Value="Pitch"/>
-														</PropertyList>
-														<ReferenceList>
-															<Reference Name="ControlInput">
-																<ObjectRef Name="Footstep_Weight" ID="{8552C51B-A366-48C0-9248-D559631D031E}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
-															</Reference>
-															<Reference Name="Curve">
-																<Custom>
-																	<Curve Name="" ID="{B9662F1D-AAFC-4D5B-B3FD-675373FA8928}">
-																		<PropertyList>
-																			<Property Name="Flags" Type="int32" Value="65537"/>
-																		</PropertyList>
-																		<PointList>
-																			<Point>
-																				<XPos>0</XPos>
-																				<YPos>0</YPos>
-																				<Flags>5</Flags>
-																				<SegmentShape>InvertedSCurve</SegmentShape>
-																			</Point>
-																			<Point>
-																				<XPos>50.04926</XPos>
-																				<YPos>0</YPos>
-																				<Flags>0</Flags>
-																				<SegmentShape>Exp2</SegmentShape>
-																			</Point>
-																			<Point>
-																				<XPos>100</XPos>
-																				<YPos>-300</YPos>
-																				<Flags>37</Flags>
-																			</Point>
-																		</PointList>
-																	</Curve>
-																</Custom>
-															</Reference>
-														</ReferenceList>
-													</RTPC><RTPC Name="" ID="{2713A44C-3439-4A50-BE9D-455999D18052}" ShortID="586858586">
-														<PropertyList>
-															<Property Name="PropertyName" Type="string" Value="Pitch"/>
-														</PropertyList>
-														<ReferenceList>
-															<Reference Name="ControlInput">
-																<ObjectRef Name="Footstep_Speed" ID="{90B8D510-B555-4C88-93AE-F2326AC1DC26}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
-															</Reference>
-															<Reference Name="Curve">
-																<Custom>
-																	<Curve Name="" ID="{32812570-8E4D-42BC-B7C4-1EABF47B974B}">
-																		<PropertyList>
-																			<Property Name="Flags" Type="int32" Value="65537"/>
-																		</PropertyList>
-																		<PointList>
-																			<Point>
-																				<XPos>0</XPos>
-																				<YPos>0</YPos>
-																				<Flags>5</Flags>
-																			</Point>
-																			<Point>
-																				<XPos>6.00985</XPos>
-																				<YPos>0</YPos>
-																				<Flags>0</Flags>
-																			</Point>
-																			<Point>
-																				<XPos>10</XPos>
-																				<YPos>500</YPos>
-																				<Flags>37</Flags>
-																			</Point>
-																		</PointList>
-																	</Curve>
-																</Custom>
-															</Reference>
-														</ReferenceList>
-													</RTPC><RTPC Name="" ID="{461D4F3F-9928-4775-A8BF-4E55AF3788E1}" ShortID="886139338">
-														<PropertyList>
-															<Property Name="PropertyName" Type="string" Value="Volume"/>
-														</PropertyList>
-														<ReferenceList>
-															<Reference Name="ControlInput">
-																<ObjectRef Name="Footstep_Weight" ID="{8552C51B-A366-48C0-9248-D559631D031E}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
-															</Reference>
-															<Reference Name="Curve">
-																<Custom>
-																	<Curve Name="" ID="{841769CB-CD4A-4AC0-9EBB-CCE7AFDAFB83}">
-																		<PropertyList>
-																			<Property Name="Flags" Type="int32" Value="3"/>
-																		</PropertyList>
-																		<PointList>
-																			<Point>
-																				<XPos>0</XPos>
-																				<YPos>-1</YPos>
-																				<Flags>5</Flags>
-																				<SegmentShape>Exp2</SegmentShape>
-																			</Point>
-																			<Point>
-																				<XPos>100</XPos>
-																				<YPos>6</YPos>
-																				<Flags>37</Flags>
-																			</Point>
-																		</PointList>
-																	</Curve>
-																</Custom>
-															</Reference>
-														</ReferenceList>
-													</RTPC><RTPC Name="" ID="{B89CBCE6-96CC-41E9-BBCE-76B4B11F72C9}" ShortID="884327782">
-														<PropertyList>
-															<Property Name="PropertyName" Type="string" Value="Volume"/>
-														</PropertyList>
-														<ReferenceList>
-															<Reference Name="ControlInput">
-																<ObjectRef Name="Footstep_Speed" ID="{90B8D510-B555-4C88-93AE-F2326AC1DC26}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
-															</Reference>
-															<Reference Name="Curve">
-																<Custom>
-																	<Curve Name="" ID="{1271F85B-C3B4-4627-B20A-6798927E920E}">
-																		<PropertyList>
-																			<Property Name="Flags" Type="int32" Value="3"/>
-																		</PropertyList>
-																		<PointList>
-																			<Point>
-																				<XPos>0</XPos>
-																				<YPos>0</YPos>
-																				<Flags>5</Flags>
-																			</Point>
-																			<Point>
-																				<XPos>4.99507</XPos>
-																				<YPos>-6.14906</YPos>
-																				<Flags>0</Flags>
-																			</Point>
-																			<Point>
-																				<XPos>10</XPos>
-																				<YPos>6</YPos>
-																				<Flags>37</Flags>
-																			</Point>
-																		</PointList>
-																	</Curve>
-																</Custom>
-															</Reference>
-														</ReferenceList>
-													</RTPC></ObjectList>
+											<RTPC Name="" ID="{C5883004-64E7-4717-AE6C-D93282078D8B}" ShortID="641342530">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="Pitch"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput" CompanyID="4095" PluginID="65535" PluginType="15">
+														<ObjectRef Name="Footstep_Weight" ID="{8552C51B-A366-48C0-9248-D559631D031E}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{B9662F1D-AAFC-4D5B-B3FD-675373FA8928}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="65537"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>0</YPos>
+																		<Flags>5</Flags>
+																		<SegmentShape>InvertedSCurve</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>50.04926</XPos>
+																		<YPos>0</YPos>
+																		<Flags>0</Flags>
+																		<SegmentShape>Exp2</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>100</XPos>
+																		<YPos>-300</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+											<RTPC Name="" ID="{2713A44C-3439-4A50-BE9D-455999D18052}" ShortID="586858586">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="Pitch"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput" CompanyID="4095" PluginID="65535" PluginType="15">
+														<ObjectRef Name="Footstep_Speed" ID="{90B8D510-B555-4C88-93AE-F2326AC1DC26}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{32812570-8E4D-42BC-B7C4-1EABF47B974B}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="65537"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>0</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>6.00985</XPos>
+																		<YPos>0</YPos>
+																		<Flags>0</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>10</XPos>
+																		<YPos>500</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+											<RTPC Name="" ID="{461D4F3F-9928-4775-A8BF-4E55AF3788E1}" ShortID="886139338">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="Volume"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput" CompanyID="4095" PluginID="65535" PluginType="15">
+														<ObjectRef Name="Footstep_Weight" ID="{8552C51B-A366-48C0-9248-D559631D031E}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{841769CB-CD4A-4AC0-9EBB-CCE7AFDAFB83}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-1</YPos>
+																		<Flags>5</Flags>
+																		<SegmentShape>Exp2</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>100</XPos>
+																		<YPos>6</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+											<RTPC Name="" ID="{B89CBCE6-96CC-41E9-BBCE-76B4B11F72C9}" ShortID="884327782">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="Volume"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput" CompanyID="4095" PluginID="65535" PluginType="15">
+														<ObjectRef Name="Footstep_Speed" ID="{90B8D510-B555-4C88-93AE-F2326AC1DC26}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{1271F85B-C3B4-4627-B20A-6798927E920E}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>0</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>4.99507</XPos>
+																		<YPos>-6.14906</YPos>
+																		<Flags>0</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>10</XPos>
+																		<YPos>6</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</ObjectList>
 									</ObjectLists>
 								</RandomSequenceContainer>
 							</ChildrenList>
 							<ObjectLists>
 								<ObjectList Name="Effects" Platform="iOS">
-									
-									
-									
-									
-								<EffectSlot Name="" ID="{C114E35C-73AC-4C46-8197-4B63B3DEFFC2}" ShortID="210945175"/><EffectSlot Name="" ID="{DC10634E-16DA-4F73-836A-AE8A3B186E86}" ShortID="485521967"/><EffectSlot Name="" ID="{A29C4960-B7D7-430F-9628-898184E3FD2D}" ShortID="481041522"/><EffectSlot Name="" ID="{2C062A93-D957-4BE0-9FE3-C3DDF6AD9671}" ShortID="895970378"/></ObjectList>
+									<EffectSlot Name="" ID="{E8FEA417-695B-49EA-97B4-75D93EE19A78}" ShortID="448355224"/>
+									<EffectSlot Name="" ID="{098531B7-8DBE-45AF-B176-B40DA14FB1CD}" ShortID="543761901"/>
+									<EffectSlot Name="" ID="{CB9EAB49-BAAA-4306-B895-F6149796456B}" ShortID="922907030"/>
+									<EffectSlot Name="" ID="{7A2EFE67-E8B5-4AF6-BE92-C1679ADD8686}" ShortID="521098511"/>
+								</ObjectList>
 							</ObjectLists>
 							<GroupingInfo>
 								<GroupingBehaviorList>
@@ -1035,22 +1035,22 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 								</Property>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+								<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
 								<RandomSequenceContainer Name="Heel" ID="{50DA88B2-844E-4564-BC43-DA3881881A7D}" ShortID="488988616">
 									<ReferenceList>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+										<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
 										<Sound Name="metalsheet_walk_heel_01_res" ID="{74A1FDFE-4AC6-41A8-991B-3B13103DAD2A}" ShortID="140858249">
 											<ReferenceList>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+												<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
@@ -1074,8 +1074,8 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 										</Sound>
 										<Sound Name="metalsheet_walk_heel_02_res" ID="{36E8406F-9C18-4863-B993-8BD5A7E4DD09}" ShortID="706965595">
 											<ReferenceList>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+												<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
@@ -1100,8 +1100,8 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 										</Sound>
 										<Sound Name="metalsheet_walk_heel_03_res" ID="{38272B67-03A2-474E-9E0F-FD9575A87DEA}" ShortID="303209786">
 											<ReferenceList>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+												<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
@@ -1125,8 +1125,8 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 										</Sound>
 										<Sound Name="metalsheet_walk_heel_04_res" ID="{F6E4C32D-D76D-4315-A9AA-9464668F7312}" ShortID="459242362">
 											<ReferenceList>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+												<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
@@ -1151,8 +1151,8 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 										</Sound>
 										<Sound Name="metalsheet_walk_heel_05_res" ID="{C85915B9-67B8-48EA-8E2A-6F28654AB818}" ShortID="169187790">
 											<ReferenceList>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+												<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
@@ -1179,15 +1179,15 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 								</RandomSequenceContainer>
 								<RandomSequenceContainer Name="Toe" ID="{534FF0C8-2726-418F-A551-1A58602824F5}" ShortID="17933237">
 									<ReferenceList>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+										<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
 										<Sound Name="metalsheet_walk_toe_01_res" ID="{EF428348-6E50-414B-8ECC-081540EB15C4}" ShortID="17119066">
 											<ReferenceList>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+												<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
@@ -1210,8 +1210,8 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 										</Sound>
 										<Sound Name="metalsheet_walk_toe_02_res" ID="{13F95DC0-6D8C-4244-B5D4-88E7D2FD0064}" ShortID="198695826">
 											<ReferenceList>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+												<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
@@ -1234,8 +1234,8 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 										</Sound>
 										<Sound Name="metalsheet_walk_toe_03_res" ID="{B5B5ECBD-65ED-4CDF-96E8-50633EBD26BC}" ShortID="949660955">
 											<ReferenceList>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+												<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
@@ -1258,8 +1258,8 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 										</Sound>
 										<Sound Name="metalsheet_walk_toe_04_res" ID="{3780234E-2AD7-43CE-9197-D43DD265A3ED}" ShortID="841918285">
 											<ReferenceList>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+												<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
@@ -1282,8 +1282,8 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 										</Sound>
 										<Sound Name="metalsheet_walk_toe_05_res" ID="{CDCE5EBB-D1B0-46B0-87AC-3AF25A5BF117}" ShortID="718053396">
 											<ReferenceList>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+												<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
@@ -1309,90 +1309,96 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 							</ChildrenList>
 							<ObjectLists>
 								<ObjectList Name="Effects" Platform="iOS">
-									
-									
-									
-									
-								<EffectSlot Name="" ID="{0BA74DEE-8961-48BB-AE88-8B0280AC59CA}" ShortID="15363551"/><EffectSlot Name="" ID="{B95B0841-2614-416A-BA0F-67408F7B6E72}" ShortID="103278882"/><EffectSlot Name="" ID="{80016ACF-CCD4-4D98-B7A9-3894E989C53D}" ShortID="957980814"/><EffectSlot Name="" ID="{B4132965-FB90-41D7-BD41-3667A9595E74}" ShortID="362959170"/></ObjectList>
+									<EffectSlot Name="" ID="{E2E96C5E-895D-4CF5-8B50-4589E92C08A1}" ShortID="1041187525"/>
+									<EffectSlot Name="" ID="{56054408-E65B-48EE-B662-5991CB20C1D2}" ShortID="945313382"/>
+									<EffectSlot Name="" ID="{D76595B0-C671-40FA-8C86-C275028E4240}" ShortID="193174749"/>
+									<EffectSlot Name="" ID="{BFF86E3B-3510-4527-B598-430C2BF87DAA}" ShortID="848108214"/>
+								</ObjectList>
 								<ObjectList Name="Playlist">
-									
-									
-								<PluginInnerObject Name="" ID="{3B6C73FB-2B9B-4A39-A341-5B2DF11B43B4}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86"><ReferenceList><Reference Name="PlaylistObject">
-										<ObjectRef Name="Heel" ID="{50DA88B2-844E-4564-BC43-DA3881881A7D}" WorkUnitID="{39255352-6310-4790-ACD5-F0B3026DF735}"/>
-									</Reference></ReferenceList></PluginInnerObject><PluginInnerObject Name="" ID="{A17EB32E-0695-49C3-B3A8-B4FBFC4E94C2}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86"><ReferenceList><Reference Name="PlaylistObject">
-										<ObjectRef Name="Toe" ID="{534FF0C8-2726-418F-A551-1A58602824F5}" WorkUnitID="{39255352-6310-4790-ACD5-F0B3026DF735}"/>
-									</Reference></ReferenceList></PluginInnerObject></ObjectList>
+									<PluginInnerObject Name="" ID="{C4CB0DBA-825A-40E4-B7E7-589DB5482084}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86">
+										<ReferenceList>
+											<Reference Name="PlaylistObject" CompanyID="4095" PluginID="65535" PluginType="15">
+												<ObjectRef Name="Heel" ID="{50DA88B2-844E-4564-BC43-DA3881881A7D}" WorkUnitID="{39255352-6310-4790-ACD5-F0B3026DF735}"/>
+											</Reference>
+										</ReferenceList>
+									</PluginInnerObject>
+									<PluginInnerObject Name="" ID="{6E20E2BF-DB2E-4AA7-ABBA-A60B145A0612}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86">
+										<ReferenceList>
+											<Reference Name="PlaylistObject" CompanyID="4095" PluginID="65535" PluginType="15">
+												<ObjectRef Name="Toe" ID="{534FF0C8-2726-418F-A551-1A58602824F5}" WorkUnitID="{39255352-6310-4790-ACD5-F0B3026DF735}"/>
+											</Reference>
+										</ReferenceList>
+									</PluginInnerObject>
+								</ObjectList>
 								<ObjectList Name="RTPC">
-									
-									
-								<RTPC Name="" ID="{ABAECC25-7014-48F2-BACB-DDCD0E50B7D4}" ShortID="728955669">
-												<PropertyList>
-													<Property Name="PropertyName" Type="string" Value="Lowpass"/>
-												</PropertyList>
-												<ReferenceList>
-													<Reference Name="ControlInput">
-														<ObjectRef Name="Footstep_Weight" ID="{8552C51B-A366-48C0-9248-D559631D031E}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
-													</Reference>
-													<Reference Name="Curve">
-														<Custom>
-															<Curve Name="" ID="{4107C33E-3663-4370-93F0-61DAA886303A}">
-																<PropertyList>
-																	<Property Name="Flags" Type="int32" Value="65537"/>
-																</PropertyList>
-																<PointList>
-																	<Point>
-																		<XPos>0</XPos>
-																		<YPos>0</YPos>
-																		<Flags>5</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>100</XPos>
-																		<YPos>32</YPos>
-																		<Flags>37</Flags>
-																	</Point>
-																</PointList>
-															</Curve>
-														</Custom>
-													</Reference>
-												</ReferenceList>
-											</RTPC><RTPC Name="" ID="{4D5548D3-D933-4392-A8C7-0315878E6D61}" ShortID="598876160">
-												<PropertyList>
-													<Property Name="PropertyName" Type="string" Value="Pitch"/>
-												</PropertyList>
-												<ReferenceList>
-													<Reference Name="ControlInput">
-														<ObjectRef Name="Footstep_Weight" ID="{8552C51B-A366-48C0-9248-D559631D031E}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
-													</Reference>
-													<Reference Name="Curve">
-														<Custom>
-															<Curve Name="" ID="{C0D56290-4F2D-43AB-B17B-68D71125FD50}">
-																<PropertyList>
-																	<Property Name="Flags" Type="int32" Value="65537"/>
-																</PropertyList>
-																<PointList>
-																	<Point>
-																		<XPos>0</XPos>
-																		<YPos>500</YPos>
-																		<Flags>5</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>100</XPos>
-																		<YPos>-3</YPos>
-																		<Flags>37</Flags>
-																	</Point>
-																</PointList>
-															</Curve>
-														</Custom>
-													</Reference>
-												</ReferenceList>
-											</RTPC></ObjectList>
+									<RTPC Name="" ID="{ABAECC25-7014-48F2-BACB-DDCD0E50B7D4}" ShortID="728955669">
+										<PropertyList>
+											<Property Name="PropertyName" Type="string" Value="Lowpass"/>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="ControlInput" CompanyID="4095" PluginID="65535" PluginType="15">
+												<ObjectRef Name="Footstep_Weight" ID="{8552C51B-A366-48C0-9248-D559631D031E}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
+											</Reference>
+											<Reference Name="Curve">
+												<Custom>
+													<Curve Name="" ID="{4107C33E-3663-4370-93F0-61DAA886303A}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="65537"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>0</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>32</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</RTPC>
+									<RTPC Name="" ID="{4D5548D3-D933-4392-A8C7-0315878E6D61}" ShortID="598876160">
+										<PropertyList>
+											<Property Name="PropertyName" Type="string" Value="Pitch"/>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="ControlInput" CompanyID="4095" PluginID="65535" PluginType="15">
+												<ObjectRef Name="Footstep_Weight" ID="{8552C51B-A366-48C0-9248-D559631D031E}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
+											</Reference>
+											<Reference Name="Curve">
+												<Custom>
+													<Curve Name="" ID="{C0D56290-4F2D-43AB-B17B-68D71125FD50}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="65537"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>500</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>-3</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</RTPC>
+								</ObjectList>
 							</ObjectLists>
 						</RandomSequenceContainer>
 						<RandomSequenceContainer Name="Dirt" ID="{20B04774-9391-4266-A8F9-D7753CDFA2CF}" ShortID="550567365">
 							<PropertyList>
-								<Property Name="HdrEnvelopeSensitivity" Type="Real64" Value="20"/>
 								<Property Name="RandomAvoidRepeating" Type="bool" Value="False"/>
-								<Property Name="VirtualVoiceQueueBehavior" Type="int16" Value="1"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
 										<Value>-6</Value>
@@ -1400,25 +1406,21 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 								</Property>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Conversion">
+								<Reference Name="Conversion" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="SFX" ID="{3A429FCB-87D8-458B-B315-DBE8023064B3}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
 								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+								<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
 								<Sound Name="FS_Dirt_01" ID="{42CA40C0-BEA9-468F-90CE-1C1E0C9F0DE5}" ShortID="617572384">
-									<PropertyList>
-										<Property Name="HdrEnvelopeSensitivity" Type="Real64" Value="20"/>
-										<Property Name="VirtualVoiceQueueBehavior" Type="int16" Value="1"/>
-									</PropertyList>
 									<ReferenceList>
-										<Reference Name="Conversion">
+										<Reference Name="Conversion" CompanyID="4095" PluginID="65535" PluginType="15">
 											<ObjectRef Name="SFX" ID="{3A429FCB-87D8-458B-B315-DBE8023064B3}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
 										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+										<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -1438,16 +1440,12 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="FS_Dirt_02" ID="{F4931724-C84A-40E8-AA65-5557A33CA828}" ShortID="777910535">
-									<PropertyList>
-										<Property Name="HdrEnvelopeSensitivity" Type="Real64" Value="20"/>
-										<Property Name="VirtualVoiceQueueBehavior" Type="int16" Value="1"/>
-									</PropertyList>
 									<ReferenceList>
-										<Reference Name="Conversion">
+										<Reference Name="Conversion" CompanyID="4095" PluginID="65535" PluginType="15">
 											<ObjectRef Name="SFX" ID="{3A429FCB-87D8-458B-B315-DBE8023064B3}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
 										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+										<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -1467,16 +1465,12 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="FS_Dirt_03" ID="{F96FF7CD-FEEA-4C49-86AE-57A78FE8926A}" ShortID="521273252">
-									<PropertyList>
-										<Property Name="HdrEnvelopeSensitivity" Type="Real64" Value="20"/>
-										<Property Name="VirtualVoiceQueueBehavior" Type="int16" Value="1"/>
-									</PropertyList>
 									<ReferenceList>
-										<Reference Name="Conversion">
+										<Reference Name="Conversion" CompanyID="4095" PluginID="65535" PluginType="15">
 											<ObjectRef Name="SFX" ID="{3A429FCB-87D8-458B-B315-DBE8023064B3}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
 										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+										<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -1496,16 +1490,12 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="FS_Dirt_04" ID="{B427033B-B30F-4051-B67E-6986279C1283}" ShortID="945342129">
-									<PropertyList>
-										<Property Name="HdrEnvelopeSensitivity" Type="Real64" Value="20"/>
-										<Property Name="VirtualVoiceQueueBehavior" Type="int16" Value="1"/>
-									</PropertyList>
 									<ReferenceList>
-										<Reference Name="Conversion">
+										<Reference Name="Conversion" CompanyID="4095" PluginID="65535" PluginType="15">
 											<ObjectRef Name="SFX" ID="{3A429FCB-87D8-458B-B315-DBE8023064B3}" WorkUnitID="{5793A36C-0278-4AE3-B21C-4737AF9F120D}"/>
 										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
+										<Reference Name="OutputBus" CompanyID="4095" PluginID="65535" PluginType="15">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B90D7019-72C6-46E8-990C-3BC04B2724DB}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -1529,38 +1519,38 @@ Walking/Running speed is a simple offset in volume and pitch also done with an R
 					</ChildrenList>
 					<ObjectLists>
 						<ObjectList Name="RTPC">
-							
-						<RTPC Name="" ID="{D70DAF3D-9730-448E-BF09-8DA1D4CF5151}" ShortID="438173458">
-										<PropertyList>
-											<Property Name="PropertyName" Type="string" Value="Volume"/>
-										</PropertyList>
-										<ReferenceList>
-											<Reference Name="ControlInput">
-												<ObjectRef Name="Footstep_Weight" ID="{8552C51B-A366-48C0-9248-D559631D031E}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
-											</Reference>
-											<Reference Name="Curve">
-												<Custom>
-													<Curve Name="" ID="{14377EF1-BA0F-45DD-90A1-871B5CB5889C}">
-														<PropertyList>
-															<Property Name="Flags" Type="int32" Value="3"/>
-														</PropertyList>
-														<PointList>
-															<Point>
-																<XPos>0</XPos>
-																<YPos>-10</YPos>
-																<Flags>5</Flags>
-															</Point>
-															<Point>
-																<XPos>100</XPos>
-																<YPos>0</YPos>
-																<Flags>37</Flags>
-															</Point>
-														</PointList>
-													</Curve>
-												</Custom>
-											</Reference>
-										</ReferenceList>
-									</RTPC></ObjectList>
+							<RTPC Name="" ID="{D70DAF3D-9730-448E-BF09-8DA1D4CF5151}" ShortID="438173458">
+								<PropertyList>
+									<Property Name="PropertyName" Type="string" Value="Volume"/>
+								</PropertyList>
+								<ReferenceList>
+									<Reference Name="ControlInput" CompanyID="4095" PluginID="65535" PluginType="15">
+										<ObjectRef Name="Footstep_Weight" ID="{8552C51B-A366-48C0-9248-D559631D031E}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
+									</Reference>
+									<Reference Name="Curve">
+										<Custom>
+											<Curve Name="" ID="{14377EF1-BA0F-45DD-90A1-871B5CB5889C}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="3"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>-10</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>100</XPos>
+														<YPos>0</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</Custom>
+									</Reference>
+								</ReferenceList>
+							</RTPC>
+						</ObjectList>
 					</ObjectLists>
 					<GroupingInfo>
 						<GroupingBehaviorList>

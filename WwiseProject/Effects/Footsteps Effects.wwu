@@ -21,7 +21,7 @@
 									<Property Name="PropertyName" Type="string" Value="GainBand1"/>
 								</PropertyList>
 								<ReferenceList>
-									<Reference Name="ControlInput">
+									<Reference Name="ControlInput" CompanyID="4095" PluginID="65535" PluginType="15">
 										<ObjectRef Name="Footstep_Weight" ID="{8552C51B-A366-48C0-9248-D559631D031E}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
 									</Reference>
 									<Reference Name="Curve">
@@ -52,7 +52,7 @@
 									<Property Name="PropertyName" Type="string" Value="GainBand3"/>
 								</PropertyList>
 								<ReferenceList>
-									<Reference Name="ControlInput">
+									<Reference Name="ControlInput" CompanyID="4095" PluginID="65535" PluginType="15">
 										<ObjectRef Name="Footstep_Weight" ID="{8552C51B-A366-48C0-9248-D559631D031E}" WorkUnitID="{4B8031BB-C20D-491D-A4B9-B961C1D4252F}"/>
 									</Reference>
 									<Reference Name="Curve">

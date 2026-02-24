@@ -10,7 +10,7 @@
 								<Property Name="ActionType" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="Three Numbers in a Row" ID="{BAA45A1A-B426-4D4C-BD24-ABAAC593F83A}" WorkUnitID="{C9823204-D123-4E77-ADFF-8583AB31A2CC}"/>
 								</Reference>
 							</ReferenceList>

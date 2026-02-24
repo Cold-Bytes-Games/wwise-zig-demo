@@ -11,7 +11,7 @@
 								<Property Name="Scope" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="Exploring" ID="{6C0BB16B-B1C8-42CD-A760-50995219C615}" WorkUnitID="{6A8E32AE-15EA-4D76-97F1-D5F0C67A32DF}"/>
 								</Reference>
 							</ReferenceList>
@@ -21,7 +21,7 @@
 								<Property Name="ActionType" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="In-Game Music" ID="{9A47F923-9470-440D-8447-81F163F4B456}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
 								</Reference>
 							</ReferenceList>
@@ -35,7 +35,7 @@
 								<Property Name="ActionType" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="ISaidAreYouListening" ID="{BEF3C783-FBA7-4407-A61F-9D6BDC47DF70}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
 								</Reference>
 							</ReferenceList>
@@ -46,7 +46,7 @@
 								<Property Name="Scope" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="GameOver" ID="{C0E5D5E8-C130-47CC-98E5-7C29A9638A35}" WorkUnitID="{6A8E32AE-15EA-4D76-97F1-D5F0C67A32DF}"/>
 								</Reference>
 							</ReferenceList>
@@ -61,7 +61,7 @@
 								<Property Name="Scope" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="Winning_TheFight" ID="{8F368476-25B8-460B-9760-F53397657B0D}" WorkUnitID="{6A8E32AE-15EA-4D76-97F1-D5F0C67A32DF}"/>
 								</Reference>
 							</ReferenceList>
@@ -78,7 +78,7 @@
 										<Property Name="Scope" Type="int16" Value="1"/>
 									</PropertyList>
 									<ReferenceList>
-										<Reference Name="Target">
+										<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 											<ObjectRef Name="Fight_LowHealth" ID="{9E38F9B5-E631-4D13-A8B1-C3D45C405DE5}" WorkUnitID="{6A8E32AE-15EA-4D76-97F1-D5F0C67A32DF}"/>
 										</Reference>
 									</ReferenceList>
@@ -93,7 +93,7 @@
 										<Property Name="Scope" Type="int16" Value="1"/>
 									</PropertyList>
 									<ReferenceList>
-										<Reference Name="Target">
+										<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 											<ObjectRef Name="Fight" ID="{FE408534-BD64-4F58-BEEA-DE18BEA509BB}" WorkUnitID="{6A8E32AE-15EA-4D76-97F1-D5F0C67A32DF}"/>
 										</Reference>
 									</ReferenceList>
@@ -108,7 +108,7 @@
 										<Property Name="Scope" Type="int16" Value="1"/>
 									</PropertyList>
 									<ReferenceList>
-										<Reference Name="Target">
+										<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 											<ObjectRef Name="Fight_Damaged" ID="{854E9525-151B-4E72-9BE7-7A70D391CBA8}" WorkUnitID="{6A8E32AE-15EA-4D76-97F1-D5F0C67A32DF}"/>
 										</Reference>
 									</ReferenceList>
@@ -123,7 +123,7 @@
 										<Property Name="Scope" Type="int16" Value="1"/>
 									</PropertyList>
 									<ReferenceList>
-										<Reference Name="Target">
+										<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 											<ObjectRef Name="Fight_Dying" ID="{6DADFB0C-9D0E-4C01-B6A3-B888EB4E345C}" WorkUnitID="{6A8E32AE-15EA-4D76-97F1-D5F0C67A32DF}"/>
 										</Reference>
 									</ReferenceList>
@@ -138,7 +138,7 @@
 										<Property Name="Scope" Type="int16" Value="1"/>
 									</PropertyList>
 									<ReferenceList>
-										<Reference Name="Target">
+										<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 											<ObjectRef Name="Fight" ID="{FE408534-BD64-4F58-BEEA-DE18BEA509BB}" WorkUnitID="{6A8E32AE-15EA-4D76-97F1-D5F0C67A32DF}"/>
 										</Reference>
 									</ReferenceList>
@@ -148,7 +148,7 @@
 										<Property Name="ActionType" Type="int16" Value="1"/>
 									</PropertyList>
 									<ReferenceList>
-										<Reference Name="Target">
+										<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 											<ObjectRef Name="AreYouListening" ID="{67C4FB5B-764A-40CC-A754-1448D2B6E286}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
 										</Reference>
 									</ReferenceList>
@@ -167,7 +167,7 @@
 										<Property Name="Scope" Type="int16" Value="1"/>
 									</PropertyList>
 									<ReferenceList>
-										<Reference Name="Target">
+										<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 											<ObjectRef Name="Playing" ID="{FB2C1D99-74D1-4E63-80A2-296AACFFBBC2}" WorkUnitID="{6A8E32AE-15EA-4D76-97F1-D5F0C67A32DF}"/>
 										</Reference>
 									</ReferenceList>
@@ -177,7 +177,7 @@
 										<Property Name="ActionType" Type="int16" Value="1"/>
 									</PropertyList>
 									<ReferenceList>
-										<Reference Name="Target">
+										<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 											<ObjectRef Name="AreYouListening" ID="{67C4FB5B-764A-40CC-A754-1448D2B6E286}" WorkUnitID="{1BDEE0E7-7F39-4966-83D4-9E9185A4D4CF}"/>
 										</Reference>
 									</ReferenceList>
@@ -192,7 +192,7 @@
 										<Property Name="Scope" Type="int16" Value="1"/>
 									</PropertyList>
 									<ReferenceList>
-										<Reference Name="Target">
+										<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 											<ObjectRef Name="Exploring" ID="{6C0BB16B-B1C8-42CD-A760-50995219C615}" WorkUnitID="{6A8E32AE-15EA-4D76-97F1-D5F0C67A32DF}"/>
 										</Reference>
 									</ReferenceList>

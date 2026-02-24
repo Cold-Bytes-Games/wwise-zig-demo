@@ -12,7 +12,7 @@
 					</PropertyList>
 					<ObjectLists>
 						<ObjectList Name="Effects">
-							<EffectSlot Name="" ID="{CE52E331-6B5A-41B3-A7B3-9096207DCE35}">
+							<EffectSlot Name="" ID="{54AC5CFE-1FA7-4AAD-A771-613DC55DE5D9}">
 								<ReferenceList>
 									<Reference Name="Effect">
 										<Custom>

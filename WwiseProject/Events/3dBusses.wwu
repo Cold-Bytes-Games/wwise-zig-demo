@@ -10,7 +10,7 @@
 								<Property Name="ActionType" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="Chirp" ID="{AA70ACFE-0C79-45E5-B0B0-D2CC2068793C}" WorkUnitID="{653976DD-C047-41EE-8492-E1E2DE8C9DAB}"/>
 								</Reference>
 							</ReferenceList>
@@ -24,7 +24,7 @@
 								<Property Name="ActionType" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="Positioning_Demo" ID="{5A22DED3-B5E6-4002-811E-F88457A7766F}" WorkUnitID="{653976DD-C047-41EE-8492-E1E2DE8C9DAB}"/>
 								</Reference>
 							</ReferenceList>
@@ -38,7 +38,7 @@
 								<Property Name="ActionType" Type="int16" Value="2"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="Positioning_Demo" ID="{5A22DED3-B5E6-4002-811E-F88457A7766F}" WorkUnitID="{653976DD-C047-41EE-8492-E1E2DE8C9DAB}"/>
 								</Reference>
 							</ReferenceList>
@@ -52,7 +52,7 @@
 								<Property Name="ActionType" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="Cluster" ID="{3169C5C9-3CEF-433C-9CAB-2386C8A5EBFA}" WorkUnitID="{653976DD-C047-41EE-8492-E1E2DE8C9DAB}"/>
 								</Reference>
 							</ReferenceList>
@@ -66,50 +66,8 @@
 								<Property Name="ActionType" Type="int16" Value="2"/>
 							</PropertyList>
 							<ReferenceList>
-								<Reference Name="Target">
+								<Reference Name="Target" CompanyID="4095" PluginID="65535" PluginType="15">
 									<ObjectRef Name="Cluster" ID="{3169C5C9-3CEF-433C-9CAB-2386C8A5EBFA}" WorkUnitID="{653976DD-C047-41EE-8492-E1E2DE8C9DAB}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="Play_Footstep" ID="{7AD294CF-3983-40E5-BEEB-F189C60E35D7}">
-					<ChildrenList>
-						<Action Name="" ID="{7574DC05-946E-437B-88E7-E3B1FA934D8E}" ShortID="219029414">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="1"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="Foostep_Heavy" ID="{CBCD492C-982D-4EE4-AE75-0019CA6577EF}" WorkUnitID="{653976DD-C047-41EE-8492-E1E2DE8C9DAB}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="Play_Room_Emitter" ID="{50F222C5-C144-4944-838A-3A867DF734C8}">
-					<ChildrenList>
-						<Action Name="" ID="{3059F083-8A63-4A3B-A62D-628E75E469CD}" ShortID="507013236">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="1"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="Room_Emitter" ID="{7293CC5B-C9F9-407A-BCC1-07D6CC9E6EF1}" WorkUnitID="{653976DD-C047-41EE-8492-E1E2DE8C9DAB}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="Play_Ambience_Quad" ID="{6758C4AA-80DD-4C5A-A999-B20F4C6FDA3A}">
-					<ChildrenList>
-						<Action Name="" ID="{DF61A75E-9E2C-4A41-83DC-A1421EB19300}" ShortID="660957382">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="1"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="Ambience_Quad" ID="{172A9E9E-FAF4-4E32-99E3-566AE0650CCD}" WorkUnitID="{653976DD-C047-41EE-8492-E1E2DE8C9DAB}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

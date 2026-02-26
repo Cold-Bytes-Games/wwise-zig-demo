@@ -13,7 +13,7 @@ is_visible: bool = false,
 bank_id: AK.AkBankID = AK.AK_INVALID_BANK_ID,
 emitter_cursor: Cursor = .{},
 listener_cursor: Cursor = .{},
-geometry: [2]Line = [_]Line{Line{}} ** 2,
+geometry: [2]Line = @splat(.{}),
 lines: std.ArrayListUnmanaged(Line) = .{},
 game_object_x: f32 = 0.0,
 game_object_z: f32 = 0.0,
@@ -50,7 +50,7 @@ pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.WwiseDe
 
     try AK.SpatialAudio.registerListener(ListenerObj);
 
-    self.bank_id = try AK.SoundEngine.loadBankString(allocator, "Bus3d_Demo.bnk", .{});
+    self.bank_id = try AK.SoundEngine.loadBankString(allocator, "Spatial_Audio_Demo.bnk", .{});
 }
 
 pub fn deinit(self: *Self, demo_state: *root.WwiseDemoApp) void {

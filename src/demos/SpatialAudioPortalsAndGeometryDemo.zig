@@ -71,9 +71,7 @@ pub fn init(self: *Self, allocator: std.mem.Allocator, demo_state: *root.WwiseDe
 
     try AK.SpatialAudio.registerListener(ListenerObj);
 
-    self.bank_id = try AK.SoundEngine.loadBankString(allocator, "Bus3d_Demo.bnk", .{});
-
-    _ = try AK.SoundEngine.postEventID(ID.EVENTS.PLAY_CLUSTER, EmitterObj, .{});
+    self.bank_id = try AK.SoundEngine.loadBankString(allocator, "Spatial_Audio_Demo.bnk", .{});
 }
 
 pub fn deinit(self: *Self, demo_state: *root.WwiseDemoApp) void {

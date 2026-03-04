@@ -11,7 +11,7 @@ const c = @cImport({
 });
 
 pub const MAX_THREAD_WORKERS = 8;
-pub const LISTENER_GAME_OBJECT_ID: AK.AkGameObjectID = 1;
+pub const LISTENER_GAME_OBJECT_ID: AK.AkGameObjectID = 10000;
 
 const DemoInterface = @import("DemoInterface.zig");
 const NullDemo = @import("demos/NullDemo.zig");
@@ -53,26 +53,39 @@ const AllMenus = [_]MenuData{
         },
     },
     .{
-        .demo = .{
-            .name = "RTPC Demo (Car Engine)",
-            .instance_type = @import("demos/RtpcCarEngineDemo.zig"),
-        },
-    },
-    .{
-        .demo = .{
-            .name = "Footsteps Demo",
-            .instance_type = @import("demos/FootstepsDemo.zig"),
-        },
-    },
-    .{
-        .demo = .{
-            .name = "Subtitles/Markers Demo",
-            .instance_type = @import("demos/SubtitleDemo.zig"),
+        .menu = .{
+            .name = "Basic API Demos",
+            .entries = &.{
+                .{
+                    .demo = .{
+                        .name = "RTPC Demo (Car Engine)",
+                        .instance_type = @import("demos/RtpcCarEngineDemo.zig"),
+                    },
+                },
+                .{
+                    .demo = .{
+                        .name = "Footsteps Demo",
+                        .instance_type = @import("demos/FootstepsDemo.zig"),
+                    },
+                },
+                .{
+                    .demo = .{
+                        .name = "Subtitles/Markers Demo",
+                        .instance_type = @import("demos/SubtitleDemo.zig"),
+                    },
+                },
+                .{
+                    .demo = .{
+                        .name = "Command Buffer Demo",
+                        .instance_type = @import("demos/CommandBufferCrowdDemo.zig"),
+                    },
+                },
+            },
         },
     },
     .{
         .menu = .{
-            .name = "Music Callbacks Demo",
+            .name = "Music and MIDI Demo",
             .entries = &.{
                 .{
                     .demo = .{
@@ -92,19 +105,25 @@ const AllMenus = [_]MenuData{
                         .instance_type = @import("demos/MIDICallbackDemo.zig"),
                     },
                 },
+                .{
+                    .demo = .{
+                        .name = "Interactive Music Demo",
+                        .instance_type = @import("demos/InteractiveMusicDemo.zig"),
+                    },
+                },
+                .{
+                    .demo = .{
+                        .name = "MIDI API Demo (Metronome)",
+                        .instance_type = @import("demos/MIDIMetronomeDemo.zig"),
+                    },
+                },
+                .{
+                    .demo = .{
+                        .name = "Background Music/DVR Demo",
+                        .instance_type = @import("demos/BGMDemo.zig"),
+                    },
+                },
             },
-        },
-    },
-    .{
-        .demo = .{
-            .name = "Interactive Music Demo",
-            .instance_type = @import("demos/InteractiveMusicDemo.zig"),
-        },
-    },
-    .{
-        .demo = .{
-            .name = "MIDI API Demo (Metronome)",
-            .instance_type = @import("demos/MIDIMetronomeDemo.zig"),
         },
     },
     .{
@@ -200,12 +219,7 @@ const AllMenus = [_]MenuData{
             },
         },
     },
-    .{
-        .demo = .{
-            .name = "Background Music/DVR Demo",
-            .instance_type = @import("demos/BGMDemo.zig"),
-        },
-    },
+
     .{
         .demo = .{
             .name = "Options",
